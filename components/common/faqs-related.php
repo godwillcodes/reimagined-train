@@ -74,14 +74,7 @@ if ($related_blogs):
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
-                <button type="button" data-carousel-pause-target=".related-blogs-carousel"
-                    class="p-2 bg-[#cccccc] rounded hover:bg-[#98C441] text-[#1F3131] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
-                    aria-label="Pause auto-rotation">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <rect x="6" y="4" width="4" height="16" rx="1" />
-                        <rect x="14" y="4" width="4" height="16" rx="1" />
-                    </svg>
-                </button>
+                
             </div>
         </div>
 

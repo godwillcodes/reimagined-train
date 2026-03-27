@@ -772,14 +772,7 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
                                     </svg>
                                 </button>
 
-                                <button type="button" data-carousel-pause-target=".visual-moment-carousel"
-                                    class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
-                                    aria-label="<?php esc_attr_e('Pause auto-rotation', 'piedmont-global-wp'); ?>">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                        <rect x="6" y="4" width="4" height="16" rx="1" />
-                                        <rect x="14" y="4" width="4" height="16" rx="1" />
-                                    </svg>
-                                </button>
+                                
                             </div>
 
                         </div>
@@ -983,7 +976,6 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
         let autoPlayTimeout = null;
         let isInitialized = false;
         let isInView = false;
-        let isPaused = false;
 
         function updateUI() {
             itemElements.forEach((el, index) => {
@@ -1033,7 +1025,7 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
         }
 
         function scheduleNext() {
-            if (!isInView || isPaused) return;
+            if (!isInView) return;
             stopAutoPlay();
             autoPlayTimeout = setTimeout(() => {
                 activeIndex = (activeIndex + 1) % totalItems;
@@ -1043,7 +1035,7 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
         }
 
         function startAutoPlay() {
-            if (!isInView || isPaused) return;
+            if (!isInView) return;
             updateUI();
             scheduleNext();
         }
@@ -1057,33 +1049,9 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
 
         function setActive(index) {
             stopAutoPlay();
-            isPaused = true;
             activeIndex = index;
             updateUI();
-            updatePauseBtn();
-        }
-
-        function togglePause() {
-            isPaused = !isPaused;
-            if (isPaused) {
-                stopAutoPlay();
-                var fill = itemElements[activeIndex]?.querySelector('.vertical-timer-fill');
-                if (fill) fill.style.animationPlayState = 'paused';
-            } else {
-                var fill = itemElements[activeIndex]?.querySelector('.vertical-timer-fill');
-                if (fill) fill.style.animationPlayState = 'running';
-                scheduleNext();
-            }
-            updatePauseBtn();
-        }
-
-        function updatePauseBtn() {
-            var btn = document.getElementById('accordion-pause-btn');
-            if (!btn) return;
-            btn.setAttribute('aria-label', isPaused ? 'Play auto-rotation' : 'Pause auto-rotation');
-            btn.innerHTML = isPaused
-                ? '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>'
-                : '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="4" height="16"/><rect x="15" y="4" width="4" height="16"/></svg>';
+            scheduleNext();
         }
 
         function init() {
@@ -1095,20 +1063,6 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
                     setActive(parseInt(el.dataset.index, 10));
                 });
             });
-
-            var pauseBtn = document.createElement('button');
-            pauseBtn.id = 'accordion-pause-btn';
-            pauseBtn.type = 'button';
-            pauseBtn.setAttribute('aria-label', 'Pause auto-rotation');
-            pauseBtn.className = 'mt-4 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] transition-colors duration-200';
-            pauseBtn.innerHTML = '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="4" height="16"/><rect x="15" y="4" width="4" height="16"/></svg>';
-            pauseBtn.addEventListener('click', function(e) { e.stopPropagation(); togglePause(); });
-            container.parentNode.insertBefore(pauseBtn, container);
-
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                isPaused = true;
-                updatePauseBtn();
-            }
 
             updateUI();
         }
@@ -1209,14 +1163,7 @@ if ($related_blogs || $has_faqs):
                             </svg>
                         </button>
 
-                        <button type="button" data-carousel-pause-target=".sandbox-news-carousel"
-                            class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
-                            aria-label="Pause auto-rotation">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <rect x="6" y="4" width="4" height="16" rx="1" />
-                                <rect x="14" y="4" width="4" height="16" rx="1" />
-                            </svg>
-                        </button>
+                        
                     </div>
                 </div>
 

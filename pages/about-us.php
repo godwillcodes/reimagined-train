@@ -748,7 +748,7 @@ if (!in_array($current_slug, $excluded_pages)):
             backdrop.classList.add('opacity-100');
             content.classList.remove('scale-95', 'opacity-0');
             content.classList.add('scale-100', 'opacity-100');
-            closeBtn.focus();
+            closeBtn?.focus();
         });
         document.addEventListener('keydown', trapFocus);
     }

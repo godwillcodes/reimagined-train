@@ -386,7 +386,9 @@ $outcomes_section = get_field('outcomes', $term_key); // Repeater field
             ?>
             <div class="py-4">
                 <button @click="active === <?= $i ?> ? active = null : active = <?= $i ?>"
-                    class="w-full flex justify-between items-center text-left focus:outline-none">
+                    :aria-expanded="(active === <?= $i ?>).toString()"
+                    aria-controls="sol-faq-panel-<?= $i ?>"
+                    class="w-full flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 rounded-sm">
                     <span class="font-bold text-gray-900 text-lg lg:text-xl"
                         :class="{ 'text-[#1F3131]': active === <?= $i ?> }">
                         <?php echo esc_html($question); ?>
@@ -394,7 +396,7 @@ $outcomes_section = get_field('outcomes', $term_key); // Repeater field
                     <svg xmlns="http://www.w3.org/2000/svg"
                         class="w-6 h-6 text-gray-500 transform transition-transform duration-200"
                         :class="{ 'rotate-180 text-[#1F3131]': active === <?= $i ?> }" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
+                        stroke="currentColor" aria-hidden="true">
                         <path x-show="active !== <?= $i ?>" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="2" d="M12 5v14m7-7H5" />
                         <path x-show="active === <?= $i ?>" stroke-linecap="round" stroke-linejoin="round"
@@ -403,6 +405,7 @@ $outcomes_section = get_field('outcomes', $term_key); // Repeater field
                 </button>
 
                 <div x-show="active === <?= $i ?>" x-collapse
+                    id="sol-faq-panel-<?= $i ?>"
                     class="mt-3 text-gray-700 prose text-base leading-relaxed">
                     <?php echo wp_kses_post($answer); ?>
                 </div>
@@ -438,14 +441,7 @@ if ($related_blogs):
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
-                <button type="button" data-carousel-pause-target=".related-blogs-carousel"
-                    class="p-2 bg-[#cccccc] rounded hover:bg-[#98C441] text-[#1F3131] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
-                    aria-label="Pause auto-rotation">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <rect x="6" y="4" width="4" height="16" rx="1" />
-                        <rect x="14" y="4" width="4" height="16" rx="1" />
-                    </svg>
-                </button>
+                
             </div>
         </div>
 
@@ -491,41 +487,5 @@ if ($related_blogs):
 <?php endif; ?>
 
 
-
-
-<section class="bg-[#1F3131] py-28 text-center">
-    <div class="max-w-2xl mx-auto px-4">
-        <!-- Heading -->
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#F9F8F6] tracking-tight" data-aos="fade-up"
-            data-aos-delay="100" data-aos-duration="800">
-            Let’s talk about making success inevitable.
-        </h2>
-
-        <!-- Subheading -->
-        <p class="mt-6 text-base lg:text-lg text-[#F9F8F6] leading-relaxed" data-aos="fade-up" data-aos-delay="200"
-            data-aos-duration="600">
-            Looking for a partner to help you solve today’s challenges — and prepare for tomorrow’s opportunities? Let's build something lasting—together.
-        </p>
-       
-
-        <!-- CTA Buttons -->
-        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6" data-aos="fade-up"
-            data-aos-delay="400" data-aos-duration="700">
-            <a href=/contact"
-                class="bg-[#8DC63F] hover:bg-[#7AB22E] text-[#1F3131] font-bold px-6 py-3 text-base lg:text-lg transition">
-                Schedule a consultation
-            </a>
-            <a href="/resources" class="group flex items-center text-[#F9F8F6] font-medium text-base lg:text-lg
-       transition-colors duration-300 hover:text-[#F9F8F6]/80">
-                Explore our resources
-                <svg xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-            </a>
-        </div>
-    </div>
-</section>
-
+<?php get_template_part( 'components/common/cta' ); ?>
 <?php get_footer(); ?>
