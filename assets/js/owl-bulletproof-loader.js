@@ -241,6 +241,7 @@
                         dots: false,
                         autoplay: true,
                         autoplayTimeout: 5000,
+                        autoplayHoverPause: true,
                         smartSpeed: 600,
                         responsive: {
                             0: { items: 1 },

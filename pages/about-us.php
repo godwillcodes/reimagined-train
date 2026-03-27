@@ -157,8 +157,7 @@ get_header();
 <section class="py-10 lg:py-40 bg-[#F9F8F6]">
     <div class="text-center max-w-4xl mx-auto px-6 md:px-10 lg:px-0">
         <p class="text-lg font-medium text-gray-700 mb-6"><?php echo esc_html(get_field('video_title')); ?></p>
-        <h1 id="animatedText" class="text-4xl md:text-5xl font-bold"
-            aria-label="<?php echo esc_attr( get_field('animated_text') ?: 'Making cross-cultural operations easier, smarter, and more human.' ); ?>">
+        <h1 class="text-4xl md:text-5xl font-bold">
             <?php echo esc_html( get_field('animated_text') ?: 'Making cross-cultural operations easier, smarter, and more human.' ); ?>
         </h1>
        <div class="max-3xl mx-auto">
@@ -208,7 +207,7 @@ get_header();
     <p class="text-xl font-medium text-center text-black mb-6">Our solutions create</p>
 
     <!-- //repeatable cards -->
-    <div class="aboutus-carousel owl-carousel owl-theme relative" style="
+    <div class="aboutus-carousel owl-carousel owl-theme relative" role="region" aria-roledescription="carousel" aria-label="Our solutions" style="
         mask: linear-gradient(to right, 
             transparent 0%, 
             black 5%, 

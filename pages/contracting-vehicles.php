@@ -78,7 +78,7 @@ get_header();
             <p class="text-gray-600 text-lg max-w-2xl">Streamlined procurement through trusted government contract vehicles</p>
         </div>
         
-        <div class="owl-carousel owl-theme contracting-vehicles-carousel">
+        <div class="owl-carousel owl-theme contracting-vehicles-carousel" role="region" aria-roledescription="carousel" aria-label="Contracting vehicles">
             <?php while (have_rows('contracting_vehicles', 'option')): the_row(); ?>
             <div class="item">
                 <?php if (get_sub_field('url')) : ?>

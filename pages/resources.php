@@ -396,7 +396,8 @@ endif;
         <?php if (!empty($testimonials)): ?>
             <ul
   class="testimonial-carousel owl-carousel flex [&_.owl-stage]:flex [&_.owl-item]:flex [&_.owl-item]:items-stretch"
-  role="list"
+  role="region"
+  aria-roledescription="carousel"
   aria-label="Testimonials"
 >
   <?php foreach ($testimonials as $testimonial): ?>

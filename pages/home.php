@@ -128,7 +128,7 @@ get_template_part( 'components/banner/primary' );
             </div>
 
             <?php if (have_rows('partners_repeater', 'option')): ?>
-            <div class="owl-carousel owl-theme mb-16 partners-carousel">
+            <div class="owl-carousel owl-theme mb-16 partners-carousel" role="region" aria-roledescription="carousel" aria-label="Partners">
                 <?php $partner_index = 0; ?>
                 <?php while (have_rows('partners_repeater', 'option')): the_row(); ?>
                 <div class="item flex items-center justify-center h-28 w-28" data-aos="fade-up" data-aos-duration="400"
@@ -192,7 +192,7 @@ get_template_part( 'components/banner/primary' );
                     </h3>
 
                     <?php if (have_rows('certified_by', 'option')): ?>
-                    <div class="owl-carousel owl-theme certificate-carousel">
+                    <div class="owl-carousel owl-theme certificate-carousel" role="region" aria-roledescription="carousel" aria-label="Certifications">
                         <?php while (have_rows('certified_by', 'option')): the_row(); ?>
                         <div class="item">
                             <div
@@ -218,7 +218,7 @@ get_template_part( 'components/banner/primary' );
                         Contracting vehicles
                     </h3>
 
-                    <div class="owl-carousel owl-theme contracting-vehicles-carousel">
+                    <div class="owl-carousel owl-theme contracting-vehicles-carousel" role="region" aria-roledescription="carousel" aria-label="Contracting vehicles">
                         <?php while (have_rows('contracting_vehicles', 'option')): the_row(); ?>
                         <div class="item">
                             <?php if (get_sub_field('url')) : ?>
@@ -255,7 +255,7 @@ get_template_part( 'components/banner/primary' );
             </h3>
 
             <?php if (have_rows('recognized_by', 'option')): ?>
-            <div class="owl-carousel owl-theme recognized-carousel">
+            <div class="owl-carousel owl-theme recognized-carousel" role="region" aria-roledescription="carousel" aria-label="Recognized by">
                 <?php while (have_rows('recognized_by', 'option')): the_row(); ?>
                 <div class="item">
                     <?php if (get_sub_field('url')) : ?>
@@ -497,11 +497,9 @@ endif;
     <section class="py-10 lg:py-20 bg-[#F9F8F6]">
         <div class="text-center max-w-4xl mx-auto px-6 md:px-10 lg:px-0">
             <p class="text-lg font-medium text-gray-700 mb-6">What is Strategic Globalization</p>
-            <h2 id="animatedText" class="text-2xl md:text-5xl font-bold"
-                aria-label="The foundation that makes success inevitable, whether your audience is across the globe or across the street.">
+            <h2 class="text-2xl md:text-5xl font-bold">
                 The foundation that makes success inevitable, whether your audience is across the globe or across the street.
             </h2>
-
 
             <a href="/strategic-globalization/"
                 class="inline-flex items-center text-lg font-medium mt-12 border-b-2 border-[#D16555] hover:border-[#D16555] transition-colors duration-300"
@@ -509,7 +507,7 @@ endif;
                 Learn more about Strategic Globalization <span
                     class="ml-1 text-lg transform transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
-
+        </div>
     </section>
 
 

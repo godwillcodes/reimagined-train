@@ -58,24 +58,32 @@ if ($related_blogs):
             <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Related resources</h2>
             <div class="flex items-center gap-3">
                 <button id="related-blogs-prev" aria-label="Previous"
-                    class="p-2 bg-[#cccccc] rounded hover:bg-[#98C441] text-[#1F3131] transition-colors">
+                    class="p-2 bg-[#cccccc] rounded hover:bg-[#98C441] text-[#1F3131] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
                 <button id="related-blogs-next" aria-label="Next"
-                    class="p-2 bg-[#cccccc] rounded hover:bg-[#98C441] text-[#1F3131] transition-colors">
+                    class="p-2 bg-[#cccccc] rounded hover:bg-[#98C441] text-[#1F3131] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                         stroke-width="2" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+                <button type="button" data-carousel-pause-target=".related-blogs-carousel"
+                    class="p-2 bg-[#cccccc] rounded hover:bg-[#98C441] text-[#1F3131] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
+                    aria-label="Pause auto-rotation">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="6" y="4" width="4" height="16" rx="1" />
+                        <rect x="14" y="4" width="4" height="16" rx="1" />
                     </svg>
                 </button>
             </div>
         </div>
 
         <div class="relative">
-            <div class="owl-carousel related-blogs-carousel">
+            <div class="owl-carousel related-blogs-carousel" role="region" aria-roledescription="carousel" aria-label="Related resources">
             <?php foreach ($related_blogs as $post): setup_postdata($post); ?>
             <a href="<?php the_permalink(); ?>"
                 class="group flex flex-col h-full shadow-md relative rounded-lg border bg-white border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-stone-300/30 mx-3">

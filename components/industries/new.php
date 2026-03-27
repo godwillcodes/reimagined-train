@@ -649,7 +649,7 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
                 $visual_moments = get_field('visual_moment');
                 if ($visual_moments && is_array($visual_moments)):
                     ?>
-                    <div class="owl-carousel visual-moment-carousel">
+                    <div class="owl-carousel visual-moment-carousel" role="region" aria-roledescription="carousel" aria-label="Visual moments">
                         <?php foreach ($visual_moments as $index => $row):
                             $small_title = isset($row['small_title']) ? $row['small_title'] : '';
                             $big_title = isset($row['big_title']) ? $row['big_title'] : '';
@@ -742,7 +742,7 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
                             <div class="flex justify-center md:justify-start gap-2 md:gap-4 md:flex-1 flex-wrap">
                                 <?php foreach ($visual_moments as $index => $row): ?>
                                     <button type="button"
-                                        class="visual-moment-marker w-8 h-8 md:w-10 md:h-10 text-sm md:text-base flex items-center justify-center rounded-full font-semibold transition-colors duration-200 <?php echo $index === 0 ? 'active bg-[#98C441] text-[#006155] border border-[#006155]' : 'bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155]'; ?>"
+                                        class="visual-moment-marker w-8 h-8 md:w-10 md:h-10 text-sm md:text-base flex items-center justify-center rounded-full font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 <?php echo $index === 0 ? 'active bg-[#98C441] text-[#006155] border border-[#006155]' : 'bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155]'; ?>"
                                         data-index="<?php echo esc_attr($index); ?>"
                                         aria-label="<?php printf(esc_attr__('Go to step %d', 'piedmont-global-wp'), $index + 1); ?>">
                                         <?php echo esc_html($index + 1); ?>
@@ -753,7 +753,7 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
                             <!-- Navigation buttons -->
                             <div class="flex justify-center md:justify-end gap-2 md:gap-3 md:flex-1 mt-4 md:mt-0">
                                 <button id="visual-moment-prev" type="button"
-                                    class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200"
+                                    class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
                                     aria-label="<?php esc_attr_e('Previous visual moment', 'piedmont-global-wp'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                         stroke="currentColor" class="w-5 h-5">
@@ -763,12 +763,21 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
                                 </button>
 
                                 <button id="visual-moment-next" type="button"
-                                    class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200"
+                                    class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
                                     aria-label="<?php esc_attr_e('Next visual moment', 'piedmont-global-wp'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                         stroke="currentColor" class="w-5 h-5">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                    </svg>
+                                </button>
+
+                                <button type="button" data-carousel-pause-target=".visual-moment-carousel"
+                                    class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
+                                    aria-label="<?php esc_attr_e('Pause auto-rotation', 'piedmont-global-wp'); ?>">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <rect x="6" y="4" width="4" height="16" rx="1" />
+                                        <rect x="14" y="4" width="4" height="16" rx="1" />
                                     </svg>
                                 </button>
                             </div>
@@ -1149,24 +1158,33 @@ if ($related_blogs || $has_faqs):
                     </h2>
                     <div class="flex items-center gap-3">
                         <button id="sandbox-news-prev" aria-label="Previous"
-                            class="w-10 h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200">
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                             </svg>
                         </button>
                         <button id="sandbox-news-next" aria-label="Next"
-                            class="w-10 h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200">
+                            class="w-10 h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                            </svg>
+                        </button>
+
+                        <button type="button" data-carousel-pause-target=".sandbox-news-carousel"
+                            class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
+                            aria-label="Pause auto-rotation">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <rect x="6" y="4" width="4" height="16" rx="1" />
+                                <rect x="14" y="4" width="4" height="16" rx="1" />
                             </svg>
                         </button>
                     </div>
                 </div>
 
                 <div class="relative z-30 mb-32 pb-10">
-                    <div class="owl-carousel sandbox-news-carousel z-30 pt-6">
+                    <div class="owl-carousel sandbox-news-carousel z-30 pt-6" role="region" aria-roledescription="carousel" aria-label="Related resources">
 
                         <?php
                         $related_blogs = get_field('related_blogs'); // ACF relationship field

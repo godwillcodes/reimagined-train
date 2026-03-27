@@ -501,6 +501,17 @@ function pg_lazy_load_owl_carousel() {
         'retryAttempts'   => 3,
         'retryDelay'      => 1000,
     ) );
+
+    $carousel_a11y_path = get_template_directory() . '/assets/js/carousel-a11y.js';
+    if ( file_exists( $carousel_a11y_path ) ) {
+        wp_enqueue_script(
+            'pg-carousel-a11y',
+            get_template_directory_uri() . '/assets/js/carousel-a11y.js',
+            array( 'pg-jquery', 'pg-owl-bulletproof-loader' ),
+            filemtime( $carousel_a11y_path ),
+            true
+        );
+    }
 }
 add_action( 'wp_enqueue_scripts', 'pg_lazy_load_owl_carousel', 20 );
 

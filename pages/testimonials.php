@@ -69,7 +69,7 @@ endif;
     <div class="max-w-7xl mx-auto">
 
         <?php if (!empty($testimonials)): ?>
-        <div class="testimonial-carousel owl-carousel mt-0 lg:-mt-40" role="list" aria-label="Testimonials">
+        <div class="testimonial-carousel owl-carousel mt-0 lg:-mt-40" role="region" aria-roledescription="carousel" aria-label="Testimonials">
             <?php $i=0; foreach ($testimonials as $testimonial): $i++; ?>
             <div class="bg-white border border-[#DFDAD4] p-8 shadow-md flex flex-col h-full text-left">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/quote.svg" alt="Quote icon"
@@ -132,7 +132,7 @@ endif;
                 We've been recognized
             </h3>
             <?php if (have_rows('recognized_by', 'option')): ?>
-              <div class="owl-carousel owl-theme recognized-carousel">
+              <div class="owl-carousel owl-theme recognized-carousel" role="region" aria-roledescription="carousel" aria-label="Recognized by">
     <?php while (have_rows('recognized_by', 'option')): the_row(); ?>
         <div class="item">
             <?php if (get_sub_field('url')) : ?>
