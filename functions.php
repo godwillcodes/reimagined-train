@@ -191,6 +191,21 @@ function pg_scripts() {
 			filemtime( $alpine_path ),
 			true
 		);
+
+		$navigation_path = get_template_directory() . '/assets/js/navigation.js';
+		$navigation_uri  = get_template_directory_uri() . '/assets/js/navigation.js';
+
+		if ( file_exists( $navigation_path ) ) {
+			wp_enqueue_script(
+				'pg-navigation',
+				$navigation_uri,
+				array(),
+				filemtime( $navigation_path ),
+				true
+			);
+		} elseif ( WP_DEBUG ) {
+			error_log( 'Missing navigation JS: ' . $navigation_path );
+		}
 	} elseif ( WP_DEBUG ) {
 		error_log( 'Missing Alpine JS: ' . $alpine_path );
 	}

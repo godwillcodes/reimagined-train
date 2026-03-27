@@ -65,7 +65,9 @@ if ($custom_logo_id) {
     x-cloak>
         
         <button @click="toggleMenu()" 
+                id="mobile-menu-trigger"
                 :aria-expanded="open"
+                aria-controls="mobile-main-menu"
                 aria-label="Toggle main menu" 
                 class="focus:outline-none focus:ring-2 focus:ring-white/50 rounded-md p-1">
             <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/icons/menu.svg'); ?>"
@@ -96,6 +98,7 @@ if ($custom_logo_id) {
              x-transition:leave="transition ease-in duration-300" 
              x-transition:leave-start="translate-y-0 opacity-100"
              x-transition:leave-end="translate-y-full opacity-0"
+             id="mobile-main-menu"
              class="fixed inset-x-4 bottom-4 z-50 rounded-2xl bg-white/20 backdrop-blur-2xl ring-1 ring-white/10 shadow-xl p-6 text-white max-h-[80vh] overflow-y-auto"
              style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(20px);" 
              role="dialog"
