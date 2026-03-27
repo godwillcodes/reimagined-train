@@ -1,0 +1,622 @@
+/* input.css */
+@import "tailwindcss";
+/* @import "tailwindcss/typography";
+@import "tailwindcss/forms";
+@import "tailwindcss/line-clamp";
+@import "tailwindcss/aspect-ratio"; */
+
+@font-face {
+    font-family: 'Oracle';
+    src: url('../fonts/ABCOracle-Book.woff2') format('woff2'),
+         url('../fonts/ABCOracle-Book.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+.book{
+    font-family: 'Oracle', sans-serif;
+    font-weight: 400 !important;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+@font-face {
+    font-family: 'Oracle';
+    src: url('../fonts/ABCOracle-Medium.woff2') format('woff2'),
+         url('../fonts/ABCOracle-Medium.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+.medium{
+    font-family: 'Oracle', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Font loading strategy to prevent LCP issues */
+.fonts-loading * {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.fonts-loaded * {
+    font-family: 'Oracle', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Default fallback for immediate rendering */
+* {
+    font-family: 'Oracle', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+[x-cloak] {
+        display: none !important;
+}
+
+button, input, textarea, select {
+    font-family: 'Oracle', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+  
+/* Fix for H1 deprecation warning - explicit font-size for h1 elements */
+/* Based on MDN: https://developer.mozilla.org/en-US/blog/h1-element-styles/ */
+/* Using higher specificity to override Tailwind's base reset */
+:where(h1) {
+  margin-block: 0.67em;
+  font-size: 2em !important; /* Mobile default */
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+  :where(h1) {
+    font-size: 2.5em !important;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  :where(h1) {
+    font-size: 3em !important;
+  }
+}
+
+/* Base text styles */
+.prose {
+  color: #1a1a1a;
+  line-height: 1.7;
+  font-size: 1.115rem;
+}
+
+.prose h1, 
+.prose h2, 
+.prose h3, 
+.prose h4 {
+  margin-top: 1px;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Desktop defaults */
+.prose h1 { font-size: 2.25rem; }
+.prose h2 { font-size: 1.875rem; }
+.prose h3 { font-size: 1.5rem; }
+.prose h4 { font-size: 1.25rem; }
+
+/* Paragraph */
+.prose p {
+  margin-top: 1rem;
+   font-family: 'Oracle', sans-serif;
+    font-weight: 400;
+}
+
+/* Lists */
+.prose ul, 
+.prose ol {
+  margin: 1.5rem 0;
+  padding-left: 1.75rem;
+   font-family: 'Oracle', sans-serif;
+    font-weight: 400;
+}
+
+.prose ul li {
+  list-style-type: disc;
+  margin-bottom: 0.5rem;
+   font-family: 'Oracle', sans-serif;
+    font-weight: 400;
+}
+
+.prose ol li {
+  list-style-type: decimal;
+  margin-bottom: 0.5rem;
+   font-family: 'Oracle', sans-serif;
+    font-weight: 400;
+}
+
+/* Links */
+.prose a {
+  color: #D16555;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+.prose a:hover {
+  color: #b65648;
+}
+
+/* Blockquotes */
+.prose blockquote {
+  border-left: 4px solid #006155;
+  padding-left: 1rem;
+  padding: 20px;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #444;
+  background: #f9f9f9;
+}
+
+/* Images */
+.prose img {
+  margin: 2rem 0;
+  border-radius: 0.5rem;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Code blocks */
+.prose pre {
+  background: #1e1e1e;
+  color: #f8f8f2;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+.prose code {
+  background: #f5f5f5;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.95em;
+}
+
+/* ------------------- Responsive Adjustments ------------------- */
+
+/* Tablets (<= 1024px) */
+@media (max-width: 1024px) {
+  .prose {
+    font-size: 1rem;
+  }
+
+  .prose h1 { font-size: 2rem; }
+  .prose h2 { font-size: 1.65rem; }
+  .prose h3 { font-size: 1.35rem; }
+  .prose h4 { font-size: 1.15rem; }
+}
+
+/* Mobiles (<= 640px) */
+@media (max-width: 640px) {
+  .prose {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .prose h1 { font-size: 1.65rem; }
+  .prose h2 { font-size: 1.4rem; }
+  .prose h3 { font-size: 1.2rem; }
+  .prose h4 { font-size: 1.05rem; }
+}
+
+/* ------------------- Prose Invert (Light text on dark backgrounds) ------------------- */
+.prose-invert {
+  color: #ffffff;
+  line-height: 1.7;
+  font-size: 1.115rem;
+}
+
+.prose-invert h1, 
+.prose-invert h2, 
+.prose-invert h3, 
+.prose-invert h4 {
+  margin-top: 1px;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #ffffff;
+}
+
+.prose-invert h1 { font-size: 2.25rem; }
+.prose-invert h2 { font-size: 1.875rem; }
+.prose-invert h3 { font-size: 1.5rem; }
+.prose-invert h4 { font-size: 1.25rem; }
+
+.prose-invert p {
+  margin-top: 1rem;
+  font-family: 'Oracle', sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.prose-invert ul, 
+.prose-invert ol {
+  margin: 1.5rem 0;
+  padding-left: 1.75rem;
+  font-family: 'Oracle', sans-serif;
+  font-weight: 400;
+}
+
+.prose-invert ul li {
+  list-style-type: disc;
+  margin-bottom: 0.5rem;
+  font-family: 'Oracle', sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.prose-invert ol li {
+  list-style-type: decimal;
+  margin-bottom: 0.5rem;
+  font-family: 'Oracle', sans-serif;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.prose-invert a {
+  color: #98C441;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.prose-invert a:hover {
+  color: #8AB738;
+}
+
+.prose-invert blockquote {
+  border-left: 4px solid #98C441;
+  padding: 20px 20px 20px 1rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #e5e5e5;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.prose-invert strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.prose-invert code {
+  background: rgba(255, 255, 255, 0.1);
+  color: #98C441;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.95em;
+}
+
+.prose-invert pre {
+  background: rgba(0, 0, 0, 0.3);
+  color: #f8f8f2;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+/* Responsive adjustments for prose-invert */
+@media (max-width: 1024px) {
+  .prose-invert {
+    font-size: 1rem;
+  }
+
+  .prose-invert h1 { font-size: 2rem; }
+  .prose-invert h2 { font-size: 1.65rem; }
+  .prose-invert h3 { font-size: 1.35rem; }
+  .prose-invert h4 { font-size: 1.15rem; }
+}
+
+@media (max-width: 640px) {
+  .prose-invert {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .prose-invert h1 { font-size: 1.65rem; }
+  .prose-invert h2 { font-size: 1.4rem; }
+  .prose-invert h3 { font-size: 1.2rem; }
+  .prose-invert h4 { font-size: 1.05rem; }
+}
+
+/* ------------------- Single Post Page Styles ------------------- */
+/* Only applies to single.php pages */
+.single-post html {
+    scroll-behavior: smooth;
+}
+
+/* Account for sticky header when scrolling to headings */
+.single-post h2[id^="toc-"], 
+.single-post h3[id^="toc-"], 
+.single-post h4[id^="toc-"], 
+.single-post h5[id^="toc-"], 
+.single-post h6[id^="toc-"] {
+    scroll-margin-top: 120px; /* Desktop - increased for better visibility */
+}
+
+@media (max-width: 1023px) {
+    .single-post h2[id^="toc-"], 
+    .single-post h3[id^="toc-"], 
+    .single-post h4[id^="toc-"], 
+    .single-post h5[id^="toc-"], 
+    .single-post h6[id^="toc-"] {
+        scroll-margin-top: 140px; /* Mobile - increased for better visibility */
+    }
+}
+.sms-form #forminator-module-211 label, .sms-form #forminator-module-211 span, .sms-form #forminator-module-211 .forminator-label, .sms-form #forminator-module-211 .forminator-button-submit, .sms-form #forminator-module-211 .forminator-radio-label {
+  font-size: 16px !important;
+}
+.sms-form .forminator-button-submit{
+  font-size: 16px !important;
+  padding: 12px 24px;
+  background-color: #98c441 !important;
+}
+
+.header-gradient{
+  background: linear-gradient(90deg, rgba(10, 61, 52, 0.8) 0%, rgba(10, 61, 52, 0.6) 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+.foundation-gradient {
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,                 /* Transparent */
+            rgba(152, 196, 65, 0.0) 80%,         /* Verdant fade-in start */
+            rgba(152, 196, 65, 0.2) 85%,         /* Verdant full */
+            rgba(152, 196, 65, 0.4) 90%,         /* Verdant soft fade */
+            rgba(0, 97, 85, 0.5) 100%            /* Prosperity */
+        ),
+        #F9F8F6;
+}
+
+.foundation-gradient-2 {
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,                 /* Transparent */
+            rgba(152, 196, 65, 0.0) 10%,         /* Verdant fade-in start */
+            rgba(152, 196, 65, 0.2) 65%,         /* Verdant full */
+            rgba(152, 196, 65, 0.4) 85%,         /* Verdant soft fade */
+            rgba(152, 196, 65, 0.6) 100%            /* Prosperity */
+        ),
+        #FFFFFF;
+}
+
+.prosperity-gradient{
+  background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 97, 85),                 /* Transparent */
+            rgba(0, 97, 85) 68%,         /* Verdant fade-in start */
+            rgba(152, 196, 65, 0.5) 100%,        /* Verdant full */        /* Verdant soft fade */
+            rgba(152, 196, 65) 100%            /* Prosperity */
+        ),
+        #006155;
+}
+.foundation-white {
+  background:
+    linear-gradient(
+      to bottom,
+      #F9F8F6 0%,
+      #ffffff 100%
+    );
+}
+
+
+@keyframes verticalTimerFill {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.vertical-timer-fill {
+  animation: verticalTimerFill 5s linear forwards;
+}
+
+/* Prevent layout shift for Owl Carousel - hide items until initialized */
+.visual-moment-carousel:not(.owl-loaded) .item:not(:first-child) {
+  display: none;
+}
+
+.visual-moment-carousel:not(.owl-loaded) .item:first-child {
+  opacity: 1;
+}
+
+/* Smooth fade-in when carousel initializes */
+.visual-moment-carousel.owl-loaded {
+  animation: carouselFadeIn 0.3s ease-out;
+}
+
+@keyframes carouselFadeIn {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ------------------- Forminator Form Styles ------------------- */
+/* Research Paper Form Container */
+#research-paper-form-container .forminator-button {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0.75rem 1.5rem !important;
+    background-color: #98C441 !important;
+    color: #1F3131;
+    text-align: center;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#research-paper-form-container .forminator-button:hover {
+    background-color: #86b839;
+    transform: translateY(-2px);
+}
+
+#research-paper-form-container .forminator-label {
+    display: none !important;
+}
+
+#research-paper-form-container .forminator-gradient {
+    background:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(152, 196, 65, 0.0) 80%,
+            rgba(152, 196, 65, 0.2) 85%,
+            rgba(152, 196, 65, 0.4) 90%,
+            rgba(0, 97, 85, 0.5) 100%
+        ),
+        #F9F8F6;
+}
+
+#research-paper-form-container .forminator-input {
+    border-radius: 4px !important;
+    border: none !important;
+    background-color: #Ffffff;
+    padding: 16px 20px !important;
+}
+
+/* Research Paper Form States - Vanilla JS */
+.loading-overlay.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+.loading-overlay.visible {
+    display: flex !important;
+    opacity: 1;
+}
+
+.loading-overlay {
+    display: none;
+}
+
+.success-message.hidden,
+.error-message.hidden,
+.already-submitted.hidden {
+    display: none;
+    opacity: 0;
+    transform: translateY(-8px);
+}
+
+.success-message.visible,
+.error-message.visible,
+.already-submitted.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.loading-dot.inactive {
+    background-color: rgba(31, 49, 49, 0.3);
+    transform: scale(0.75);
+}
+
+.loading-dot.active {
+    background-color: #98C441;
+    transform: scale(1.25);
+    animation: pulse 1.5s infinite;
+}
+
+.loading-text,
+.loading-subtext {
+    display: block;
+}
+
+.success-text,
+.success-subtext,
+.success-checkmark {
+    display: none;
+}
+
+.loading-overlay.visible .success-text,
+.loading-overlay.visible .success-subtext,
+.loading-overlay.visible .success-checkmark {
+    display: block;
+}
+
+.loading-overlay.visible .loading-text,
+.loading-overlay.visible .loading-subtext {
+    display: none;
+}
+
+/* Popup states */
+[id^="research-paper-popup-"].hidden {
+    display: none;
+}
+
+[id^="research-paper-popup-"].visible {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.popup-backdrop.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.popup-backdrop.visible {
+    display: block;
+    opacity: 1;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.popup-content.hidden {
+    display: none;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.popup-content.visible {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
