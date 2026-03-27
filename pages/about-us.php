@@ -30,7 +30,7 @@ get_header();
                     <div class="hidden lg:flex justify-center">
                         <?php if (get_field('primary_page_image')) : ?>
                         <img src="<?php the_field('primary_page_image'); ?>"
-                            alt="Primary page image"
+                            alt="<?php echo esc_attr(get_bloginfo('name')); ?> team"
                             width="400" height="200"
                             loading="lazy"
                             decoding="async"
@@ -41,7 +41,7 @@ get_header();
                     <div class="hidden lg:flex justify-center">
                         <?php if (get_field('secondary_page_image')) : ?>
                         <img src="<?php the_field('secondary_page_image'); ?>"
-                            alt="Secondary page image"
+                            alt="<?php echo esc_attr(get_bloginfo('name')); ?> global operations"
                             width="400" height="200"
                             loading="lazy"
                             decoding="async"
@@ -140,8 +140,8 @@ get_header();
             <!-- Scrollable Image -->
             <div data-aos="fade-up" data-aos-duration="300" data-aos-easing="ease-out" data-aos-delay="150">
                 <?php if (get_field('mohameds_image')): ?>
-                <img src="<?php echo wp_kses_post(get_field('mohameds_image')); ?>" 
-                     alt="Globalization illustration"
+                <img src="<?php echo esc_url(get_field('mohameds_image')); ?>" 
+                     alt="<?php echo esc_attr(get_field('introduction_title') ?: 'About Piedmont Global'); ?>"
                      width="600" height="500"
                      loading="lazy"
                      decoding="async"
@@ -180,8 +180,8 @@ get_header();
     <div class="max-w-7xl mx-auto w-full px-6 md:px-10 lg:px-0 text-black">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-32 items-center">
             <div data-aos="fade-up" data-aos-duration="300" data-aos-easing="ease-out">
-                <img src="<?php echo wp_kses_post(get_field('call_to_action_image')); ?>" 
-                     alt="Call to action illustration"
+                <img src="<?php echo esc_url(get_field('call_to_action_image')); ?>" 
+                     alt="<?php echo esc_attr(get_field('call_to_action_title') ?: 'Piedmont Global solutions'); ?>"
                      width="600" height="500"
                      loading="lazy"
                      decoding="async"
@@ -470,9 +470,12 @@ get_header();
             <div class="grid grid-cols-2 gap-6 items-center">
                 <!-- Column 1 -->
                 <div class="lg:space-y-16 space-y-6 lg:pt-24">
-                    <?php foreach ($col1 as $img): ?>
-                    <img src="<?= esc_url($img); ?>" 
-                         alt="Affiliation logo"
+                    <?php foreach ($col1 as $img):
+                        $img_alt = is_array($img) && isset($img['alt']) ? $img['alt'] : 'Affiliation';
+                        $img_url = is_array($img) && isset($img['url']) ? $img['url'] : $img;
+                    ?>
+                    <img src="<?= esc_url($img_url); ?>" 
+                         alt="<?php echo esc_attr($img_alt); ?>"
                          width="100" height="100"
                          loading="lazy"
                          decoding="async"
@@ -482,9 +485,12 @@ get_header();
 
                 <!-- Column 2 -->
                 <div class="lg:space-y-16 space-y-6">
-                    <?php foreach ($col2 as $img): ?>
-                    <img src="<?= esc_url($img); ?>" 
-                         alt="Affiliation logo"
+                    <?php foreach ($col2 as $img):
+                        $img_alt = is_array($img) && isset($img['alt']) ? $img['alt'] : 'Affiliation';
+                        $img_url = is_array($img) && isset($img['url']) ? $img['url'] : $img;
+                    ?>
+                    <img src="<?= esc_url($img_url); ?>" 
+                         alt="<?php echo esc_attr($img_alt); ?>"
                          width="100" height="100"
                          loading="lazy"
                          decoding="async"
@@ -506,9 +512,12 @@ get_header();
 
             <?php if ($certifications): ?>
             <div class="flex flex-wrap md:flex-nowrap gap-4 items-center mt-10">
-                <?php foreach ($certifications as $cert): ?>
-                <img src="<?php echo esc_url($cert); ?>" 
-                     alt="Certification logo"
+                <?php foreach ($certifications as $cert):
+                    $cert_alt = is_array($cert) && isset($cert['alt']) ? $cert['alt'] : 'Certification';
+                    $cert_url = is_array($cert) && isset($cert['url']) ? $cert['url'] : $cert;
+                ?>
+                <img src="<?php echo esc_url($cert_url); ?>" 
+                     alt="<?php echo esc_attr($cert_alt); ?>"
                      width="100" height="100"
                      loading="lazy"
                      decoding="async"
@@ -682,8 +691,8 @@ if (!in_array($current_slug, $excluded_pages)):
 
                 <!-- Right Column: Image -->
                 <div class="relative h-64 lg:h-auto order-1 lg:order-2">
-                    <img src="<?php echo wp_kses_post(get_field('call_to_action_image')); ?>" 
-                         alt="DMV In-Person Event"
+                    <img src="<?php echo esc_url(get_field('call_to_action_image')); ?>" 
+                         alt="<?php echo esc_attr(get_field('popup_event_title') ?: 'Upcoming event'); ?>"
                          class="absolute inset-0 w-full h-full object-cover object-center">
                     <!-- Gradient overlay for mobile -->
                     <div class="absolute inset-0 bg-gradient-to-t from-[#1F3131] to-transparent lg:hidden"></div>
@@ -705,10 +714,30 @@ if (!in_array($current_slug, $excluded_pages)):
     
     let hasShown = false;
     
+    // Focus trap for the dialog
+    function trapFocus(e) {
+        var focusable = popup.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.key === 'Tab') {
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+    }
+
+    var previouslyFocused = null;
+
     // Show popup with animation
     function showPopup() {
         if (hasShown) return;
         hasShown = true;
+        previouslyFocused = document.activeElement;
         
         popup.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
@@ -719,7 +748,9 @@ if (!in_array($current_slug, $excluded_pages)):
             backdrop.classList.add('opacity-100');
             content.classList.remove('scale-95', 'opacity-0');
             content.classList.add('scale-100', 'opacity-100');
+            closeBtn.focus();
         });
+        document.addEventListener('keydown', trapFocus);
     }
     
     // Hide popup with animation
@@ -732,7 +763,9 @@ if (!in_array($current_slug, $excluded_pages)):
         setTimeout(() => {
             popup.classList.add('hidden');
             document.body.style.overflow = '';
+            if (previouslyFocused) previouslyFocused.focus();
         }, 300);
+        document.removeEventListener('keydown', trapFocus);
     }
     
     // Scroll handler - trigger at 65%

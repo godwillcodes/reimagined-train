@@ -399,15 +399,6 @@ function pg_defer_non_critical_css( $html, $handle ) {
 		);
 		// Add noscript fallback
 		$html .= '<noscript>' . str_replace( "rel='preload' as='style' onload=\"this.onload=null;this.rel='stylesheet'\"", "rel='stylesheet'", $html ) . '</noscript>';
-	} elseif ( $handle === 'pg-tailwind' ) {
-		// Defer Tailwind CSS on ALL pages for better performance
-		$html = str_replace( 
-			"rel='stylesheet'", 
-			"rel='stylesheet' media='print' onload=\"this.media='all'\"", 
-			$html 
-		);
-		// Add noscript fallback for users with JavaScript disabled
-		$html .= '<noscript>' . str_replace( "media='print' onload=\"this.media='all'\"", "media='all'", $html ) . '</noscript>';
 	}
 	
 	return $html;
@@ -577,17 +568,8 @@ add_action( 'wp_head', function () {
 // AOS initialization
 add_action( 'wp_footer', function () {
 	echo "<script>
-		// Initialize AOS with performance optimizations
-		if (typeof AOS !== 'undefined') {
-			AOS.init({
-				duration: 300,
-				easing: 'ease-out',
-				once: true,
-				offset: 50,
-				delay: 0
-			});
-		}
-		
+		// AOS initialization handled by lazy-init in footer.php
+
 		// Optimize SVG background loading for primary banner
 		document.addEventListener('DOMContentLoaded', function() {
 			const bannerSection = document.querySelector('[data-bg-svg]');
@@ -611,34 +593,6 @@ add_action( 'wp_footer', function () {
 				};
 				img.src = svgUrl;
 			}
-		});
-		
-		// CSS Loading Optimization - Prevent FOUC
-		document.addEventListener('DOMContentLoaded', function() {
-			// Add a class to indicate CSS is loaded
-			document.documentElement.classList.add('css-loaded');
-			
-			// Monitor CSS loading for better UX
-			const styleSheets = document.querySelectorAll('link[rel=\"stylesheet\"]');
-			let loadedSheets = 0;
-			
-			styleSheets.forEach(function(sheet) {
-				if (sheet.sheet) {
-					loadedSheets++;
-				} else {
-					sheet.addEventListener('load', function() {
-						loadedSheets++;
-						if (loadedSheets === styleSheets.length) {
-							document.documentElement.classList.add('all-css-loaded');
-						}
-					});
-				}
-			});
-			
-			// Fallback timeout
-			setTimeout(function() {
-				document.documentElement.classList.add('all-css-loaded');
-			}, 3000);
 		});
 		
 		// Fix Alpine.js null reference errors

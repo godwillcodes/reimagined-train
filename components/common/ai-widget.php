@@ -371,4 +371,24 @@ toolButtons.forEach(btn => {
         clearAllTimeouts();
     });
 });
+
+// Arrow key navigation between menu items
+list.addEventListener('keydown', (e) => {
+    var items = Array.from(toolButtons);
+    var idx = items.indexOf(document.activeElement);
+    if (idx < 0) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        items[(idx + 1) % items.length].focus();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        items[(idx - 1 + items.length) % items.length].focus();
+    } else if (e.key === 'Home') {
+        e.preventDefault();
+        items[0].focus();
+    } else if (e.key === 'End') {
+        e.preventDefault();
+        items[items.length - 1].focus();
+    }
+});
 </script>

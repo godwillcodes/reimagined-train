@@ -17,7 +17,7 @@
 
             <!-- Column 1 -->
             <div>
-                <span class="text-lg font-semibold">Solutions</span>
+                <h2 class="text-lg font-semibold">Solutions</h2>
                 <?php
                     $terms = get_terms(array(
                         'taxonomy'   => 'solution',  // your taxonomy slug
@@ -30,7 +30,7 @@
                 <ul class="space-y-4 mt-4 text-base font-normal text-[#F9F8F6]/70">
                     <?php foreach ($terms as $term): ?>
                     <li>
-                        <a href="<?php echo esc_url(get_term_link($term)); ?>" class="hover:text-white">
+                        <a href="<?php echo esc_url(get_term_link($term)); ?>" class="hover:text-white focus-visible:text-white focus-visible:underline focus:outline-none">
                             <?php echo esc_html($term->name); ?>
                         </a>
                     </li>
@@ -43,21 +43,21 @@
 
             <!-- Column 2 -->
             <div>
-                <span class="text-lg font-semibold">Industries</span>
+                <h2 class="text-lg font-semibold">Industries</h2>
                 <ul class="space-y-4 mt-4  text-base font-normal text-[#F9F8F6]/70">
                     <?php
                         $industries = new WP_Query([
                             'post_type' => 'industry',
-                            'posts_per_page' => -1, // Get all posts
-                            'post_status' => 'publish', // Get only published posts
-                            'orderby' => 'title', // Order by title
-                            'order' => 'ASC' // In ascending order
+                            'posts_per_page' => -1,
+                            'post_status' => 'publish',
+                            'orderby' => 'title',
+                            'order' => 'ASC'
                         ]);
 
                         if ($industries->have_posts()) :
                             while ($industries->have_posts()) : $industries->the_post();
                         ?>
-                                    <li><a href="<?php the_permalink(); ?>" class="hover:text-white"><?php the_title(); ?></a></li>
+                                    <li><a href="<?php the_permalink(); ?>" class="hover:text-white focus-visible:text-white focus-visible:underline focus:outline-none"><?php the_title(); ?></a></li>
                                     <?php
                             endwhile;
                             wp_reset_postdata(); // Reset the post data to the main query
@@ -69,14 +69,14 @@
             
 
             <div>
-                <span class="text-lg font-semibold">Careers</span>
+                <h2 class="text-lg font-semibold">Careers</h2>
                 <ul class="space-y-4 mt-4 text-base font-normal text-[#F9F8F6]/70">
                             <?php
                         $menu_items = wp_get_nav_menu_items(16);
 
                         if ($menu_items) {
                             foreach ($menu_items as $menu_item) {
-                                echo '<li><a href="' . esc_url($menu_item->url) . '" class="hover:text-white normal-case">' . esc_html($menu_item->title) . '</a></li>';
+                                echo '<li><a href="' . esc_url($menu_item->url) . '" class="hover:text-white focus-visible:text-white focus-visible:underline focus:outline-none normal-case">' . esc_html($menu_item->title) . '</a></li>';
                             }
                         }
                         ?>
@@ -87,14 +87,14 @@
 
             <!-- Column 4 -->
             <div>
-                <span class="text-lg font-semibold mb-4">Company</span>
+                <h2 class="text-lg font-semibold mb-4">Company</h2>
                 <ul class="space-y-4 mt-4 text-base font-normal text-[#F9F8F6]/70">
                                 <?php
                 $menu_items = wp_get_nav_menu_items(7);
 
                 if ($menu_items) {
                     foreach ($menu_items as $menu_item) {
-                        echo '<li><a href="' . esc_url($menu_item->url) . '" class="hover:text-white normal-case">' . esc_html($menu_item->title) . '</a></li>';
+                        echo '<li><a href="' . esc_url($menu_item->url) . '" class="hover:text-white focus-visible:text-white focus-visible:underline focus:outline-none normal-case">' . esc_html($menu_item->title) . '</a></li>';
                     }
                 }
                 ?>
@@ -105,7 +105,7 @@
 
     <!-- Logo, Address, Footer Image -->
 
-    <footer class="relative text-white overflow-hidden pt-24">
+    <div class="relative text-white overflow-hidden pt-24">
         <!-- Content -->
         <div
             class="relative z-10 flex flex-col md:flex-row items-start justify-between max-w-7xl mx-auto px-6 md:px-5 gap-8">
@@ -150,9 +150,9 @@
         <!-- Footer Image -->
         <div class="relative w-full">
             <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/icons/footer.png'); ?>"
-                alt="Footer Image" class="w-full h-auto md:w-auto md:h-auto md:absolute md:bottom-0 md:right-0" />
+                alt="" class="w-full h-auto md:w-auto md:h-auto md:absolute md:bottom-0 md:right-0" aria-hidden="true" />
         </div>
-    </footer>
+    </div>
 
 </footer>
 

@@ -267,23 +267,30 @@
     };
 
     // Banner control
-    const showBanner = () => {
-        console.log('🍪 Cookie Consent: showBanner called');
-        console.log('🍪 Cookie Consent: banner element:', banner);
-        console.log('🍪 Cookie Consent: overlay element:', overlay);
-        
-        if(!banner || !overlay) {
-            console.error('🍪 Cookie Consent: Banner or overlay not found!');
-            return;
+    let cookiePreviousFocus = null;
+
+    const cookieTrapFocus = (e) => {
+        if (!banner || e.key !== 'Tab') return;
+        var focusable = banner.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])');
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault(); first.focus();
         }
-        
-        console.log('🍪 Cookie Consent: Showing banner...');
+    };
+
+    const showBanner = () => {
+        if(!banner || !overlay) return;
+        cookiePreviousFocus = document.activeElement;
         overlay.classList.add('active');
         banner.style.display = 'block';
         banner.offsetHeight;
         banner.classList.add('cookie-fade-in');
         document.getElementById('cookie-accept')?.focus();
-        console.log('🍪 Cookie Consent: Banner should now be visible');
+        document.addEventListener('keydown', cookieTrapFocus);
     };
 
     const hideBanner = () => {
@@ -291,9 +298,11 @@
         overlay.classList.remove('active');
         banner.style.opacity = '0';
         banner.style.transform = 'translateY(2rem)';
+        document.removeEventListener('keydown', cookieTrapFocus);
         setTimeout(() => {
             banner.style.display = 'none';
             banner.classList.remove('cookie-fade-in');
+            if (cookiePreviousFocus) cookiePreviousFocus.focus();
         }, 300);
     };
 

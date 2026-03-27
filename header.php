@@ -123,25 +123,7 @@
         top: 7px;
     }
 
-    /* Prevent FOUC during CSS loading */
-    html:not(.css-loaded) {
-        visibility: hidden;
-    }
-
-    html.css-loaded {
-        visibility: visible;
-        transition: opacity 0.1s ease-in;
-    }
-
-    /* Ensure smooth loading experience */
-    html:not(.all-css-loaded) body {
-        opacity: 0.99;
-    }
-
-    html.all-css-loaded body {
-        opacity: 1;
-        transition: opacity 0.2s ease-in;
-    }
+    
     </style>
 
     <?php wp_head(); ?>

@@ -31,11 +31,11 @@
                         <?php echo wp_kses_post(get_field('primary_button_title')); ?>
                     </a>
                     <a href="<?php echo wp_kses_post(get_field('secondary_button_link')); ?>"
-                        class="group flex items-center text-white text-base font-semibold">
+                        class="group flex items-center text-white text-base font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 rounded-sm">
                         <?php echo wp_kses_post(get_field('secondary_button_title')); ?>
                         <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/icons/arrow-right.svg'); ?>"
                             class="ml-2 h-6 w-6 transform transition-transform duration-300 group-hover:translate-x-1"
-                            alt="">
+                            alt="" aria-hidden="true">
                     </a>
                 </div>
             </div>

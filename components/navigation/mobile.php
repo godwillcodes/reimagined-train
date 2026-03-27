@@ -114,40 +114,40 @@ if ($custom_logo_id) {
                  x-transition:leave-start="opacity-100 translate-y-0"
                  x-transition:leave-end="opacity-0 translate-y-4">
                 <div class="flex justify-end mb-6">
-                    <button @click="open = false" 
+                    <button @click="open = false" aria-label="Close menu"
                             class="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50 rounded-md p-1">
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
 
                 <nav class="space-y-3">
-                    <button @click="openSubmenu('solutions')"
+                    <button @click="openSubmenu('solutions')" aria-haspopup="true" :aria-expanded="submenu === 'solutions'"
                         class="w-full text-left text-base font-semibold text-white hover:text-[#98C441] transition-colors duration-200 flex items-center justify-between py-2 px-1 rounded-md hover:bg-white/10">
                         Solutions
-                        <svg class="h-4 w-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="h-4 w-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
-                    <button @click="openSubmenu('industries')"
+                    <button @click="openSubmenu('industries')" aria-haspopup="true" :aria-expanded="submenu === 'industries'"
                         class="w-full text-left text-base font-semibold text-white hover:text-[#98C441] transition-colors duration-200 flex items-center justify-between py-2 px-1 rounded-md hover:bg-white/10">
                         Industries
-                        <svg class="h-4 w-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="h-4 w-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
-                    <button @click="openSubmenu('resources')"
+                    <button @click="openSubmenu('resources')" aria-haspopup="true" :aria-expanded="submenu === 'resources'"
                         class="w-full text-left text-base font-semibold text-white hover:text-[#98C441] transition-colors duration-200 flex items-center justify-between py-2 px-1 rounded-md hover:bg-white/10">
                         Resources
-                        <svg class="h-4 w-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="h-4 w-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
-                    <button @click="openSubmenu('about')"
+                    <button @click="openSubmenu('about')" aria-haspopup="true" :aria-expanded="submenu === 'about'"
                         class="w-full text-left text-base font-semibold text-white hover:text-[#98C441] transition-colors duration-200 flex items-center justify-between py-2 px-1 rounded-md hover:bg-white/10">
                         Who We Are
-                        <svg class="h-4 w-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="h-4 w-4 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
@@ -170,17 +170,17 @@ if ($custom_logo_id) {
                  x-transition:leave-start="opacity-100 translate-x-0"
                  x-transition:leave-end="opacity-0 translate-x-8">
                 <div class="flex justify-between items-center mb-6">
-                    <button @click="closeSubmenu()" 
+                    <button @click="closeSubmenu()" aria-label="Back to main menu"
                             class="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50 rounded-md p-1">
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
                     <span class="text-base font-semibold"
                         x-text="submenu ? submenu.charAt(0).toUpperCase() + submenu.slice(1) : ''"></span>
-                    <button @click="open = false" 
+                    <button @click="open = false" aria-label="Close menu"
                             class="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50 rounded-md p-1">
-                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>

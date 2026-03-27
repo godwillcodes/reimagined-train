@@ -3462,6 +3462,16 @@
       }
     }
   }
+  .hover\:bg-white\/20 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: color-mix(in srgb, #fff 20%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--color-white) 20%, transparent);
+        }
+      }
+    }
+  }
   .hover\:from-\[\#98C441\] {
     &:hover {
       @media (hover: hover) {
@@ -3711,6 +3721,16 @@
     &:focus {
       --tw-outline-style: none;
       outline-style: none;
+    }
+  }
+  .focus-visible\:text-white {
+    &:focus-visible {
+      color: var(--color-white);
+    }
+  }
+  .focus-visible\:underline {
+    &:focus-visible {
+      text-decoration-line: underline;
     }
   }
   .focus-visible\:ring-2 {

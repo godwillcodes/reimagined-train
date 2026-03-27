@@ -20,7 +20,9 @@
             ?>
             <div class="py-4">
                 <button @click="active === <?= $i ?> ? active = null : active = <?= $i ?>"
-                    class="w-full flex justify-between items-center text-left focus:outline-none">
+                    :aria-expanded="(active === <?= $i ?>).toString()"
+                    aria-controls="faq-panel-<?= $i ?>"
+                    class="w-full flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 rounded-sm">
                     <span class="font-bold text-gray-900 text-lg lg:text-xl"
                         :class="{ 'text-[#1F3131]': active === <?= $i ?> }">
                         <?php echo esc_html($question); ?>
@@ -28,7 +30,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg"
                         class="w-6 h-6 text-gray-500 transform transition-transform duration-200"
                         :class="{ 'rotate-180 text-[#1F3131]': active === <?= $i ?> }" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
+                        stroke="currentColor" aria-hidden="true">
                         <path x-show="active !== <?= $i ?>" stroke-linecap="round" stroke-linejoin="round"
                             stroke-width="2" d="M12 5v14m7-7H5" />
                         <path x-show="active === <?= $i ?>" stroke-linecap="round" stroke-linejoin="round"
@@ -37,6 +39,7 @@
                 </button>
 
                 <div x-show="active === <?= $i ?>" x-collapse
+                    id="faq-panel-<?= $i ?>"
                     class="mt-3 text-gray-700 prose text-base leading-relaxed">
                     <?php echo wp_kses_post($answer); ?>
                 </div>

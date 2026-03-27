@@ -133,7 +133,7 @@ get_header();
                                 ?>
                                 <div class="flex items-center gap-3">
                                     <svg class="w-6 h-6 text-[#1F3131] flex-shrink-0" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
+                                        viewBox="0 0 24 24" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                     </svg>
                                     <span class="text-base text-[#5E5D59]"><?php echo esc_html($item); ?></span>
@@ -700,7 +700,7 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
                                                     <div class="flex items-center gap-2 md:gap-3">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                             stroke-width="1.5" stroke="currentColor"
-                                                            class="w-5 h-5 md:w-6 md:h-6 text-[#D16555] flex-shrink-0">
+                                                            class="w-5 h-5 md:w-6 md:h-6 text-[#D16555] flex-shrink-0" aria-hidden="true">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                         </svg>
@@ -912,7 +912,7 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
                         <?php if (!empty($repeater_items)): ?>
                             <?php $index = 0; ?>
                             <?php foreach ($repeater_items as $item): ?>
-                                <div class="cursor-pointer transition-all duration-300 py-3" data-index="<?php echo $index; ?>">
+                                <button type="button" class="w-full text-left transition-all duration-300 py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] rounded-sm" data-index="<?php echo $index; ?>">
                                     <div class="flex items-start gap-4 mb-2">
                                         <div class="flex flex-col items-center gap-2">
                                             <span
@@ -935,7 +935,7 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
                                             <?php endif; ?>
                                         </div>
                                     </div>
-                                </div>
+                                </button>
                                 <?php $index++; ?>
                             <?php endforeach; ?>
                         <?php endif; ?>
@@ -978,11 +978,12 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
             }
         }
 
-        const DURATION = 5000; // Single source of truth for timing
+        const DURATION = 5000;
         let activeIndex = 0;
         let autoPlayTimeout = null;
         let isInitialized = false;
         let isInView = false;
+        let isPaused = false;
 
         function updateUI() {
             itemElements.forEach((el, index) => {
@@ -1032,18 +1033,18 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
         }
 
         function scheduleNext() {
-            if (!isInView) return;
+            if (!isInView || isPaused) return;
             stopAutoPlay();
             autoPlayTimeout = setTimeout(() => {
                 activeIndex = (activeIndex + 1) % totalItems;
                 updateUI();
-                scheduleNext(); // Schedule next after this one completes
+                scheduleNext();
             }, DURATION);
         }
 
         function startAutoPlay() {
-            if (!isInView) return;
-            updateUI(); // Ensure UI is in sync
+            if (!isInView || isPaused) return;
+            updateUI();
             scheduleNext();
         }
 
@@ -1056,23 +1057,59 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
 
         function setActive(index) {
             stopAutoPlay();
+            isPaused = true;
             activeIndex = index;
             updateUI();
-            scheduleNext(); // Restart timer from this item
+            updatePauseBtn();
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            if (isPaused) {
+                stopAutoPlay();
+                var fill = itemElements[activeIndex]?.querySelector('.vertical-timer-fill');
+                if (fill) fill.style.animationPlayState = 'paused';
+            } else {
+                var fill = itemElements[activeIndex]?.querySelector('.vertical-timer-fill');
+                if (fill) fill.style.animationPlayState = 'running';
+                scheduleNext();
+            }
+            updatePauseBtn();
+        }
+
+        function updatePauseBtn() {
+            var btn = document.getElementById('accordion-pause-btn');
+            if (!btn) return;
+            btn.setAttribute('aria-label', isPaused ? 'Play auto-rotation' : 'Pause auto-rotation');
+            btn.innerHTML = isPaused
+                ? '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><polygon points="6,4 20,12 6,20"/></svg>'
+                : '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="4" height="16"/><rect x="15" y="4" width="4" height="16"/></svg>';
         }
 
         function init() {
             if (isInitialized) return;
             isInitialized = true;
 
-            // Add click listeners to all items
             itemElements.forEach((el) => {
                 el.addEventListener('click', () => {
                     setActive(parseInt(el.dataset.index, 10));
                 });
             });
 
-            // Initial UI update
+            var pauseBtn = document.createElement('button');
+            pauseBtn.id = 'accordion-pause-btn';
+            pauseBtn.type = 'button';
+            pauseBtn.setAttribute('aria-label', 'Pause auto-rotation');
+            pauseBtn.className = 'mt-4 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] transition-colors duration-200';
+            pauseBtn.innerHTML = '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="4" height="16"/><rect x="15" y="4" width="4" height="16"/></svg>';
+            pauseBtn.addEventListener('click', function(e) { e.stopPropagation(); togglePause(); });
+            container.parentNode.insertBefore(pauseBtn, container);
+
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                isPaused = true;
+                updatePauseBtn();
+            }
+
             updateUI();
         }
 
@@ -1254,16 +1291,17 @@ if ($related_blogs || $has_faqs):
                             <div class="py-4 border-b" :class="active === <?php echo $index; ?> ? 'border-black' : 'border-gray-200'">
 
                                 <button @click="active = (active === <?php echo $index; ?> ? null : <?php echo $index; ?>)"
-                                    class="w-full flex justify-between items-center text-left focus:outline-none">
+                                    :aria-expanded="(active === <?php echo $index; ?>).toString()"
+                                    aria-controls="faq-answer-<?php echo $index; ?>"
+                                    class="w-full flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 rounded-sm">
 
-                                    <span class="font-bold text-lg lg:text-xl"
-                                        :class="active === <?php echo $index; ?> ? 'text-[#1F3131]' : 'text-[#1F3131]'">
+                                    <span class="font-bold text-lg lg:text-xl text-[#1F3131]">
                                         <?php echo esc_html($question); ?>
                                     </span>
 
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transform transition-transform duration-200"
                                         :class="active === <?php echo $index; ?> ? 'rotate-180 text-[#1F3131]' : 'text-gray-500'"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 
                                         <path x-show="active !== <?php echo $index; ?>" stroke-linecap="round" stroke-linejoin="round"
                                             stroke-width="2" d="M12 5v14m7-7H5"></path>
@@ -1274,6 +1312,7 @@ if ($related_blogs || $has_faqs):
                                 </button>
 
                                 <div x-show="active === <?php echo $index; ?>" x-collapse
+                                    id="faq-answer-<?php echo $index; ?>"
                                     class="mt-3 text-gray-700 prose text-sm leading-relaxed pb-10">
                                     <?php echo wp_kses_post($answer); ?>
                                 </div>

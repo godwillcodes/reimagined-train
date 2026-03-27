@@ -103,7 +103,7 @@ get_template_part( 'components/banner/primary' );
                             <span>Explore our approach</span>
 
                             <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/icons/arrow-side.svg'); ?>"
-                                alt="Arrow Icon" width="40" height="40" loading="lazy" decoding="async"
+                                alt="" width="40" height="40" loading="lazy" decoding="async" aria-hidden="true"
                                 class="h-10 w-10 text-white bg-black p-3 rounded-full transition-transform duration-500 ease-in-out group-hover:scale-110">
                         </div>
                     </div>
@@ -133,8 +133,10 @@ get_template_part( 'components/banner/primary' );
                 <?php while (have_rows('partners_repeater', 'option')): the_row(); ?>
                 <div class="item flex items-center justify-center h-28 w-28" data-aos="fade-up" data-aos-duration="400"
                     data-aos-easing="ease-out" data-aos-delay="<?php echo $partner_index * 100; ?>">
-                    <a href="<?php the_sub_field('url'); ?>" target="_blank" rel="noopener">
-                        <img src="<?php the_sub_field('partner_logo'); ?>" alt="Piedmont Global Partner" width="112"
+                    <?php $partner_name = get_sub_field('partner_name'); ?>
+                    <a href="<?php the_sub_field('url'); ?>" target="_blank" rel="noopener"
+                        aria-label="<?php echo esc_attr( ($partner_name ?: 'Partner') . ' (opens in new tab)' ); ?>">
+                        <img src="<?php the_sub_field('partner_logo'); ?>" alt="<?php echo esc_attr($partner_name ?: 'Partner logo'); ?>" width="112"
                             height="112" loading="lazy" decoding="async"
                             class="h-full w-full object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0" />
                     </a>
@@ -159,8 +161,8 @@ get_template_part( 'components/banner/primary' );
 
                     <?php if (!empty($image)): ?>
                     <div class="flex-shrink-0">
-                        <img src="<?php echo esc_url($image); ?>" alt="Piedmont Global Image" width="48" height="48"
-                            loading="lazy" decoding="async" class="h-12 w-12" />
+                        <img src="<?php echo esc_url($image); ?>" alt="" width="48" height="48"
+                            loading="lazy" decoding="async" class="h-12 w-12" aria-hidden="true" />
                     </div>
                     <?php endif; ?>
 
@@ -201,7 +203,8 @@ get_template_part( 'components/banner/primary' );
                                     width="144" height="144" loading="lazy" decoding="async"
                                     class="absolute inset-0 h-full w-full object-cover" />
 
-                                <img src="<?php the_sub_field('logo'); ?>" alt="Piedmont Global Recognition" width="96"
+                                <?php $cert_name = get_sub_field('name'); ?>
+                                <img src="<?php the_sub_field('logo'); ?>" alt="<?php echo esc_attr($cert_name ?: 'Certification'); ?>" width="96"
                                     height="96" loading="lazy" decoding="async"
                                     class="relative max-h-16 max-w-16 sm:max-h-20 sm:max-w-20 md:max-h-24 md:max-w-24 object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0" />
                             </div>
@@ -221,8 +224,10 @@ get_template_part( 'components/banner/primary' );
                     <div class="owl-carousel owl-theme contracting-vehicles-carousel" role="region" aria-roledescription="carousel" aria-label="Contracting vehicles">
                         <?php while (have_rows('contracting_vehicles', 'option')): the_row(); ?>
                         <div class="item">
+                            <?php $cv_name = get_sub_field('name'); ?>
                             <?php if (get_sub_field('url')) : ?>
                             <a href="<?php the_sub_field('url'); ?>" target="_blank" rel="noopener"
+                                aria-label="<?php echo esc_attr( ($cv_name ?: 'Contracting vehicle') . ' (opens in new tab)' ); ?>"
                                 class="relative flex items-center justify-center h-28 w-28 sm:h-32 sm:w-32 md:h-36 md:w-36 rounded-full">
                                 <?php else: ?>
                                 <div
@@ -231,8 +236,8 @@ get_template_part( 'components/banner/primary' );
 
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/circle.svg"
                                         alt="" width="144" height="144" loading="lazy" decoding="async"
-                                        class="absolute inset-0 h-full w-full object-cover" />
-                                    <img src="<?php the_sub_field('logo'); ?>" alt="Piedmont Global Recognition"
+                                        class="absolute inset-0 h-full w-full object-cover" aria-hidden="true" />
+                                    <img src="<?php the_sub_field('logo'); ?>" alt="<?php echo esc_attr($cv_name ?: 'Contracting vehicle'); ?>"
                                         width="96" height="96" loading="lazy" decoding="async"
                                         class="relative max-h-16 max-w-16 sm:max-h-20 sm:max-w-20 md:max-h-24 md:max-w-24 object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0" />
 
@@ -258,8 +263,10 @@ get_template_part( 'components/banner/primary' );
             <div class="owl-carousel owl-theme recognized-carousel" role="region" aria-roledescription="carousel" aria-label="Recognized by">
                 <?php while (have_rows('recognized_by', 'option')): the_row(); ?>
                 <div class="item">
+                    <?php $recog_name = get_sub_field('name'); ?>
                     <?php if (get_sub_field('url')) : ?>
                     <a href="<?php the_sub_field('url'); ?>" target="_blank" rel="noopener"
+                        aria-label="<?php echo esc_attr( ($recog_name ?: 'Recognition') . ' (opens in new tab)' ); ?>"
                         class="relative flex items-center justify-center h-28 w-28 sm:h-32 sm:w-32 md:h-36 md:w-36 rounded-full">
                         <?php else: ?>
                         <div
@@ -268,9 +275,9 @@ get_template_part( 'components/banner/primary' );
 
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/circle.svg" alt=""
                                 width="144" height="144" loading="lazy" decoding="async"
-                                class="absolute inset-0 h-full w-full object-cover" />
+                                class="absolute inset-0 h-full w-full object-cover" aria-hidden="true" />
 
-                            <img src="<?php the_sub_field('logo'); ?>" alt="Piedmont Global Recognition" width="96"
+                            <img src="<?php the_sub_field('logo'); ?>" alt="<?php echo esc_attr($recog_name ?: 'Recognition'); ?>" width="96"
                                 height="96" loading="lazy" decoding="async"
                                 class="relative max-h-16 max-w-16 sm:max-h-20 sm:max-w-20 md:max-h-24 md:max-w-24 object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0" />
 
@@ -444,7 +451,7 @@ if ($query->have_posts()):
             <!-- Testimonial -->
             <div class="md:col-span-2 bg-white rounded border border-[#DFDAD4] p-8 shadow-sm flex flex-col">
                 <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/icons/quote.svg'); ?>"
-                    alt="Quote icon" width="64" height="64" loading="lazy" decoding="async" class="h-16 w-16 mb-4" />
+                    alt="" width="64" height="64" loading="lazy" decoding="async" class="h-16 w-16 mb-4" aria-hidden="true" />
 
                 <div class="text-base md:text-xl text-gray-800 font-medium flex-grow max-w-2xl">
                     <?php the_field('testimonials_content'); ?>
@@ -461,7 +468,7 @@ if ($query->have_posts()):
                 class="group block bg-white rounded border border-[#DFDAD4] p-5 shadow-sm rounded-t-[4px] transition-transform duration-300 hover:shadow-lg">
 
                 <div class="overflow-hidden rounded-t-[4px]">
-                    <img src="<?php the_field('logo'); ?>" width="200" height="160" loading="lazy" decoding="async"
+                    <img src="<?php echo esc_url(get_field('logo')); ?>" width="200" height="160" loading="lazy" decoding="async"
                         class="w-[70%] h-40 object-contain mx-auto object-center transition-transform duration-500 group-hover:scale-105"
                         alt="<?php echo esc_attr(get_field('title')); ?> logo">
                 </div>
@@ -489,7 +496,7 @@ endif;
 ?>
 
 
-    <section class="h-[450px] bg-repeat-x bg-top pb-10 bg-[#F9F8F6]"
+    <section class="h-[450px] bg-repeat-x bg-top pb-10 bg-[#F9F8F6]" aria-hidden="true"
         style="background-image: url('<?php echo esc_url( get_template_directory_uri() . '/assets/icons/pattern-2.svg' ); ?>')">
     </section>
 
