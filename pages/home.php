@@ -497,7 +497,10 @@ endif;
     <section class="py-10 lg:py-20 bg-[#F9F8F6]">
         <div class="text-center max-w-4xl mx-auto px-6 md:px-10 lg:px-0">
             <p class="text-lg font-medium text-gray-700 mb-6">What is Strategic Globalization</p>
-            <h2 id="animatedText" class="text-2xl md:text-5xl font-bold"></h2>
+            <h2 id="animatedText" class="text-2xl md:text-5xl font-bold"
+                aria-label="The foundation that makes success inevitable, whether your audience is across the globe or across the street.">
+                The foundation that makes success inevitable, whether your audience is across the globe or across the street.
+            </h2>
 
 
             <a href="/strategic-globalization/"
@@ -508,64 +511,6 @@ endif;
             </a>
 
     </section>
-
-
-    <style>
-    .fade-word {
-        opacity: 0.85;
-        transition: opacity 1s ease, color 1s ease;
-    }
-
-    .fade-word.visible {
-        opacity: 1;
-        color: #111827;
-        /* Tailwind gray-900 for normal words */
-    }
-
-    .fade-word.highlight.visible {
-        color: #D16555;
-        /* highlight in soft red */
-    }
-
-    .about-header span {
-        color: #D16555 !important;
-    }
-    </style>
-
-    <script>
-    const textElement = document.getElementById("animatedText");
-    const words =
-        "The foundation that makes success inevitable, whether your audience is across the globe or across the street."
-        .split(" ");
-    const highlight = ["success", "inevitable", "globe", "street."];
-
-    function runAnimation() {
-        // render all words with low opacity
-        textElement.innerHTML = words.map(word => {
-            const isHighlight = highlight.includes(word);
-            return `<span class="fade-word${isHighlight ? ' highlight' : ''}">${word}</span>`;
-        }).join(" ");
-
-        const spans = textElement.querySelectorAll(".fade-word");
-
-        spans.forEach((span, i) => {
-            setTimeout(() => {
-                span.classList.add("visible");
-            }, i * 300);
-        });
-
-        // reset after all words + extra delay
-        const totalTime = spans.length * 300 + 1500;
-        setTimeout(() => {
-            spans.forEach(span => span.classList.remove("visible"));
-            setTimeout(runAnimation, 500); // restart
-        }, totalTime);
-    }
-
-    // start loop
-    runAnimation();
-    </script>
-
 
 
 

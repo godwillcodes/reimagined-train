@@ -157,7 +157,10 @@ get_header();
 <section class="py-10 lg:py-40 bg-[#F9F8F6]">
     <div class="text-center max-w-4xl mx-auto px-6 md:px-10 lg:px-0">
         <p class="text-lg font-medium text-gray-700 mb-6"><?php echo esc_html(get_field('video_title')); ?></p>
-        <h1 id="animatedText" class="text-4xl md:text-5xl font-bold"></h1>
+        <h1 id="animatedText" class="text-4xl md:text-5xl font-bold"
+            aria-label="<?php echo esc_attr( get_field('animated_text') ?: 'Making cross-cultural operations easier, smarter, and more human.' ); ?>">
+            <?php echo esc_html( get_field('animated_text') ?: 'Making cross-cultural operations easier, smarter, and more human.' ); ?>
+        </h1>
        <div class="max-3xl mx-auto">
        <iframe 
                 class=" w-full h-[400px] pt-8 rounded-[4px] border-gray-300"
@@ -534,22 +537,6 @@ get_header();
 <?php endif; ?>
 
 <style>
-.fade-word {
-    opacity: 0.4;
-    transition: opacity 1s ease, color 1s ease;
-}
-
-.fade-word.visible {
-    opacity: 1;
-    color: #111827;
-    /* Tailwind gray-900 for normal words */
-}
-
-.fade-word.highlight.visible {
-    color: #D16555;
-    /* highlight in soft red */
-}
-
 .about-header span {
     color: #D16555 !important;
 }
@@ -566,87 +553,6 @@ get_header();
     height: 100%;
 }
 </style>
-
-<script>
-const textElement = document.getElementById("animatedText");
-<?php
-$animated_text = get_field('animated_text') ?: 'Making cross-cultural operations easier, smarter, and more human.';
-$js_text = json_encode($animated_text);
-echo "const fullText = {$js_text};\n";
-?>
-
-/**
- * Piedmont Global–specific keyword detection
- * Biases toward language services, compliance, trust, and human-centered ops
- */
-function detectPillarWords(text) {
-    // Strategic domain keywords (explicit)
-    const brandKeywords = [
-        'language', 'linguistic', 'interpretation', 'translation',
-        'cross-cultural', 'cultural', 'global', 'international',
-        'human', 'people', 'communication',
-        'secure', 'security', 'confidential', 'compliance',
-        'accuracy', 'precision', 'quality',
-        'reliable', 'trusted', 'trust',
-        'operations', 'mission', 'critical'
-    ];
-
-    // Morphological strength signals
-    const pillarPatterns = [
-        /\b\w+er\b/i,        // easier, faster
-        /\b\w+ive\b/i,       // effective
-        /\b\w+ful\b/i,       // meaningful
-        /\b\w+tion\b/i,      // communication
-        /\b\w+ity\b/i,       // security
-        /\b\w+ness\b/i       // readiness
-    ];
-
-    const words = text.split(" ");
-    const highlights = new Set();
-
-    words.forEach(word => {
-        const clean = word.toLowerCase().replace(/[.,!?;:]/g, '');
-
-        if (brandKeywords.includes(clean)) {
-            highlights.add(word);
-            return;
-        }
-
-        for (const pattern of pillarPatterns) {
-            if (pattern.test(clean)) {
-                highlights.add(word);
-                break;
-            }
-        }
-    });
-
-    return [...highlights];
-}
-
-const words = fullText.split(" ");
-const highlight = detectPillarWords(fullText);
-
-function runAnimation() {
-    textElement.innerHTML = words.map(word => {
-        const isHighlight = highlight.includes(word);
-        return `<span class="fade-word${isHighlight ? ' highlight' : ''}">${word}</span>`;
-    }).join(" ");
-
-    const spans = textElement.querySelectorAll(".fade-word");
-
-    spans.forEach((span, i) => {
-        setTimeout(() => span.classList.add("visible"), i * 300);
-    });
-
-    const totalTime = spans.length * 300 + 1500;
-    setTimeout(() => {
-        spans.forEach(span => span.classList.remove("visible"));
-        setTimeout(runAnimation, 500);
-    }, totalTime);
-}
-
-runAnimation();
-</script>
 
 
 
