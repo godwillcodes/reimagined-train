@@ -540,30 +540,6 @@ function pg_responsive_image($image_url, $alt, $width, $height, $class = '', $lo
 
 
 
-// Font Loading API for LCP optimization
-add_action( 'wp_head', function () {
-	echo "<script>
-		// Font Loading API to prevent LCP delays
-		if ('fonts' in document) {
-			document.documentElement.classList.add('fonts-loading');
-			
-			Promise.all([
-				document.fonts.load('400 16px Oracle'),
-				document.fonts.load('700 16px Oracle')
-			]).then(function() {
-				document.documentElement.classList.remove('fonts-loading');
-				document.documentElement.classList.add('fonts-loaded');
-			}).catch(function() {
-				// Fallback if fonts fail to load
-				document.documentElement.classList.remove('fonts-loading');
-				document.documentElement.classList.add('fonts-loaded');
-			});
-		} else {
-			// Fallback for browsers without Font Loading API
-			document.documentElement.classList.add('fonts-loaded');
-		}
-	</script>";
-}, 1);
 
 // AOS initialization
 add_action( 'wp_footer', function () {
