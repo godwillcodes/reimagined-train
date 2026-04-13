@@ -31,12 +31,16 @@ get_header();
                 $event_description = get_field('event_description');
                 ?>
 
-                <!-- Event Badge -->
+                <!-- Event eyebrow -->
                 <?php if ($event_badge_text): ?>
-                <div class="inline-flex items-center gap-2 bg-[#98C441]/20 border border-[#98C441]/30 rounded-full px-4 py-1.5 mb-6"
-                    data-aos="fade-up">
-                    <span class="w-2 h-2 bg-[#98C441] rounded-full animate-pulse"></span>
-                    <span class="text-[#98C441] text-sm font-medium tracking-wide uppercase"><?php echo esc_html($event_badge_text); ?></span>
+                <div class="inline-flex items-stretch border border-white/10 overflow-hidden mb-5"
+                    role="doc-subtitle" data-aos="fade-up">
+                    <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
+                    <div class="flex items-center gap-[7px] px-3 py-[6px]">
+                        <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-white/95">
+                            <?php echo esc_html($event_badge_text); ?>
+                        </span>
+                    </div>
                 </div>
                 <?php endif; ?>
 
@@ -49,10 +53,11 @@ get_header();
                 <?php endif; ?>
 
                 <?php if ($event_description): ?>
-                <p class="max-w-3xl text-base md:text-lg text-white/85 mb-10 leading-relaxed" data-aos="fade-up"
-                    data-aos-delay="100">
-                    <?php echo esc_html($event_description); ?>
-                </p>
+                <div class="max-w-3xl lg:max-w-5xl mb-10" data-aos="fade-up" data-aos-delay="100">
+                    <div class="prose prose-invert max-w-none text-base md:text-lg text-white/85 leading-relaxed prose-p:my-3 prose-headings:text-white prose-a:text-[#98C441] prose-a:underline hover:prose-a:no-underline">
+                        <?php echo wp_kses_post($event_description); ?>
+                    </div>
+                </div>
                 <?php endif; ?>
 
                 <!-- Event Details Card -->
@@ -218,9 +223,15 @@ if ($agenda_section_label || $agenda_section_title || $agenda_sessions):
         <?php if ($agenda_section_label || $agenda_section_title): ?>
         <div class="max-w-3xl mb-10 md:mb-16">
             <?php if ($agenda_section_label): ?>
-            <p class="uppercase tracking-widest text-sm font-semibold text-[#98C441] mb-3">
-                <?php echo esc_html($agenda_section_label); ?>
-            </p>
+            <div class="inline-flex items-stretch border border-[#1F3131]/[.09] overflow-hidden mb-5"
+                role="doc-subtitle">
+                <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
+                <div class="flex items-center gap-[7px] px-3 py-[6px]">
+                    <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-[#1F3131]">
+                        <?php echo esc_html($agenda_section_label); ?>
+                    </span>
+                </div>
+            </div>
             <?php endif; ?>
             <?php if ($agenda_section_title): ?>
             <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-4 text-[#1F3131]">
@@ -282,7 +293,15 @@ if ($speakers && is_array($speakers) && count($speakers) > 0):
         <!-- Section Header -->
         <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 md:mb-16" data-aos="fade-up">
             <div>
-                <p class="text-[#98C441] text-sm font-medium tracking-[0.2em] uppercase mb-3">Speakers</p>
+                <div class="inline-flex items-stretch border border-[#1F3131]/[.09] overflow-hidden mb-5"
+                    role="doc-subtitle">
+                    <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
+                    <div class="flex items-center gap-[7px] px-3 py-[6px]">
+                        <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-[#1F3131]">
+                            Speakers
+                        </span>
+                    </div>
+                </div>
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-[#1F3131] leading-tight">Featured Speakers</h2>
             </div>
         </div>
@@ -431,7 +450,15 @@ if ($speakers && is_array($speakers) && count($speakers) > 0):
                 <!-- Right: Content -->
                 <div class="md:w-3/5 p-7 md:p-9 lg:p-10 flex flex-col overflow-y-auto max-h-[80vh]">
                     <div class="mb-6">
-                        <p class="text-xs font-semibold tracking-[0.25em] text-[#98C441] uppercase mb-3">Speaker</p>
+                        <div class="inline-flex items-stretch border border-[#1F3131]/[.09] overflow-hidden mb-5"
+                            role="doc-subtitle">
+                            <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
+                            <div class="flex items-center gap-[7px] px-3 py-[6px]">
+                                <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-[#1F3131]">
+                                    Speaker
+                                </span>
+                            </div>
+                        </div>
                         <h3 id="speakerModalName" class="text-3xl md:text-4xl font-bold text-[#1F3131] mb-3 tracking-tight"></h3>
                         <p id="speakerModalTitle" class="text-base md:text-lg text-[#1F3131]/70 font-medium"></p>
                     </div>
@@ -541,9 +568,16 @@ $host_organization = get_field('host_organization');
         <?php if ($parking_section_title || $parking_section_description || $host_organization): ?>
         <div class="text-center mb-10 md:mb-16" data-aos="fade-up">
             <?php if ($host_organization): ?>
-            <div class="inline-flex items-center gap-2 bg-[#98C441]/20 border border-[#98C441]/30 rounded-full px-4 py-1.5 mb-6" data-aos="fade-up">
-                <span class="w-2 h-2 bg-[#98C441] rounded-full animate-pulse"></span>
-                <span class="text-[#98C441] text-sm font-medium"><?php echo esc_html($host_organization); ?></span>
+            <div class="flex justify-center mb-5" data-aos="fade-up">
+                <div class="inline-flex items-stretch border border-[#1F3131]/[.09] overflow-hidden"
+                    role="doc-subtitle">
+                    <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
+                    <div class="flex items-center gap-[7px] px-3 py-[6px]">
+                        <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-[#1F3131]">
+                            <?php echo esc_html($host_organization); ?>
+                        </span>
+                    </div>
+                </div>
             </div>
             <?php endif; ?>
             <?php if ($parking_section_title): ?>
