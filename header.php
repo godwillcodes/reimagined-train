@@ -39,10 +39,44 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-    <!-- Google Fonts: Open Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- Critical font preloading for LCP optimization -->
+    <link rel="preload"
+        href="<?php echo esc_url(get_template_directory_uri() . '/assets/fonts/ABCOracle-Book.woff2'); ?>" as="font"
+        type="font/woff2" crossorigin>
+    <link rel="preload"
+        href="<?php echo esc_url(get_template_directory_uri() . '/assets/fonts/ABCOracle-Medium.woff2'); ?>" as="font"
+        type="font/woff2" crossorigin>
+
+    <!-- Font loading optimization -->
+    <style>
+    /* Critical font loading styles for all text elements */
+    .fonts-loading p,
+    .fonts-loading a,
+    .fonts-loading h1,
+    .fonts-loading h2,
+    .fonts-loading h3,
+    .fonts-loading h4,
+    .fonts-loading h5,
+    .fonts-loading h6,
+    .fonts-loading .text-xl,
+    .fonts-loading .text-3xl,
+    .fonts-loading .text-4xl,
+    .fonts-loading .text-5xl {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        font-weight: 400;
+    }
+
+    .fonts-loading .font-semibold,
+    .fonts-loading .font-bold,
+    .fonts-loading h1,
+    .fonts-loading h2,
+    .fonts-loading h3,
+    .fonts-loading h4,
+    .fonts-loading h5,
+    .fonts-loading h6 {
+        font-weight: 600;
+    }
+    </style>
 
     <!-- CSS is loaded via wp_enqueue_scripts with deferral logic -->
 
