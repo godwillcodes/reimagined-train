@@ -28,7 +28,7 @@
 		'contracting-vehicles-carousel', 'certificate-carousel',
 		'testimonial-carousel', 'sandbox-news-carousel',
 		'sandbox-recognized-carousel', 'related-blogs-carousel',
-		'visual-moment-carousel'
+		'visual-moment-carousel', 'symposium-speakers-carousel'
 	];
 
 	function getCarouselName( el ) {
@@ -42,6 +42,10 @@
 	}
 
 	function hasExternalNav( el ) {
+		// Accessible toolbar rendered by pg_render_carousel_controls().
+		if ( el.getAttribute && el.getAttribute( 'data-pg-carousel-controls' ) ) {
+			return true;
+		}
 		var name = getCarouselName( el );
 		if ( ! name ) {
 			return false;
@@ -274,6 +278,46 @@
 	}
 
 	/* ------------------------------------------------------------------ */
+	/*  Hide cloned slides from assistive tech                              */
+	/*                                                                      */
+	/*  Owl Carousel duplicates slides at the head/tail when `loop: true`.  */
+	/*  By default the cloned `<div class="owl-item cloned">` is visible to */
+	/*  screen readers and its inner `<a>` / `<button>` remain in the tab   */
+	/*  order, which causes the "screen reader skips back to parts of the   */
+	/*  page earlier said" perception (WCAG 1.3.2 / 2.4.3).                 */
+	/*                                                                      */
+	/*  We mark every cloned slide with `aria-hidden="true"` and replace    */
+	/*  any focusable descendant's tabindex with `-1` so the same item is   */
+	/*  only ever announced/focused once.                                   */
+	/* ------------------------------------------------------------------ */
+
+	function hideClonedSlides( carouselEl ) {
+		var clones = carouselEl.querySelectorAll( '.owl-item.cloned' );
+		for ( var i = 0; i < clones.length; i++ ) {
+			var clone = clones[ i ];
+			clone.setAttribute( 'aria-hidden', 'true' );
+			var focusables = clone.querySelectorAll(
+				'a, button, input, select, textarea, [tabindex]'
+			);
+			for ( var j = 0; j < focusables.length; j++ ) {
+				focusables[ j ].setAttribute( 'tabindex', '-1' );
+				focusables[ j ].setAttribute( 'aria-hidden', 'true' );
+			}
+		}
+	}
+
+	function bindClonedSlideHider( carouselEl ) {
+		if ( typeof jQuery === 'undefined' ) {
+			return;
+		}
+		var $c = jQuery( carouselEl );
+		hideClonedSlides( carouselEl );
+		$c.on( 'initialized.owl.carousel refreshed.owl.carousel resized.owl.carousel', function () {
+			hideClonedSlides( carouselEl );
+		} );
+	}
+
+	/* ------------------------------------------------------------------ */
 	/*  Per-carousel init                                                  */
 	/* ------------------------------------------------------------------ */
 
@@ -281,7 +325,14 @@
 		if ( carouselEl.dataset.a11yReady === 'true' ) {
 			return;
 		}
+
+		// Cloned-slide hiding applies to every Owl Carousel that loaded,
+		// regardless of autoplay state, because the duplicate-content
+		// reading-order issue exists even on non-autoplaying loops.
+		bindClonedSlideHider( carouselEl );
+
 		if ( ! isAutoplay( carouselEl ) ) {
+			carouselEl.dataset.a11yReady = 'true';
 			return;
 		}
 

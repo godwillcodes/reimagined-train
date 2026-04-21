@@ -129,13 +129,84 @@
         
         try {
             jQuery(document).ready(function($) {
+                // Honor user's motion preference (WCAG 2.3.3 / reinforces 2.2.2).
+                var prefersReducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+                // Wire an accessible control toolbar rendered via pg_render_carousel_controls()
+                // to the given Owl instance. Adds Prev / Next / Pause-Play click handlers, keeps
+                // aria-pressed + label in sync with autoplay state, and enables arrow-key paging
+                // on the carousel region itself.
+                function wireAccessibleControls($carousel) {
+                    if (!$carousel || !$carousel.length) return;
+                    var baseId = $carousel.attr('data-pg-carousel-controls');
+                    if (!baseId) return;
+
+                    var $prev = $('[data-pg-carousel-prev="' + baseId + '"]');
+                    var $next = $('[data-pg-carousel-next="' + baseId + '"]');
+                    var $toggle = $('[data-pg-carousel-playpause="' + baseId + '"]');
+
+                    $prev.off('click.pgCarousel').on('click.pgCarousel', function(e) {
+                        e.preventDefault();
+                        $carousel.trigger('prev.owl.carousel');
+                    });
+                    $next.off('click.pgCarousel').on('click.pgCarousel', function(e) {
+                        e.preventDefault();
+                        $carousel.trigger('next.owl.carousel');
+                    });
+
+                    // Determine initial autoplay state from the stored instance options.
+                    var instance = $carousel.data('owl.carousel');
+                    var autoplayOn = !!(instance && instance.options && instance.options.autoplay);
+
+                    function setToggleState(isPlaying) {
+                        if (!$toggle.length) return;
+                        $toggle.attr('aria-pressed', isPlaying ? 'false' : 'true');
+                        var pauseLabel = $toggle.attr('data-label-pause');
+                        var playLabel = $toggle.attr('data-label-play');
+                        $toggle.attr('aria-label', isPlaying ? pauseLabel : playLabel);
+                        var $pauseIcon = $toggle.find('[data-pg-icon="pause"]');
+                        var $playIcon = $toggle.find('[data-pg-icon="play"]');
+                        if (isPlaying) {
+                            $pauseIcon.removeClass('hidden');
+                            $playIcon.addClass('hidden');
+                        } else {
+                            $pauseIcon.addClass('hidden');
+                            $playIcon.removeClass('hidden');
+                        }
+                    }
+                    setToggleState(autoplayOn);
+
+                    $toggle.off('click.pgCarousel').on('click.pgCarousel', function(e) {
+                        e.preventDefault();
+                        if (autoplayOn) {
+                            $carousel.trigger('stop.owl.autoplay');
+                            autoplayOn = false;
+                        } else {
+                            $carousel.trigger('play.owl.autoplay');
+                            autoplayOn = true;
+                        }
+                        setToggleState(autoplayOn);
+                    });
+
+                    // Arrow-key navigation on the carousel region itself.
+                    $carousel.off('keydown.pgCarousel').on('keydown.pgCarousel', function(e) {
+                        if (e.key === 'ArrowLeft') {
+                            e.preventDefault();
+                            $carousel.trigger('prev.owl.carousel');
+                        } else if (e.key === 'ArrowRight') {
+                            e.preventDefault();
+                            $carousel.trigger('next.owl.carousel');
+                        }
+                    });
+                }
+
                 const carouselConfigs = {
                     '.partners-carousel': {
                         loop: true,
                         margin: 30,
                         nav: false,
                         dots: false,
-                        autoplay: true,
+                        autoplay: !prefersReducedMotion,
                         autoplayTimeout: 3000,
                         autoplayHoverPause: true,
                         responsiveClass: true,
@@ -179,7 +250,7 @@
                         margin: 10,
                         nav: false,
                         dots: false,
-                        autoplay: true,
+                        autoplay: !prefersReducedMotion,
                         autoplayTimeout: 3000,
                         autoplayHoverPause: true,
                         responsiveClass: true,
@@ -195,7 +266,7 @@
                         nav: false,
                         dots: false,
                         autoWidth: true,
-                        autoplay: true,
+                        autoplay: !prefersReducedMotion,
                         autoplayTimeout: 2500,
                         autoplayHoverPause: true,
                         responsive: {
@@ -209,7 +280,7 @@
                         margin: 20,
                         nav: false,
                         dots: false,
-                        autoplay: true,
+                        autoplay: !prefersReducedMotion,
                         autoWidth: true,
                         autoplayTimeout: 2500,
                         autoplayHoverPause: true,
@@ -225,7 +296,7 @@
                         nav: false,
                         dots: false,
                         autoWidth: true,
-                        autoplay: true,
+                        autoplay: !prefersReducedMotion,
                         autoplayTimeout: 2500,
                         autoplayHoverPause: true,
                         responsive: {
@@ -254,9 +325,24 @@
                         margin: 24,
                         nav: false,
                         dots: false,
-                        autoplay: true,
+                        autoplay: !prefersReducedMotion,
                         autoplayTimeout: 3000,
                         autoplayHoverPause: true,
+                        responsive: {
+                            0: { items: 1 },
+                            768: { items: 2 },
+                            1024: { items: 3 }
+                        }
+                    },
+                    '.symposium-speakers-carousel': {
+                        loop: true,
+                        margin: 24,
+                        nav: false,
+                        dots: false,
+                        autoplay: !prefersReducedMotion,
+                        autoplayTimeout: 3000,
+                        autoplayHoverPause: true,
+                        smartSpeed: 600,
                         responsive: {
                             0: { items: 1 },
                             768: { items: 2 },
@@ -268,7 +354,7 @@
                         margin: 10,
                         nav: false,
                         dots: false,
-                        autoplay: true,
+                        autoplay: !prefersReducedMotion,
                         autoplayTimeout: 6000,
                         autoplayHoverPause: true,
                         smartSpeed: 1000,
@@ -287,6 +373,13 @@
                         const $carousel = $(selector);
                         if ($carousel.length && !$carousel.hasClass('owl-loaded')) {
                             $carousel.owlCarousel(config);
+                            // Wire accessible Prev / Pause-Play / Next toolbar when present.
+                            $carousel.each(function() {
+                                var $this = $(this);
+                                if ($this.attr('data-pg-carousel-controls')) {
+                                    wireAccessibleControls($this);
+                                }
+                            });
                             // Custom external controls for sandbox news carousel
                             if (selector === '.sandbox-news-carousel') {
                                 const $instance = $carousel;
@@ -321,6 +414,18 @@
                                 $('#related-blogs-next').off('click.owl').on('click.owl', function(e) {
                                     e.preventDefault();
                                     $instance3.trigger('next.owl.carousel');
+                                });
+                            }
+                            // Symposium speakers (Language Access Symposium template)
+                            if (selector === '.symposium-speakers-carousel') {
+                                const $symposiumSpeakers = $carousel;
+                                $('#symposium-speakers-prev').off('click.owl').on('click.owl', function(e) {
+                                    e.preventDefault();
+                                    $symposiumSpeakers.trigger('prev.owl.carousel');
+                                });
+                                $('#symposium-speakers-next').off('click.owl').on('click.owl', function(e) {
+                                    e.preventDefault();
+                                    $symposiumSpeakers.trigger('next.owl.carousel');
                                 });
                             }
                             // Custom external controls for visual moment carousel
@@ -482,14 +587,15 @@
                 script.onload = function() {
                     if (typeof jQuery !== 'undefined') {
                         jQuery(document).ready(function($) {
-                            $('.partners-carousel, .aboutus-carousel, .recognized-carousel, .contracting-vehicles-carousel, .certificate-carousel, .testimonial-carousel, .sandbox-news-carousel, .related-blogs-carousel').each(function() {
+                            var prefersReducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+                            $('.partners-carousel, .aboutus-carousel, .recognized-carousel, .contracting-vehicles-carousel, .certificate-carousel, .testimonial-carousel, .sandbox-news-carousel, .related-blogs-carousel, .symposium-speakers-carousel').each(function() {
                                 if (!$(this).hasClass('owl-loaded')) {
                                     $(this).owlCarousel({
                                         loop: true,
                                         margin: 20,
                                         nav: false,
                                         dots: false,
-                                        autoplay: true,
+                                        autoplay: !prefersReducedMotion,
                                         autoplayTimeout: 3000,
                                         responsive: {
                                             0: { items: 1 },
@@ -498,6 +604,33 @@
                                         }
                                     });
                                 }
+                            });
+                            // Wire up accessible toolbars rendered via pg_render_carousel_controls().
+                            $('[data-pg-carousel-controls]').each(function() {
+                                var $c = $(this);
+                                var baseId = $c.attr('data-pg-carousel-controls');
+                                if (!baseId) return;
+                                $('[data-pg-carousel-prev="' + baseId + '"]').off('click.pgCarousel').on('click.pgCarousel', function(e) { e.preventDefault(); $c.trigger('prev.owl.carousel'); });
+                                $('[data-pg-carousel-next="' + baseId + '"]').off('click.pgCarousel').on('click.pgCarousel', function(e) { e.preventDefault(); $c.trigger('next.owl.carousel'); });
+                                var $toggle = $('[data-pg-carousel-playpause="' + baseId + '"]');
+                                var inst = $c.data('owl.carousel');
+                                var on = !!(inst && inst.options && inst.options.autoplay);
+                                function sync(p) {
+                                    $toggle.attr('aria-pressed', p ? 'false' : 'true');
+                                    $toggle.attr('aria-label', p ? $toggle.attr('data-label-pause') : $toggle.attr('data-label-play'));
+                                    $toggle.find('[data-pg-icon="pause"]').toggleClass('hidden', !p);
+                                    $toggle.find('[data-pg-icon="play"]').toggleClass('hidden', p);
+                                }
+                                sync(on);
+                                $toggle.off('click.pgCarousel').on('click.pgCarousel', function(e) {
+                                    e.preventDefault();
+                                    if (on) { $c.trigger('stop.owl.autoplay'); on = false; } else { $c.trigger('play.owl.autoplay'); on = true; }
+                                    sync(on);
+                                });
+                                $c.off('keydown.pgCarousel').on('keydown.pgCarousel', function(e) {
+                                    if (e.key === 'ArrowLeft') { e.preventDefault(); $c.trigger('prev.owl.carousel'); }
+                                    else if (e.key === 'ArrowRight') { e.preventDefault(); $c.trigger('next.owl.carousel'); }
+                                });
                             });
                             // External controls for sandbox in fallback
                             var $sandboxNews = $('.sandbox-news-carousel');
@@ -531,6 +664,17 @@
                                 $('#related-blogs-next').off('click.owl').on('click.owl', function(e) {
                                     e.preventDefault();
                                     $relatedBlogs.trigger('next.owl.carousel');
+                                });
+                            }
+                            var $symposiumSpeakers = $('.symposium-speakers-carousel');
+                            if ($symposiumSpeakers.length) {
+                                $('#symposium-speakers-prev').off('click.owl').on('click.owl', function(e) {
+                                    e.preventDefault();
+                                    $symposiumSpeakers.trigger('prev.owl.carousel');
+                                });
+                                $('#symposium-speakers-next').off('click.owl').on('click.owl', function(e) {
+                                    e.preventDefault();
+                                    $symposiumSpeakers.trigger('next.owl.carousel');
                                 });
                             }
                         });
@@ -592,7 +736,8 @@
             '.sandbox-news-carousel',
             '.sandbox-recognized-carousel',
             '.related-blogs-carousel',
-            '.visual-moment-carousel'
+            '.visual-moment-carousel',
+            '.symposium-speakers-carousel'
         ];
         
         carouselSelectors.forEach(selector => {

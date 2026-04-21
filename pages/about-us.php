@@ -5,6 +5,7 @@
  */
 get_header();
 ?>
+<main id="maincontent">
 <?php if (get_the_ID() == 274): ?>
 <header class="shadow-sm relative bg-cover bg-no-repeat bg-bottom" role="banner"
     style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/icons/3.svg'); ?>');">
@@ -154,23 +155,43 @@ get_header();
 <?php endif; ?>
 
 <?php if (get_field('video_id')): ?>
-<section class="py-10 lg:py-40 bg-[#F9F8F6]">
+<section class="py-10 lg:py-40 bg-[#F9F8F6]" aria-labelledby="aboutus-video-heading">
     <div class="text-center max-w-4xl mx-auto px-6 md:px-10 lg:px-0">
         <p class="text-lg font-medium text-gray-700 mb-6"><?php echo esc_html(get_field('video_title')); ?></p>
-        <h1 class="text-4xl md:text-5xl font-bold">
+        <h2 id="aboutus-video-heading" class="text-4xl md:text-5xl font-bold text-[#1F3131] [&_*]:!text-[#1F3131]">
             <?php echo esc_html( get_field('animated_text') ?: 'Making cross-cultural operations easier, smarter, and more human.' ); ?>
-        </h1>
+        </h2>
        <div class="max-3xl mx-auto">
-       <iframe 
+       <?php
+       $video_iframe_title = get_field('video_title');
+       if ( ! $video_iframe_title ) {
+           /* translators: %s: site name */
+           $video_iframe_title = sprintf( __( '%s — About video', 'piedmontglobal' ), get_bloginfo( 'name' ) );
+       }
+       ?>
+       <iframe
                 class=" w-full h-[400px] pt-8 rounded-[4px] border-gray-300"
-                src="https://www.youtube.com/embed/<?php echo esc_attr(get_field('video_id')); ?>" 
-                title="Call to Action Video"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                src="https://www.youtube.com/embed/<?php echo esc_attr(get_field('video_id')); ?>"
+                title="<?php echo esc_attr( $video_iframe_title ); ?>"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
             </iframe>
        </div>
-        
+
+        <?php
+        $video_transcript = get_field( 'video_transcript' );
+        if ( $video_transcript ) :
+        ?>
+        <details class="mt-6 text-left bg-white border border-stone-200 rounded-[4px] p-4 md:p-6">
+            <summary class="cursor-pointer text-base md:text-lg font-medium text-[#1F3131] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
+                <?php esc_html_e( 'Read video transcript and audio description', 'piedmont-global-wp' ); ?>
+            </summary>
+            <div class="prose max-w-none mt-4 text-[#1F3131]">
+                <?php echo wp_kses_post( $video_transcript ); ?>
+            </div>
+        </details>
+        <?php endif; ?>
     </div>
 </section>
 <?php endif; ?>
@@ -203,11 +224,30 @@ get_header();
 <?php endif; ?>
 
 <?php if( have_rows('green_benefits_card_repeater') ): ?>
-<section class="pb-12 md:pb-20 px-6 lg:px-0 bg-[#F9F8F6]">
-    <p class="text-xl font-medium text-center text-black mb-6">Our solutions create</p>
+<section class="pb-12 md:pb-20 px-6 lg:px-0 bg-[#F9F8F6]" aria-labelledby="aboutus-our-solutions-heading">
+    <h2 id="aboutus-our-solutions-heading" class="text-xl font-medium text-center text-black mb-6">
+        <?php esc_html_e( 'Our solutions create', 'piedmont-global-wp' ); ?>
+    </h2>
+
+    <div class="max-w-7xl mx-auto">
+        <?php
+        if ( function_exists( 'pg_render_carousel_controls' ) ) {
+            pg_render_carousel_controls( [
+                'base_id'      => 'aboutus-our-solutions',
+                'region_label' => __( 'Our solutions', 'piedmont-global-wp' ),
+            ] );
+        }
+        ?>
+    </div>
 
     <!-- //repeatable cards -->
-    <div class="aboutus-carousel owl-carousel owl-theme relative" role="region" aria-roledescription="carousel" aria-label="Our solutions" style="
+    <div class="aboutus-carousel owl-carousel owl-theme relative"
+         role="region"
+         aria-roledescription="carousel"
+         aria-labelledby="aboutus-our-solutions-heading"
+         tabindex="0"
+         data-pg-carousel-controls="aboutus-our-solutions"
+         style="
         mask: linear-gradient(to right, 
             transparent 0%, 
             black 5%, 
@@ -270,11 +310,11 @@ get_header();
 
 <?php if (get_field('gradient_title')): ?>
 <section style="background: linear-gradient(to bottom, #F9F8F6 0%, #F7F7F5 50%, #98C44180 100%);"
-    aria-labelledby="case-study-title">
+    aria-labelledby="about-gradient-title">
     <div class="text-center py-40 max-w-2xl mx-auto">
         <p class="text-lg font-medium text-center text-gray-700 mb-6">
             <?php echo wp_kses_post(get_field('gradient_subtitle')); ?></p>
-        <p class="text-xl md:text-5xl font-bold"><?php echo wp_kses_post(get_field('gradient_title')); ?></p>
+        <h2 id="about-gradient-title" class="text-xl md:text-5xl font-bold"><?php echo wp_kses_post(get_field('gradient_title')); ?></h2>
 
         <div class="mt-8">
             <a href="/solutions/" 
@@ -387,20 +427,25 @@ get_header();
 
             <!-- Timeline bar -->
             <div class="hidden lg:flex justify-center">
-                <div class="relative w-px bg-gray-300" style="height: 215px;">
+                <ol class="relative w-px bg-gray-300 list-none m-0 p-0" style="height: 215px;" aria-label="<?php echo esc_attr__( 'Company milestones', 'piedmontglobal' ); ?>">
                     <?php 
                         $total_items = count(get_field('timeline_repeater'));
                         $count = 0;
                         while (have_rows('timeline_repeater')): the_row();
                             $count++;
                             $top_percent = $total_items > 1 ? (($count - 1) * 100 / ($total_items - 1)) : 0;
+                            $dot_title   = get_sub_field('title');
+                            /* translators: 1: milestone position, 2: total milestones, 3: milestone title. */
+                            $dot_label   = sprintf( __( 'Milestone %1$d of %2$d: %3$s', 'piedmontglobal' ), $count, $total_items, (string) $dot_title );
                     ?>
-                    <div class="absolute left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot"
+                    <li class="absolute left-1/2 w-3 h-3 rounded-full -translate-x-1/2 timeline-dot"
                         data-timeline-index="<?= esc_attr($count - 1); ?>"
-                        style="top:<?= $top_percent ?>%;background: linear-gradient(180deg, #006155 0%, #98C441 100%);">
-                    </div>
+                        aria-label="<?php echo esc_attr( $dot_label ); ?>"
+                        <?php echo $count === 1 ? 'aria-current="true"' : ''; ?>
+                        style="top:<?= $top_percent ?>%;background: linear-gradient(180deg, #006155 0%, #98C441 100%);list-style:none;">
+                    </li>
                     <?php endwhile; ?>
-                </div>
+                </ol>
             </div>
         </div>
     </div>
@@ -467,34 +512,54 @@ get_header();
                     }
                 }
             ?>
-            <div class="grid grid-cols-2 gap-6 items-center">
+            <div class="grid grid-cols-2 gap-6 items-center" role="list" aria-label="<?php echo esc_attr__( 'Affiliations', 'piedmont-global-wp' ); ?>">
                 <!-- Column 1 -->
                 <div class="lg:space-y-16 space-y-6 lg:pt-24">
                     <?php foreach ($col1 as $img):
-                        $img_alt = is_array($img) && isset($img['alt']) ? $img['alt'] : 'Affiliation';
-                        $img_url = is_array($img) && isset($img['url']) ? $img['url'] : $img;
+                        $img_url   = is_array($img) && isset($img['url']) ? $img['url'] : $img;
+                        $img_title = is_array($img) && ! empty( $img['title'] ) ? $img['title'] : '';
+                        $raw_alt   = is_array($img) && isset($img['alt']) ? trim( (string) $img['alt'] ) : '';
+                        if ( '' !== $raw_alt ) {
+                            $img_alt = $raw_alt;
+                        } elseif ( function_exists( 'pg_brand_alt' ) ) {
+                            $img_alt = pg_brand_alt( $img_title, '', __( 'Affiliation logo', 'piedmont-global-wp' ) );
+                        } else {
+                            $img_alt = $img_title ?: __( 'Affiliation logo', 'piedmont-global-wp' );
+                        }
                     ?>
-                    <img src="<?= esc_url($img_url); ?>" 
-                         alt="<?php echo esc_attr($img_alt); ?>"
-                         width="100" height="100"
-                         loading="lazy"
-                         decoding="async"
-                         class="h-[70px] w-[70px] mx-auto lg:h-[100px] lg:w-[100px] object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0">
+                    <div role="listitem">
+                        <img src="<?= esc_url($img_url); ?>"
+                             alt="<?php echo esc_attr($img_alt); ?>"
+                             width="100" height="100"
+                             loading="lazy"
+                             decoding="async"
+                             class="h-[70px] w-[70px] mx-auto lg:h-[100px] lg:w-[100px] object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0">
+                    </div>
                     <?php endforeach; ?>
                 </div>
 
                 <!-- Column 2 -->
                 <div class="lg:space-y-16 space-y-6">
                     <?php foreach ($col2 as $img):
-                        $img_alt = is_array($img) && isset($img['alt']) ? $img['alt'] : 'Affiliation';
-                        $img_url = is_array($img) && isset($img['url']) ? $img['url'] : $img;
+                        $img_url   = is_array($img) && isset($img['url']) ? $img['url'] : $img;
+                        $img_title = is_array($img) && ! empty( $img['title'] ) ? $img['title'] : '';
+                        $raw_alt   = is_array($img) && isset($img['alt']) ? trim( (string) $img['alt'] ) : '';
+                        if ( '' !== $raw_alt ) {
+                            $img_alt = $raw_alt;
+                        } elseif ( function_exists( 'pg_brand_alt' ) ) {
+                            $img_alt = pg_brand_alt( $img_title, '', __( 'Affiliation logo', 'piedmont-global-wp' ) );
+                        } else {
+                            $img_alt = $img_title ?: __( 'Affiliation logo', 'piedmont-global-wp' );
+                        }
                     ?>
-                    <img src="<?= esc_url($img_url); ?>" 
-                         alt="<?php echo esc_attr($img_alt); ?>"
-                         width="100" height="100"
-                         loading="lazy"
-                         decoding="async"
-                         class="h-[70px] w-[70px] mx-auto lg:h-[100px] lg:w-[100px] object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0">
+                    <div role="listitem">
+                        <img src="<?= esc_url($img_url); ?>"
+                             alt="<?php echo esc_attr($img_alt); ?>"
+                             width="100" height="100"
+                             loading="lazy"
+                             decoding="async"
+                             class="h-[70px] w-[70px] mx-auto lg:h-[100px] lg:w-[100px] object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0">
+                    </div>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -511,19 +576,29 @@ get_header();
             </h2>
 
             <?php if ($certifications): ?>
-            <div class="flex flex-wrap md:flex-nowrap gap-4 items-center mt-10">
+            <ul class="flex flex-wrap md:flex-nowrap gap-4 items-center mt-10 list-none p-0 m-0" aria-label="<?php echo esc_attr__( 'Certifications', 'piedmont-global-wp' ); ?>">
                 <?php foreach ($certifications as $cert):
-                    $cert_alt = is_array($cert) && isset($cert['alt']) ? $cert['alt'] : 'Certification';
-                    $cert_url = is_array($cert) && isset($cert['url']) ? $cert['url'] : $cert;
+                    $cert_url   = is_array($cert) && isset($cert['url']) ? $cert['url'] : $cert;
+                    $cert_title = is_array($cert) && ! empty( $cert['title'] ) ? $cert['title'] : '';
+                    $cert_raw   = is_array($cert) && isset($cert['alt']) ? trim( (string) $cert['alt'] ) : '';
+                    if ( '' !== $cert_raw ) {
+                        $cert_alt = $cert_raw;
+                    } elseif ( function_exists( 'pg_brand_alt' ) ) {
+                        $cert_alt = pg_brand_alt( $cert_title, '', __( 'Certification logo', 'piedmont-global-wp' ) );
+                    } else {
+                        $cert_alt = $cert_title ?: __( 'Certification logo', 'piedmont-global-wp' );
+                    }
                 ?>
-                <img src="<?php echo esc_url($cert_url); ?>" 
-                     alt="<?php echo esc_attr($cert_alt); ?>"
-                     width="100" height="100"
-                     loading="lazy"
-                     decoding="async"
-                     class="h-[70px] w-[70px] lg:h-[100px] lg:w-[100px] object-contain object-center transition duration-300 ease-in-out grayscale hover:grayscale-0">
+                <li>
+                    <img src="<?php echo esc_url($cert_url); ?>"
+                         alt="<?php echo esc_attr($cert_alt); ?>"
+                         width="100" height="100"
+                         loading="lazy"
+                         decoding="async"
+                         class="h-[70px] w-[70px] lg:h-[100px] lg:w-[100px] object-contain object-center transition duration-300 ease-in-out grayscale hover:grayscale-0">
+                </li>
                 <?php endforeach; ?>
-            </div>
+            </ul>
             <?php endif; ?>
         </div>
     </div>
@@ -582,12 +657,13 @@ document.addEventListener('DOMContentLoaded', function () {
         dots.forEach(dot => {
             dot.style.opacity = '0.35';
             dot.style.boxShadow = 'none';
+            dot.removeAttribute('aria-current');
         });
         const active = document.querySelector(`.timeline-dot[data-timeline-index="${index}"]`);
         if (active) {
             active.style.opacity = '1';
             active.style.boxShadow = '0 0 0 4px rgba(152,196,65,0.35)';
-            // Avoid scaling to keep the dot perfectly centered on the line
+            active.setAttribute('aria-current', 'true');
         }
     };
 
@@ -803,7 +879,7 @@ if (!in_array($current_slug, $excluded_pages)):
 </script>
 <?php endif; ?>
 
-
+</main>
 
 <?php
 get_footer(); ?>

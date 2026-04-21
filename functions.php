@@ -349,7 +349,8 @@ function pg_needs_jquery() {
 		'sandbox-news-carousel',
 		'sandbox-recognized-carousel',
 		'related-blogs-carousel',
-		'visual-moment-carousel'
+		'visual-moment-carousel',
+		'symposium-speakers-carousel'
 	);
 	
 	foreach ( $carousel_selectors as $selector ) {
@@ -434,6 +435,10 @@ function pg_has_carousel() {
         if ( $post && strpos( $post->post_name, 'language-services' ) !== false ) {
             return true;
         }
+    }
+
+    if ( is_page_template( 'pages/language-access-symposium.php' ) ) {
+        return true;
     }
 
     // 2. Custom post types that feature carousels
@@ -1874,4 +1879,115 @@ function pg_team_page_schema() {
 	echo '<script type="application/ld+json">'
 		. wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
 		. '</script>' . "\n";
+}
+
+/**
+ * Build a descriptive alt text for a brand logo.
+ *
+ * Uses the brand name when available; otherwise derives a Title-Cased label from
+ * the URL hostname (e.g. "https://microsoft.com" -> "Microsoft"). Falls back to
+ * a generic label. This helps keep 1.1.1 / 1.4.5 alt text meaningful when the
+ * ACF name field is empty.
+ *
+ * @param string $name     Brand name from ACF.
+ * @param string $url      Optional brand URL used to derive a label.
+ * @param string $fallback Generic fallback label.
+ * @return string
+ */
+function pg_brand_alt( $name, $url = '', $fallback = '' ) {
+	$name = is_string( $name ) ? trim( $name ) : '';
+	if ( $name !== '' ) {
+		return $name;
+	}
+
+	if ( is_string( $url ) && $url !== '' ) {
+		$host = wp_parse_url( $url, PHP_URL_HOST );
+		if ( is_string( $host ) && $host !== '' ) {
+			$host = preg_replace( '/^www\./i', '', $host );
+			$root = strtok( $host, '.' );
+			if ( is_string( $root ) && $root !== '' ) {
+				return ucwords( str_replace( [ '-', '_' ], ' ', $root ) );
+			}
+		}
+	}
+
+	return $fallback !== '' ? $fallback : __( 'Logo', 'piedmontglobal' );
+}
+
+/**
+ * Render an accessible Prev / Pause-Play / Next toolbar for a logo carousel.
+ *
+ * Outputs three <button>s that the bulletproof loader wires up by data-attribute.
+ * Intended for carousels that lack visible arrows so keyboard / touch / SR users
+ * can meet WCAG 2.1.1, 2.1.2, and 2.2.2.
+ *
+ * @param array $args {
+ *     @type string $base_id      Stable id base (e.g. "home-partners").
+ *     @type string $region_label Visible label of the carousel (for button names).
+ * }
+ */
+function pg_render_carousel_controls( $args = [] ) {
+	$defaults = [
+		'base_id'      => '',
+		'region_label' => __( 'logos', 'piedmontglobal' ),
+	];
+	$args = wp_parse_args( $args, $defaults );
+
+	if ( $args['base_id'] === '' ) {
+		return;
+	}
+
+	$base  = sanitize_html_class( $args['base_id'] );
+	$label = (string) $args['region_label'];
+
+	$btn_class = 'inline-flex h-9 w-9 items-center justify-center rounded-md border border-[#DFDAD4] bg-white text-[#1F3131] shadow-sm transition-colors duration-200 hover:bg-[#98C441] hover:text-[#1F3131] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#98C441]';
+
+	/* translators: %s: carousel region label */
+	$group_label = sprintf( __( '%s controls', 'piedmontglobal' ), $label );
+	/* translators: %s: carousel region label */
+	$prev_label = sprintf( __( 'Previous %s', 'piedmontglobal' ), $label );
+	/* translators: %s: carousel region label */
+	$next_label = sprintf( __( 'Next %s', 'piedmontglobal' ), $label );
+	/* translators: %s: carousel region label */
+	$pause_label = sprintf( __( 'Pause %s auto-rotation', 'piedmontglobal' ), $label );
+	/* translators: %s: carousel region label */
+	$play_label = sprintf( __( 'Play %s auto-rotation', 'piedmontglobal' ), $label );
+	?>
+	<div class="mb-4 flex items-center justify-end gap-2" role="group" aria-label="<?php echo esc_attr( $group_label ); ?>">
+		<button type="button"
+			id="<?php echo esc_attr( $base ); ?>-prev"
+			data-pg-carousel-prev="<?php echo esc_attr( $base ); ?>"
+			class="<?php echo esc_attr( $btn_class ); ?>"
+			aria-label="<?php echo esc_attr( $prev_label ); ?>">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4" aria-hidden="true" focusable="false">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+			</svg>
+		</button>
+		<button type="button"
+			id="<?php echo esc_attr( $base ); ?>-playpause"
+			data-pg-carousel-playpause="<?php echo esc_attr( $base ); ?>"
+			class="<?php echo esc_attr( $btn_class ); ?>"
+			aria-pressed="false"
+			aria-label="<?php echo esc_attr( $pause_label ); ?>"
+			data-label-pause="<?php echo esc_attr( $pause_label ); ?>"
+			data-label-play="<?php echo esc_attr( $play_label ); ?>">
+			<svg data-pg-icon="pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4" aria-hidden="true" focusable="false">
+				<rect x="6" y="5" width="4" height="14" rx="1" />
+				<rect x="14" y="5" width="4" height="14" rx="1" />
+			</svg>
+			<svg data-pg-icon="play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="hidden h-4 w-4" aria-hidden="true" focusable="false">
+				<path d="M8 5v14l11-7z" />
+			</svg>
+		</button>
+		<button type="button"
+			id="<?php echo esc_attr( $base ); ?>-next"
+			data-pg-carousel-next="<?php echo esc_attr( $base ); ?>"
+			class="<?php echo esc_attr( $btn_class ); ?>"
+			aria-label="<?php echo esc_attr( $next_label ); ?>">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-4 w-4" aria-hidden="true" focusable="false">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+			</svg>
+		</button>
+	</div>
+	<?php
 }

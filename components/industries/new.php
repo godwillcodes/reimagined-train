@@ -160,9 +160,14 @@ get_header();
 
             <!-- Right side: Image -->
             <div class="lg:col-span-2 flex justify-center lg:justify-end">
+                <?php
+                /* translators: %s: industry name */
+                $why_alt = sprintf( esc_attr__( 'Piedmont Global team working with %s clients', 'piedmont-global-wp' ), get_the_title() );
+                ?>
                 <img src="<?php echo esc_url(get_field('why_piedmont_global_photo_new')); ?>"
-                    alt="Piedmont Global team working with Consumer goods clients"
-                    class="w-full h-auto lg:h-[456px] object-cover">
+                    alt="<?php echo esc_attr( $why_alt ); ?>"
+                    class="w-full h-auto lg:h-[456px] object-cover"
+                    loading="lazy" decoding="async">
             </div>
 
         </div>
@@ -649,7 +654,12 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
                 $visual_moments = get_field('visual_moment');
                 if ($visual_moments && is_array($visual_moments)):
                     ?>
-                    <div class="owl-carousel visual-moment-carousel" role="region" aria-roledescription="carousel" aria-label="Visual moments">
+                    <div class="owl-carousel visual-moment-carousel"
+                         role="region"
+                         aria-roledescription="carousel"
+                         aria-labelledby="visual-moment-title"
+                         tabindex="0"
+                         data-pg-carousel-controls="visual-moment">
                         <?php foreach ($visual_moments as $index => $row):
                             $small_title = isset($row['small_title']) ? $row['small_title'] : '';
                             $big_title = isset($row['big_title']) ? $row['big_title'] : '';
@@ -753,26 +763,42 @@ if ($visual_moments && is_array($visual_moments) && count($visual_moments) > 0):
                             <!-- Navigation buttons -->
                             <div class="flex justify-center md:justify-end gap-2 md:gap-3 md:flex-1 mt-4 md:mt-0">
                                 <button id="visual-moment-prev" type="button"
+                                    data-pg-carousel-prev="visual-moment"
                                     class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
                                     aria-label="<?php esc_attr_e('Previous visual moment', 'piedmont-global-wp'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                        stroke="currentColor" class="w-5 h-5">
+                                        stroke="currentColor" class="w-5 h-5" aria-hidden="true" focusable="false">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                                     </svg>
                                 </button>
 
+                                <button id="visual-moment-playpause" type="button"
+                                    data-pg-carousel-playpause="visual-moment"
+                                    aria-pressed="false"
+                                    class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
+                                    aria-label="<?php esc_attr_e('Pause visual moment auto-rotation', 'piedmont-global-wp'); ?>"
+                                    data-label-pause="<?php esc_attr_e('Pause visual moment auto-rotation', 'piedmont-global-wp'); ?>"
+                                    data-label-play="<?php esc_attr_e('Play visual moment auto-rotation', 'piedmont-global-wp'); ?>">
+                                    <svg data-pg-icon="pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 md:w-5 md:h-5" aria-hidden="true" focusable="false">
+                                        <rect x="6" y="5" width="4" height="14" rx="1" />
+                                        <rect x="14" y="5" width="4" height="14" rx="1" />
+                                    </svg>
+                                    <svg data-pg-icon="play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="hidden w-4 h-4 md:w-5 md:h-5" aria-hidden="true" focusable="false">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                </button>
+
                                 <button id="visual-moment-next" type="button"
+                                    data-pg-carousel-next="visual-moment"
                                     class="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2"
                                     aria-label="<?php esc_attr_e('Next visual moment', 'piedmont-global-wp'); ?>">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                        stroke="currentColor" class="w-5 h-5">
+                                        stroke="currentColor" class="w-5 h-5" aria-hidden="true" focusable="false">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                                     </svg>
                                 </button>
-
-                                
                             </div>
 
                         </div>
@@ -1123,12 +1149,18 @@ if ($post && $post->ID === 788):
 
     <!-- Map Image -->
     <div class="relative">
-      <img 
-        src="https://piedmontglobal.com/wp-content/uploads/Piedmont-Global-National-Coverage-1.png" 
-        alt="Piedmont Global National Coverage Map" 
-        class="w-full max-w-5xl mx-auto h-auto object-contain rounded-lg shadow-lg"
-        loading="lazy"
-        decoding="async">
+      <figure class="m-0">
+        <img
+          src="https://piedmontglobal.com/wp-content/uploads/Piedmont-Global-National-Coverage-1.png"
+          alt="<?php echo esc_attr__( 'Map of the United States showing Piedmont Global coverage across all 50 states, with regional support hubs serving state and local agencies nationwide.', 'piedmont-global-wp' ); ?>"
+          aria-describedby="pg-national-coverage-desc"
+          class="w-full max-w-5xl mx-auto h-auto object-contain rounded-lg shadow-lg"
+          loading="lazy"
+          decoding="async">
+        <figcaption id="pg-national-coverage-desc" class="sr-only">
+          <?php esc_html_e( 'The map highlights every U.S. state served by Piedmont Global, illustrating that we combine national scale with localized expertise so agencies can deliver consistent, compliant language access while responding to the unique linguistic and cultural needs of their communities.', 'piedmont-global-wp' ); ?>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -1144,43 +1176,49 @@ if ($related_blogs || $has_faqs):
             <div
                 class="max-w-7xl mx-auto foundation-white relative border-1 border-stone-300  border-b-0  rounded-[4px] py-16 px-10">
                 <div class="flex items-center justify-between mb-8">
-                    <h2 class="text-3xl lg:text-4xl font-bold max-w-[150px] lg:max-w-lg">
-                        Related resources
+                    <h2 id="industry-related-resources-heading" class="text-3xl lg:text-4xl font-bold max-w-[150px] lg:max-w-lg">
+                        <?php esc_html_e( 'Related resources', 'piedmont-global-wp' ); ?>
                     </h2>
-                    <div class="flex items-center gap-3">
-                        <button id="sandbox-news-prev" aria-label="Previous"
-                            class="w-10 h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-                            </svg>
-                        </button>
-                        <button id="sandbox-news-next" aria-label="Next"
-                            class="w-10 h-10 flex items-center justify-center rounded-full bg-[#006155] text-white hover:bg-[#98C441] hover:text-[#006155] hover:border hover:border-[#006155] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="w-5 h-5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                            </svg>
-                        </button>
-
-                        
-                    </div>
+                    <?php
+                    if ( function_exists( 'pg_render_carousel_controls' ) ) {
+                        pg_render_carousel_controls( [
+                            'base_id'      => 'industry-related-resources',
+                            'region_label' => __( 'Related resources', 'piedmont-global-wp' ),
+                        ] );
+                    }
+                    ?>
                 </div>
 
                 <div class="relative z-30 mb-32 pb-10">
-                    <div class="owl-carousel sandbox-news-carousel z-30 pt-6" role="region" aria-roledescription="carousel" aria-label="Related resources">
+                    <div class="owl-carousel sandbox-news-carousel z-30 pt-6"
+                         role="region"
+                         aria-roledescription="carousel"
+                         aria-labelledby="industry-related-resources-heading"
+                         tabindex="0"
+                         data-pg-carousel-controls="industry-related-resources">
 
                         <?php
                         $related_blogs = get_field('related_blogs'); // ACF relationship field
                         if ($related_blogs):
                             foreach ($related_blogs as $post):
-                                setup_postdata($post); ?>
+                                setup_postdata($post);
+                                $industry_thumb_id  = get_post_thumbnail_id();
+                                $industry_thumb_alt = $industry_thumb_id ? trim( (string) get_post_meta( $industry_thumb_id, '_wp_attachment_image_alt', true ) ) : '';
+                                if ( '' === $industry_thumb_alt ) {
+                                    $industry_thumb_alt = get_the_title();
+                                }
+                                ?>
                                 <a href="<?php the_permalink(); ?>"
-                                    class="group flex flex-col h-[450px] z-30 shadow-md relative rounded border bg-white border-[#ffffff]/40 transition-transform duration-300 hover:shadow-lg">
+                                    class="group flex flex-col h-[450px] z-30 shadow-md relative rounded border bg-white border-[#ffffff]/40 transition-transform duration-300 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
 
                                     <div class="overflow-hidden h-1/2 rounded-t-[4px]">
                                         <?php if (has_post_thumbnail()): ?>
-                                            <?php the_post_thumbnail('full', ['class' => 'w-full h-auto object-cover object-top transition-transform duration-500 group-hover:scale-105']); ?>
+                                            <?php the_post_thumbnail('full', [
+                                                'class'    => 'w-full h-auto object-cover object-top transition-transform duration-500 group-hover:scale-105',
+                                                'alt'      => $industry_thumb_alt,
+                                                'loading'  => 'lazy',
+                                                'decoding' => 'async',
+                                            ]); ?>
                                         <?php endif; ?>
                                     </div>
 
@@ -1331,9 +1369,14 @@ if ($related_blogs || $has_faqs):
 
                 <!-- Right side: Image -->
                 <div class="lg:col-span-4 flex justify-center relative z-20">
+                    <?php
+                    /* translators: %s: industry name */
+                    $cta_alt = sprintf( esc_attr__( 'Piedmont Global team working with %s clients', 'piedmont-global-wp' ), get_the_title() );
+                    ?>
                     <img src="<?php echo esc_url(get_field('cta_image')); ?>"
-                        alt="Piedmont Global team working with Consumer goods clients"
-                        class="max-w-full w-full h-[200px] md:h-[300px] lg:h-[395px] object-contain">
+                        alt="<?php echo esc_attr( $cta_alt ); ?>"
+                        class="max-w-full w-full h-[200px] md:h-[300px] lg:h-[395px] object-contain"
+                        loading="lazy" decoding="async">
                 </div>
             </div>
 

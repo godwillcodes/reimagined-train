@@ -17,7 +17,8 @@
 
             <!-- Column 1 -->
             <div>
-                <h2 class="text-lg font-semibold">Solutions</h2>
+                <h2 class="text-lg font-semibold sr-only"><?php esc_html_e( 'Site footer', 'piedmontglobal' ); ?></h2>
+                <h3 class="text-lg font-semibold">Solutions</h3>
                 <?php
                     $terms = get_terms(array(
                         'taxonomy'   => 'solution',  // your taxonomy slug
@@ -43,7 +44,7 @@
 
             <!-- Column 2 -->
             <div>
-                <h2 class="text-lg font-semibold">Industries</h2>
+                <h3 class="text-lg font-semibold">Industries</h3>
                 <ul class="space-y-4 mt-4  text-base font-normal text-[#F9F8F6]/70">
                     <?php
                         $industries = new WP_Query([
@@ -69,7 +70,7 @@
             
 
             <div>
-                <h2 class="text-lg font-semibold">Careers</h2>
+                <h3 class="text-lg font-semibold">Careers</h3>
                 <ul class="space-y-4 mt-4 text-base font-normal text-[#F9F8F6]/70">
                             <?php
                         $menu_items = wp_get_nav_menu_items(16);
@@ -87,7 +88,7 @@
 
             <!-- Column 4 -->
             <div>
-                <h2 class="text-lg font-semibold mb-4">Company</h2>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
                 <ul class="space-y-4 mt-4 text-base font-normal text-[#F9F8F6]/70">
                                 <?php
                 $menu_items = wp_get_nav_menu_items(7);
@@ -261,12 +262,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Lazy-init AOS on first interaction or when any [data-aos] nears viewport
     if (!document.querySelector('[data-aos]')) return;
 
+    // Respect user's reduced-motion preference (WCAG 2.3.3 / 2.2.2)
+    var reduceMotionMQ = (typeof window.matchMedia === 'function')
+        ? window.matchMedia('(prefers-reduced-motion: reduce)')
+        : null;
+    var prefersReducedMotion = !!(reduceMotionMQ && reduceMotionMQ.matches);
+
     var initialized = false;
     function initAOS() {
         if (initialized) return;
         initialized = true;
         if (window.AOS && typeof window.AOS.init === 'function') {
-            window.AOS.init({ once: true, duration: 600 });
+            window.AOS.init({
+                once: true,
+                duration: prefersReducedMotion ? 0 : 600,
+                disable: prefersReducedMotion ? true : false
+            });
         }
         // Cleanup listeners after init
         ['scroll','mousemove','touchstart','keydown'].forEach(function(evt) {

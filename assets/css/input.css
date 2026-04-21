@@ -413,6 +413,34 @@ button, input, textarea, select {
   text-decoration-color: #98c441;
 }
 
+/* Symposium speakers Owl carousel: equal-height slides */
+.symposium-speakers-carousel .owl-stage {
+  display: flex;
+}
+
+.symposium-speakers-carousel .owl-item {
+  display: flex;
+  height: auto;
+}
+
+.symposium-speakers-carousel .owl-item > .item {
+  display: flex;
+  width: 100%;
+}
+
+.symposium-speakers-carousel .owl-item > .item > .group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.symposium-speakers-carousel .owl-item > .item > .group > div {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ------------------- Single Post Page Styles ------------------- */
 /* Only applies to single.php pages */
 .single-post html {

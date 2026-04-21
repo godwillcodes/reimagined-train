@@ -88,19 +88,42 @@
 				this.hoverSuppressed = false;
 			};
 
-			this.root.addEventListener( 'keydown', handleRootKeydown, true );
-			this.listenerCleanup.push( () => {
-				this.root.removeEventListener( 'keydown', handleRootKeydown, true );
-			} );
-			this.root.addEventListener( 'pointerleave', handleRootPointerLeave );
-			this.listenerCleanup.push( () => {
-				this.root.removeEventListener( 'pointerleave', handleRootPointerLeave );
-			} );
+		this.root.addEventListener( 'keydown', handleRootKeydown, true );
+		this.listenerCleanup.push( () => {
+			this.root.removeEventListener( 'keydown', handleRootKeydown, true );
+		} );
+		this.root.addEventListener( 'pointerleave', handleRootPointerLeave );
+		this.listenerCleanup.push( () => {
+			this.root.removeEventListener( 'pointerleave', handleRootPointerLeave );
+		} );
 
-			document.addEventListener( 'click', this.handleDocumentClick );
-			this.listenerCleanup.push( () => {
-				document.removeEventListener( 'click', this.handleDocumentClick );
-			} );
+		document.addEventListener( 'click', this.handleDocumentClick );
+		this.listenerCleanup.push( () => {
+			document.removeEventListener( 'click', this.handleDocumentClick );
+		} );
+
+		// WCAG 1.4.13 (Content on Hover or Focus): Esc must dismiss hover-opened
+		// menus even when focus is not on the trigger/panel (e.g. mouse user hovered
+		// a menu open, then pressed Esc to close it).
+		this.handleGlobalEscape = ( event ) => {
+			if ( this.destroyed || ! this.currentMenuId ) {
+				return;
+			}
+			if ( event.key !== 'Escape' && event.key !== 'Esc' ) {
+				return;
+			}
+			// Only act if this controller currently owns an open menu and focus is
+			// NOT already inside the nav (that path is handled by handleMenuKeydown).
+			const activeElement = document.activeElement;
+			if ( this.root.contains( activeElement ) ) {
+				return;
+			}
+			this.closeMenu();
+		};
+		document.addEventListener( 'keydown', this.handleGlobalEscape );
+		this.listenerCleanup.push( () => {
+			document.removeEventListener( 'keydown', this.handleGlobalEscape );
+		} );
 
 			if ( typeof desktopMedia.addEventListener === 'function' ) {
 				desktopMedia.addEventListener( 'change', this.handleMediaChange );

@@ -55,56 +55,65 @@
 $related_blogs = get_field('related_blogs');
 if ($related_blogs):
 ?>
-<section class="bg-white py-20">
+<section class="bg-white py-20" aria-labelledby="related-resources-heading">
     <div class="max-w-7xl mx-auto px-6 lg:px-0">
-        <div class="flex items-center justify-between mb-12">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900">Related resources</h2>
-            <div class="flex items-center gap-3">
-                <button id="related-blogs-prev" aria-label="Previous"
-                    class="p-2 bg-[#cccccc] rounded hover:bg-[#98C441] text-[#1F3131] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="related-blogs-next" aria-label="Next"
-                    class="p-2 bg-[#cccccc] rounded hover:bg-[#98C441] text-[#1F3131] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-                
-            </div>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-12">
+            <h2 id="related-resources-heading" class="text-2xl md:text-3xl font-bold text-gray-900">
+                <?php esc_html_e( 'Related resources', 'piedmontglobal' ); ?>
+            </h2>
+            <?php
+            if ( function_exists( 'pg_render_carousel_controls' ) ) {
+                pg_render_carousel_controls( [
+                    'base_id'      => 'related-resources',
+                    'region_label' => __( 'Related resources', 'piedmontglobal' ),
+                ] );
+            }
+            ?>
         </div>
 
         <div class="relative">
-            <div class="owl-carousel related-blogs-carousel" role="region" aria-roledescription="carousel" aria-label="Related resources">
-            <?php foreach ($related_blogs as $post): setup_postdata($post); ?>
+            <div class="owl-carousel related-blogs-carousel"
+                role="region"
+                aria-roledescription="carousel"
+                aria-labelledby="related-resources-heading"
+                tabindex="0"
+                data-pg-carousel-controls="related-resources">
+            <?php foreach ($related_blogs as $post): setup_postdata($post);
+                $thumb_id  = get_post_thumbnail_id();
+                $thumb_alt = $thumb_id ? trim( (string) get_post_meta( $thumb_id, '_wp_attachment_image_alt', true ) ) : '';
+                if ( '' === $thumb_alt ) {
+                    $thumb_alt = get_the_title();
+                }
+            ?>
             <a href="<?php the_permalink(); ?>"
-                class="group flex flex-col h-full shadow-md relative rounded-lg border bg-white border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-stone-300/30 mx-3">
+                class="group flex flex-col h-full shadow-md relative rounded-lg border bg-white border-gray-200 transition-all duration-300 hover:shadow-xl hover:border-stone-300/30 mx-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
 
                 <div class="overflow-hidden rounded-t-lg">
                     <?php if (has_post_thumbnail()): ?>
-                    <?php the_post_thumbnail('full', ['class' => 'w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105']); ?>
+                    <?php the_post_thumbnail('full', [
+                        'class'    => 'w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105',
+                        'alt'      => esc_attr( $thumb_alt ),
+                        'loading'  => 'lazy',
+                        'decoding' => 'async',
+                    ]); ?>
                     <?php endif; ?>
                 </div>
 
                 <div class="p-6 flex flex-col flex-1 min-h-[230px]">
                     <div class="flex items-center gap-2 text-gray-500 text-sm mb-3">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        <?php echo get_the_date('F j, Y'); ?>
+                        <span><?php echo esc_html( get_the_date( 'F j, Y' ) ); ?></span>
                     </div>
                     <h3 class="text-xl font-semibold text-[#1F3131] mb-3 flex-grow"><?php the_title(); ?></h3>
                     <div class="mt-auto pt-4">
                         <span
                             class="inline-flex items-center text-sm font-semibold text-[#D16555] group-hover:gap-2 transition-all duration-300">
-                            Read More
+                            <?php esc_html_e( 'Read More', 'piedmontglobal' ); ?>
                             <svg class="w-5 h-5 ml-1 transform group-hover:translate-x-1 transition-transform duration-300"
-                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17 8l4 4m0 0l-4 4m4-4H3" />
                             </svg>

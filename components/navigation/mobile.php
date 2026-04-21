@@ -73,7 +73,7 @@ if ($custom_logo_id) {
             <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/icons/menu.svg'); ?>"
                 class="h-6 w-auto transition-opacity duration-200"
                 :class="{ 'opacity-50': open }"
-                alt="Menu Icon">
+                alt="">
         </button>
 
         <!-- Overlay -->
@@ -102,7 +102,9 @@ if ($custom_logo_id) {
              class="fixed inset-x-4 bottom-4 z-50 rounded-2xl bg-white/20 backdrop-blur-2xl ring-1 ring-white/10 shadow-xl p-6 text-white max-h-[80vh] overflow-y-auto"
              style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(20px);" 
              role="dialog"
+             aria-modal="true"
              aria-label="Mobile menu"
+             data-mobile-nav-dialog
              @click.away="open = false; submenu = null; isTransitioning = false">
 
             <!-- Main Menu -->
@@ -170,7 +172,7 @@ if ($custom_logo_id) {
                  x-transition:leave-start="opacity-100 translate-x-0"
                  x-transition:leave-end="opacity-0 translate-x-8">
                 <div class="flex justify-between items-center mb-6">
-                    <button @click="closeSubmenu()" aria-label="Back to main menu"
+                    <button @click="closeSubmenu()" aria-label="<?php echo esc_attr__( 'Back to main menu', 'piedmontglobal' ); ?>"
                             class="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50 rounded-md p-1">
                         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
@@ -244,9 +246,9 @@ if ($custom_logo_id) {
                      x-transition:leave-end="opacity-0 translate-y-4"
                      class="space-y-3">
                     <div class="flex justify-between items-center mb-2">
-                        <button @click="openSubmenu('solutions')" 
+                        <button @click="openSubmenu('solutions')" aria-label="<?php echo esc_attr__( 'Back to solutions', 'piedmontglobal' ); ?>"
                                 class="text-white hover:text-gray-300 focus:outline-none focus:ring-2 focus:ring-white/50 rounded-md p-1">
-                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
                             </svg>
                         </button>
@@ -375,3 +377,100 @@ if ($custom_logo_id) {
     </div>
 
 </div>
+
+<script>
+/**
+ * Mobile navigation dialog: focus trap, focus restoration, and inert background.
+ * Complements Alpine state by working with the existing trigger/dialog DOM.
+ */
+(function () {
+    'use strict';
+
+    var trigger = document.getElementById('mobile-menu-trigger');
+    var dialog  = document.querySelector('[data-mobile-nav-dialog]');
+    if (!trigger || !dialog) {
+        return;
+    }
+
+    var FOCUSABLE = [
+        'a[href]',
+        'button:not([disabled])',
+        'input:not([disabled]):not([type="hidden"])',
+        'select:not([disabled])',
+        'textarea:not([disabled])',
+        '[tabindex]:not([tabindex="-1"])'
+    ].join(',');
+
+    var previouslyFocused = null;
+
+    function getVisibleFocusable() {
+        var nodes = dialog.querySelectorAll(FOCUSABLE);
+        var visible = [];
+        for (var i = 0; i < nodes.length; i++) {
+            var n = nodes[i];
+            if (n.offsetParent !== null && !n.hasAttribute('aria-hidden')) {
+                visible.push(n);
+            }
+        }
+        return visible;
+    }
+
+    function trapTab(e) {
+        if (e.key !== 'Tab') {
+            return;
+        }
+        var nodes = getVisibleFocusable();
+        if (!nodes.length) {
+            e.preventDefault();
+            return;
+        }
+        var first = nodes[0];
+        var last  = nodes[nodes.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
+    }
+
+    function isOpen() {
+        return !dialog.hasAttribute('x-cloak') && dialog.offsetParent !== null;
+    }
+
+    function onOpen() {
+        previouslyFocused = document.activeElement;
+        document.addEventListener('keydown', trapTab);
+        var nodes = getVisibleFocusable();
+        if (nodes.length) {
+            window.setTimeout(function () { nodes[0].focus(); }, 50);
+        }
+    }
+
+    function onClose() {
+        document.removeEventListener('keydown', trapTab);
+        if (previouslyFocused && typeof previouslyFocused.focus === 'function') {
+            previouslyFocused.focus();
+        }
+        previouslyFocused = null;
+    }
+
+    var wasOpen = false;
+    var observer = new MutationObserver(function () {
+        var openNow = isOpen();
+        if (openNow && !wasOpen) {
+            wasOpen = true;
+            onOpen();
+        } else if (!openNow && wasOpen) {
+            wasOpen = false;
+            onClose();
+        }
+    });
+
+    observer.observe(dialog, {
+        attributes: true,
+        attributeFilter: ['style', 'class', 'x-cloak', 'hidden']
+    });
+})();
+</script>

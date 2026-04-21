@@ -309,7 +309,7 @@ $panel_footer_link_compact_classes = 'flex flex-col space-y-1 mt-4 pt-4 border-t
 
         <div>
             <a href="/contact"
-                class="inline-flex items-center gap-2 bg-[#98C441] text-[#1F3131] px-4 py-2 font-bold text-base shadow-md rounded-0 hover:bg-[#8AB738] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#98C441] focus:ring-offset-[#1F3131] transition-colors duration-200"
+                class="inline-flex items-center gap-2 bg-[#98C441] text-[#1F3131] px-4 py-2 font-bold text-base shadow-md rounded-0 hover:bg-[#8AB738] focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-[#1F3131] transition-colors duration-200"
                 aria-label="Schedule a consultation - opens contact form">
                 <span>Schedule a consultation</span>
             </a>

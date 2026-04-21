@@ -239,9 +239,19 @@ get_header();
         <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
             aria-labelledby="compliance-title">
             <!-- Left Box (Image) -->
-            <div class="h-full flex items-center justify-center" aria-labelledby="<?php the_title(); ?>">
+            <div class="h-full flex items-center justify-center">
+                <?php
+                $compliance_thumb_id  = get_post_thumbnail_id();
+                $compliance_thumb_alt = $compliance_thumb_id ? trim( (string) get_post_meta( $compliance_thumb_id, '_wp_attachment_image_alt', true ) ) : '';
+                if ( '' === $compliance_thumb_alt ) {
+                    /* translators: %s: industry post title */
+                    $compliance_thumb_alt = sprintf( esc_attr__( 'Compliance illustration for %s', 'piedmont-global-wp' ), get_the_title() );
+                }
+                ?>
                 <img src="<?php echo esc_url(get_the_post_thumbnail_url(get_the_ID(), 'full') ?: '/wp-content/uploads/iStock-1454186321-2.png'); ?>"
-                    class="h-[300px] lg:h-[500px] w-full object-contain object-center" alt="<?php the_title(); ?>">
+                    class="h-[300px] lg:h-[500px] w-full object-contain object-center"
+                    alt="<?php echo esc_attr( $compliance_thumb_alt ); ?>"
+                    loading="lazy" decoding="async">
             </div>
 
             <!-- Right Content -->

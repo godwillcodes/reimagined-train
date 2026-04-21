@@ -5,16 +5,17 @@
  */
 get_header();
 ?>
-<header class="shadow-sm bg-[#1F3131]" role="banner">
-    <div class="bg-[#1F3131] pt-8 pb-6">
-        <nav aria-label="Primary desktop navigation">
-            <?php get_template_part('components/navigation/desktop'); ?>
-        </nav>
-        <nav aria-label="Primary mobile navigation">
-            <?php get_template_part('components/navigation/mobile'); ?>
-        </nav>
-    </div>
+<div class="bg-[#1F3131] pt-8 pb-6">
+    <nav aria-label="Primary desktop navigation">
+        <?php get_template_part('components/navigation/desktop'); ?>
+    </nav>
+    <nav aria-label="Primary mobile navigation">
+        <?php get_template_part('components/navigation/mobile'); ?>
+    </nav>
+</div>
 
+<main id="maincontent">
+<section class="shadow-sm bg-[#1F3131]" aria-labelledby="symposium-hero-heading">
     <div class="relative py-16 lg:py-20 bg-cover bg-no-repeat bg-right-bottom"
         style="background-image: url('<?php echo esc_url(get_template_directory_uri() . '/assets/icons/single-industries.svg'); ?>');">
 
@@ -47,10 +48,12 @@ get_header();
 
                 <!-- Heading -->
                 <?php if ($event_title): ?>
-                <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-5xl mb-6 leading-tight"
+                <h1 id="symposium-hero-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-5xl mb-6 leading-tight"
                     data-aos="fade-up" data-aos-delay="50">
                     <?php echo esc_html($event_title); ?>
                 </h1>
+                <?php else: ?>
+                <h1 id="symposium-hero-heading" class="sr-only"><?php esc_html_e( 'Language Access Symposium', 'piedmontglobal' ); ?></h1>
                 <?php endif; ?>
 
                 <?php if ($event_description): ?>
@@ -89,7 +92,7 @@ get_header();
                             <div
                                 class="w-12 h-12 rounded-xl bg-[#98C441]/15 flex items-center justify-center flex-shrink-0">
                                 <svg class="w-6 h-6 text-[#98C441]" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    viewBox="0 0 24 24">
+                                    viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
                                 </svg>
@@ -111,7 +114,7 @@ get_header();
                             <div
                                 class="w-12 h-12 rounded-xl bg-[#98C441]/15 flex items-center justify-center flex-shrink-0">
                                 <svg class="w-6 h-6 text-[#98C441]" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    viewBox="0 0 24 24">
+                                    viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -133,7 +136,7 @@ get_header();
                             <div
                                 class="w-12 h-12 rounded-xl bg-[#98C441]/15 flex items-center justify-center flex-shrink-0">
                                 <svg class="w-6 h-6 text-[#98C441]" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    viewBox="0 0 24 24">
+                                    viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -157,7 +160,7 @@ get_header();
                             <div
                                 class="w-12 h-12 rounded-xl bg-[#98C441]/15 flex items-center justify-center flex-shrink-0">
                                
-								<svg  class="w-6 h-6 text-[#98C441]" fill="#98c440" viewBox="0 -0.5 122.88 122.88" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="enable-background:new 0 0 122.88 121.87" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M97.34,0.74c0.86-0.93,2.3-0.99,3.23-0.13c0.93,0.86,0.99,2.3,0.13,3.23L81.98,24.1l-0.03,0.04 c-2.29,2.77-3.86,5.33-4.56,7.67c-0.62,2.07-0.53,3.95,0.39,5.59c0.49,0.88,0.33,1.96-0.32,2.67l0,0l-8.89,9.62 c-0.87-0.95-1.56-1.72-2.02-2.22c-0.21-0.28-0.45-0.55-0.7-0.81l-0.02,0.02c-0.12-0.13-0.25-0.25-0.38-0.37l7.6-8.23 c-0.89-2.38-0.88-4.91-0.06-7.6c0.88-2.92,2.75-6.03,5.44-9.27c0.06-0.08,0.11-0.16,0.18-0.23L97.32,0.72L97.34,0.74L97.34,0.74z M57.13,55.01c-0.84-0.94-0.76-2.39,0.18-3.23c0.94-0.84,2.39-0.76,3.23,0.18c9.41,10.54,38.5,41.73,46.56,53.39 c10.63,15.05-5.83,19.79-11.29,14.31c-13.64-13.19-42.6-46.82-55.33-61.08c-4.58,1.94-9.03,2.24-13.5,0.96 c-4.81-1.37-9.52-4.58-14.3-9.51l-0.06-0.06c-3.64-3.84-6.49-7.63-8.55-11.38c-2.11-3.86-3.4-7.68-3.86-11.47 c-0.49-4.08-0.11-7.88,0.99-11.25c1.29-3.96,3.58-7.31,6.58-9.8c3.02-2.5,6.73-4.12,10.87-4.62c3.44-0.41,7.19-0.06,11.07,1.21 c5.37,1.75,11.63,6.1,16.82,11.68c3.83,4.11,7.11,8.92,9.06,13.87c2.03,5.16,2.65,10.5,1.02,15.5c-0.96,2.96-2.7,5.74-5.4,8.25 c-0.93,0.86-2.37,0.8-3.23-0.12c-0.86-0.93-0.8-2.37,0.12-3.23c2.09-1.95,3.43-4.08,4.16-6.33c1.26-3.87,0.73-8.16-0.93-12.38 c-1.74-4.42-4.69-8.74-8.15-12.45c-4.68-5.02-10.23-8.91-14.91-10.44c-3.21-1.04-6.28-1.34-9.09-1c-3.26,0.4-6.18,1.65-8.51,3.6 c-2.34,1.95-4.13,4.58-5.16,7.71c-0.89,2.73-1.2,5.87-0.79,9.26c0.39,3.2,1.5,6.47,3.32,9.81c1.91,3.43,4.53,6.9,7.9,10.45 l0.02,0.03c4.22,4.35,8.27,7.15,12.28,8.29c3.79,1.08,7.65,0.66,11.68-1.35c0.92-0.53,2.11-0.35,2.84,0.47 c12.42,13.91,42.63,48.92,56.01,61.89c5.81,2.37,9.03-0.55,6.25-5.7C100.7,102.43,63.5,62.17,57.13,55.01L57.13,55.01L57.13,55.01z M45.07,75.12l-29.16,31.55c-0.06,0.06-0.11,0.12-0.18,0.18c-4.26,4.6,3.28,11.3,7.96,6.82l28.32-30.65l3.04,3.45l-28.1,30.41l0,0 c-0.06,0.07-0.12,0.13-0.2,0.2c-1.68,1.41-3.37,2.33-5.08,2.71c-1.76,0.4-3.49,0.22-5.15-0.56c-0.28-0.11-0.54-0.25-0.77-0.46 l-4.03-3.73l0,0c-0.06-0.06-0.12-0.11-0.18-0.18c-1.56-1.8-2.3-3.72-2.1-5.75c0.19-1.92,1.21-3.79,3.14-5.59l29.44-31.86 L45.07,75.12L45.07,75.12z M75.63,57.46l1.73-1.87c0.86-0.93,2.31-0.99,3.23-0.13s0.99,2.3,0.13,3.23l-2,2.16L75.63,57.46 L75.63,57.46z M104.45,7.43c0.86-0.93,2.3-0.99,3.23-0.13c0.93,0.86,0.99,2.3,0.13,3.23L91.4,28.3c-0.86,0.93-2.3,0.99-3.23,0.13 c-0.93-0.86-0.99-2.3-0.13-3.23L104.45,7.43L104.45,7.43L104.45,7.43z M111.55,14c0.86-0.93,2.3-0.99,3.23-0.13 c0.93,0.86,0.99,2.3,0.13,3.23L98.51,34.86c-0.86,0.93-2.3,0.99-3.23,0.13c-0.93-0.86-0.99-2.3-0.13-3.23L111.55,14L111.55,14 L111.55,14z M118.91,20.83c0.86-0.93,2.3-0.99,3.23-0.13c0.93,0.86,0.99,2.31,0.13,3.23L103.55,44.2c-0.07,0.07-0.14,0.13-0.21,0.2 c-4.26,4.1-8.33,6.47-12.22,7.14c-4.22,0.73-8.09-0.47-11.64-3.57c-0.95-0.83-1.04-2.28-0.22-3.22c0.83-0.95,2.28-1.04,3.22-0.22 c2.45,2.14,5.07,2.98,7.84,2.49c2.98-0.51,6.26-2.48,9.84-5.93l0.02-0.02l18.71-20.25L118.91,20.83L118.91,20.83z"></path> </g> </g></svg>
+								<svg  class="w-6 h-6 text-[#98C441]" fill="#98c440" viewBox="0 -0.5 122.88 122.88" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" style="enable-background:new 0 0 122.88 121.87" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M97.34,0.74c0.86-0.93,2.3-0.99,3.23-0.13c0.93,0.86,0.99,2.3,0.13,3.23L81.98,24.1l-0.03,0.04 c-2.29,2.77-3.86,5.33-4.56,7.67c-0.62,2.07-0.53,3.95,0.39,5.59c0.49,0.88,0.33,1.96-0.32,2.67l0,0l-8.89,9.62 c-0.87-0.95-1.56-1.72-2.02-2.22c-0.21-0.28-0.45-0.55-0.7-0.81l-0.02,0.02c-0.12-0.13-0.25-0.25-0.38-0.37l7.6-8.23 c-0.89-2.38-0.88-4.91-0.06-7.6c0.88-2.92,2.75-6.03,5.44-9.27c0.06-0.08,0.11-0.16,0.18-0.23L97.32,0.72L97.34,0.74L97.34,0.74z M57.13,55.01c-0.84-0.94-0.76-2.39,0.18-3.23c0.94-0.84,2.39-0.76,3.23,0.18c9.41,10.54,38.5,41.73,46.56,53.39 c10.63,15.05-5.83,19.79-11.29,14.31c-13.64-13.19-42.6-46.82-55.33-61.08c-4.58,1.94-9.03,2.24-13.5,0.96 c-4.81-1.37-9.52-4.58-14.3-9.51l-0.06-0.06c-3.64-3.84-6.49-7.63-8.55-11.38c-2.11-3.86-3.4-7.68-3.86-11.47 c-0.49-4.08-0.11-7.88,0.99-11.25c1.29-3.96,3.58-7.31,6.58-9.8c3.02-2.5,6.73-4.12,10.87-4.62c3.44-0.41,7.19-0.06,11.07,1.21 c5.37,1.75,11.63,6.1,16.82,11.68c3.83,4.11,7.11,8.92,9.06,13.87c2.03,5.16,2.65,10.5,1.02,15.5c-0.96,2.96-2.7,5.74-5.4,8.25 c-0.93,0.86-2.37,0.8-3.23-0.12c-0.86-0.93-0.8-2.37,0.12-3.23c2.09-1.95,3.43-4.08,4.16-6.33c1.26-3.87,0.73-8.16-0.93-12.38 c-1.74-4.42-4.69-8.74-8.15-12.45c-4.68-5.02-10.23-8.91-14.91-10.44c-3.21-1.04-6.28-1.34-9.09-1c-3.26,0.4-6.18,1.65-8.51,3.6 c-2.34,1.95-4.13,4.58-5.16,7.71c-0.89,2.73-1.2,5.87-0.79,9.26c0.39,3.2,1.5,6.47,3.32,9.81c1.91,3.43,4.53,6.9,7.9,10.45 l0.02,0.03c4.22,4.35,8.27,7.15,12.28,8.29c3.79,1.08,7.65,0.66,11.68-1.35c0.92-0.53,2.11-0.35,2.84,0.47 c12.42,13.91,42.63,48.92,56.01,61.89c5.81,2.37,9.03-0.55,6.25-5.7C100.7,102.43,63.5,62.17,57.13,55.01L57.13,55.01L57.13,55.01z M45.07,75.12l-29.16,31.55c-0.06,0.06-0.11,0.12-0.18,0.18c-4.26,4.6,3.28,11.3,7.96,6.82l28.32-30.65l3.04,3.45l-28.1,30.41l0,0 c-0.06,0.07-0.12,0.13-0.2,0.2c-1.68,1.41-3.37,2.33-5.08,2.71c-1.76,0.4-3.49,0.22-5.15-0.56c-0.28-0.11-0.54-0.25-0.77-0.46 l-4.03-3.73l0,0c-0.06-0.06-0.12-0.11-0.18-0.18c-1.56-1.8-2.3-3.72-2.1-5.75c0.19-1.92,1.21-3.79,3.14-5.59l29.44-31.86 L45.07,75.12L45.07,75.12z M75.63,57.46l1.73-1.87c0.86-0.93,2.31-0.99,3.23-0.13s0.99,2.3,0.13,3.23l-2,2.16L75.63,57.46 L75.63,57.46z M104.45,7.43c0.86-0.93,2.3-0.99,3.23-0.13c0.93,0.86,0.99,2.3,0.13,3.23L91.4,28.3c-0.86,0.93-2.3,0.99-3.23,0.13 c-0.93-0.86-0.99-2.3-0.13-3.23L104.45,7.43L104.45,7.43L104.45,7.43z M111.55,14c0.86-0.93,2.3-0.99,3.23-0.13 c0.93,0.86,0.99,2.3,0.13,3.23L98.51,34.86c-0.86,0.93-2.3,0.99-3.23,0.13c-0.93-0.86-0.99-2.3-0.13-3.23L111.55,14L111.55,14 L111.55,14z M118.91,20.83c0.86-0.93,2.3-0.99,3.23-0.13c0.93,0.86,0.99,2.31,0.13,3.23L103.55,44.2c-0.07,0.07-0.14,0.13-0.21,0.2 c-4.26,4.1-8.33,6.47-12.22,7.14c-4.22,0.73-8.09-0.47-11.64-3.57c-0.95-0.83-1.04-2.28-0.22-3.22c0.83-0.95,2.28-1.04,3.22-0.22 c2.45,2.14,5.07,2.98,7.84,2.49c2.98-0.51,6.26-2.48,9.84-5.93l0.02-0.02l18.71-20.25L118.91,20.83L118.91,20.83z"></path> </g> </g></svg>
                             </div>
                             <div>
                                 <?php if ($event_refreshments_title): ?>
@@ -186,7 +189,7 @@ get_header();
                     <a href="<?php echo esc_url($cta_button_url ?: '#register'); ?>"
                         class="inline-flex items-center justify-center gap-2 bg-[#98C441] text-[#1F3131] px-8 py-4 font-bold text-base shadow-lg hover:bg-[#8AB738] hover:shadow-xl transition-all duration-200">
                         <span><?php echo esc_html($cta_button_text); ?></span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                         </svg>
@@ -195,7 +198,7 @@ get_header();
                     <?php if ($cta_subtext): ?>
                     <span class="inline-flex items-center gap-2 text-white/70 text-sm px-4 py-4">
                         <svg class="w-4 h-4 text-[#98C441]" fill="none" stroke="currentColor" stroke-width="2"
-                            viewBox="0 0 24 24">
+                            viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
                         </svg>
@@ -206,33 +209,33 @@ get_header();
                 <?php endif; ?>
  <?php if ( is_page(1715) ) : ?>
     <!-- Sponsor Callout (static, non-ACF) -->
-    <div class="mt-10 max-w-2xl border border-white/[0.14] bg-[linear-gradient(120deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-5 py-2 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.35)] backdrop-blur-[2px] md:px-7 md:py-4"
-        data-aos="fade-up" data-aos-delay="125" aria-label="Event sponsors">
+    <aside class="mt-10 max-w-2xl border border-white/[0.14] bg-[linear-gradient(120deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-5 py-2 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.35)] backdrop-blur-[2px] md:px-7 md:py-4"
+        data-aos="fade-up" data-aos-delay="125" aria-label="<?php echo esc_attr__( 'Event sponsors', 'piedmontglobal' ); ?>">
         <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
                 <p class="text-base font-semibold uppercase tracking-[0.14em] text-white/55">
                     In collaboration with
                 </p>
                 <p class="mt-2 text-[15px] md:text-base font-semibold tracking-[0.01em] text-white">
-                    Piedmont Global & Birnbaum Interpreting Services
+                    Piedmont Global &amp; Birnbaum Interpreting Services
                 </p>
             </div>
             <div class="inline-flex items-center border border-white/[0.08] bg-white/[0.04] px-3 py-2">
                 <img
                     src="https://piedmontglobal.com/wp-content/uploads/SHRM-Partner-badge-rev.webp"
-                    alt="SHRM Recertification Provider badge"
+                    alt="SHRM Recertification Provider"
                     class="h-12 w-auto md:h-22"
                     loading="lazy"
                     decoding="async"
                 />
             </div>
         </div>
-    </div>
+    </aside>
 <?php endif; ?>
             </div>
         </div>
     </div>
-</header>
+</section>
 
 <!-- Symposium Agenda Section -->
 <?php
@@ -348,8 +351,8 @@ if ($speakers && is_array($speakers) && count($speakers) > 0):
     <div class="pointer-events-none absolute inset-0 opacity-[0.35]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;72&quot; height=&quot;72&quot; viewBox=&quot;0 0 72 72&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%231F3131&quot; fill-opacity=&quot;0.035&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');" aria-hidden="true"></div>
 
     <div class="relative max-w-7xl mx-auto px-6 lg:px-0">
-        <!-- Section Header -->
-        <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-14 md:mb-20" data-aos="fade-up">
+        <!-- Section Header + carousel controls (same pattern as related-blogs / FAQs related) -->
+        <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between mb-10 md:mb-14" data-aos="fade-up">
             <div class="max-w-2xl">
                 <div class="inline-flex items-stretch border border-[#1F3131]/[.09] overflow-hidden mb-5 bg-white/60 backdrop-blur-sm shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
                     role="doc-subtitle">
@@ -362,12 +365,27 @@ if ($speakers && is_array($speakers) && count($speakers) > 0):
                 </div>
                 <h2 class="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold text-[#1F3131] leading-[1.12] tracking-tight">Featured Speakers</h2>
             </div>
+            <div class="flex shrink-0 items-center gap-3">
+                <button type="button" id="symposium-speakers-prev" aria-label="<?php echo esc_attr__('Previous speakers', 'piedmontglobal'); ?>"
+                    class="p-2 bg-[#cccccc] rounded hover:bg-[#98C441] text-[#1F3131] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" class="w-6 h-6" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button type="button" id="symposium-speakers-next" aria-label="<?php echo esc_attr__('Next speakers', 'piedmontglobal'); ?>"
+                    class="p-2 bg-[#cccccc] rounded hover:bg-[#98C441] text-[#1F3131] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" class="w-6 h-6" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
         </div>
 
-        <!-- Speakers Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="relative" data-aos="fade-up">
+            <div class="owl-carousel owl-theme symposium-speakers-carousel" role="region" aria-roledescription="carousel" aria-label="<?php echo esc_attr__('Featured speakers', 'piedmontglobal'); ?>">
             <?php 
-            $speaker_index   = 0;
             $speakers_for_js = [];
             foreach ($speakers as $index => $speaker): 
                 $speaker_image       = $speaker['speaker_image'] ?? '';
@@ -375,7 +393,6 @@ if ($speakers && is_array($speakers) && count($speakers) > 0):
                 $speaker_title       = $speaker['speaker_title'] ?? '';
                 $speaker_description = $speaker['speaker_description'] ?? '';
                 $speaker_linkedin    = $speaker['speaker_linkedin'] ?? '';
-                $delay               = $speaker_index * 100;
 
                 // Prepare data for modal (description is WYSIWYG, sanitize with kses)
                 $speakers_for_js[] = [
@@ -386,102 +403,106 @@ if ($speakers && is_array($speakers) && count($speakers) > 0):
                     'description' => wp_kses_post($speaker_description),
                 ];
             ?>
-            <div class="group cursor-pointer rounded-2xl outline-none focus:ring-2 focus:ring-[#98C441]/40 focus:ring-offset-2 focus:ring-offset-[#f7f6f4]"
-                 role="button"
-                 tabindex="0"
-                 onclick="openSpeakerModal(<?php echo (int) $index; ?>)"
-                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openSpeakerModal(<?php echo (int) $index; ?>);}"
-                 data-aos="fade-up"
-                 data-aos-duration="400"
-                 data-aos-delay="<?php echo (int) $delay; ?>"
-                 data-aos-easing="ease-out">
-                <div class="relative overflow-hidden rounded-2xl border border-gray-200/90 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-4px_rgba(15,23,42,0.08)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gray-300/90 hover:shadow-[0_12px_40px_-8px_rgba(15,23,42,0.14)]">
-                    <!-- Photo -->
-                    <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
-                        <?php if ($speaker_image): ?>
-                            <img 
-                                src="<?php echo esc_url($speaker_image); ?>" 
-                                alt="<?php echo esc_attr($speaker_name); ?>"
-                                class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-                                loading="lazy"
-                                decoding="async"
-                            >
-                        <?php else: ?>
-                            <div class="w-full h-full bg-[#1F3131]/5 flex items-center justify-center">
-                                <span class="text-5xl font-bold text-[#1F3131]/20">
-                                    <?php
-                                    $speaker_initial = function_exists('mb_substr')
-                                        ? mb_substr((string) $speaker_name, 0, 1)
-                                        : substr((string) $speaker_name, 0, 1);
-                                    echo esc_html($speaker_initial);
-                                    ?>
-                                </span>
-                            </div>
-                        <?php endif; ?>
+            <div class="item h-full px-1 sm:px-2">
+            <div class="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-2xl border border-gray-200/90 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-4px_rgba(15,23,42,0.08)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-gray-300/90 hover:shadow-[0_12px_40px_-8px_rgba(15,23,42,0.14)] focus-within:-translate-y-1 focus-within:border-gray-300/90 focus-within:shadow-[0_12px_40px_-8px_rgba(15,23,42,0.14)]">
 
-                        <!-- Gradient Overlay & Hover Content -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#1F3131]/92 via-[#1F3131]/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-3 group-hover:translate-y-0">
-                            <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium tracking-wide text-white/95 backdrop-blur-sm">
-                                <span class="h-1.5 w-1.5 rounded-full bg-[#98C441]"></span>
-                                View bio
+                <!-- Primary action: open bio modal -->
+                <button
+                    type="button"
+                    onclick="openSpeakerModal(<?php echo (int) $index; ?>)"
+                    class="absolute inset-0 z-10 cursor-pointer rounded-2xl bg-transparent text-left outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 focus-visible:ring-offset-[#f7f6f4]"
+                    aria-label="<?php
+                        $speaker_label = trim($speaker_name . ($speaker_title ? ', ' . $speaker_title : ''));
+                        /* translators: %s: speaker name (and optional title) */
+                        echo esc_attr( sprintf( __( 'View bio for %s', 'piedmontglobal' ), $speaker_label ) );
+                    ?>"
+                ></button>
+
+                <!-- Photo -->
+                <div class="relative aspect-[4/5] w-full flex-shrink-0 overflow-hidden bg-gray-100">
+                    <?php if ($speaker_image): ?>
+                        <img
+                            src="<?php echo esc_url($speaker_image); ?>"
+                            alt=""
+                            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    <?php else: ?>
+                        <div class="w-full h-full bg-[#1F3131]/5 flex items-center justify-center">
+                            <span class="text-5xl font-bold text-[#1F3131]/20" aria-hidden="true">
+                                <?php
+                                $speaker_initial = function_exists('mb_substr')
+                                    ? mb_substr((string) $speaker_name, 0, 1)
+                                    : substr((string) $speaker_name, 0, 1);
+                                echo esc_html($speaker_initial);
+                                ?>
                             </span>
-                            <?php if (!empty($speaker_linkedin)) : ?>
-                                <div class="flex items-center gap-3">
-                                    <a 
-                                        href="<?php echo esc_url($speaker_linkedin); ?>" 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        onclick="event.stopPropagation();"
-                                        class="mt-3 flex h-10 w-10 items-center justify-center rounded-lg border border-white/25 bg-white/10 text-white backdrop-blur-md transition-colors duration-200 hover:border-[#98C441]/50 hover:bg-[#98C441]"
-                                        title="View LinkedIn Profile"
-                                    >
-                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                        </svg>
-                                    </a>
-                                </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <!-- Decorative gradient overlay (hover only) -->
+                    <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1F3131]/92 via-[#1F3131]/35 to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
+                    <div class="pointer-events-none absolute inset-0 flex flex-col justify-end p-5 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-300 translate-y-3 group-hover:translate-y-0 group-focus-within:translate-y-0" aria-hidden="true">
+                        <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium tracking-wide text-white/95 backdrop-blur-sm">
+                            <span class="h-1.5 w-1.5 rounded-full bg-[#98C441]"></span>
+                            View bio
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="relative flex flex-1 flex-col border-t border-gray-100/90 p-5 md:p-6">
+                    <div class="pointer-events-none absolute left-0 top-0 h-[2px] w-full origin-left scale-x-0 bg-gradient-to-r from-[#98C441] to-[#98C441]/30 transition-transform duration-300 group-hover:scale-x-100 group-focus-within:scale-x-100" aria-hidden="true"></div>
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="min-w-0 flex-1">
+                            <?php if ($speaker_name): ?>
+                                <h3 class="text-lg font-semibold tracking-tight text-[#1F3131] md:text-xl mb-1 transition-colors duration-200 group-hover:text-[#1a2b2b]">
+                                    <?php echo esc_html($speaker_name); ?>
+                                </h3>
+                            <?php endif; ?>
+                            <?php if ($speaker_title): ?>
+                                <p class="text-sm font-medium leading-snug text-[#1F3131]/55 line-clamp-2">
+                                    <?php echo esc_html($speaker_title); ?>
+                                </p>
                             <?php endif; ?>
                         </div>
-                    </div>
-
-                    <!-- Info -->
-                    <div class="relative border-t border-gray-100/90 p-5 md:p-6">
-                        <div class="absolute left-0 top-0 h-[2px] w-full origin-left scale-x-0 bg-gradient-to-r from-[#98C441] to-[#98C441]/30 transition-transform duration-300 group-hover:scale-x-100"></div>
-                        <div class="flex items-start justify-between gap-4">
-                            <div class="min-w-0 flex-1">
-                                <?php if ($speaker_name): ?>
-                                    <h3 class="text-lg font-semibold tracking-tight text-[#1F3131] md:text-xl mb-1 transition-colors duration-200 group-hover:text-[#1a2b2b]">
-                                        <?php echo esc_html($speaker_name); ?>
-                                    </h3>
-                                <?php endif; ?>
-                                <?php if ($speaker_title): ?>
-                                    <p class="text-sm font-medium leading-snug text-[#1F3131]/55 line-clamp-2">
-                                        <?php echo esc_html($speaker_title); ?>
-                                    </p>
-                                <?php endif; ?>
-                            </div>
-                            <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-gray-200/80 bg-gray-50/90 text-gray-400 transition-all duration-300 group-hover:border-[#98C441]/35 group-hover:bg-[#98C441]/10 group-hover:text-[#1F3131]">
-                                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="flex items-center gap-2">
+                            <?php if (!empty($speaker_linkedin)) : ?>
+                                <!-- LinkedIn link is a sibling of the primary button: keyboard reachable, raised above overlay button via z-index -->
+                                <a
+                                    href="<?php echo esc_url($speaker_linkedin); ?>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="relative z-20 inline-flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-gray-200/80 bg-white text-gray-500 transition-colors duration-200 hover:border-[#0a66c2]/40 hover:bg-[#0a66c2] hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0a66c2] focus-visible:ring-offset-2"
+                                    aria-label="<?php
+                                        /* translators: %s: speaker name */
+                                        echo esc_attr( sprintf( __( '%s on LinkedIn (opens in new tab)', 'piedmontglobal' ), $speaker_name ) );
+                                    ?>"
+                                >
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                    </svg>
+                                </a>
+                            <?php endif; ?>
+                            <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-gray-200/80 bg-gray-50/90 text-gray-400 transition-all duration-300 group-hover:border-[#98C441]/35 group-hover:bg-[#98C441]/10 group-hover:text-[#1F3131] group-focus-within:border-[#98C441]/35 group-focus-within:bg-[#98C441]/10 group-focus-within:text-[#1F3131]" aria-hidden="true">
+                                <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-focus-within:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                                 </svg>
                             </div>
                         </div>
-
-                        <!-- Bio intentionally only in modal -->
                     </div>
                 </div>
             </div>
-            <?php 
-                $speaker_index++;
-            endforeach; 
-            ?>
+            </div>
+            <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Speaker Bio Modal -->
-<div id="speakerBioModal" class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="speakerModalName">
+<div id="speakerBioModal" class="fixed inset-0 z-50 hidden opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="speakerModalName" aria-label="<?php echo esc_attr__( 'Speaker bio', 'piedmontglobal' ); ?>">
     <!-- Backdrop (receives clicks; overlay uses pointer-events-none so empty area hits this layer) -->
     <div class="absolute inset-0 z-0 bg-zinc-950/55 backdrop-blur-[2px]" onclick="closeSpeakerModal()" aria-hidden="true"></div>
 
@@ -489,13 +510,14 @@ if ($speakers && is_array($speakers) && count($speakers) > 0):
     <div class="pointer-events-none relative z-10 flex min-h-screen items-center justify-center p-4 sm:p-6 md:p-10 lg:p-12">
         <div id="speakerBioModalContent" class="pointer-events-auto relative w-full max-h-[min(88vh,900px)] max-w-5xl overflow-hidden rounded-2xl border border-gray-200/90 bg-white shadow-[0_25px_80px_-12px_rgba(15,23,42,0.25)] ring-1 ring-black/[0.04] transform scale-95 transition-transform duration-300 ease-out">
             <!-- Close Button -->
-            <button 
+            <button
                 type="button"
-                onclick="closeSpeakerModal()" 
-                class="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-gray-200/80 bg-white text-gray-500 shadow-sm transition-all duration-200 hover:bg-gray-50 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#98C441]/50"
-                aria-label="<?php esc_attr_e('Close', 'piedmontglobal'); ?>"
+                id="speakerModalClose"
+                onclick="closeSpeakerModal()"
+                class="absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-gray-200/80 bg-white text-gray-500 shadow-sm transition-all duration-200 hover:bg-gray-50 hover:text-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#98C441]"
+                aria-label="<?php esc_attr_e('Close speaker bio', 'piedmontglobal'); ?>"
             >
-                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
             </button>
@@ -535,18 +557,18 @@ if ($speakers && is_array($speakers) && count($speakers) > 0):
                     </div>
 
                     <div id="speakerModalLinkedInWrapper" class="mt-auto hidden border-t border-gray-100 pt-6">
-                        <a 
-                            id="speakerModalLinkedIn" 
-                            href="" 
-                            target="_blank" 
+                        <a
+                            id="speakerModalLinkedIn"
+                            href=""
+                            target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex items-center gap-2.5 rounded-lg bg-[#1F3131] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#98C441] hover:text-[#1F3131] focus:outline-none focus:ring-2 focus:ring-[#98C441]/50 focus:ring-offset-2"
+                            class="inline-flex items-center gap-2.5 rounded-lg bg-[#1F3131] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#98C441] hover:text-[#1F3131] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#98C441]"
                         >
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>
-                            <span>LinkedIn</span>
-                            <svg class="h-4 w-4 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <span>LinkedIn <span class="sr-only">(<?php esc_html_e('opens in new tab', 'piedmontglobal'); ?>)</span></span>
+                            <svg class="h-4 w-4 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                             </svg>
                         </a>
@@ -558,64 +580,144 @@ if ($speakers && is_array($speakers) && count($speakers) > 0):
 </div>
 
 <script>
-    const speakersData = <?php echo wp_json_encode( $speakers_for_js, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE ); ?>;
-    const speakerModal = document.getElementById('speakerBioModal');
-    const speakerModalContent = document.getElementById('speakerBioModalContent');
+    (function () {
+        var speakersData = <?php echo wp_json_encode( $speakers_for_js, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_UNICODE ); ?>;
+        var speakerModal = document.getElementById('speakerBioModal');
+        var speakerModalContent = document.getElementById('speakerBioModalContent');
+        var lastFocusedTrigger = null;
 
-    function openSpeakerModal(index) {
-        const speaker = speakersData[index];
-        if (!speaker) {
-            return;
+        // Selectors for focusable elements within the modal
+        var FOCUSABLE_SELECTORS = [
+            'a[href]',
+            'area[href]',
+            'button:not([disabled])',
+            'input:not([disabled]):not([type="hidden"])',
+            'select:not([disabled])',
+            'textarea:not([disabled])',
+            'iframe',
+            '[tabindex]:not([tabindex="-1"])',
+            '[contenteditable="true"]'
+        ].join(',');
+
+        function getFocusable() {
+            if (!speakerModalContent) return [];
+            return Array.prototype.filter.call(
+                speakerModalContent.querySelectorAll(FOCUSABLE_SELECTORS),
+                function (el) {
+                    return !el.hasAttribute('disabled') &&
+                        el.getAttribute('aria-hidden') !== 'true' &&
+                        el.offsetParent !== null;
+                }
+            );
         }
 
-        const photoEl = document.getElementById('speakerModalPhoto');
-        const nameEl = document.getElementById('speakerModalName');
-        const titleEl = document.getElementById('speakerModalTitle');
-        const bioEl = document.getElementById('speakerModalBio');
-        const linkedInWrapper = document.getElementById('speakerModalLinkedInWrapper');
-        const linkedInEl = document.getElementById('speakerModalLinkedIn');
+        function trapFocus(e) {
+            if (e.key !== 'Tab') return;
+            var focusable = getFocusable();
+            if (focusable.length === 0) {
+                e.preventDefault();
+                return;
+            }
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            var active = document.activeElement;
 
-        photoEl.src = speaker.photo || '';
-        photoEl.alt = speaker.name || '';
-        nameEl.textContent = speaker.name || '';
-        titleEl.textContent = speaker.title || '';
-        bioEl.innerHTML = speaker.description || '';
-
-        if (speaker.linkedin && speaker.linkedin.trim() !== '') {
-            linkedInEl.href = speaker.linkedin;
-            linkedInWrapper.classList.remove('hidden');
-        } else {
-            linkedInWrapper.classList.add('hidden');
+            if (e.shiftKey) {
+                if (active === first || !speakerModalContent.contains(active)) {
+                    e.preventDefault();
+                    last.focus();
+                }
+            } else {
+                if (active === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
         }
 
-        speakerModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-
-        requestAnimationFrame(() => {
-            speakerModal.classList.remove('opacity-0');
-            speakerModal.classList.add('opacity-100');
-            speakerModalContent.classList.remove('scale-95');
-            speakerModalContent.classList.add('scale-100');
-        });
-    }
-
-    function closeSpeakerModal() {
-        speakerModal.classList.remove('opacity-100');
-        speakerModal.classList.add('opacity-0');
-        speakerModalContent.classList.remove('scale-100');
-        speakerModalContent.classList.add('scale-95');
-
-        setTimeout(() => {
-            speakerModal.classList.add('hidden');
-            document.body.style.overflow = '';
-        }, 300);
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !speakerModal.classList.contains('hidden')) {
-            closeSpeakerModal();
+        function onKeyDown(e) {
+            if (speakerModal.classList.contains('hidden')) return;
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                closeSpeakerModal();
+                return;
+            }
+            trapFocus(e);
         }
-    });
+
+        window.openSpeakerModal = function (index) {
+            var speaker = speakersData[index];
+            if (!speaker) return;
+
+            lastFocusedTrigger = document.activeElement;
+
+            var photoEl = document.getElementById('speakerModalPhoto');
+            var nameEl = document.getElementById('speakerModalName');
+            var titleEl = document.getElementById('speakerModalTitle');
+            var bioEl = document.getElementById('speakerModalBio');
+            var linkedInWrapper = document.getElementById('speakerModalLinkedInWrapper');
+            var linkedInEl = document.getElementById('speakerModalLinkedIn');
+
+            photoEl.src = speaker.photo || '';
+            // Photo duplicates the name shown in the dialog heading; mark as decorative
+            photoEl.alt = '';
+            nameEl.textContent = speaker.name || '';
+            titleEl.textContent = speaker.title || '';
+            bioEl.innerHTML = speaker.description || '';
+
+            // Defensive: keep aria-label in sync with the heading content (MAJ-05)
+            if (speaker.name) {
+                speakerModal.setAttribute('aria-label', speaker.name);
+            }
+
+            if (speaker.linkedin && String(speaker.linkedin).trim() !== '') {
+                linkedInEl.href = speaker.linkedin;
+                linkedInWrapper.classList.remove('hidden');
+            } else {
+                linkedInWrapper.classList.add('hidden');
+            }
+
+            speakerModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+
+            document.addEventListener('keydown', onKeyDown);
+
+            requestAnimationFrame(function () {
+                speakerModal.classList.remove('opacity-0');
+                speakerModal.classList.add('opacity-100');
+                speakerModalContent.classList.remove('scale-95');
+                speakerModalContent.classList.add('scale-100');
+
+                // Move focus into the dialog (close button is a stable, predictable target)
+                var closeBtn = document.getElementById('speakerModalClose');
+                if (closeBtn && typeof closeBtn.focus === 'function') {
+                    closeBtn.focus();
+                }
+            });
+        };
+
+        window.closeSpeakerModal = function () {
+            speakerModal.classList.remove('opacity-100');
+            speakerModal.classList.add('opacity-0');
+            speakerModalContent.classList.remove('scale-100');
+            speakerModalContent.classList.add('scale-95');
+
+            document.removeEventListener('keydown', onKeyDown);
+
+            setTimeout(function () {
+                speakerModal.classList.add('hidden');
+                document.body.style.overflow = '';
+
+                // Restore focus to the element that opened the modal
+                if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+                    try {
+                        lastFocusedTrigger.focus();
+                    } catch (err) { /* no-op */ }
+                }
+                lastFocusedTrigger = null;
+            }, 300);
+        };
+    })();
 </script>
 
 <?php endif; ?>
@@ -823,8 +925,8 @@ $host_organization = get_field('host_organization');
                         <?php endif; ?>
 
                         <!-- Trust Indicator -->
-                        <div class="mt-8 flex items-center justify-center gap-2 text-[11px] font-medium text-gray-400 md:text-xs">
-                            <svg class="h-3.5 w-3.5 text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <div class="mt-8 flex items-center justify-center gap-2 text-[11px] font-medium text-gray-600 md:text-xs">
+                            <svg class="h-3.5 w-3.5 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                             </svg>
@@ -842,6 +944,8 @@ $host_organization = get_field('host_organization');
 
 
 
+
+</main>
 
 <?php
 get_template_part('components/common/cta');

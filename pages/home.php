@@ -44,7 +44,7 @@ get_template_part( 'components/banner/primary' );
 
                             <span
                                 class="inline-flex items-center gap-1 text-sm font-medium mt-6 border-b-2 border-[#D16555] transition-colors duration-300 group-hover:border-[#D16555]">
-                                <?php echo esc_html($cta ?: 'Explore our approach'); ?> <span class="text-lg inline-block transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
+                                <?php echo esc_html($cta ?: 'Explore our approach'); ?> <span class="text-lg inline-block transition-transform duration-300 ease-out group-hover:translate-x-1" aria-hidden="true">→</span>
                             </span>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ get_template_part( 'components/banner/primary' );
 
                         <span
                             class="inline-flex items-center gap-1 text-sm font-medium mt-6 border-b-2 border-[#D16555] hover:border-[#D16555] transition-colors duration-300">
-                            Explore our approach <span class="text-lg">→</span>
+                            Explore our approach <span class="text-lg" aria-hidden="true">→</span>
                         </span>
                     </div>
 
@@ -128,21 +128,33 @@ get_template_part( 'components/banner/primary' );
             </div>
 
             <?php if (have_rows('partners_repeater', 'option')): ?>
-            <div class="owl-carousel owl-theme mb-16 partners-carousel" role="region" aria-roledescription="carousel" aria-label="Partners">
-                <?php $partner_index = 0; ?>
-                <?php while (have_rows('partners_repeater', 'option')): the_row(); ?>
-                <div class="item flex items-center justify-center h-28 w-28" data-aos="fade-up" data-aos-duration="400"
-                    data-aos-easing="ease-out" data-aos-delay="<?php echo $partner_index * 100; ?>">
-                    <?php $partner_name = get_sub_field('partner_name'); ?>
-                    <a href="<?php the_sub_field('url'); ?>" target="_blank" rel="noopener"
-                        aria-label="<?php echo esc_attr( ($partner_name ?: 'Partner') . ' (opens in new tab)' ); ?>">
-                        <img src="<?php the_sub_field('partner_logo'); ?>" alt="<?php echo esc_attr($partner_name ?: 'Partner logo'); ?>" width="112"
-                            height="112" loading="lazy" decoding="async"
-                            class="h-full w-full object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0" />
-                    </a>
+            <div class="mb-16">
+                <?php
+                pg_render_carousel_controls([
+                    'base_id'      => 'home-partners',
+                    'region_label' => __( 'Trusted partners logos', 'piedmontglobal' ),
+                ]);
+                ?>
+                <div class="owl-carousel owl-theme partners-carousel" role="region" aria-roledescription="carousel" aria-label="<?php echo esc_attr__( 'Trusted partners', 'piedmontglobal' ); ?>" tabindex="0" data-pg-carousel-controls="home-partners">
+                    <?php $partner_index = 0; ?>
+                    <?php while (have_rows('partners_repeater', 'option')): the_row(); ?>
+                    <div class="item flex items-center justify-center h-28 w-28" data-aos="fade-up" data-aos-duration="400"
+                        data-aos-easing="ease-out" data-aos-delay="<?php echo $partner_index * 100; ?>">
+                        <?php
+                        $partner_name = get_sub_field('partner_name');
+                        $partner_url  = get_sub_field('url');
+                        $partner_alt  = pg_brand_alt( $partner_name, $partner_url, __( 'Partner logo', 'piedmontglobal' ) );
+                        ?>
+                        <a href="<?php echo esc_url( $partner_url ); ?>" target="_blank" rel="noopener"
+                            aria-label="<?php echo esc_attr( ( $partner_name ?: $partner_alt ) . ' ' . __( '(opens in new tab)', 'piedmontglobal' ) ); ?>">
+                            <img src="<?php the_sub_field('partner_logo'); ?>" alt="<?php echo esc_attr( $partner_alt ); ?>" width="112"
+                                height="112" loading="lazy" decoding="async"
+                                class="h-full w-full object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0" />
+                        </a>
+                    </div>
+                    <?php $partner_index++; ?>
+                    <?php endwhile; ?>
                 </div>
-                <?php $partner_index++; ?>
-                <?php endwhile; ?>
             </div>
             <?php endif; ?>
 
@@ -189,22 +201,31 @@ get_template_part( 'components/banner/primary' );
                 <!-- Certified -->
                 <div class="rounded-lg border border-[#DFDAD4] p-8 md:p-12 shadow-md" data-aos="fade-up"
                     data-aos-duration="400" data-aos-easing="ease-out">
-                    <h3 class="text-xl md:text-2xl text-[#1F3131] font-semibold mb-8">
-                        We’ve been certified
+                    <h3 id="home-certified-heading" class="text-xl md:text-2xl text-[#1F3131] font-semibold mb-8">
+                        We&rsquo;ve been certified
                     </h3>
 
                     <?php if (have_rows('certified_by', 'option')): ?>
-                    <div class="owl-carousel owl-theme certificate-carousel" role="region" aria-roledescription="carousel" aria-label="Certifications">
+                    <?php
+                    pg_render_carousel_controls([
+                        'base_id'      => 'home-certified',
+                        'region_label' => __( 'Certifications logos', 'piedmontglobal' ),
+                    ]);
+                    ?>
+                    <div class="owl-carousel owl-theme certificate-carousel" role="region" aria-roledescription="carousel" aria-labelledby="home-certified-heading" tabindex="0" data-pg-carousel-controls="home-certified">
                         <?php while (have_rows('certified_by', 'option')): the_row(); ?>
                         <div class="item">
                             <div
                                 class="relative flex items-center justify-center h-28 w-28 sm:h-32 sm:w-32 md:h-36 md:w-36 rounded-full">
                                 <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/circle.svg" alt=""
                                     width="144" height="144" loading="lazy" decoding="async"
-                                    class="absolute inset-0 h-full w-full object-cover" />
+                                    class="absolute inset-0 h-full w-full object-cover" aria-hidden="true" />
 
-                                <?php $cert_name = get_sub_field('name'); ?>
-                                <img src="<?php the_sub_field('logo'); ?>" alt="<?php echo esc_attr($cert_name ?: 'Certification'); ?>" width="96"
+                                <?php
+                                $cert_name = get_sub_field('name');
+                                $cert_alt  = pg_brand_alt( $cert_name, '', __( 'Certification', 'piedmontglobal' ) );
+                                ?>
+                                <img src="<?php the_sub_field('logo'); ?>" alt="<?php echo esc_attr( $cert_alt ); ?>" width="96"
                                     height="96" loading="lazy" decoding="async"
                                     class="relative max-h-16 max-w-16 sm:max-h-20 sm:max-w-20 md:max-h-24 md:max-w-24 object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0" />
                             </div>
@@ -217,17 +238,27 @@ get_template_part( 'components/banner/primary' );
                 <!-- Contracting Vehicles -->
                 <div class="rounded-lg border border-[#DFDAD4] p-8 md:p-12 shadow-md" data-aos="fade-up"
                     data-aos-duration="400" data-aos-easing="ease-out">
-                    <h3 class="text-xl md:text-2xl text-[#1F3131] font-semibold mb-8">
+                    <h3 id="home-contracting-heading" class="text-xl md:text-2xl text-[#1F3131] font-semibold mb-8">
                         Contracting vehicles
                     </h3>
 
-                    <div class="owl-carousel owl-theme contracting-vehicles-carousel" role="region" aria-roledescription="carousel" aria-label="Contracting vehicles">
+                    <?php
+                    pg_render_carousel_controls([
+                        'base_id'      => 'home-contracting',
+                        'region_label' => __( 'Contracting vehicles logos', 'piedmontglobal' ),
+                    ]);
+                    ?>
+                    <div class="owl-carousel owl-theme contracting-vehicles-carousel" role="region" aria-roledescription="carousel" aria-labelledby="home-contracting-heading" tabindex="0" data-pg-carousel-controls="home-contracting">
                         <?php while (have_rows('contracting_vehicles', 'option')): the_row(); ?>
                         <div class="item">
-                            <?php $cv_name = get_sub_field('name'); ?>
-                            <?php if (get_sub_field('url')) : ?>
-                            <a href="<?php the_sub_field('url'); ?>" target="_blank" rel="noopener"
-                                aria-label="<?php echo esc_attr( ($cv_name ?: 'Contracting vehicle') . ' (opens in new tab)' ); ?>"
+                            <?php
+                            $cv_name = get_sub_field('name');
+                            $cv_url  = get_sub_field('url');
+                            $cv_alt  = pg_brand_alt( $cv_name, $cv_url, __( 'Contracting vehicle', 'piedmontglobal' ) );
+                            ?>
+                            <?php if ( $cv_url ) : ?>
+                            <a href="<?php echo esc_url( $cv_url ); ?>" target="_blank" rel="noopener"
+                                aria-label="<?php echo esc_attr( ( $cv_name ?: $cv_alt ) . ' ' . __( '(opens in new tab)', 'piedmontglobal' ) ); ?>"
                                 class="relative flex items-center justify-center h-28 w-28 sm:h-32 sm:w-32 md:h-36 md:w-36 rounded-full">
                                 <?php else: ?>
                                 <div
@@ -237,11 +268,11 @@ get_template_part( 'components/banner/primary' );
                                     <img src="<?php echo get_template_directory_uri(); ?>/assets/icons/circle.svg"
                                         alt="" width="144" height="144" loading="lazy" decoding="async"
                                         class="absolute inset-0 h-full w-full object-cover" aria-hidden="true" />
-                                    <img src="<?php the_sub_field('logo'); ?>" alt="<?php echo esc_attr($cv_name ?: 'Contracting vehicle'); ?>"
+                                    <img src="<?php the_sub_field('logo'); ?>" alt="<?php echo esc_attr( $cv_alt ); ?>"
                                         width="96" height="96" loading="lazy" decoding="async"
                                         class="relative max-h-16 max-w-16 sm:max-h-20 sm:max-w-20 md:max-h-24 md:max-w-24 object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0" />
 
-                                    <?php if (get_sub_field('url')) : ?>
+                                    <?php if ( $cv_url ) : ?>
                             </a>
                             <?php else: ?>
                         </div>
@@ -255,18 +286,28 @@ get_template_part( 'components/banner/primary' );
         <!-- Recognized By -->
         <div class="rounded-lg border border-[#DFDAD4] p-8 md:p-12 shadow-md" data-aos="fade-up" data-aos-duration="400"
             data-aos-easing="ease-out">
-            <h3 class="text-xl md:text-2xl text-[#1F3131] font-semibold mb-8">
+            <h3 id="home-recognized-heading" class="text-xl md:text-2xl text-[#1F3131] font-semibold mb-8">
                 We've been recognized
             </h3>
 
             <?php if (have_rows('recognized_by', 'option')): ?>
-            <div class="owl-carousel owl-theme recognized-carousel" role="region" aria-roledescription="carousel" aria-label="Recognized by">
+            <?php
+            pg_render_carousel_controls([
+                'base_id'      => 'home-recognized',
+                'region_label' => __( 'Recognition logos', 'piedmontglobal' ),
+            ]);
+            ?>
+            <div class="owl-carousel owl-theme recognized-carousel" role="region" aria-roledescription="carousel" aria-labelledby="home-recognized-heading" tabindex="0" data-pg-carousel-controls="home-recognized">
                 <?php while (have_rows('recognized_by', 'option')): the_row(); ?>
                 <div class="item">
-                    <?php $recog_name = get_sub_field('name'); ?>
-                    <?php if (get_sub_field('url')) : ?>
-                    <a href="<?php the_sub_field('url'); ?>" target="_blank" rel="noopener"
-                        aria-label="<?php echo esc_attr( ($recog_name ?: 'Recognition') . ' (opens in new tab)' ); ?>"
+                    <?php
+                    $recog_name = get_sub_field('name');
+                    $recog_url  = get_sub_field('url');
+                    $recog_alt  = pg_brand_alt( $recog_name, $recog_url, __( 'Recognition', 'piedmontglobal' ) );
+                    ?>
+                    <?php if ( $recog_url ) : ?>
+                    <a href="<?php echo esc_url( $recog_url ); ?>" target="_blank" rel="noopener"
+                        aria-label="<?php echo esc_attr( ( $recog_name ?: $recog_alt ) . ' ' . __( '(opens in new tab)', 'piedmontglobal' ) ); ?>"
                         class="relative flex items-center justify-center h-28 w-28 sm:h-32 sm:w-32 md:h-36 md:w-36 rounded-full">
                         <?php else: ?>
                         <div
@@ -277,11 +318,11 @@ get_template_part( 'components/banner/primary' );
                                 width="144" height="144" loading="lazy" decoding="async"
                                 class="absolute inset-0 h-full w-full object-cover" aria-hidden="true" />
 
-                            <img src="<?php the_sub_field('logo'); ?>" alt="<?php echo esc_attr($recog_name ?: 'Recognition'); ?>" width="96"
+                            <img src="<?php the_sub_field('logo'); ?>" alt="<?php echo esc_attr( $recog_alt ); ?>" width="96"
                                 height="96" loading="lazy" decoding="async"
                                 class="relative max-h-16 max-w-16 sm:max-h-20 sm:max-w-20 md:max-h-24 md:max-w-24 object-contain transition duration-300 ease-in-out grayscale hover:grayscale-0" />
 
-                            <?php if (get_sub_field('url')) : ?>
+                            <?php if ( $recog_url ) : ?>
                     </a>
                     <?php else: ?>
                 </div>
@@ -309,7 +350,7 @@ get_template_part( 'components/banner/primary' );
                     class="group inline-flex items-center text-lg font-medium border-b-2 border-[#D16555] hover:border-[#D16555] transition-colors duration-300"
                     data-aos="fade-up" data-aos-duration="400" data-aos-easing="ease-out" data-aos-delay="100">
                     Explore full capabilities
-                    <span
+                    <span aria-hidden="true"
                         class="ml-1 text-lg transform transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>
 
@@ -377,7 +418,7 @@ get_template_part( 'components/banner/primary' );
                     class="group inline-flex items-center text-lg font-medium border-b-2 border-[#D16555] hover:border-[#D16555] transition-colors duration-300"
                     data-aos="fade-up" data-aos-duration="400" data-aos-easing="ease-out" data-aos-delay="100">
                     Explore industry solutions
-                    <span
+                    <span aria-hidden="true"
                         class="ml-1 text-lg transform transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>
 
@@ -480,7 +521,7 @@ if ($query->have_posts()):
 
                     <span class="inline-flex items-center text-base font-medium border-b-2 border-[#D16555]">
                         Read case study
-                        <span
+                        <span aria-hidden="true"
                             class="ml-1 text-lg transform transition-transform duration-300 group-hover:translate-x-1">→</span>
                     </span>
                 </div>
@@ -511,7 +552,7 @@ endif;
             <a href="/strategic-globalization/"
                 class="inline-flex items-center text-lg font-medium mt-12 border-b-2 border-[#D16555] hover:border-[#D16555] transition-colors duration-300"
                 data-aos="fade-up" data-aos-duration="400" data-aos-easing="ease-out" data-aos-delay="100">
-                Learn more about Strategic Globalization <span
+                    Learn more about Strategic Globalization <span aria-hidden="true"
                     class="ml-1 text-lg transform transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
         </div>
@@ -592,7 +633,7 @@ endif;
                         <div
                             class="flex items-center mt-auto text-sm font-semibold text-gray-900 transition-colors duration-300 group-hover:text-[#D16555]">
                             Learn more
-                            <span
+                            <span aria-hidden="true"
                                 class="ml-2 text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
                         </div>
                         <div class="h-0.5 w-8 mt-1 bg-[#D16555] transition-all duration-300 group-hover:w-24"></div>
