@@ -66,7 +66,16 @@ get_header();
     <div class="max-w-7xl mx-auto px-8 lg:px-0 flex flex-col md:flex-row gap-8">
         <div class="md:w-2/3 space-y-6">
 
-            <h2 class="text-[#98C441] text-xl mb-4"><?php echo wp_kses_post(get_field('section_title')); ?></h2>
+            <?php if (get_field('section_title')): ?>
+            <div class="inline-flex items-stretch border border-[#ffffff15] overflow-hidden mb-6" role="doc-subtitle">
+                <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
+                <div class="flex items-center gap-[7px] px-3 py-[6px]">
+                    <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-white/80">
+                        <?php echo wp_kses_post(get_field('section_title')); ?>
+                    </span>
+                </div>
+            </div>
+            <?php endif; ?>
 
 
 
@@ -88,9 +97,16 @@ get_header();
 
 <section class="relative py-20 bg-[#F7F7F5]">
     <div class="max-w-7xl mx-auto px-8 lg:px-0 text-center mb-16">
-        <h2 class="text-base text-[#1F3131] font-bold mb-4 tracking-wide">
-            <?php echo wp_kses_post(get_field('eyebrow_text')); ?>
-        </h2>
+        <?php if (get_field('eyebrow_text')): ?>
+        <div class="inline-flex items-stretch border border-[#1F3131]/15 overflow-hidden mb-6 mx-auto" role="doc-subtitle">
+            <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
+            <div class="flex items-center gap-[7px] px-3 py-[6px]">
+                <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-[#1F3131]/80">
+                    <?php echo wp_kses_post(get_field('eyebrow_text')); ?>
+                </span>
+            </div>
+        </div>
+        <?php endif; ?>
 
         <h3 class="text-3xl lg:text-4xl font-extrabold leading-tight max-w-4xl mx-auto text-[#0F1E1E]">
             <?php echo esc_html(get_field('sub_solutions_section_title')); ?>
@@ -172,9 +188,16 @@ get_header();
 
 <section class="py-24 text-white bg-[linear-gradient(to_bottom,_#1F3131_50%,_#006155_100%)]">
     <div class="max-w-7xl mx-auto px-6 lg:px-0 text-center lg:text-left">
-        <p class="text-lg font-bold text-[#F9F8F6] mb-3">
-            <?php echo esc_html(get_field('why_piedmont_global_eyebrow')); ?>
-        </p>
+        <?php if (get_field('why_piedmont_global_eyebrow')): ?>
+        <div class="inline-flex items-stretch border border-[#ffffff15] overflow-hidden mb-6 lg:mx-0 mx-auto" role="doc-subtitle">
+            <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
+            <div class="flex items-center gap-[7px] px-3 py-[6px]">
+                <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-white/80">
+                    <?php echo esc_html(get_field('why_piedmont_global_eyebrow')); ?>
+                </span>
+            </div>
+        </div>
+        <?php endif; ?>
 
         <h2 class="text-3xl sm:text-4xl md:text-5xl max-w-4xl font-extrabold mb-6 leading-[98%]">
             <?php echo esc_html(get_field('why_piedmont_global_section_title')); ?>
@@ -213,8 +236,14 @@ get_header();
 
 <section class="py-20 bg-[#F9F9F6] text-[#1F3131]">
     <div class="max-w-7xl mx-auto px-6 lg:px-0">
-        <p class="text-lg font-bold mb-2">Industries
-            we support</p>
+        <div class="inline-flex items-stretch border border-[#1F3131]/15 overflow-hidden mb-6" role="doc-subtitle">
+            <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
+            <div class="flex items-center gap-[7px] px-3 py-[6px]">
+                <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-[#1F3131]/80">
+                    Industries we support
+                </span>
+            </div>
+        </div>
 
         <h2 class="text-3xl sm:text-4xl md:text-5xl max-w-4xl font-extrabold mb-6 leading-[98%]">
             Tailored solutions for regulated, high-impact sectors.
@@ -292,59 +321,67 @@ get_header();
 </section>
 
 
-<?php if (get_field('outcomes')): ?>
-<?php endif; ?>
-<section class="bg-white py-24">
+<?php if (have_rows('outcomes')): ?>
+<section class="bg-white py-20 lg:py-24">
     <div class="max-w-7xl mx-auto px-6 lg:px-0">
-        <div class="text-center">
-            <p class="text-lg font-bold mb-2">Outcomes
-            </p>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl max-w-4xl mx-auto font-extrabold mb-6 leading-[98%]">
+        <div class="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
+            <div class="inline-flex items-stretch border border-[#1F3131]/15 overflow-hidden mb-6 mx-auto"
+                role="doc-subtitle">
+                <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
+                <div class="flex items-center gap-[7px] px-3 py-[6px]">
+                    <span
+                        class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-[#1F3131]/80">Outcomes</span>
+                </div>
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 leading-[98%] text-[#1F3131]">
                 Results you can expect
             </h2>
         </div>
 
-        <div class="w-full mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[250px]">
-            <?php
-            // Define bento slots
-            $bento_slots = [
-                ['class' => 'bg-[#006155] text-white', 'span' => ''],
-                ['class' => 'bg-[#DFDAD4] text-[#1F3131] border border-[#DFDAD4]', 'span' => 'sm:col-span-2'],
-                ['class' => 'bg-[#550061] text-white', 'span' => 'lg:row-span-2'],
-                ['class' => 'image', 'span' => 'lg:row-span-2'],
-                ['class' => 'bg-[#ab9dba] text-[#1F3131]', 'span' => ''],
-                ['class' => 'bg-[#98C441] text-black', 'span' => ''],
-            ];
+        <?php
+        // Modern flexible bento: 3-col grid with featured image as 2x2 anchor.
+        // Outcome cards are uniform 1x1 tiles with brand color rotation.
+        $bento_variants = [
+            'bg-[#1F3131] text-white',
+            'bg-[#98C441] text-[#1F3131]',
+            'bg-[#006155] text-white',
+            'bg-[#F0EEE6] text-[#1F3131] border border-[#1F3131]/10',
+        ];
+        $featured_image = get_field('featured_image');
+        ?>
 
+        <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 auto-rows-[200px] sm:auto-rows-[220px] lg:auto-rows-[240px] [grid-auto-flow:dense]">
+            <?php if ($featured_image): ?>
+            <div class="relative overflow-hidden rounded-lg shadow-sm group sm:col-span-2 sm:row-span-2">
+                <img src="<?php echo esc_url($featured_image); ?>"
+                    alt="<?php echo esc_attr(get_the_title()); ?>"
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.04]"
+                    loading="lazy" decoding="async" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#1F3131]/40 via-transparent to-transparent"
+                    aria-hidden="true"></div>
+            </div>
+            <?php endif; ?>
+
+            <?php
             $i = 0;
-            while (have_rows('outcomes')):
-                the_row();
+            while (have_rows('outcomes')): the_row();
                 $title = get_sub_field('title');
                 $description = get_sub_field('description');
-
-                // Pick slot (repeats pattern if more than 6 items)
-                $slot = $bento_slots[$i % count($bento_slots)];
-                ?>
-
-                <?php if ($slot['class'] === 'image'): ?>
-                    <div
-                        class="relative overflow-hidden group shadow-sm flex flex-col justify-between text-white <?php echo esc_attr($slot['span']); ?>">
-                        <img src="<?php echo esc_url(get_field('featured_image')); ?>"
-                            alt="<?php echo esc_attr(get_the_title()); ?>"
-                            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                    </div>
-                <?php else: ?>
-                    <div
-                        class="<?php echo esc_attr($slot['class']); ?> p-6 flex flex-col justify-between font-semibold text-2xl rounded shadow-sm <?php echo esc_attr($slot['span']); ?>">
-                        <div><?php echo esc_html($title); ?></div>
-                        <p class="text-lg font-normal"><?php echo esc_html($description); ?></p>
-                    </div>
-                <?php endif; ?>
-
-                <?php $i++; endwhile; ?>
+                $variant = $bento_variants[$i % count($bento_variants)];
+            ?>
+            <div class="<?php echo esc_attr($variant); ?> p-6 flex flex-col justify-between rounded-lg shadow-sm transition-shadow duration-300 motion-safe:hover:shadow-md">
+                <div class="text-xl md:text-2xl font-extrabold leading-tight">
+                    <?php echo esc_html($title); ?>
+                </div>
+                <p class="text-base lg:text-lg font-normal opacity-90 mt-4">
+                    <?php echo esc_html($description); ?>
+                </p>
+            </div>
+            <?php $i++; endwhile; ?>
         </div>
     </div>
 </section>
+<?php endif; ?>
 
 <?php
 global $post;

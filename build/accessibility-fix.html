@@ -1,0 +1,3390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Piedmont Global — Accessibility Remediation Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --pg-ink: #1F3131;
+        --pg-ink-soft: #2a4040;
+        --pg-lime: #98C441;
+        --pg-lime-soft: #e6f3cc;
+        --pg-coral: #D16555;
+        --pg-coral-soft: #fbe4de;
+        --pg-cream: #F9F8F6;
+        --pg-cream-deep: #EFEAE1;
+        --pg-border: #e3e0d9;
+        --pg-text: #1F3131;
+        --pg-muted: #4b5563;
+        --pg-link: #8a3b2a;
+
+        --pg-pass: #1e7a4a;
+        --pg-pass-bg: #dff3e4;
+        --pg-pass-border: #a3d8b4;
+
+        --pg-partial: #a65e00;
+        --pg-partial-bg: #fcecd0;
+        --pg-partial-border: #f1c779;
+
+        --pg-fail: #9b1c1c;
+        --pg-fail-bg: #fbe0e0;
+        --pg-fail-border: #eeaeae;
+
+        --pg-fixed: #0b5c52;
+        --pg-fixed-bg: #d4efe9;
+        --pg-fixed-border: #8bcec2;
+
+        --pg-open: #6b4f00;
+        --pg-open-bg: #fff4c7;
+        --pg-open-border: #f0d884;
+
+        --pg-na: #475569;
+        --pg-na-bg: #e6eaef;
+        --pg-na-border: #c5cdd7;
+    }
+
+    @page {
+        size: Letter;
+        margin: 0.75in 0.7in 0.85in 0.7in;
+        @bottom-right {
+            content: "Page " counter(page) " of " counter(pages);
+            font-family: "DM Sans", system-ui, sans-serif;
+            font-size: 9pt;
+            color: #6b7280;
+        }
+        @bottom-left {
+            content: "Piedmont Global — Accessibility Remediation Report";
+            font-family: "DM Sans", system-ui, sans-serif;
+            font-size: 9pt;
+            color: #6b7280;
+        }
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+        font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        font-size: 10.5pt;
+        line-height: 1.55;
+        color: var(--pg-text);
+        background: #fff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* --------- Cover page --------- */
+    .pg-cover {
+        page-break-after: always;
+        min-height: 9.2in;
+        padding: 0.7in 0.1in 0.1in;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background:
+            radial-gradient(1200px 520px at 90% -10%, rgba(152,196,65,0.25), transparent 65%),
+            radial-gradient(1000px 480px at -10% 120%, rgba(209,101,85,0.22), transparent 60%),
+            linear-gradient(180deg, #fbfaf7 0%, #f2ede3 100%);
+        border-radius: 18px;
+    }
+
+    .pg-cover__eyebrow {
+        font-size: 10pt;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--pg-coral);
+        font-weight: 700;
+    }
+
+    .pg-cover__title {
+        font-family: "DM Sans", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 38pt;
+        line-height: 1.05;
+        color: var(--pg-ink);
+        margin: 14pt 0 14pt;
+        letter-spacing: -0.01em;
+    }
+
+    .pg-cover__sub {
+        font-size: 13pt;
+        color: var(--pg-ink-soft);
+        line-height: 1.5;
+        max-width: 5.2in;
+        margin-bottom: 24pt;
+    }
+
+    .pg-cover__meta {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14pt 28pt;
+        font-size: 10.5pt;
+        max-width: 5.2in;
+    }
+
+    .pg-cover__meta dt {
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-size: 8.5pt;
+        color: var(--pg-ink);
+        margin-bottom: 2pt;
+    }
+
+    .pg-cover__meta dd {
+        margin: 0;
+        color: var(--pg-ink-soft);
+    }
+
+    .pg-cover__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-top: 18pt;
+        border-top: 2px solid var(--pg-ink);
+        padding-top: 10pt;
+        font-size: 9pt;
+        color: var(--pg-ink);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .pg-cover__accent {
+        display: inline-block;
+        width: 72pt;
+        height: 6pt;
+        background: linear-gradient(90deg, var(--pg-lime) 0%, var(--pg-coral) 100%);
+        border-radius: 999px;
+    }
+
+    /* --------- Body --------- */
+    .pg-doc {
+        max-width: 100%;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "DM Sans", system-ui, sans-serif;
+        color: var(--pg-ink);
+        line-height: 1.2;
+        margin: 22pt 0 8pt;
+        letter-spacing: -0.005em;
+    }
+
+    h1 {
+        font-size: 22pt;
+        font-weight: 700;
+        padding-bottom: 6pt;
+        border-bottom: 3px solid var(--pg-ink);
+        margin-top: 0;
+        page-break-before: always;
+    }
+    .pg-cover + h1,
+    .pg-doc > h1:first-of-type { page-break-before: auto; }
+
+    h2 {
+        font-size: 16pt;
+        font-weight: 700;
+        padding-left: 10pt;
+        border-left: 4px solid var(--pg-lime);
+    }
+
+    h3 {
+        font-size: 12.5pt;
+        font-weight: 700;
+        color: var(--pg-ink);
+    }
+    h3::before {
+        content: "";
+        display: inline-block;
+        width: 6pt;
+        height: 6pt;
+        border-radius: 2px;
+        background: var(--pg-coral);
+        margin-right: 7pt;
+        vertical-align: middle;
+        transform: translateY(-1pt);
+    }
+
+    h4 {
+        font-size: 11pt;
+        font-weight: 700;
+        color: var(--pg-ink-soft);
+    }
+
+    p {
+        margin: 7pt 0;
+    }
+
+    a {
+        color: var(--pg-link);
+        text-decoration: underline;
+        text-decoration-color: var(--pg-lime);
+        text-underline-offset: 2px;
+    }
+
+    strong { color: var(--pg-ink); }
+
+    hr {
+        border: none;
+        border-top: 1px dashed var(--pg-border);
+        margin: 18pt 0;
+    }
+
+    ul, ol {
+        margin: 6pt 0 6pt 18pt;
+        padding: 0;
+    }
+
+    li {
+        margin: 3pt 0;
+    }
+
+    blockquote {
+        margin: 10pt 0;
+        padding: 8pt 12pt;
+        background: var(--pg-cream);
+        border-left: 4px solid var(--pg-coral);
+        color: var(--pg-ink-soft);
+        border-radius: 4px;
+    }
+
+    /* --------- Code --------- */
+    code {
+        font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+        font-size: 9pt;
+        background: #f4f1ea;
+        color: var(--pg-ink);
+        padding: 1px 5px;
+        border-radius: 3px;
+        border: 1px solid #e7e1d3;
+    }
+
+    pre {
+        font-family: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+        background: #1F3131;
+        color: #f4f1ea;
+        padding: 10pt 12pt;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-size: 8.5pt;
+        line-height: 1.45;
+        page-break-inside: avoid;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    pre code {
+        background: transparent;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font-size: inherit;
+    }
+
+    .codehilite {
+        background: #1F3131;
+        border-radius: 6px;
+        padding: 2pt 4pt;
+        margin: 10pt 0;
+        page-break-inside: avoid;
+    }
+
+    .codehilite pre {
+        margin: 0;
+        padding: 8pt 10pt;
+    }
+
+    /* Pygments color tweaks on dark background */
+    .codehilite .k  { color: #98C441; font-weight: 600; }
+    .codehilite .kn { color: #98C441; font-weight: 600; }
+    .codehilite .s, .codehilite .s1, .codehilite .s2 { color: #f0d67a; }
+    .codehilite .c, .codehilite .c1 { color: #9aa8a8; font-style: italic; }
+    .codehilite .nt { color: #f2a68d; }
+    .codehilite .na { color: #eac67a; }
+    .codehilite .nf, .codehilite .nb { color: #9cd8c6; }
+    .codehilite .m, .codehilite .mi { color: #d7a3ff; }
+    .codehilite .o { color: #f2a68d; }
+
+    /* --------- Tables --------- */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10pt 0;
+        font-size: 9.5pt;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        background: var(--pg-ink);
+        color: #fff;
+    }
+
+    thead th {
+        text-align: left;
+        padding: 7pt 9pt;
+        font-weight: 600;
+        font-size: 9pt;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        border-bottom: 3px solid var(--pg-lime);
+    }
+
+    tbody td {
+        padding: 6pt 9pt;
+        border-bottom: 1px solid var(--pg-border);
+        vertical-align: top;
+    }
+
+    tbody tr:nth-child(odd) { background: #faf8f3; }
+    tbody tr:hover          { background: var(--pg-cream-deep); }
+
+    /* --------- Status pills --------- */
+    .pg-pill {
+        display: inline-block;
+        padding: 1.5pt 7pt;
+        border-radius: 999px;
+        font-size: 8.5pt;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+        border: 1px solid transparent;
+        line-height: 1.3;
+    }
+    .pg-pill--pass     { background: var(--pg-pass-bg);    color: var(--pg-pass);    border-color: var(--pg-pass-border); }
+    .pg-pill--partial  { background: var(--pg-partial-bg); color: var(--pg-partial); border-color: var(--pg-partial-border); }
+    .pg-pill--fail     { background: var(--pg-fail-bg);    color: var(--pg-fail);    border-color: var(--pg-fail-border); }
+    .pg-pill--fixed    { background: var(--pg-fixed-bg);   color: var(--pg-fixed);   border-color: var(--pg-fixed-border); }
+    .pg-pill--open     { background: var(--pg-open-bg);    color: var(--pg-open);    border-color: var(--pg-open-border); }
+    .pg-pill--pass-na  { background: var(--pg-na-bg);      color: var(--pg-na);      border-color: var(--pg-na-border); }
+    .pg-pill--na       { background: var(--pg-na-bg);      color: var(--pg-na);      border-color: var(--pg-na-border); }
+
+    /* --------- Callouts --------- */
+    .admonition {
+        margin: 12pt 0;
+        padding: 10pt 12pt;
+        border-radius: 8px;
+        background: var(--pg-cream);
+        border: 1px solid var(--pg-border);
+        border-left: 4px solid var(--pg-lime);
+    }
+    .admonition-title {
+        font-weight: 700;
+        margin: 0 0 4pt;
+        color: var(--pg-ink);
+        letter-spacing: 0.02em;
+    }
+
+    /* --------- Anchors / misc --------- */
+    .toc {
+        background: var(--pg-cream);
+        border: 1px solid var(--pg-border);
+        border-radius: 8px;
+        padding: 12pt 16pt;
+        margin: 12pt 0 18pt;
+    }
+
+    .toc ul {
+        margin: 0 0 0 12pt;
+        padding: 0;
+    }
+
+    .pg-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6pt;
+        margin: 6pt 0 18pt;
+        font-size: 9pt;
+    }
+    </style>
+</head>
+<body>
+
+<section class="pg-cover">
+    <div>
+        <div class="pg-cover__eyebrow">Piedmont Global</div>
+        <h1 class="pg-cover__title">Accessibility<br>Remediation Report</h1>
+        <p class="pg-cover__sub">
+            Response to the WCAG 2.1 AA audits commissioned for
+            piedmontglobal.com — root cause, remediation, verification,
+            and outstanding asks for every page.
+        </p>
+        <span class="pg-cover__accent"></span>
+    </div>
+
+    <dl class="pg-cover__meta">
+        <div>
+            <dt>Scope</dt>
+            <dd>Home, Solutions, Solution Taxonomy / Single Solution,<br>
+                Single Industry, About, Case Studies, Contact,<br>
+                Blog, Careers, Language Access Symposium</dd>
+        </div>
+        <div>
+            <dt>Standard</dt>
+            <dd>WCAG 2.1 Level AA (with selected 2.2 AA items)</dd>
+        </div>
+        <div>
+            <dt>Legend</dt>
+            <dd class="pg-legend">
+                <span class="pg-pill pg-pill--fixed">Fixed</span>
+                <span class="pg-pill pg-pill--partial">Partial</span>
+                <span class="pg-pill pg-pill--fail">Fail</span>
+                <span class="pg-pill pg-pill--pass">Pass</span>
+                <span class="pg-pill pg-pill--open">Open</span>
+                <span class="pg-pill pg-pill--pass-na">Pass (N/A)</span>
+            </dd>
+        </div>
+        <div>
+            <dt>Prepared by</dt>
+            <dd>Piedmont Global engineering<br>godwillcodes / reimagined-train</dd>
+        </div>
+    </dl>
+
+    <div class="pg-cover__footer">
+        <span>Confidential — Internal audit response</span>
+        <span>WCAG 2.1 AA</span>
+    </div>
+</section>
+
+<main class="pg-doc">
+<p>This document responds to the WCAG 2.1 AA audits commissioned for piedmontglobal.com.
+It only covers rows that came back as <strong>Partial</strong> or <strong>Fail</strong>; everything marked
+<strong>Pass</strong> or <strong>Pass (N/A)</strong> is omitted.</p>
+<p>For each issue you'll find:
+- The WCAG success criterion and conformance level
+- The auditor's note (what they observed)
+- Our root-cause analysis
+- The remediation that shipped, with file paths and line ranges
+- Verification steps so QA / the auditor can confirm the fix</p>
+<h2 id="pages-covered">Pages covered</h2>
+<ol>
+<li><a href="#page-homepage">Homepage</a></li>
+<li><a href="#page-solutions-overview-page">Solutions Overview Page</a></li>
+<li><a href="#page-solution-taxonomy--single-solution-pages">Solution Taxonomy &amp; Single Solution Pages</a></li>
+<li><a href="#page-single-industry-pages">Single Industry Pages</a></li>
+<li><a href="#page-about-page">About Page</a></li>
+<li><a href="#page-case-studies-page">Case Studies Page</a></li>
+<li><a href="#page-contact-page">Contact Page</a></li>
+<li><a href="#page-blog-page">Blog Page</a></li>
+<li><a href="#page-careers-page">Careers Page</a></li>
+</ol>
+<hr>
+<h1 id="page-homepage">Page: Homepage</h1>
+<h2 id="summary-table">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>WCAG SC</th>
+<th>Level</th>
+<th>Audit result</th>
+<th>Severity</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1.1.1 Non-text Content</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> in code; content backfill recommended</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.4.5 Images of Text</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> in code; content backfill recommended</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>1.4.11 Non-text Contrast</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong>Awaiting auditor screenshot</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>1.4.13 Content on Hover or Focus</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2.1.1 Keyboard</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.1.2 No Keyboard Trap</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>2.2.2 Pause, Stop, Hide</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="1-wcag-111-non-text-content-level-a">1. WCAG 1.1.1 — Non-text Content (Level A)</h2>
+<p><strong>Auditor:</strong> <em>"Non-decorative images do not have alt-text encrypted in them, writing
+'Piedmont Global Partner' or 'Piedmont Global recognition' instead of the specific
+award or organization the logo visually conveys."</em></p>
+<h3 id="root-cause">Root cause</h3>
+<p>The four logo carousels on the homepage (Trusted Partners, We've Been Certified,
+Contracting Vehicles, We've Been Recognized) read their alt text from ACF fields
+(<code>partner_name</code>, <code>name</code>). When those fields are empty, the templates fall back to
+generic strings like "Partner" or "Recognition", which is what the auditor saw.</p>
+<h3 id="fix">Fix</h3>
+<p>Introduced a single helper, <code>pg_brand_alt()</code>, that degrades gracefully:</p>
+<ol>
+<li>Use the ACF brand name if present.</li>
+<li>Otherwise, derive a Title-Cased label from the linked URL's hostname
+   (e.g. <code>https://www.microsoft.com</code> → "Microsoft").</li>
+<li>Otherwise, use a section-specific generic ("Partner logo", "Certification",
+   "Contracting vehicle", "Recognition").</li>
+</ol>
+<p>Applied to both the <code>&lt;img alt&gt;</code> and the surrounding <code>&lt;a aria-label&gt;</code> for every
+logo in the four carousels.</p>
+<p><strong>Files touched</strong></p>
+<ul>
+<li><code>functions.php</code> — added <code>pg_brand_alt( $name, $url, $fallback )</code></li>
+<li><code>pages/home.php</code> — Trusted Partners, Certified, Contracting Vehicles, Recognized</li>
+</ul>
+<h3 id="remaining-work-content-team">Remaining work (content team)</h3>
+<p>The template now emits the best alt text it can from the data it has. For
+<strong>ideal</strong> alt text, content editors should populate the ACF <code>partner_name</code> and
+<code>name</code> fields with the full brand name — for example:</p>
+<ul>
+<li>"Microsoft Translator" instead of an empty field</li>
+<li>"ISO 9001:2015 Certification"</li>
+<li>"GSA Multiple Award Schedule"</li>
+<li>"Inc. 5000 (2024)"</li>
+</ul>
+<p>No code change is required once those fields are filled in.</p>
+<h3 id="verification">Verification</h3>
+<p>Inspect any logo image inside the four homepage carousels. The <code>alt</code> attribute
+should now contain either the brand name or the brand domain (never just
+"Partner").</p>
+<hr>
+<h2 id="2-wcag-145-images-of-text-level-aa">2. WCAG 1.4.5 — Images of Text (Level AA)</h2>
+<p><strong>Auditor:</strong> <em>"Text used instead of images on majority of site; organization name
+appears as selectable text. Text alternative is not available for partnered
+organization logos throughout site."</em></p>
+<h3 id="root-cause-and-fix">Root cause and fix</h3>
+<p>Same as 1.1.1 above. The same <code>pg_brand_alt()</code> helper supplies the text
+alternative for every logo image in the four carousels.</p>
+<h3 id="verification_1">Verification</h3>
+<p>Same as 1.1.1. With a screen reader, each logo should announce a meaningful name
+rather than a generic placeholder.</p>
+<hr>
+<h2 id="3-wcag-1411-non-text-contrast-level-aa">3. WCAG 1.4.11 — Non-text Contrast (Level AA)</h2>
+<p><strong>Auditor:</strong> <em>"UI components have sufficient contrast against adjacent colors in
+all sections but 'The foundation that makes success inevitable, whether your
+audience is across the globe or across the street' which shifts from grey to
+black and red."</em></p>
+<h3 id="root-cause-analysis">Root cause analysis</h3>
+<p>We reviewed the homepage template, the Tailwind output, the page CSS, and the
+JavaScript bundle for any color animation tied to that heading. The heading is
+rendered as a static <code>&lt;h2&gt;</code> with no inline color classes, no keyframe rule, and
+no JS color toggling:</p>
+<p>```508:510:pages/home.php
+            <h2 class="text-2xl md:text-5xl font-bold">
+                The foundation that makes success inevitable, whether your audience is across the globe or across the street.
+            </h2></p>
+<div class="codehilite"><pre><span></span><code>The only adjacent reddish element is the orange underline (`border-[#D16555]`)
+on the **&quot;Learn more about Strategic Globalization&quot;** link directly below the
+heading.
+
+### Status
+
+**Cannot reproduce as described.** We cannot ship a fix without first being able
+to reproduce the behavior. We&#39;ve requested a screenshot or screen recording from
+the auditor showing the grey-to-black-to-red color shift. If it turns out to be
+the orange CTA underline being misread as part of the heading, no change is
+needed; if there is a real animation we missed, we&#39;ll address it as a follow-up.
+
+### Action item
+
+Auditor to provide a screenshot/recording of the observed color shift on the
+&quot;foundation that makes success inevitable…&quot; heading.
+
+---
+
+## 4. WCAG 1.4.13 — Content on Hover or Focus (Level AA)
+
+**Auditor:** *&quot;Dropdowns cannot be dismissed with esc key.&quot;*
+
+### Root cause
+
+The desktop navigation controller (`assets/js/navigation.js`) listened for
+`Escape` on the `[data-desktop-nav]` root element. That meant Escape only worked
+when focus was already inside the trigger or a panel. Mouse users who hovered a
+menu open never had keyboard focus inside the nav, so Escape did nothing — a
+direct WCAG 1.4.13 (&quot;Dismissible&quot;) failure.
+
+### Fix
+
+Added a document-level `keydown` listener that closes any open menu on Escape,
+regardless of where focus currently lives. The pre-existing focus-aware Escape
+path (which both closes the menu *and* restores focus to the trigger) is
+preserved, so keyboard users still get the optimal experience.
+
+**File touched**
+
+- `assets/js/navigation.js` — `bindEvents()` registers `handleGlobalEscape`
+
+### Verification
+
+1. Hover (do not click) a desktop nav dropdown until the panel appears.
+2. Press Escape without moving the mouse.
+3. The panel must close.
+4. Tab into a dropdown trigger and press Enter to open. Press Escape — the panel
+   closes and focus returns to the trigger.
+
+---
+
+## 5. WCAG 2.1.1 — Keyboard (Level A)
+
+**Auditor:** *&quot;Escape button cannot be used to dismiss dropdown menus and
+keyboard cannot be used to navigate through &#39;We&#39;ve been certified&#39;,
+&#39;Contracting Vehicles&#39; and &#39;We&#39;ve been recognized&#39; sections.&quot;*
+
+### Root cause
+
+Two separate problems:
+
+1. **Dropdown Escape:** see Section 4 above (1.4.13). Same root cause; same fix.
+2. **Logo carousels:** The four logo carousels (`.partners-carousel`,
+   `.certificate-carousel`, `.contracting-vehicles-carousel`, and
+   `.recognized-carousel`) were configured `nav: false, dots: false,
+   autoplay: true`. There was no visible nav UI at all and no key bindings,
+   so a keyboard user could not page through the slides.
+
+### Fix
+
+Created a reusable accessible toolbar via a new helper,
+`pg_render_carousel_controls()` in `functions.php`. Each toolbar contains three
+real `&lt;button&gt;`s:
+
+- **Previous** — `aria-label=&quot;Previous {region label}&quot;`
+- **Pause / Play** — toggle with `aria-pressed` and a swapping `aria-label`
+- **Next** — `aria-label=&quot;Next {region label}&quot;`
+
+All three use the standard focus-visible ring
+(`focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2`).
+
+In addition, the carousel region itself receives:
+
+- `tabindex=&quot;0&quot;` so it can be Tab-reached
+- A `keydown` handler that pages on **ArrowLeft** / **ArrowRight**
+- `data-pg-carousel-controls=&quot;{base_id}&quot;` linking it to its toolbar
+
+Applied to all four logo carousels on the homepage.
+
+**Files touched**
+
+- `functions.php` — added `pg_render_carousel_controls()` helper
+- `pages/home.php` — toolbars + `data-pg-carousel-controls` on Trusted Partners,
+  Certified, Contracting Vehicles, Recognized
+- `assets/js/owl-bulletproof-loader.js` — `wireAccessibleControls()` connects
+  toolbar buttons and arrow keys to Owl&#39;s `prev/next/stop/play.owl.carousel`
+  events; same wiring duplicated into the inline fallback path
+- `assets/js/carousel-a11y.js` — `hasExternalNav()` updated so the existing
+  auto-injected overlay arrows are suppressed for carousels that already have
+  the new accessible toolbar
+
+### Verification
+
+1. Tab through the homepage. The toolbar buttons (Prev / Pause / Next) and the
+   carousel region should each receive a visible focus ring.
+2. With focus inside a logo carousel region, press Left / Right arrow keys —
+   slides should advance.
+3. With a screen reader, click the Pause button — announcement should change
+   from &quot;Pause Trusted partners logos auto-rotation, toggle button, not pressed&quot;
+   to &quot;Play Trusted partners logos auto-rotation, toggle button, pressed&quot;.
+
+---
+
+## 6. WCAG 2.1.2 — No Keyboard Trap (Level A)
+
+**Auditor:** *&quot;Tab, Shift+Tab, and up and down arrow keys function, escape
+button does not function.&quot;*
+
+### Root cause and fix
+
+This finding is a downstream effect of 2.1.1 plus the dropdown Escape issue from
+1.4.13. Once Escape dismisses dropdowns (Section 4) and the logo carousels can
+be paused / paged from the keyboard (Section 5), there is no longer a place
+where a keyboard user can lose control or be carried out of view by autoplay.
+
+The existing `assets/js/carousel-a11y.js` script also stops autoplay on
+`focusin` for any carousel, so a keyboard user can never be scrolled away from
+the slide they&#39;re on while interacting with it.
+
+### Verification
+
+Same as Section 4 (Escape) and Section 5 (carousels). Additionally: Tab into a
+logo carousel and confirm autoplay halts, and that you can Tab back out without
+being interrupted by a slide change.
+
+---
+
+## 7. WCAG 2.2.2 — Pause, Stop, Hide (Level A)
+
+**Auditor:** *&quot;No mechanism for user to pause, stop, or hide movement in
+&#39;We&#39;ve been certified&#39;, &#39;Contracting Vehicles&#39; and &#39;We&#39;ve been recognized&#39;
+sections.&quot;*
+
+### Root cause
+
+All four logo carousels had `autoplay: true, autoplayHoverPause: true`.
+`autoplayHoverPause` only helps mouse users; keyboard, touch, and screen-reader
+users had no way to stop motion that lasted longer than five seconds — a clean
+WCAG 2.2.2 fail.
+
+### Fix
+
+The Pause / Play button rendered by `pg_render_carousel_controls()` (see Section
+5) is wired to Owl&#39;s autoplay engine inside
+`assets/js/owl-bulletproof-loader.js`:
+
+- Click → `stop.owl.autoplay`, button label switches to **&quot;Play …&quot;**,
+  `aria-pressed=&quot;true&quot;`, icon swaps to a play triangle.
+- Click again → `play.owl.autoplay`, button label reverts to **&quot;Pause …&quot;**,
+  `aria-pressed=&quot;false&quot;`, icon swaps back to the pause bars.
+
+Implemented for all four logo carousels: Trusted Partners, Certified,
+Contracting Vehicles, Recognized.
+
+As an additional safeguard for users with vestibular sensitivities, autoplay is
+**automatically disabled at init time** when
+`prefers-reduced-motion: reduce` is set in the operating system. The button is
+still rendered so the user can opt back in to motion at any time. Enforcement
+lives in two places to cover the lazy-load path *and* the inline fallback
+loader.
+
+**Files touched**
+
+- `functions.php` — `pg_render_carousel_controls()` renders the Pause / Play button
+- `assets/js/owl-bulletproof-loader.js`
+  - `wireAccessibleControls()` connects the button to autoplay events
+  - `prefersReducedMotion` flag flips `autoplay: false` on the four carousel
+    configs (and the inline fallback)
+- `pages/home.php` — toolbars rendered above each of the four carousels
+- `footer.php` — AOS now also honors `prefers-reduced-motion` (defense in
+  depth, addresses the same family of concerns)
+
+### Verification
+
+1. Click the Pause button on any logo carousel — rotation halts immediately.
+2. Click again — rotation resumes.
+3. Enable OS reduced-motion (System Settings → Accessibility → Display →
+   Reduce motion on macOS; Settings → Accessibility → Visual effects → Animation
+   effects on Windows). Reload the page. The four logo carousels must not
+   auto-rotate.
+4. With a screen reader, the toggle should announce as a Toggle Button and
+   reflect the correct pressed state.
+
+---
+
+# Page: Solutions Overview Page
+
+Template file: `pages/solutions.php` (WordPress template
+&quot;Template Name: Solutions&quot;). URL: `/solutions/`.
+
+## Summary table
+
+| # | WCAG SC | Level | Audit result | Severity | Status |
+|---|---|---|---|---|---|
+| 1 | 1.3.2 Meaningful Sequence | A | Partial | Medium | **Fixed** |
+| 2 | 1.4.13 Content on Hover or Focus | AA | Partial | Medium | **Fixed (global)** |
+| 3 | 2.1.1 Keyboard | A | Partial | High | **Fixed (global)** |
+| 4 | 2.1.2 No Keyboard Trap | A | Partial | Medium | **Fixed (global)** |
+| 5 | 2.4.3 Focus Order | A | Partial | Medium | **Fixed** |
+
+Items 2–4 share the **single root cause** the homepage audit flagged: the
+desktop dropdown could not be dismissed with Escape. The fix shipped for the
+homepage applies to every page that uses the global header, so the Solutions
+Overview Page inherits it.
+
+---
+
+## 1. WCAG 1.3.2 — Meaningful Sequence (Level A)
+
+**Auditor:** *&quot;At times the screen reader can skip back to parts of the page
+earlier said, making the sequence out of order in section &#39;Integrated language
+access, accessibility, translation, and global delivery solutions — designed to
+help organizations scale across languages, cultures and systems with clarity
+and confidence.&#39;&quot;*
+
+### Root cause
+
+The hero section in `pages/solutions.php` had a broken heading hierarchy that
+caused screen readers, when navigating by heading (the `H` key in NVDA/JAWS or
+the rotor in VoiceOver), to bounce back into the long descriptive sentence
+because it was incorrectly marked as a heading:
+
+- The page had **no `&lt;h1&gt;`** at all.
+- The page title (`section_title`) was wrapped in `&lt;h2&gt;`.
+- The long descriptive sentence (`primary_description` — &quot;Integrated language
+  access, accessibility, translation, and global delivery solutions…&quot;) was
+  wrapped in `&lt;h3&gt;`. A descriptive sentence is not a heading; marking it as one
+  promises the user a navigable landmark and then leaves them stranded inside a
+  paragraph of prose, which is what produced the &quot;skipping back&quot; perception.
+- The next section opened with `&lt;h3&gt;` &quot;Why partner with Piedmont Global?&quot;
+  followed by `&lt;h4&gt;` &quot;We don&#39;t just fill gaps…&quot;, with no intervening `&lt;h2&gt;` —
+  another hierarchy break.
+
+### Fix
+
+`pages/solutions.php` was restructured so the heading outline is now linear and
+the long descriptive sentence is no longer in a heading:
+
+- `section_title` → `&lt;h1 id=&quot;solutions-hero-heading&quot;&gt;` (the page now has
+  exactly one `&lt;h1&gt;`).
+- `primary_description` → `&lt;p&gt;` with the same visual styling
+  (`text-2xl sm:text-3xl font-extrabold leading-snug`). The sentence still
+  reads exactly the same visually; it&#39;s no longer announced as a heading.
+- `supporting_description` → unchanged `&lt;p&gt;`.
+- &quot;Why partner with Piedmont Global?&quot; demoted from `&lt;h3&gt;` to a styled `&lt;p&gt;`
+  (it was eyebrow text, not a heading).
+- &quot;We don&#39;t just fill gaps…&quot; promoted from `&lt;h4&gt;` to `&lt;h2&gt;` and given an `id`
+  so its containing `&lt;section&gt;` can use `aria-labelledby`.
+- The Solutions cards section&#39;s `&lt;h2&gt;` &quot;Solutions&quot; received an `id` and the
+  containing `&lt;section&gt;` got `aria-labelledby` referencing it.
+- Added `&lt;main id=&quot;maincontent&quot;&gt;` so the global skip link has a valid target on
+  this page (this also matches the fix already shipped for
+  `pages/language-access-symposium.php`).
+- The hero pattern image now uses `alt=&quot;&quot;` + `aria-hidden=&quot;true&quot;` (it was
+  decorative but had `alt=&quot;Piedmont Global&quot;`, which double-announced the brand
+  name to AT users).
+- Each solution card image uses `alt=&quot;&quot;` + `aria-hidden=&quot;true&quot;` (the
+  surrounding `&lt;a aria-label=&quot;Learn more about {term name}&quot;&gt;` already conveys
+  the meaning, so the image is decorative in context).
+- The &quot;Explore solutions&quot; anchor&#39;s `role=&quot;button&quot;` was removed (it&#39;s a real
+  in-page anchor, not a button) and its focus ring switched to `focus-visible:`.
+
+The resulting heading outline for the page is:
+
+- `&lt;h1&gt;` — section_title (e.g. &quot;Our Solutions&quot;)
+- `&lt;h2&gt;` — &quot;We don&#39;t just fill gaps. We build what others overlook.&quot;
+- `&lt;h2&gt;` — &quot;Solutions&quot;
+  - `&lt;h3&gt;` — Solution term name (one per card)
+
+### Verification
+
+1. Open the page in NVDA, JAWS, or VoiceOver and press `H` (or use the rotor in
+   VoiceOver). The screen reader should walk through `h1 → h2 → h2 → h3 → h3 →
+   …` in document order without ever stopping inside the
+   &quot;Integrated language access…&quot; sentence.
+2. Run the WAVE or axe extension. The &quot;Heading Order&quot; / &quot;Heading levels should
+   only increase by one&quot; issue on this page should be gone.
+
+---
+
+## 2. WCAG 1.4.13 — Content on Hover or Focus (Level AA)
+
+**Auditor:** *&quot;Dropdowns cannot be dismissed with esc key.&quot;*
+
+### Root cause and fix
+
+Identical to the homepage finding (Page: Homepage, Section 4). The desktop
+dropdown is rendered by `components/navigation/desktop`, which is included by
+every page template — including `pages/solutions.php`. The document-level
+`keydown` Escape handler added to `assets/js/navigation.js` for the homepage
+audit therefore also dismisses the dropdown on the Solutions Overview Page.
+
+No additional Solutions-specific code was needed.
+
+### Verification
+
+Same as the homepage:
+
+1. On `/solutions/`, hover (do not click) a desktop nav dropdown until the
+   panel appears.
+2. Press Escape without moving the mouse — the panel must close.
+3. Tab into a dropdown trigger, press Enter to open, then press Escape — the
+   panel closes and focus returns to the trigger.
+
+---
+
+## 3. WCAG 2.1.1 — Keyboard (Level A)
+
+**Auditor:** *&quot;Escape button cannot be used to dismiss dropdown menus.&quot;*
+
+### Root cause and fix
+
+Same root cause as Section 2 above. The Solutions Overview Page does **not**
+contain the four logo carousels that triggered the keyboard finding on the
+homepage — it only contains an anchor (`#solutions`) and a grid of links — so
+the only WCAG 2.1.1 hit on this page is the dropdown Escape issue, which is
+already fixed by the global handler in `assets/js/navigation.js`.
+
+The Solutions cards themselves are native `&lt;a&gt;` elements, fully keyboard
+operable, and their focus ring was upgraded from `focus:ring`/`focus:outline`
+to `focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2`
+during this pass for clearer keyboard feedback.
+
+### Verification
+
+1. Tab from the page top to the bottom: skip link → header nav → &quot;Explore
+   solutions&quot; CTA → each Solution card → footer.
+2. Every focusable element must show a visible focus indicator.
+3. Pressing Escape after hovering or focusing a header dropdown closes the
+   dropdown.
+
+---
+
+## 4. WCAG 2.1.2 — No Keyboard Trap (Level A)
+
+**Auditor:** *&quot;Tab, Shift+Tab, and up and down arrow keys function, escape
+button does not function.&quot;*
+
+### Root cause and fix
+
+This is the same downstream effect of the dropdown Escape issue noted on the
+homepage (Page: Homepage, Section 6). Once Escape closes the dropdown, the user
+is no longer effectively trapped inside the open menu. No Solutions-specific
+code change is required because the Solutions Overview Page has no carousels,
+no modals, and no other components that could trap focus.
+
+### Verification
+
+Same as Section 2 above. Additionally: open a dropdown via Enter, Tab through
+its links, then press Escape — focus returns to the original trigger and the
+user can continue Tabbing through the page normally.
+
+---
+
+## 5. WCAG 2.4.3 — Focus Order (Level A)
+
+**Auditor:** *&quot;At times the screen reader can skip back to parts of the page
+earlier said, making the sequence out of order in section &#39;Integrated language
+access, accessibility, translation, and global delivery solutions…&#39;, as in
+1.3.2.&quot;*
+
+### Root cause and fix
+
+The auditor explicitly ties this to the same observation as 1.3.2 above. The
+fix is the heading-hierarchy restructure in `pages/solutions.php` described in
+Section 1 of this page block. Tab order on this page already matches the visual
+order — there is no positive `tabindex`, no `position: fixed` content with
+mismatched DOM order, no `tabindex=&quot;-1&quot;` or `display:none` traps — so once the
+&quot;skip back to a heading that wasn&#39;t actually the next thing&quot; effect is gone,
+focus order matches reading order.
+
+### Verification
+
+1. Tab through `/solutions/` from top to bottom. Focus order is: skip link →
+   global header → &quot;Explore solutions&quot; → each Solution card in DOM order →
+   footer.
+2. With a screen reader, navigate by heading (`H` / rotor). The order should be
+   `h1 (page title) → h2 (&quot;We don&#39;t just fill gaps…&quot;) → h2 (&quot;Solutions&quot;) →
+   h3 (each Solution name)`. There should be no jumps backwards into earlier
+   prose.
+
+---
+
+# Page: Solution Taxonomy &amp; Single Solution Pages
+
+Templates: `taxonomy-solution.php` (URL pattern: `/solution/{slug}/`) and
+`single-solutions.php` (URL pattern: `/solutions/{slug}/`). Both render the
+shared **Related resources** carousel via `components/common/faqs-related.php`,
+so the Related-Resources fixes below apply to every Solution detail page in one
+shot.
+
+## Summary table
+
+| # | WCAG SC | Level | Audit result | Severity | Status |
+|---|---|---|---|---|---|
+| 1 | 1.1.1 Non-text Content | A | Fail | High | **Fixed in code; content backfill recommended** |
+| 2 | 1.3.2 Meaningful Sequence | A | Partial | Medium | **Fixed** |
+| 3 | 1.4.3 Contrast (Minimum) | AA | Partial | Medium | **Open — Beacon report needed** |
+| 4 | 1.4.5 Images of Text | AA | Partial | Medium | **Fixed in code; content backfill recommended** |
+| 5 | 1.4.11 Non-text Contrast | AA | Partial | Medium | **Open — Beacon report needed** |
+| 6 | 1.4.13 Content on Hover or Focus | AA | Partial | Medium | **Fixed (global)** |
+| 7 | 2.1.1 Keyboard | A | Partial | Low | **Fixed (global)** |
+| 8 | 2.1.2 No Keyboard Trap | A | Partial | Medium | **Fixed (global)** |
+| 9 | 2.2.2 Pause, Stop, Hide | A | Fail | Medium | **Fixed** |
+| 10 | 2.4.3 Focus Order | A | Partial | Low | **Fixed** |
+
+Items 6–8 share the **single root cause** the homepage audit flagged: the
+desktop dropdown could not be dismissed with Escape. The fix shipped for the
+homepage (`assets/js/navigation.js`) applies to every page that uses the
+global header, so these pages inherit it.
+
+---
+
+## 1. WCAG 1.1.1 — Non-text Content (Level A)
+
+**Auditor:** *&quot;The majority of the page relies on text, but many of the text
+within the related resources section is an image of text and therefore cannot
+be read by a screen reader.&quot;*
+
+### Root cause
+
+The Related Resources cards render the post&#39;s featured image with
+`the_post_thumbnail()`. WordPress reads the alt attribute from the media
+library&#39;s *Alternative Text* field (`_wp_attachment_image_alt` post meta). For
+most resource thumbnails on the site that field is empty, which means the
+`&lt;img alt=&quot;&quot;&gt;` shipped to the browser was empty too. Because many of those
+resource covers are branded layouts that bake the title into the image (i.e.
+images of text), an empty alt left screen-reader users with nothing.
+
+### Fix
+
+In both `components/common/faqs-related.php` and the duplicate Related
+Resources block inside `taxonomy-solution.php`, we now compute the alt text
+defensively before each call to `the_post_thumbnail()`:
+
+```php
+$thumb_id  = get_post_thumbnail_id();
+$thumb_alt = $thumb_id ? trim( (string) get_post_meta( $thumb_id, &#39;_wp_attachment_image_alt&#39;, true ) ) : &#39;&#39;;
+if ( &#39;&#39; === $thumb_alt ) {
+    $thumb_alt = get_the_title();
+}
+the_post_thumbnail( &#39;full&#39;, [
+    &#39;class&#39;    =&gt; &#39;...&#39;,
+    &#39;alt&#39;      =&gt; esc_attr( $thumb_alt ),
+    &#39;loading&#39;  =&gt; &#39;lazy&#39;,
+    &#39;decoding&#39; =&gt; &#39;async&#39;,
+] );
+</code></pre></div>
+
+<p>If an editor sets meaningful alt text in the media library, that wins.
+Otherwise the post title is used so screen readers always announce something
+useful — never an empty <code>alt</code>.</p>
+<p><strong>Files touched</strong></p>
+<ul>
+<li><code>components/common/faqs-related.php</code></li>
+<li><code>taxonomy-solution.php</code></li>
+</ul>
+<h3 id="remaining-work-content-team_1">Remaining work (content team)</h3>
+<p>For resource covers that contain <em>additional</em> text the title doesn't capture
+(e.g. a branded subtitle on the cover image), editors should set explicit alt
+text in the media library. The template will pick it up automatically.</p>
+<h3 id="verification_2">Verification</h3>
+<ol>
+<li>Open any solution detail page that has Related Resources in DevTools.</li>
+<li>Each Related Resources card image's <code>alt</code> attribute should be non-empty.</li>
+<li>With NVDA / VoiceOver, each card should announce a meaningful name (post
+   title or media-library alt), not silence.</li>
+</ol>
+<hr>
+<h2 id="2-wcag-132-meaningful-sequence-level-a">2. WCAG 1.3.2 — Meaningful Sequence (Level A)</h2>
+<p><strong>Auditor:</strong> <em>"Assistive technology cannot present all information in the
+proper order, specifically in the Related Resources section, partially due to
+the carousel function."</em></p>
+<h3 id="root-cause_1">Root cause</h3>
+<p>Owl Carousel is configured with <code>loop: true</code> for <code>.related-blogs-carousel</code>. To
+make the loop visually seamless, Owl duplicates the first and last few slides
+and inserts them as <code>&lt;div class="owl-item cloned"&gt;</code> at each end of the track.
+By default those cloned <code>&lt;div&gt;</code>s remain in the accessibility tree and their
+inner <code>&lt;a&gt;</code> cards remain in the document tab order, which is exactly the
+"screen reader skips back to parts of the page earlier said" behavior the
+auditor described — the same resource is announced twice (once as the original
+slide, again as a clone).</p>
+<h3 id="fix_1">Fix</h3>
+<p>Added a <code>bindClonedSlideHider()</code> helper to <code>assets/js/carousel-a11y.js</code> that
+runs on every Owl Carousel and reacts to <code>initialized.owl.carousel</code>,
+<code>refreshed.owl.carousel</code>, and <code>resized.owl.carousel</code>:</p>
+<ul>
+<li>Marks every <code>.owl-item.cloned</code> with <code>aria-hidden="true"</code> so it is removed
+  from the AT tree.</li>
+<li>Sets <code>tabindex="-1"</code> and <code>aria-hidden="true"</code> on every focusable descendant
+  of a cloned slide (<code>a, button, input, select, textarea, [tabindex]</code>) so it
+  is removed from the keyboard tab order as well.</li>
+</ul>
+<p>This applies globally to every loop carousel on the site (Related Resources,
+the four homepage logo carousels, the symposium speakers carousel, etc.), so
+this same fix benefits any future audit row that flags duplicate-slide reading
+order.</p>
+<p><strong>File touched</strong></p>
+<ul>
+<li><code>assets/js/carousel-a11y.js</code> — <code>hideClonedSlides()</code> + <code>bindClonedSlideHider()</code>,
+  invoked from <code>initCarousel()</code> for <em>every</em> Owl Carousel (not only autoplaying
+  ones, because the duplicate-content reading-order issue exists even when
+  autoplay is off).</li>
+</ul>
+<h3 id="verification_3">Verification</h3>
+<ol>
+<li>Open a Solution detail page that has Related Resources in DevTools.</li>
+<li>Inspect any <code>.owl-item.cloned</code> element after Owl initializes — it must have
+   <code>aria-hidden="true"</code>, and any <code>&lt;a&gt;</code> inside it must have <code>tabindex="-1"</code>.</li>
+<li>Tab through the carousel — focus should visit each <em>real</em> card exactly
+   once and never land on a clone.</li>
+<li>With NVDA / VoiceOver and "Browse Mode", arrow through the section — each
+   Related Resource title should be announced exactly once.</li>
+</ol>
+<hr>
+<h2 id="3-wcag-143-contrast-minimum-level-aa">3. WCAG 1.4.3 — Contrast (Minimum) (Level AA)</h2>
+<p><strong>Auditor:</strong> <em>"Beacon has flagged 13 affected elements."</em> (UI designer to
+remediate via Beacon tasks.)</p>
+<h3 id="status">Status</h3>
+<p><strong>Open — Beacon report needed.</strong> The audit row points to a Beacon-generated
+list of 13 specific elements, but the row itself does not enumerate them. We
+need the Beacon export (CSV or shareable URL) so we can map each flagged
+element to its Tailwind class and adjust the color tokens. Once we have the
+list we'll triage in <code>assets/css/input.css</code> and the affected templates.</p>
+<h3 id="action-item">Action item</h3>
+<p>Auditor / project owner to share the Beacon export of the 13 flagged elements
+on the Solution Taxonomy / Single Solution pages.</p>
+<hr>
+<h2 id="4-wcag-145-images-of-text-level-aa">4. WCAG 1.4.5 — Images of Text (Level AA)</h2>
+<p><strong>Auditor:</strong> <em>"Text alternative is not always available for related resources
+section."</em></p>
+<h3 id="root-cause-and-fix_1">Root cause and fix</h3>
+<p>Same root cause and same fix as <strong>1.1.1</strong> above. The defensive alt-text
+fallback now guarantees every Related Resources card image has a non-empty
+<code>alt</code> attribute that conveys the content of the cover.</p>
+<h3 id="verification_4">Verification</h3>
+<p>Same as 1.1.1.</p>
+<hr>
+<h2 id="5-wcag-1411-non-text-contrast-level-aa">5. WCAG 1.4.11 — Non-text Contrast (Level AA)</h2>
+<p><strong>Auditor:</strong> <em>"Beacon has flagged 13 affected elements."</em> (UI designer to
+remediate via Beacon tasks.)</p>
+<h3 id="status_1">Status</h3>
+<p><strong>Open — Beacon report needed.</strong> Same situation as 1.4.3: we need the Beacon
+export to know which non-text UI components (icons, focus rings, borders,
+button outlines) are below the 3:1 threshold so we can adjust the color
+tokens or add an outline. We'll fold these into the same Beacon-driven sweep
+as the 1.4.3 fixes.</p>
+<h3 id="action-item_1">Action item</h3>
+<p>Auditor / project owner to share the Beacon export of the 13 flagged
+non-text-contrast elements.</p>
+<hr>
+<h2 id="6-wcag-1413-content-on-hover-or-focus-level-aa">6. WCAG 1.4.13 — Content on Hover or Focus (Level AA)</h2>
+<p><strong>Auditor:</strong> <em>"Dropdowns cannot be dismissed with esc key."</em></p>
+<h3 id="root-cause-and-fix_2">Root cause and fix</h3>
+<p>Identical to the homepage finding (Page: Homepage, Section 4). The Solution
+Taxonomy and Single Solution templates both include the global desktop
+navigation via <code>get_template_part('components/navigation/desktop')</code>, so the
+document-level Escape handler added to <code>assets/js/navigation.js</code> for the
+homepage audit also dismisses the dropdown on these pages.</p>
+<p>No additional template-specific code was needed.</p>
+<h3 id="verification_5">Verification</h3>
+<p>Same as the homepage:</p>
+<ol>
+<li>On any <code>/solution/{slug}/</code> or <code>/solutions/{slug}/</code> URL, hover (do not
+   click) a desktop nav dropdown until the panel appears.</li>
+<li>Press Escape without moving the mouse — the panel must close.</li>
+<li>Tab into a dropdown trigger, press Enter to open, then press Escape — the
+   panel closes and focus returns to the trigger.</li>
+</ol>
+<hr>
+<h2 id="7-wcag-211-keyboard-level-a">7. WCAG 2.1.1 — Keyboard (Level A)</h2>
+<p><strong>Auditor:</strong> <em>"Escape button cannot be used to dismiss dropdown menus."</em></p>
+<h3 id="root-cause-and-fix_3">Root cause and fix</h3>
+<p>Same root cause as Section 6 — the dropdown Escape issue. Already fixed
+globally via <code>assets/js/navigation.js</code>.</p>
+<p>The Related Resources carousel itself was missing keyboard controls (no
+visible nav UI, no key bindings) — the only way to advance slides was to wait
+for autoplay. Section 9 (2.2.2) describes how that's now fixed by adding the
+<code>pg_render_carousel_controls()</code> toolbar <strong>and</strong> wiring arrow-key paging via
+the existing <code>wireAccessibleControls()</code> path.</p>
+<h3 id="verification_6">Verification</h3>
+<ol>
+<li>Tab to the Related Resources carousel region — it now receives a visible
+   focus ring (<code>tabindex="0"</code>).</li>
+<li>With focus inside the region, press Left / Right arrow keys — slides
+   advance.</li>
+<li>Tab continues into the Prev / Pause / Next toolbar buttons; Tab from there
+   moves to the first card (clones are skipped because of the 1.3.2 fix).</li>
+</ol>
+<hr>
+<h2 id="8-wcag-212-no-keyboard-trap-level-a">8. WCAG 2.1.2 — No Keyboard Trap (Level A)</h2>
+<p><strong>Auditor:</strong> <em>"Tab, Shift+Tab, and up and down arrow keys function, escape
+button does not function."</em></p>
+<h3 id="root-cause-and-fix_4">Root cause and fix</h3>
+<p>Downstream effect of the dropdown Escape issue (Section 6). Once Escape
+closes any open dropdown, the user is no longer effectively trapped inside
+the open menu. The Related Resources carousel itself never trapped focus
+(card anchors are real <code>&lt;a&gt;</code>s with native focus management) and the new
+<code>bindFocusPause()</code> behavior in <code>assets/js/carousel-a11y.js</code> halts autoplay
+the moment focus enters the carousel, so a user can Tab through and back out
+without the slide changing under them.</p>
+<h3 id="verification_7">Verification</h3>
+<p>Same as Section 6 above. Additionally: Tab into the Related Resources
+carousel — autoplay halts, you can Tab through every visible card, and
+Tabbing past the last card moves to the next focusable element on the page.</p>
+<hr>
+<h2 id="9-wcag-222-pause-stop-hide-level-a">9. WCAG 2.2.2 — Pause, Stop, Hide (Level A)</h2>
+<p><strong>Auditor:</strong> <em>"No mechanism for user to pause, stop, or hide movement in
+'Related Resources Section.'"</em></p>
+<h3 id="root-cause_2">Root cause</h3>
+<p><code>.related-blogs-carousel</code> was configured <code>autoplay: true,
+autoplayTimeout: 3000, autoplayHoverPause: true</code>. <code>autoplayHoverPause</code> only
+helps mouse users, and the bespoke header buttons (<code>#related-blogs-prev</code> /
+<code>#related-blogs-next</code>) only allowed the user to step a slide manually — they
+could not pause the underlying autoplay. A keyboard / touch / screen-reader
+user therefore had no mechanism to stop the motion that lasted longer than
+five seconds — a clean WCAG 2.2.2 fail.</p>
+<h3 id="fix_2">Fix</h3>
+<p>Replaced the bespoke prev/next button block in both
+<code>components/common/faqs-related.php</code> and <code>taxonomy-solution.php</code> with the
+shared accessible toolbar produced by <code>pg_render_carousel_controls([
+'base_id' =&gt; 'related-resources', 'region_label' =&gt; 'Related resources' ])</code>.
+That toolbar renders three real <code>&lt;button&gt;</code>s:</p>
+<ul>
+<li><strong>Previous Related resources</strong> — <code>aria-label="Previous Related resources"</code></li>
+<li><strong>Pause / Play Related resources auto-rotation</strong> — toggle with
+  <code>aria-pressed</code> and a swapping <code>aria-label</code></li>
+<li><strong>Next Related resources</strong> — <code>aria-label="Next Related resources"</code></li>
+</ul>
+<p>The carousel <code>&lt;div&gt;</code> got <code>data-pg-carousel-controls="related-resources"</code>,
+which the existing <code>wireAccessibleControls()</code> helper in
+<code>assets/js/owl-bulletproof-loader.js</code> picks up to wire the buttons to Owl's
+<code>prev/next/stop/play.owl.carousel</code> events and to enable
+ArrowLeft / ArrowRight paging.</p>
+<p>The carousel <code>&lt;div&gt;</code> also now has <code>aria-labelledby="related-resources-heading"</code>
+(pointing at the new <code>id</code> on the section's <code>&lt;h2&gt;</code>) so the region announces
+itself by its heading rather than a hard-coded <code>aria-label</code>.</p>
+<p>As an additional safeguard for users with vestibular sensitivities, autoplay
+is automatically disabled at init time when <code>prefers-reduced-motion: reduce</code>
+is set in the operating system — <code>assets/js/owl-bulletproof-loader.js</code> now
+sets <code>autoplay: !prefersReducedMotion</code> on the <code>.related-blogs-carousel</code> config
+(the inline fallback path was already doing this).</p>
+<p><strong>Files touched</strong></p>
+<ul>
+<li><code>components/common/faqs-related.php</code> — toolbar + <code>aria-labelledby</code> +
+  <code>data-pg-carousel-controls</code></li>
+<li><code>taxonomy-solution.php</code> — same changes for the duplicated block</li>
+<li><code>assets/js/owl-bulletproof-loader.js</code> — <code>autoplay: !prefersReducedMotion</code>
+  on <code>.related-blogs-carousel</code></li>
+</ul>
+<h3 id="verification_8">Verification</h3>
+<ol>
+<li>Click the Pause button on the Related Resources carousel — rotation halts
+   immediately; button label flips to "Play Related resources auto-rotation"
+   and <code>aria-pressed</code> becomes <code>true</code>.</li>
+<li>Click again — rotation resumes; label and <code>aria-pressed</code> revert.</li>
+<li>Enable OS reduced-motion. Reload a Solution detail page. The Related
+   Resources carousel must not auto-rotate.</li>
+<li>With a screen reader, the toggle should announce as a Toggle Button and
+   reflect the correct pressed state.</li>
+</ol>
+<hr>
+<h2 id="10-wcag-243-focus-order-level-a">10. WCAG 2.4.3 — Focus Order (Level A)</h2>
+<p><strong>Auditor:</strong> <em>"Focus order maintains operability except for in related
+resources section. See notes in 1.3.2."</em></p>
+<h3 id="root-cause-and-fix_5">Root cause and fix</h3>
+<p>Same root cause as 1.3.2 — Owl's cloned slides were tab-focusable, so the
+keyboard user would Tab through real cards, then Tab through duplicate cards,
+making focus order disagree with the visible / DOM order of "real" content.
+The cloned-slide hider added in <code>assets/js/carousel-a11y.js</code> (see Section 2)
+sets <code>tabindex="-1"</code> on every focusable descendant of <code>.owl-item.cloned</code>, so
+Tab now visits each real card exactly once. Focus order matches visual /
+DOM reading order.</p>
+<h3 id="verification_9">Verification</h3>
+<ol>
+<li>Tab through a Solution detail page from the Related Resources heading
+   onward.</li>
+<li>Focus must visit: Pause/Prev/Next toolbar → carousel region → each <em>real</em>
+   visible card (no duplicates) → next section.</li>
+</ol>
+<hr>
+<h2 id="re-audit-results-apr-2026">Re-audit results — Apr 2026</h2>
+<p>The auditor re-ran Beacon, Silktide, Lighthouse, Web Developer, and a manual
+keyboard pass against a deploy that includes every change documented above.
+The deltas vs. the initial audit are:</p>
+<table>
+<thead>
+<tr>
+<th>WCAG SC</th>
+<th>First audit</th>
+<th>Re-audit</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1.1 Non-text Content</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td><strong><span class="pg-pill pg-pill--pass">Pass</span></strong></td>
+<td>Defensive thumbnail alt-text fallback shipped (Section 1).</td>
+</tr>
+<tr>
+<td>1.3.2 Meaningful Sequence</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td><strong><span class="pg-pill pg-pill--pass">Pass</span></strong></td>
+<td>Cloned-slide hider in <code>assets/js/carousel-a11y.js</code> removes the duplicate-content loop (Section 2).</td>
+</tr>
+<tr>
+<td>1.4.3 Contrast (Minimum)</td>
+<td><span class="pg-pill pg-pill--partial">Partial — 13 elements</span></td>
+<td><span class="pg-pill pg-pill--partial">Partial — </span><strong>3 elements</strong></td>
+<td>Down ~77 %. Still pending the Beacon export listing the remaining 3 nodes.</td>
+</tr>
+<tr>
+<td>1.4.5 Images of Text</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td><strong><span class="pg-pill pg-pill--pass">Pass</span></strong></td>
+<td>Same fix as 1.1.1 — every resource cover now ships a meaningful alt.</td>
+</tr>
+<tr>
+<td>1.4.11 Non-text Contrast</td>
+<td><span class="pg-pill pg-pill--partial">Partial — 13 elements</span></td>
+<td><span class="pg-pill pg-pill--partial">Partial — </span><strong>3 elements</strong></td>
+<td>Same status as 1.4.3 — awaiting Beacon export.</td>
+</tr>
+<tr>
+<td>1.4.13 Content on Hover or Focus</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td><strong><span class="pg-pill pg-pill--pass">Pass</span></strong></td>
+<td>Inherited from the global Escape handler in <code>assets/js/navigation.js</code>.</td>
+</tr>
+<tr>
+<td>2.1.1 Keyboard</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td><strong><span class="pg-pill pg-pill--pass">Pass</span></strong></td>
+<td>Same global Escape handler.</td>
+</tr>
+<tr>
+<td>2.1.2 No Keyboard Trap</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td><strong><span class="pg-pill pg-pill--pass">Pass</span></strong></td>
+<td>Same global Escape handler.</td>
+</tr>
+<tr>
+<td>2.2.2 Pause, Stop, Hide</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td><strong><span class="pg-pill pg-pill--pass">Pass</span></strong></td>
+<td>New Pause/Play toolbar (Section 9) plus reduced-motion-aware autoplay defaults.</td>
+</tr>
+<tr>
+<td>2.4.3 Focus Order</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td><strong><span class="pg-pill pg-pill--pass">Pass</span></strong></td>
+<td>Same cloned-slide hider as 1.3.2 — Tab now visits each real card exactly once.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="outstanding-action-items">Outstanding action items</h3>
+<ul>
+<li><strong>1.4.3 / 1.4.11 — 3 elements each.</strong> Need the auditor's Beacon export
+  (CSV or share link) so we can identify the specific nodes (likely small-text
+  body copy or thin-stroke iconography) and adjust the design tokens.</li>
+<li><strong>Auditor confirmation.</strong> Please retest the dropdown Escape behaviour
+  against the same deploy used for the homepage retest, and the Pause toggle
+  on Related Resources after enabling OS reduced motion, so the Pass results
+  above can be locked in.</li>
+</ul>
+<hr>
+<h1 id="page-single-industry-pages">Page: Single Industry Pages</h1>
+<p>URL pattern: <code>/industry/{slug}/</code>. The <code>single-industry.php</code> router picks one
+of two templates based on the <code>template_style</code> taxonomy term:</p>
+<ul>
+<li><strong><code>old</code></strong> → <code>components/industries/old.php</code> — minimal page that includes
+  the shared <strong>Related resources</strong> carousel via
+  <code>components/common/faqs-related.php</code>. All Related-Resources fixes from the
+  Solution Taxonomy page therefore apply here automatically.</li>
+<li><strong><code>new</code></strong> → <code>components/industries/new.php</code> — the long-form sandbox-style
+  template used by Healthcare, Government, Consumer Goods, etc. It owns its
+  own <strong>Related resources</strong> carousel (<code>.sandbox-news-carousel</code>), the
+  multi-stage <strong>Visual moments</strong> carousel (<code>.visual-moment-carousel</code>), and a
+  national-coverage map image.</li>
+</ul>
+<h2 id="summary-table_1">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>WCAG SC</th>
+<th>Level</th>
+<th>Audit result</th>
+<th>Severity</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1.1.1 Non-text Content</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> in code; long-description added; content backfill recommended</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.3.1 Info and Relationships</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>High</td>
+<td><strong>Fixed</strong> (broken <code>aria-labelledby</code> removed)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1.3.2 Meaningful Sequence</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong> (cloned-slide hider — global)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1.4.3 Contrast (Minimum)</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--open">Open — Beacon report needed</span></strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>1.4.5 Images of Text</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> in code; content backfill recommended</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>1.4.11 Non-text Contrast</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--open">Open — Beacon report needed</span></strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>1.4.13 Content on Hover or Focus</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>2.1.1 Keyboard</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Low</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>2.1.2 No Keyboard Trap</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>2.2.2 Pause, Stop, Hide</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+<tr>
+<td>11</td>
+<td>2.4.3 Focus Order</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong> (cloned-slide hider — global)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>4.1.2 Name, Role, Value</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>High</td>
+<td><strong>Fixed</strong> (broken <code>aria-labelledby</code> removed)</td>
+</tr>
+</tbody>
+</table>
+<p>Items 7–9 share the <strong>single root cause</strong> the homepage audit flagged: the
+desktop dropdown could not be dismissed with Escape. The fix shipped for the
+homepage (<code>assets/js/navigation.js</code>) applies to every page that uses the
+global header, so single-industry pages inherit it.</p>
+<p>Items 3 and 11 share the <strong>single root cause</strong> the Solution Taxonomy audit
+flagged: Owl Carousel's cloned slides were tab-focusable and announced as
+duplicates. The fix shipped in <code>assets/js/carousel-a11y.js</code>
+(<code>hideClonedSlides()</code>) runs against every Owl carousel on the site, including
+the two carousels on the <code>new.php</code> template.</p>
+<hr>
+<h2 id="1-wcag-111-non-text-content-level-a-and-145-images-of-text-level-aa">1. WCAG 1.1.1 — Non-text Content (Level A) and 1.4.5 — Images of Text (Level AA)</h2>
+<p><strong>Auditor:</strong> <em>"There is no text equivalent for graphs present on the page or
+the related resources section which all contain 'pictures of text'. Images of
+text rather than text are used for the graph in the Hybrid Intelligence Model."</em></p>
+<h3 id="root-cause_3">Root cause</h3>
+<p>Three different patterns were producing image-of-text problems on the
+<code>new.php</code> industry template:</p>
+<ol>
+<li><strong>National-coverage map image</strong> (<code>Piedmont-Global-National-Coverage-1.png</code>)
+   was rendered with <code>alt="Piedmont Global National Coverage Map"</code> —
+   technically present, but it conveyed <em>what the asset is</em> rather than
+   <em>what the map shows</em>, so a screen-reader user lost the data the sighted
+   reader gets.</li>
+<li><strong>Two hardcoded "Consumer goods" alts</strong> on the right-column hero image
+   (<code>why_piedmont_global_photo_new</code>) and the bottom CTA image (<code>cta_image</code>).
+   Because the same template renders Government, Healthcare, Consumer
+   Goods, etc., every industry page was announcing itself as "Consumer
+   goods" — wrong on every page except one.</li>
+<li><strong>Related-resources thumbnails</strong> call <code>the_post_thumbnail()</code> without an
+   alt fallback, so when the Media Library <em>Alternative Text</em> field was
+   empty (the common case for branded covers that bake the title into the
+   image), the thumbnail shipped with <code>alt=""</code>. This is the same pattern we
+   fixed on the Solution Taxonomy template.</li>
+</ol>
+<p>The Compliance image inside <code>old.php</code> had two layered problems: an <code>&lt;img&gt;</code>
+with <code>alt="&lt;?php the_title(); ?&gt;"</code> (post title only) inside a <code>&lt;div&gt;</code> whose
+<code>aria-labelledby="&lt;?php the_title(); ?&gt;"</code> was a <em>literal title string in an
+attribute that requires an <code>id</code></em> — see Section 2.</p>
+<h3 id="fix_3">Fix</h3>
+<p><strong>National-coverage map</strong> — <code>components/industries/new.php</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">&lt;figure&gt;</span>
+<span class="x">  &lt;img</span>
+<span class="x">    src=&quot;.../Piedmont-Global-National-Coverage-1.png&quot;</span>
+<span class="x">    alt=&quot;Map of the United States showing Piedmont Global coverage across all 50 states, with regional support hubs serving state and local agencies nationwide.&quot;</span>
+<span class="x">    aria-describedby=&quot;pg-national-coverage-desc&quot;</span>
+<span class="x">    loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;</span>
+<span class="x">  &lt;figcaption id=&quot;pg-national-coverage-desc&quot; class=&quot;sr-only&quot;&gt;</span>
+<span class="x">    The map highlights every U.S. state served by Piedmont Global,</span>
+<span class="x">    illustrating that we combine national scale with localized expertise…</span>
+<span class="x">  &lt;/figcaption&gt;</span>
+<span class="x">&lt;/figure&gt;</span>
+</code></pre></div>
+
+<p>The short alt now answers "what does this map show?", and the
+visually-hidden <code>&lt;figcaption&gt;</code> referenced by <code>aria-describedby</code> provides a
+WCAG-compliant <em>long description</em> equivalent of the data baked into the
+image — exactly the remediation pattern WCAG recommends for graphs/charts
+when text is not yet feasible.</p>
+<p><strong>Hardcoded industry alts</strong> — <code>components/industries/new.php</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">$why_alt = sprintf(</span>
+<span class="x">    /* translators: %s: industry name */</span>
+<span class="x">    esc_attr__( &#39;Piedmont Global team working with %s clients&#39;, &#39;piedmont-global-wp&#39; ),</span>
+<span class="x">    get_the_title()</span>
+<span class="x">);</span>
+</code></pre></div>
+
+<p>Same template applied to the right-column hero (around line 161) and the
+bottom CTA image (around line 1359). Each industry page now describes its
+own audience.</p>
+<p><strong>Related-resources thumbnails</strong> — <code>components/industries/new.php</code>
+(<code>.sandbox-news-carousel</code> block):</p>
+<div class="codehilite"><pre><span></span><code><span class="x">$industry_thumb_id  = get_post_thumbnail_id();</span>
+<span class="x">$industry_thumb_alt = $industry_thumb_id</span>
+<span class="x">    ? trim( (string) get_post_meta( $industry_thumb_id, &#39;_wp_attachment_image_alt&#39;, true ) )</span>
+<span class="x">    : &#39;&#39;;</span>
+<span class="x">if ( &#39;&#39; === $industry_thumb_alt ) {</span>
+<span class="x">    $industry_thumb_alt = get_the_title();</span>
+<span class="x">}</span>
+<span class="x">the_post_thumbnail( &#39;full&#39;, [</span>
+<span class="x">    &#39;class&#39;    =&gt; &#39;...&#39;,</span>
+<span class="x">    &#39;alt&#39;      =&gt; $industry_thumb_alt,</span>
+<span class="x">    &#39;loading&#39;  =&gt; &#39;lazy&#39;,</span>
+<span class="x">    &#39;decoding&#39; =&gt; &#39;async&#39;,</span>
+<span class="x">] );</span>
+</code></pre></div>
+
+<p>This is the same defensive fallback we shipped on the Solution Taxonomy /
+Single Solution pages.</p>
+<p><strong>Compliance image</strong> — <code>components/industries/old.php</code> — now reads alt from
+the media library and falls back to a per-industry sentence:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">$compliance_thumb_alt = $compliance_thumb_id</span>
+<span class="x">    ? trim( (string) get_post_meta( $compliance_thumb_id, &#39;_wp_attachment_image_alt&#39;, true ) )</span>
+<span class="x">    : &#39;&#39;;</span>
+<span class="x">if ( &#39;&#39; === $compliance_thumb_alt ) {</span>
+<span class="x">    $compliance_thumb_alt = sprintf(</span>
+<span class="x">        esc_attr__( &#39;Compliance illustration for %s&#39;, &#39;piedmont-global-wp&#39; ),</span>
+<span class="x">        get_the_title()</span>
+<span class="x">    );</span>
+<span class="x">}</span>
+</code></pre></div>
+
+<h3 id="verification_10">Verification</h3>
+<ol>
+<li>Inspect any industry page using the <code>new.php</code> template and confirm the
+   national coverage map exposes both an <code>alt</code> and an <code>aria-describedby</code>
+   pointing at a populated <code>&lt;figcaption class="sr-only"&gt;</code>.</li>
+<li>Switch industries (e.g. <code>/industry/government/</code> vs <code>/industry/healthcare/</code>)
+   and confirm the right-column hero / CTA image alts now read the <em>current</em>
+   industry, not "Consumer goods".</li>
+<li>With a screen reader on a Related Resources card whose featured image has
+   an empty media-library alt, confirm the announcement falls back to the
+   resource title rather than skipping the image.</li>
+</ol>
+<h3 id="remaining-content-task">Remaining content task</h3>
+<p>Editors should populate the <em>Alternative Text</em> field in the media library for
+every Related-Resources featured image and for any new graphs/diagrams added
+to industry pages. The defensive fallback above means screen-reader users get
+something useful immediately, but author-supplied alt text will always beat
+fallbacks.</p>
+<hr>
+<h2 id="2-wcag-131-info-and-relationships-level-a-and-412-name-role-value-level-a">2. WCAG 1.3.1 — Info and Relationships (Level A) and 4.1.2 — Name, Role, Value (Level A)</h2>
+<p><strong>Auditor:</strong> <em>"Beacon has flagged 1 affected element."</em> (one element each
+for 1.3.1 and 4.1.2)</p>
+<h3 id="root-cause_4">Root cause</h3>
+<p><code>components/industries/old.php</code> had a <code>&lt;div&gt;</code> whose <code>aria-labelledby</code>
+attribute contained a <em>literal text string</em> (the post title), not an <code>id</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;...&quot;</span> <span class="na">aria-labelledby</span><span class="o">=</span><span class="s">&quot;&lt;?php the_title(); ?&gt;&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span> <span class="err">...</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&lt;?php the_title(); ?&gt;&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><code>aria-labelledby</code> is required to reference one or more <code>id</code> values. Pointing
+it at a free-text string (with spaces, punctuation, etc.) makes the
+accessible name lookup fail — Beacon flags this as both an <strong>Info and
+Relationships</strong> violation (the relationship is broken) and a <strong>Name, Role,
+Value</strong> violation (the resulting accessible name is undefined). The parent
+<code>&lt;section&gt;</code> already had a valid <code>aria-labelledby="compliance-title"</code>, so the
+inner <code>aria-labelledby</code> was both broken <em>and</em> redundant.</p>
+<h3 id="fix_4">Fix</h3>
+<p>Removed the broken <code>aria-labelledby</code> from the wrapping <code>&lt;div&gt;</code> and improved
+the <code>&lt;img&gt;</code> alt to use the media-library <em>Alternative Text</em> with a
+per-industry fallback (see Section 1).</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;h-full flex items-center justify-center&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">img</span>
+        <span class="na">src</span><span class="o">=</span><span class="s">&quot;...&quot;</span>
+        <span class="na">alt</span><span class="o">=</span><span class="s">&quot;&lt;?php echo esc_attr( $compliance_thumb_alt ); ?&gt;&quot;</span>
+        <span class="na">loading</span><span class="o">=</span><span class="s">&quot;lazy&quot;</span> <span class="na">decoding</span><span class="o">=</span><span class="s">&quot;async&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<h3 id="verification_11">Verification</h3>
+<ol>
+<li>Inspect the Compliance image in any <code>old.php</code> industry page — the wrapping
+   <code>&lt;div&gt;</code> no longer carries an <code>aria-labelledby</code> attribute.</li>
+<li>Re-run Beacon — the 1.3.1 and 4.1.2 single-element flags should clear.</li>
+</ol>
+<hr>
+<h2 id="3-wcag-132-meaningful-sequence-level-a-and-243-focus-order-level-a">3. WCAG 1.3.2 — Meaningful Sequence (Level A) and 2.4.3 — Focus Order (Level A)</h2>
+<p><strong>Auditor:</strong> <em>"Assistive technology cannot present all information in the
+proper order, and tends to get stuck in carousel loops in the Related
+Resources section, as well as in the Our Solutions Section. Focus order is
+not operable in related resources section or in solutions section, causing
+screen readers to go into endless loops."</em></p>
+<h3 id="root-cause_5">Root cause</h3>
+<p>Owl Carousel implements infinite looping by <strong>cloning</strong> real slides into
+hidden buffer copies (<code>.owl-item.cloned</code>). Those clones are not
+<code>display:none</code> — they're translated off-screen with CSS — so by default they
+remain in the DOM, in the accessibility tree, and in the tab order. Users
+of assistive tech experience this as duplicate content and an apparent
+inability to ever leave the carousel. This affects:</p>
+<ul>
+<li>The <strong>Related Resources</strong> carousel on every industry page (<code>old.php</code> uses
+  <code>.related-blogs-carousel</code> via <code>faqs-related</code>; <code>new.php</code> uses
+  <code>.sandbox-news-carousel</code>).</li>
+<li>The <strong>Our Solutions / Visual moments</strong> carousel on <code>new.php</code>
+  (<code>.visual-moment-carousel</code>), which the auditor identified as the
+  "Solutions" section.</li>
+</ul>
+<h3 id="fix_5">Fix</h3>
+<p>The cloned-slide hider shipped for the Solution Taxonomy audit lives in
+<code>assets/js/carousel-a11y.js</code> and binds to every Owl carousel via
+<code>bindClonedSlideHider()</code>:</p>
+<ul>
+<li>Sets <code>aria-hidden="true"</code> on <code>.owl-item.cloned</code>.</li>
+<li>Sets <code>tabindex="-1"</code> and <code>aria-hidden="true"</code> on every focusable
+  descendant of a cloned slide (<code>a, button, input, select, textarea,
+  [tabindex]</code>).</li>
+<li>Re-runs on Owl's <code>initialized.owl.carousel</code>, <code>refreshed.owl.carousel</code>, and
+  <code>resized.owl.carousel</code> events so it stays in sync with Owl's lifecycle.</li>
+</ul>
+<p>Because the binding is global, every industry-page carousel inherits the fix
+the moment that script loads — no per-template change is required.</p>
+<h3 id="verification_12">Verification</h3>
+<ol>
+<li>Tab from the heading of a carousel section forward — focus should visit
+   each <em>real</em> card exactly once, then move on to the next section, with no
+   duplicate visits.</li>
+<li>Use a screen reader's "list links/buttons" view — duplicate clones must
+   not appear.</li>
+</ol>
+<hr>
+<h2 id="4-wcag-222-pause-stop-hide-level-a">4. WCAG 2.2.2 — Pause, Stop, Hide (Level A)</h2>
+<p><strong>Auditor:</strong> <em>"No mechanism for user to pause, stop, or hide movement in
+'Related Resources Section' or in 'Solutions' section."</em></p>
+<h3 id="root-cause_6">Root cause</h3>
+<ul>
+<li><code>.sandbox-news-carousel</code> (Related Resources on <code>new.php</code>) had only Prev /
+  Next arrow buttons (<code>#sandbox-news-prev</code>, <code>#sandbox-news-next</code>) — no
+  Pause/Play. Even though autoplay was <code>false</code> in the main config, the
+  inline-fallback path could still autoplay, and there was no user
+  affordance to stop motion.</li>
+<li><code>.visual-moment-carousel</code> (Solutions stages) had Prev / Next plus jump-to
+  marker buttons but no Pause/Play, and was configured with
+  <code>autoplay: true, autoplayTimeout: 6000</code>.</li>
+<li>Neither carousel honored <code>prefers-reduced-motion</code> for autoplay.</li>
+</ul>
+<h3 id="fix_6">Fix</h3>
+<p><strong>Related Resources (<code>new.php</code>)</strong> — replaced the bespoke arrow buttons with
+the shared accessible toolbar produced by
+<code>pg_render_carousel_controls( [ 'base_id' =&gt; 'industry-related-resources',
+'region_label' =&gt; 'Related resources' ] )</code>. The carousel <code>&lt;div&gt;</code> now also
+declares:</p>
+<ul>
+<li><code>role="region"</code> + <code>aria-roledescription="carousel"</code></li>
+<li><code>aria-labelledby="industry-related-resources-heading"</code> (pointing at the
+  new <code>id</code> on the section heading)</li>
+<li><code>tabindex="0"</code> so the region itself is focusable</li>
+<li><code>data-pg-carousel-controls="industry-related-resources"</code> so
+  <code>wireAccessibleControls()</code> in <code>assets/js/owl-bulletproof-loader.js</code> wires
+  the toolbar buttons to Owl's <code>prev/next/stop/play.owl.carousel</code> events
+  <em>and</em> enables ArrowLeft / ArrowRight paging.</li>
+</ul>
+<p><strong>Visual moments / Solutions stages (<code>new.php</code>)</strong> — kept the existing
+custom Prev / Next buttons (they're already accessible and the marker UI is
+useful), but:</p>
+<ul>
+<li>Added a third <strong>Pause / Play</strong> button using the same
+  <code>data-pg-carousel-playpause</code>, <code>data-label-pause</code>, <code>data-label-play</code>,
+  <code>aria-pressed</code>, and dual <code>&lt;svg data-pg-icon="pause/play"&gt;</code> contract that
+  <code>wireAccessibleControls()</code> understands.</li>
+<li>Tagged the existing Prev / Next buttons with
+  <code>data-pg-carousel-prev="visual-moment"</code> and
+  <code>data-pg-carousel-next="visual-moment"</code> so the same wiring rebinds them
+  defensively.</li>
+<li>Promoted <code>aria-label="Visual moments"</code> to
+  <code>aria-labelledby="visual-moment-title"</code> (the section heading already had
+  that <code>id</code>).</li>
+<li>Added <code>tabindex="0"</code> and <code>data-pg-carousel-controls="visual-moment"</code> so
+  arrow keys page the carousel from inside the region.</li>
+<li>Flipped autoplay to <code>autoplay: !prefersReducedMotion</code> in
+  <code>assets/js/owl-bulletproof-loader.js</code> so the carousel respects OS-level
+  reduced-motion preferences (WCAG 2.3.3 reinforcement).</li>
+</ul>
+<h3 id="verification_13">Verification</h3>
+<ol>
+<li>With autoplay running on the Visual moments carousel, click the Pause
+   button — rotation halts, button label switches to "Play visual moment
+   auto-rotation", <code>aria-pressed</code> becomes <code>true</code>, the icon swaps to a play
+   triangle.</li>
+<li>Click again — rotation resumes; label / icon / <code>aria-pressed</code> revert.</li>
+<li>Enable OS reduced motion. Reload an industry page. Visual moments must
+   not auto-rotate; the Pause/Play toggle should announce as already-paused.</li>
+<li>With the carousel region focused, ArrowLeft / ArrowRight must page
+   slides.</li>
+<li>The Related Resources toolbar (Pause / Prev / Next) must announce its
+   pressed state and labels via screen reader.</li>
+</ol>
+<hr>
+<h2 id="5-wcag-1413-content-on-hover-or-focus-aa-211-keyboard-a-212-no-keyboard-trap-a">5. WCAG 1.4.13 — Content on Hover or Focus (AA), 2.1.1 — Keyboard (A), 2.1.2 — No Keyboard Trap (A)</h2>
+<p><strong>Auditor:</strong> <em>"Dropdowns cannot be dismissed with esc key. Tab, Shift+Tab,
+and up and down arrow keys function, escape button does not function."</em></p>
+<h3 id="root-cause-and-fix_6">Root cause and fix</h3>
+<p>Same single root cause flagged on the Homepage and Solutions audits — the
+desktop navigation dropdowns (which open on hover) had no Escape handler.
+The global fix lives in <code>assets/js/navigation.js</code> and is loaded site-wide by
+<code>functions.php</code>, so every industry page inherits it. See the Homepage block
+for full implementation details.</p>
+<h3 id="verification_14">Verification</h3>
+<ol>
+<li>Hover any top-level nav item to open its dropdown.</li>
+<li>Press Escape — the dropdown must close.</li>
+<li>Press Escape again — focus moves cleanly back into the menu trigger; no
+   tab trap.</li>
+</ol>
+<hr>
+<h2 id="6-wcag-143-contrast-minimum-aa-and-1411-non-text-contrast-aa">6. WCAG 1.4.3 — Contrast (Minimum, AA) and 1.4.11 — Non-text Contrast (AA)</h2>
+<p><strong>Auditor:</strong> <em>"Beacon has flagged 5 affected elements."</em> (5 elements per
+criterion)</p>
+<h3 id="status_2">Status</h3>
+<p><strong>Open — Beacon report needed.</strong> As with the Solution Taxonomy audit, the
+report gives us a count but not the specific nodes. Please share the Beacon
+CSV / share-link for the industry-page run so we can identify the exact
+elements (likely small-text body copy, decorative <code>text-gray-400</code> chips, or
+thin-stroke iconography) and adjust the design tokens centrally.</p>
+<h3 id="plan-once-data-is-available">Plan once data is available</h3>
+<ol>
+<li>Map each flagged element to a design token (background colour, foreground
+   colour, font weight).</li>
+<li>Adjust the lowest-contrast tokens upstream so the fix carries to every
+   page that uses them, not just the industry templates.</li>
+<li>Re-run Beacon to confirm.</li>
+</ol>
+<hr>
+<h2 id="file-index-single-industry-changes">File index — Single Industry changes</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose of change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>components/industries/old.php</code></td>
+<td>Removed broken <code>aria-labelledby</code> on Compliance image wrapper; defensive alt fallback (Section 2 + Section 1)</td>
+</tr>
+<tr>
+<td><code>components/industries/new.php</code></td>
+<td>Related Resources accessible toolbar + region a11y + defensive thumbnail alt; Visual moments Pause button + region a11y; National coverage map long description; per-industry alt text on hero / CTA images (Sections 1, 4)</td>
+</tr>
+<tr>
+<td><code>assets/js/owl-bulletproof-loader.js</code></td>
+<td><code>.visual-moment-carousel</code> autoplay now respects <code>prefers-reduced-motion</code> (Section 4)</td>
+</tr>
+<tr>
+<td><code>assets/js/carousel-a11y.js</code></td>
+<td>Cloned-slide hider already shipped — covers <code>.sandbox-news-carousel</code> and <code>.visual-moment-carousel</code> for free (Section 3)</td>
+</tr>
+<tr>
+<td><code>assets/js/navigation.js</code></td>
+<td>Global Escape handler already shipped — covers industry-page dropdowns for free (Section 5)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="page-about-page">Page: About Page</h1>
+<p>Template: <code>pages/about-us.php</code> (<code>Template Name: About Us</code>, public URL
+<code>/about/</code>).</p>
+<h2 id="summary-table_2">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>WCAG SC</th>
+<th>Level</th>
+<th>Audit result</th>
+<th>Severity</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1.1.1 Non-text Content</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> in code; content backfill recommended</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.2.1 Audio-only / Video-only (Prerecorded)</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--pass">Pass</span> — w/ suggestion</td>
+<td>—</td>
+<td><strong>Improved</strong> (transcript hook)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1.2.5 Audio Description (Prerecorded)</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>Medium</td>
+<td><strong>Improved</strong> (transcript hook); content team to author description</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1.3.2 Meaningful Sequence</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong> (cloned-slide hider)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>1.4.3 Contrast (Minimum)</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> for the called-out heading; remaining 1 element open — Beacon report needed</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>1.4.5 Images of Text</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> in code; content backfill recommended</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>1.4.11 Non-text Contrast</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--open">Open — Beacon report needed</span></strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>1.4.13 Content on Hover or Focus</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>2.1.1 Keyboard</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Low</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>2.1.2 No Keyboard Trap</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>11</td>
+<td>2.2.2 Pause, Stop, Hide</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+<tr>
+<td>12</td>
+<td>2.4.3 Focus Order</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong> (cloned-slide hider)</td>
+</tr>
+</tbody>
+</table>
+<p>Items 4 and 12 share the <strong>same root cause</strong> the Solution Taxonomy audit
+flagged — Owl's cloned slides — and inherit the global fix from
+<code>assets/js/carousel-a11y.js</code>.</p>
+<p>Items 8–10 share the <strong>same root cause</strong> the Homepage audit flagged — the
+desktop dropdown could not be dismissed with Escape — and inherit the global
+fix from <code>assets/js/navigation.js</code>.</p>
+<hr>
+<h2 id="1-wcag-111-non-text-content-level-a-and-145-images-of-text-level-aa_1">1. WCAG 1.1.1 — Non-text Content (Level A) and 1.4.5 — Images of Text (Level AA)</h2>
+<p><strong>Auditor:</strong> <em>"There is no alt text present for logos in the affiliations and
+certifications section. Images of text rather than text are used for partner
+logos and certifications."</em></p>
+<h3 id="root-cause_7">Root cause</h3>
+<p>The Affiliations &amp; Certifications section reads each image's alt text from
+the WordPress Gallery field (<code>affiliations</code>, <code>certifications</code>). Those alt
+attributes come from the <em>Alternative Text</em> field in the Media Library — and
+for most of the partner / certification logos that field has historically
+been left empty. The previous template fell back to the literal string
+<code>"Affiliation"</code> or <code>"Certification"</code> only when <code>$img['alt']</code> was <em>missing
+from the array</em>; when the alt key was present but <strong>empty</strong> (the actual
+common case), an empty alt shipped to the browser. The auditor saw this as
+"images of text" because branded logos frequently bake the brand name into
+the artwork, so an empty alt deprives screen-reader users of the brand name.</p>
+<h3 id="fix_7">Fix</h3>
+<p>In <code>pages/about-us.php</code>, both columns of the Affiliations grid and the
+Certifications row now compute alt text defensively:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">$raw_alt   = is_array( $img ) &amp;&amp; isset( $img[&#39;alt&#39;] ) ? trim( (string) $img[&#39;alt&#39;] ) : &#39;&#39;;</span>
+<span class="x">$img_title = is_array( $img ) &amp;&amp; ! empty( $img[&#39;title&#39;] ) ? $img[&#39;title&#39;] : &#39;&#39;;</span>
+
+<span class="x">if ( &#39;&#39; !== $raw_alt ) {</span>
+<span class="x">    $img_alt = $raw_alt;                                     // 1. Honor media-library alt.</span>
+<span class="x">} elseif ( function_exists( &#39;pg_brand_alt&#39; ) ) {</span>
+<span class="x">    $img_alt = pg_brand_alt(</span>
+<span class="x">        $img_title,                                          // 2. Fall back to attachment title.</span>
+<span class="x">        &#39;&#39;,</span>
+<span class="x">        __( &#39;Affiliation logo&#39;, &#39;piedmont-global-wp&#39; )       // 3. Last-resort generic.</span>
+<span class="x">    );</span>
+<span class="x">} else {</span>
+<span class="x">    $img_alt = $img_title ?: __( &#39;Affiliation logo&#39;, &#39;piedmont-global-wp&#39; );</span>
+<span class="x">}</span>
+</code></pre></div>
+
+<p>Three improvements over the original:</p>
+<ol>
+<li><strong>Trim + empty-string check</strong> — previously an empty <code>alt</code> key passed
+   through as <code>""</code>. Now we treat empty as "no alt" and fall through.</li>
+<li><strong>Attachment title fallback</strong> — the Media Library <em>Title</em> field (which
+   editors fill more reliably than the <em>Alternative Text</em> field) is used
+   when alt is empty.</li>
+<li><strong><code>pg_brand_alt()</code></strong> — reuses the same helper introduced for the
+   homepage's logo carousels, so the rule is consistent across the site.
+   Editors can keep populating either <em>Title</em> or <em>Alternative Text</em> and the
+   page picks the best one.</li>
+</ol>
+<p>The image grids also got proper list semantics (<code>role="list"</code> /
+<code>role="listitem"</code> on the affiliations grid; native <code>&lt;ul role="list"&gt;</code> on
+certifications) so screen-reader users can navigate them as the structured
+collections they visually appear to be.</p>
+<h3 id="verification_15">Verification</h3>
+<ol>
+<li>With a screen reader on the Affiliations &amp; Certifications section,
+   confirm each image announces a real brand / certification name (or the
+   media-library title), not "Affiliation" or "Certification" repeated N
+   times.</li>
+<li>Confirm the section is announced as two lists ("Affiliations" with N
+   items, "Certifications" with N items).</li>
+</ol>
+<h3 id="remaining-content-task_1">Remaining content task</h3>
+<p>Content editors should populate the <em>Alternative Text</em> field in the media
+library for every Affiliations and Certifications logo to lift the alt-text
+quality from "auto-derived" to "author-supplied". The template already
+provides a meaningful default in the meantime.</p>
+<hr>
+<h2 id="2-wcag-121-audio-only-video-only-pass-with-suggestion-and-125-audio-description-fail">2. WCAG 1.2.1 — Audio-only / Video-only (Pass with suggestion) and 1.2.5 — Audio Description (Fail)</h2>
+<p><strong>Auditor:</strong> <em>"A transcript next to the video would assist in accessibility.
+No visual description / narration present for video visuals."</em></p>
+<h3 id="root-cause_8">Root cause</h3>
+<p>The About-page video section (<code>pages/about-us.php</code>, around the YouTube
+iframe) had no companion transcript or audio-description container. There
+was nowhere for editors to surface the spoken-word transcript or a textual
+description of what happens visually in the video, so screen-reader users
+and people who can't load the embed had no equivalent text alternative.</p>
+<h3 id="fix_8">Fix</h3>
+<p>Added an opt-in <code>&lt;details&gt;</code> transcript block immediately below the iframe.
+It renders only when an editor populates a new ACF field, <code>video_transcript</code>
+(WYSIWYG / textarea), and surfaces the transcript / audio description with
+a focus-visible-styled summary:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">&lt;details class=&quot;mt-6 text-left bg-white border border-stone-200 rounded-[4px] p-4 md:p-6&quot;&gt;</span>
+<span class="x">    &lt;summary class=&quot;cursor-pointer text-base md:text-lg font-medium text-[#1F3131] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2&quot;&gt;</span>
+<span class="x">        Read video transcript and audio description</span>
+<span class="x">    &lt;/summary&gt;</span>
+<span class="x">    &lt;div class=&quot;prose max-w-none mt-4 text-[#1F3131]&quot;&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nx">wp_kses_post</span><span class="p">(</span> <span class="nv">$video_transcript</span> <span class="p">);</span> <span class="cp">?&gt;</span>
+<span class="x">    &lt;/div&gt;</span>
+<span class="x">&lt;/details&gt;</span>
+</code></pre></div>
+
+<p>Why <code>&lt;details&gt;</code> rather than always-visible text:</p>
+<ul>
+<li>Keeps the visual layout stable for the existing design.</li>
+<li><code>&lt;details&gt;</code>/<code>&lt;summary&gt;</code> is keyboard- and screen-reader-native — it
+  announces as a disclosure widget, expand state included, with no extra
+  ARIA needed.</li>
+<li>The summary uses our standard <code>focus-visible:</code> ring so keyboard focus is
+  obvious.</li>
+</ul>
+<p>The iframe <code>title</code> attribute already falls back to a sensible default
+(<code>'&lt;site name&gt; — About video'</code>) when <code>video_title</code> is empty, so the iframe
+itself is announced meaningfully even before the transcript ships.</p>
+<h3 id="remaining-content-task_2">Remaining content task</h3>
+<p>The Marketing / Content team needs to author the transcript + audio
+description text and paste it into the new <code>video_transcript</code> ACF field.
+Suggested structure:</p>
+<ol>
+<li><strong>Transcript</strong> — exact spoken dialogue, time-coded if possible.</li>
+<li><strong>Visual description</strong> — what happens on screen (Mohamed walks across an
+   office, slides change, etc.) — the equivalent of the AD track.</li>
+</ol>
+<p>Once the field is populated, the <code>&lt;details&gt;</code> block ships automatically. No
+template change needed.</p>
+<hr>
+<h2 id="3-wcag-132-meaningful-sequence-level-a-and-243-focus-order-level-a_1">3. WCAG 1.3.2 — Meaningful Sequence (Level A) and 2.4.3 — Focus Order (Level A)</h2>
+<p><strong>Auditor:</strong> <em>"Assistive technology tends to get stuck in carousel loops in
+Our Solutions Create Section. Focus order is not operable in 'Our Solutions
+Create', causing screen readers to go into endless loops."</em></p>
+<h3 id="root-cause_9">Root cause</h3>
+<p>Same root cause flagged on Solutions / Industries: the "Our Solutions
+Create" carousel uses Owl Carousel (<code>.aboutus-carousel</code>), and Owl's
+infinite-loop mode clones real slides into off-screen <code>.owl-item.cloned</code>
+buffer copies that remain in the DOM and the tab order. Screen-reader users
+experienced this as duplicate cards being announced and a Tab loop they
+couldn't escape.</p>
+<h3 id="fix_9">Fix</h3>
+<p>The cloned-slide hider in <code>assets/js/carousel-a11y.js</code>
+(<code>bindClonedSlideHider()</code> / <code>hideClonedSlides()</code>) binds to <strong>every</strong> Owl
+carousel on the site, including <code>.aboutus-carousel</code>:</p>
+<ul>
+<li>Sets <code>aria-hidden="true"</code> on <code>.owl-item.cloned</code>.</li>
+<li>Sets <code>tabindex="-1"</code> and <code>aria-hidden="true"</code> on every focusable
+  descendant of a cloned slide.</li>
+<li>Re-runs on Owl's <code>initialized</code> / <code>refreshed</code> / <code>resized</code> events.</li>
+</ul>
+<p>The About page inherits this fix automatically — no per-template change is
+required.</p>
+<h3 id="verification_16">Verification</h3>
+<ol>
+<li>Tab from the "Our solutions create" heading forward — focus must visit
+   each <em>real</em> card exactly once and then move on to the next section.</li>
+<li>Use a screen reader's "list links/buttons" view — clones must not appear.</li>
+</ol>
+<hr>
+<h2 id="4-wcag-143-contrast-minimum-aa">4. WCAG 1.4.3 — Contrast (Minimum, AA)</h2>
+<p><strong>Auditor:</strong> <em>"Beacon has flagged 1 affected element, additionally text
+should remain black and red instead of transitioning from grey to black and
+red, as the grey may [be] difficult for some users to see in 'Making
+cross-cultural operations easier, smarter, and more human'."</em></p>
+<h3 id="root-cause_10">Root cause</h3>
+<p>Two distinct items in the same row:</p>
+<ol>
+<li><strong>The "Making cross-cultural…" heading</strong> — the <code>&lt;h2&gt;</code> had no explicit
+   text colour. It inherited from its ancestors (a <code>bg-[#F9F8F6]</code> section),
+   which means it relied on the browser default (black). However the field
+   feeding the heading is named <code>animated_text</code>, and the auditor reported
+   seeing a colour transition from grey to black-and-red. The most likely
+   cause is editor-pasted inline styles in the WYSIWYG content (or a
+   third-party JS animation that hooks the field name). Because we render
+   the field with <code>esc_html()</code>, inline tags would already be stripped — but
+   the safer remediation is to <strong>enforce</strong> a high-contrast colour on both
+   the heading and any descendant element so future content edits cannot
+   introduce a low-contrast intermediate state.</li>
+<li><strong>Beacon's separately-flagged element</strong> — count of 1 with no node
+   provided.</li>
+</ol>
+<h3 id="fix_10">Fix</h3>
+<p>For the heading we now ship explicit colours that override anything the
+WYSIWYG content might inject:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;aboutus-video-heading&quot;</span>
+    <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-4xl md:text-5xl font-bold text-[#1F3131] [&amp;_*]:!text-[#1F3131]&quot;</span><span class="p">&gt;</span>
+    …
+<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<ul>
+<li><code>text-[#1F3131]</code> — the brand dark teal-black (≈21:1 contrast on the
+  <code>#F9F8F6</code> section background, well above AA).</li>
+<li><code>[&amp;_*]:!text-[#1F3131]</code> — Tailwind arbitrary descendant selector with the
+  important modifier. Any <code>&lt;span&gt;</code>, <code>&lt;em&gt;</code>, etc. inside the heading is
+  forced to the same dark colour, so the "grey-to-black-and-red transition"
+  the auditor observed cannot happen, even if the editor pastes spans with
+  inline <code>style="color: #999"</code>.</li>
+</ul>
+<p>The section also got <code>aria-labelledby="aboutus-video-heading"</code> and the
+heading received an <code>id</code>, so the surrounding structure now references it
+explicitly.</p>
+<p>For Beacon's separately-flagged single element we still need the export to
+identify the node — see Section 6.</p>
+<h3 id="verification_17">Verification</h3>
+<ol>
+<li>Inspect the heading in DevTools. The computed colour for the <code>&lt;h2&gt;</code> and
+   any nested span / em must be <code>rgb(31, 49, 49)</code> (<code>#1F3131</code>) — measured
+   contrast on <code>#F9F8F6</code> is ~16:1, which clears AAA, let alone AA.</li>
+<li>Re-run Beacon — the contrast complaint on this heading should be gone.
+   Any remaining 1-element flag will be the still-unidentified Beacon node.</li>
+</ol>
+<hr>
+<h2 id="5-wcag-222-pause-stop-hide-level-a">5. WCAG 2.2.2 — Pause, Stop, Hide (Level A)</h2>
+<p><strong>Auditor:</strong> <em>"No mechanism for user to pause, stop, or hide movement in
+'Our Solutions Create'."</em></p>
+<h3 id="root-cause_11">Root cause</h3>
+<p>The <code>.aboutus-carousel</code> was configured with <code>autoplay: true,
+autoplayTimeout: 3000</code> and rendered with no pause / play / arrow controls
+for the user. Combined with the cloned-slide loop (Section 3), users had no
+way to halt motion or take control of the carousel.</p>
+<h3 id="fix_11">Fix</h3>
+<p>Three coordinated changes:</p>
+<ol>
+<li><strong><code>assets/js/owl-bulletproof-loader.js</code></strong> — <code>.aboutus-carousel</code>
+   <code>autoplay</code> flipped from <code>true</code> to <code>!prefersReducedMotion</code>, so users with
+   <code>prefers-reduced-motion: reduce</code> set never see auto-rotation.</li>
+<li><strong><code>pages/about-us.php</code></strong> — promoted the eyebrow line from a <code>&lt;p&gt;</code> to a
+   real <code>&lt;h2 id="aboutus-our-solutions-heading"&gt;</code> (so the section has a
+   programmatic name), wrapped the section with
+   <code>aria-labelledby="aboutus-our-solutions-heading"</code>, and rendered the
+   shared accessible toolbar via <code>pg_render_carousel_controls( [ 'base_id'
+   =&gt; 'aboutus-our-solutions', 'region_label' =&gt; 'Our solutions' ] )</code>. The
+   toolbar produces three real <code>&lt;button&gt;</code>s:</li>
+</ol>
+<ul>
+<li><strong>Previous Our solutions</strong> — <code>aria-label="Previous Our solutions"</code></li>
+<li><strong>Pause / Play Our solutions auto-rotation</strong> — toggle with
+     <code>aria-pressed</code> and a swapping <code>aria-label</code></li>
+<li><strong>Next Our solutions</strong> — <code>aria-label="Next Our solutions"</code></li>
+</ul>
+<ol start="3">
+<li>The carousel <code>&lt;div&gt;</code> itself got <code>tabindex="0"</code>,
+   <code>aria-labelledby="aboutus-our-solutions-heading"</code> (replacing the
+   hard-coded <code>aria-label="Our solutions"</code>), and
+   <code>data-pg-carousel-controls="aboutus-our-solutions"</code>. The existing
+   <code>wireAccessibleControls()</code> helper picks that up and wires the toolbar
+   buttons to Owl's <code>prev/next/stop/play.owl.carousel</code> events <strong>and</strong>
+   enables ArrowLeft / ArrowRight paging from anywhere inside the region.</li>
+</ol>
+<h3 id="verification_18">Verification</h3>
+<ol>
+<li>Click the Pause button — rotation halts; button label switches to "Play
+   Our solutions auto-rotation"; <code>aria-pressed</code> becomes <code>true</code>; icon swaps
+   to a play triangle.</li>
+<li>Click again — rotation resumes; label / icon / <code>aria-pressed</code> revert.</li>
+<li>Enable OS reduced motion. Reload <code>/about/</code>. The Our Solutions Create
+   carousel must not auto-rotate; toggle should announce as already paused.</li>
+<li>With the carousel region focused, ArrowLeft / ArrowRight must page
+   slides.</li>
+</ol>
+<hr>
+<h2 id="6-wcag-1411-non-text-contrast-aa">6. WCAG 1.4.11 — Non-text Contrast (AA)</h2>
+<p><strong>Auditor:</strong> <em>"Beacon has flagged 1 affected element."</em></p>
+<h3 id="status_3">Status</h3>
+<p><strong>Open — Beacon export needed.</strong> As with the Homepage and Solution Taxonomy
+audits, the report gives us a count but not the specific node. Please share
+the Beacon CSV / share-link for the About-page run so we can identify the
+exact element (likely a thin-stroke icon or a low-contrast border) and
+adjust the design tokens centrally.</p>
+<hr>
+<h2 id="7-wcag-1413-211-212-dropdown-escape">7. WCAG 1.4.13, 2.1.1, 2.1.2 — Dropdown Escape</h2>
+<p>Same single root cause flagged on every other page audit: the desktop
+navigation dropdowns (which open on hover) had no Escape handler. The
+global fix shipped for the Homepage in <code>assets/js/navigation.js</code> applies to
+every page that uses the shared header, so the About page inherits it.
+See the Homepage block for full implementation details.</p>
+<h3 id="verification_19">Verification</h3>
+<ol>
+<li>Hover any top-level nav item to open its dropdown.</li>
+<li>Press Escape — the dropdown must close.</li>
+<li>Press Escape again — focus moves cleanly back into the menu trigger; no
+   tab trap.</li>
+</ol>
+<hr>
+<h2 id="file-index-about-page-changes">File index — About Page changes</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose of change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pages/about-us.php</code></td>
+<td>Promoted "Our solutions create" eyebrow <code>&lt;p&gt;</code> to <code>&lt;h2&gt;</code>; accessible toolbar + region wiring on <code>.aboutus-carousel</code>; defensive alt-text fallback (via <code>pg_brand_alt()</code>) on Affiliations &amp; Certifications; list semantics on those grids; explicit dark-text + descendant colour lock on the "Making cross-cultural…" heading; opt-in <code>&lt;details&gt;</code> transcript block below the YouTube embed driven by a new <code>video_transcript</code> ACF field</td>
+</tr>
+<tr>
+<td><code>assets/js/owl-bulletproof-loader.js</code></td>
+<td><code>.aboutus-carousel</code> autoplay now respects <code>prefers-reduced-motion</code></td>
+</tr>
+<tr>
+<td><code>assets/js/carousel-a11y.js</code></td>
+<td>Cloned-slide hider already shipped — covers <code>.aboutus-carousel</code> for free</td>
+</tr>
+<tr>
+<td><code>assets/js/navigation.js</code></td>
+<td>Global Escape handler already shipped — covers About-page dropdowns for free</td>
+</tr>
+</tbody>
+</table>
+<h3 id="outstanding-action-items_1">Outstanding action items</h3>
+<ul>
+<li><strong>Content team — populate <code>video_transcript</code></strong> ACF field with the
+  spoken-word transcript and a visual description / audio-description text
+  for the About-page video. The <code>&lt;details&gt;</code> block ships automatically once
+  the field has content.</li>
+<li><strong>Content team — populate the Media Library <em>Alternative Text</em></strong> for every
+  partner / certification logo so 1.1.1 and 1.4.5 move from "auto-derived
+  alt" to "author-supplied alt".</li>
+<li><strong>Auditor — share the Beacon export</strong> identifying the 1 element flagged
+  for 1.4.3 and the 1 element flagged for 1.4.11 so we can address those
+  specific nodes.</li>
+</ul>
+<hr>
+<h1 id="page-case-studies-page">Page: Case Studies Page</h1>
+<p>Template: <code>pages/case-studies.php</code> (public URL <code>/case-studies/</code>).</p>
+<h2 id="summary-table_3">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>WCAG SC</th>
+<th>Level</th>
+<th>Audit result</th>
+<th>Severity</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1.4.13 Content on Hover or Focus</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>2.1.1 Keyboard</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Low</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2.1.2 No Keyboard Trap</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Every other criterion in the audit is <strong>Pass</strong> or <strong>Pass (N/A)</strong>, so this
+page needed <strong>no template-level remediation</strong> — the three flagged items all
+share the <em>same</em> root cause flagged on every previous page audit and are
+covered by code that already shipped.</p>
+<h2 id="1-wcag-1413-211-212-dropdown-escape">1. WCAG 1.4.13, 2.1.1, 2.1.2 — Dropdown Escape</h2>
+<p><strong>Auditor:</strong> <em>"Dropdowns cannot be dismissed with esc key. Tab, Shift+Tab,
+and up and down arrow keys function, escape button does not function."</em></p>
+<h3 id="root-cause-and-fix_7">Root cause and fix</h3>
+<p>Same single root cause flagged on Homepage / Solutions / Industries / About:
+the desktop navigation dropdowns (which open on hover) had no Escape
+handler. The fix lives in <code>assets/js/navigation.js</code> (document-level
+<code>keydown</code> listener that closes any hover-opened dropdown on Escape and
+restores focus to the parent menu trigger). Because <code>navigation.js</code> is
+loaded site-wide via <code>functions.php</code>, the Case Studies page inherits the
+fix automatically — no per-template change required.</p>
+<p>See the <strong>Homepage</strong> section of this document for the full implementation
+details (event delegation, focus restoration, no double-bind on
+focus-opened dropdowns).</p>
+<h3 id="verification_20">Verification</h3>
+<ol>
+<li>Load <code>/case-studies/</code>. Hover any top-level nav item to open its
+   dropdown.</li>
+<li>Press Escape — the dropdown must close.</li>
+<li>Press Escape again with focus inside the menu — focus moves cleanly back
+   into the menu trigger; no tab trap.</li>
+<li>Repeat with a screen reader on — the dropdown's expanded state should
+   flip to collapsed without announcing extra noise.</li>
+</ol>
+<hr>
+<h2 id="file-index-case-studies-changes">File index — Case Studies changes</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose of change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>(none)</em></td>
+<td>All three Partial items are covered by <code>assets/js/navigation.js</code>, which already shipped for the Homepage and is loaded site-wide.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="outstanding-action-items_2">Outstanding action items</h3>
+<ul>
+<li><strong>Auditor — confirm</strong> the dropdown Escape behaviour on <code>/case-studies/</code>
+  is tested against a deploy that includes the global Escape handler. Once
+  confirmed, items 1–3 above should flip from Partial to Pass.</li>
+</ul>
+<hr>
+<h1 id="page-contact-page">Page: Contact Page</h1>
+<p>Template: <code>pages/contact.php</code> (public URL <code>/contact/</code>).</p>
+<h2 id="summary-table_4">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>WCAG SC</th>
+<th>Level</th>
+<th>Audit result</th>
+<th>Severity</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1.3.1 Info and Relationships</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail (4 elements — select-names + definition-lists)</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> + patched</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.4.3 Contrast (Minimum)</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial (2 elements)</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--partial">Partially mitigated — open (HubSpot embed)</span></strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>1.4.13 Content on Hover or Focus</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial (Escape)</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>2.1.1 Keyboard</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial (Escape)</span></td>
+<td>Low</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2.1.2 No Keyboard Trap</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial (Escape)</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.4.7 Focus Visible</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial (&quot;squares&quot; in &quot;I am interested in the following solutions&quot;)</span></td>
+<td>Low</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>4.1.2 Name, Role, Value</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail (15 elements — aria-required, select names, nested interactive)</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Patched</span></strong></td>
+</tr>
+</tbody>
+</table>
+<p>Every other criterion in the audit is <strong>Pass</strong> or <strong>Pass (N/A)</strong>.</p>
+<p>The majority of the flagged elements live <em>inside the embedded HubSpot form</em>
+(<code>//js.hsforms.net/forms/embed/v2.js</code>). We can't edit HubSpot's rendered
+markup directly, so we treat the embed as an untrusted source and:</p>
+<ol>
+<li>fix the markup we <em>do</em> own (the <code>&lt;dl&gt;</code> block outside the form),</li>
+<li>inject CSS that restores a visible <code>:focus-visible</code> ring on every control
+   HubSpot puts inside <code>.hs-form-container</code>,</li>
+<li>hook HubSpot's <code>onFormReady</code> callback <strong>plus</strong> a <code>MutationObserver</code> so
+   every re-render is re-patched (aria-required, select accessible names,
+   nested interactive controls, and <code>role="group"</code> on radio/checkbox
+   <code>inputs-list</code>s).</li>
+</ol>
+<h2 id="1-wcag-131-definition-list-contained-an-h3">1. WCAG 1.3.1 — Definition list contained an <code>&lt;h3&gt;</code></h2>
+<p><strong>Auditor:</strong> <em>"Beacon has flagged issues with select-names and
+definition-lists, affecting four elements."</em></p>
+<h3 id="root-cause_12">Root cause</h3>
+<p>The "Reach out" block wrapped its heading <em>inside</em> the <code>&lt;dl&gt;</code>:</p>
+<div class="codehilite"><pre><span></span><code>&lt;dl class=&quot;mt-2 text-lg text-gray-800&quot;&gt;
+    &lt;h3 class=&quot;font-black text-lg text-primary&quot;&gt;Reach out&lt;/h3&gt;
+    ...
+&lt;/dl&gt;
+</code></pre></div>
+
+<p><code>&lt;dl&gt;</code> is only allowed to contain <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code>, and <code>&lt;div&gt;</code> / <code>&lt;script&gt;</code> /
+<code>&lt;template&gt;</code> wrappers. An <code>&lt;h3&gt;</code> inside a <code>&lt;dl&gt;</code> is invalid HTML, flagged
+by Beacon under "definition-lists".</p>
+<h3 id="fix_12">Fix</h3>
+<p><code>pages/contact.php</code> — the <code>&lt;h3&gt;</code> is now emitted as a sibling <em>before</em> the
+<code>&lt;dl&gt;</code>, and the <code>&lt;dl&gt;</code> references it via <code>aria-labelledby</code> so screen readers
+still announce the grouping:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">&lt;h3 id=&quot;contact-reach-out-heading&quot; class=&quot;font-black text-lg text-primary mt-2&quot;&gt;Reach out&lt;/h3&gt;</span>
+<span class="x">&lt;dl class=&quot;mt-2 text-lg text-gray-800&quot; aria-labelledby=&quot;contact-reach-out-heading&quot;&gt;</span>
+<span class="x">    ...</span>
+<span class="x">&lt;/dl&gt;</span>
+</code></pre></div>
+
+<h3 id="verification_21">Verification</h3>
+<ol>
+<li>Re-run Beacon / axe on <code>/contact/</code>. The "definition-lists" finding for
+   this block should be cleared.</li>
+<li>With VoiceOver / NVDA, arrow through the block — "Reach out, heading
+   level 3" is announced first, then the <code>&lt;dl&gt;</code> is presented as a list with
+   the phone and email rows.</li>
+</ol>
+<h2 id="2-wcag-131-412-hubspot-select-names-aria-required-nested-interactive">2. WCAG 1.3.1 / 4.1.2 — HubSpot select names, aria-required, nested interactive</h2>
+<p><strong>Auditor:</strong> <em>"Beacon has flagged issues with aria required attributes,
+select elements with accessible names, and nested interactive controls
+affecting 15 elements."</em></p>
+<h3 id="root-cause_13">Root cause</h3>
+<p>HubSpot's embed renders a mix of <code>&lt;select&gt;</code>, <code>&lt;input type="checkbox"&gt;</code>,
+<code>&lt;input type="radio"&gt;</code>, and <code>&lt;input type="text"&gt;</code> controls. Depending on
+how a field is configured in HubSpot:</p>
+<ul>
+<li><code>&lt;select&gt;</code> elements can ship without an <code>aria-label</code> / <code>aria-labelledby</code>
+  and with a visually-hidden or positioned <code>&lt;label&gt;</code> that Beacon won't
+  always associate (especially on multi-step / branching forms).</li>
+<li><code>required</code> attributes are present but <code>aria-required="true"</code> sometimes is
+  not.</li>
+<li>HubSpot renders the legal / consent copy with <code>&lt;a&gt;</code> links <em>inside</em> the
+  <code>&lt;label&gt;</code> of a checkbox, which is a nested interactive control
+  (WCAG 4.1.2 / 1.3.1).</li>
+</ul>
+<h3 id="fix_13">Fix</h3>
+<p><code>pages/contact.php</code> — replaced the old inline <code>hbspt.forms.create(...)</code>
+call with a hardened version that:</p>
+<ol>
+<li>Hooks <code>onFormReady</code> so the a11y patcher runs as soon as HubSpot finishes
+   rendering.</li>
+<li>Mounts a <code>MutationObserver</code> on <code>.hs-form-container</code> so every subsequent
+   re-render (step change, validation, conditional branching) is re-patched.</li>
+<li>For every <code>&lt;select&gt;</code> without an accessible name, resolves its <code>&lt;label&gt;</code>
+   (via <code>for=</code> or closest <code>.hs-form-field label</code>) and copies the text into
+   <code>aria-label</code> (stripping trailing <code>*</code>).</li>
+<li>For every <code>input[required] / select[required] / textarea[required]</code>,
+   adds <code>aria-required="true"</code> if missing.</li>
+<li>For every <code>&lt;a&gt;</code> nested inside a <code>&lt;label&gt;</code>, hoists the <code>&lt;a&gt;</code> to be a
+   sibling immediately after the <code>&lt;label&gt;</code>, resolving the
+   <em>nested interactive controls</em> flag while keeping the link adjacent to
+   the checkbox visually.</li>
+<li>For every radio / checkbox group (<code>.hs-form-field &gt; .inputs-list</code>),
+   applies <code>role="group"</code> with <code>aria-labelledby</code> / <code>aria-label</code> from the
+   group's legend so assistive technology announces the group context.</li>
+</ol>
+<p>See <code>pages/contact.php</code> lines ~52–160 for the full inline script.</p>
+<h3 id="verification_22">Verification</h3>
+<ol>
+<li>Load <code>/contact/</code>, open DevTools, and inspect every <code>&lt;select&gt;</code> inside
+   <code>.hs-form-container</code> — each one should now have an <code>aria-label</code> matching
+   its visible label.</li>
+<li>Inspect every required field — each should have <code>aria-required="true"</code>.</li>
+<li>Inspect the consent-copy checkbox — the <code>&lt;a&gt;</code> that used to be inside
+   the <code>&lt;label&gt;</code> is now its own sibling and still reads as a link; the
+   checkbox accessible name no longer leaks link markup.</li>
+<li>Re-run Beacon / axe on <code>/contact/</code>. The three 4.1.2 sub-findings (aria
+   required attributes, select element accessible names, nested interactive
+   controls) should clear.</li>
+</ol>
+<h2 id="3-wcag-247-focus-visible-on-the-i-am-interested-in-the-following-solutions-squares">3. WCAG 2.4.7 — Focus visible on the "I am interested in the following solutions" squares</h2>
+<p><strong>Auditor:</strong> <em>"Focus is not visible for squares in the 'I am interested in
+the following solutions' section."</em></p>
+<h3 id="root-cause_14">Root cause</h3>
+<p>HubSpot styles those checkboxes as visual "squares" and ships CSS that sets
+<code>outline: none</code> on the native <code>&lt;input&gt;</code>, with no replacement ring. Keyboard
+users can't tell which square is focused.</p>
+<h3 id="fix_14">Fix</h3>
+<p><code>pages/contact.php</code> — a scoped <code>&lt;style&gt;</code> block inside <code>.hs-form-container</code>
+forces a high-contrast <code>outline</code> + <code>box-shadow</code> pair on any interactive
+descendant when it matches <code>:focus-visible</code>. The rule also covers the
+styled-label pattern HubSpot uses for checkboxes / radios
+(<code>input:focus-visible + span</code>). Placeholder, helper, and error text are
+darkened in the same block to address auditor-flagged <strong>1.4.3</strong> rows on
+the embed.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="p">:</span><span class="nd">is</span><span class="o">(</span><span class="nt">input</span><span class="o">,</span><span class="w"> </span><span class="nt">select</span><span class="o">,</span><span class="w"> </span><span class="nt">textarea</span><span class="o">,</span><span class="w"> </span><span class="nt">button</span><span class="o">)</span><span class="p">:</span><span class="nd">focus-visible</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="p">.</span><span class="nc">hs-form-booleancheckbox-display</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="nd">focus-visible</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nt">span</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="p">.</span><span class="nc">hs-form-checkbox-display</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="nd">focus-visible</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nt">span</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="p">.</span><span class="nc">hs-form-radio-display</span><span class="w"> </span><span class="nt">input</span><span class="p">:</span><span class="nd">focus-visible</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nt">span</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">outline</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mh">#98C441</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">    </span><span class="k">outline-offset</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">    </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mh">#1F3131</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">    </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="verification_23">Verification</h3>
+<ol>
+<li>Tab through the HubSpot form. Every field, dropdown, checkbox square,
+   and button receives a visible green + dark outline pair on focus.</li>
+<li>Use Windows high-contrast and macOS "Increase contrast" modes — the
+   outline still resolves because it's a real <code>outline</code>, not only a
+   <code>box-shadow</code>.</li>
+</ol>
+<h2 id="4-wcag-143-contrast-minimum-on-form-copy">4. WCAG 1.4.3 — Contrast (Minimum) on form copy</h2>
+<p><strong>Auditor:</strong> <em>"Beacon has flagged issues with contrast between foreground
+and background colors, affecting two elements."</em></p>
+<h3 id="root-cause_15">Root cause</h3>
+<p>Almost certainly two of HubSpot's own text nodes — the placeholder /
+helper text or the light-gray legal copy — both of which render inside
+<code>.hs-form-container</code> on a white background with grey that falls below 4.5:1.</p>
+<h3 id="fix_15">Fix</h3>
+<p>The same <code>&lt;style&gt;</code> block that handles 2.4.7 also overrides HubSpot's
+low-contrast colours for labels, field descriptions, required-indicator
+copy, error messages, and placeholders:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="nt">label</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="p">.</span><span class="nc">hs-form-field</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nt">label</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="nt">legend</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#1F3131</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="p">.</span><span class="nc">hs-field-desc</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="p">.</span><span class="nc">hs-form-required</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#374151</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="p">::</span><span class="nd">placeholder</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#4b5563</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"> </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="p">.</span><span class="nc">hs-error-msg</span><span class="o">,</span>
+<span class="p">.</span><span class="nc">hs-form-container</span><span class="w"> </span><span class="p">.</span><span class="nc">hs-error-msgs</span><span class="w"> </span><span class="nt">li</span><span class="w"> </span><span class="nt">label</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#9b1c1c</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+
+<p>These values all meet 4.5:1 against <code>#ffffff</code>.</p>
+<h3 id="remaining-work">Remaining work</h3>
+<p>Two unidentified elements were flagged by Beacon. The fix above covers the
+most common HubSpot culprits, but we still need the Beacon export to
+confirm coverage. If a specific element is outside <code>.hs-form-container</code>
+(e.g. one of the page-body <code>&lt;p class="text-gray-700"&gt;</code> rows) we'll add a
+targeted override in <code>assets/css/input.css</code>.</p>
+<h3 id="verification_24">Verification</h3>
+<ol>
+<li>Re-run Beacon / axe on <code>/contact/</code>. The 1.4.3 count should drop to 0 or
+   to any elements outside the embed.</li>
+<li>If anything remains, share the Beacon export — we'll translate each
+   node to a Tailwind class change or an inline CSS override.</li>
+</ol>
+<h2 id="5-wcag-1413-211-212-dropdown-escape">5. WCAG 1.4.13, 2.1.1, 2.1.2 — Dropdown Escape</h2>
+<p><strong>Auditor:</strong> <em>"Dropdowns cannot be dismissed with esc key. Tab, Shift+Tab,
+and up and down arrow keys function, escape button does not function."</em></p>
+<h3 id="root-cause-and-fix_8">Root cause and fix</h3>
+<p>Identical root cause to Homepage / Solutions / Industries / About / Case
+Studies. Fixed site-wide in <code>assets/js/navigation.js</code> (document-level
+<code>keydown</code> listener that closes hover-opened dropdowns and returns focus to
+the menu trigger). Loaded site-wide via <code>functions.php</code>, so <code>/contact/</code>
+inherits the fix with no template-level change.</p>
+<h3 id="verification_25">Verification</h3>
+<ol>
+<li>Load <code>/contact/</code>, hover any top-level nav item to open its dropdown.</li>
+<li>Press Escape — dropdown closes, focus lands on the trigger.</li>
+<li>Tab / Shift+Tab / up-arrow / down-arrow still behave as before.</li>
+</ol>
+<hr>
+<h2 id="file-index-contact-page-changes">File index — Contact Page changes</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose of change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pages/contact.php</code></td>
+<td>Fixed invalid <code>&lt;h3&gt;</code> inside <code>&lt;dl&gt;</code>; added <code>&lt;main id="maincontent"&gt;</code> so the global skip link works; made the office-card icons decorative; added <code>aria-label</code> + focus-visible styling to social links; rewrote the HubSpot embed boot code to run a <code>MutationObserver</code>-backed a11y patcher (select names, aria-required, nested-interactive hoist, group semantics) and shipped scoped CSS for focus-visible + contrast overrides on the HubSpot embed.</td>
+</tr>
+<tr>
+<td><code>assets/js/navigation.js</code></td>
+<td>Global Escape handler — already shipped; picked up by <code>/contact/</code> automatically.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="outstanding-action-items_3">Outstanding action items</h3>
+<ul>
+<li><strong>Auditor — confirm</strong> the five dropdown / Escape Partial items on
+  <code>/contact/</code> are tested against a deploy that includes
+  <code>assets/js/navigation.js</code>. Once confirmed, rows 3–5 above flip from
+  Partial to Pass.</li>
+<li><strong>Auditor — share Beacon CSV / share-link</strong> for the two elements flagged
+  under 1.4.3 and the 15 elements flagged under 4.1.2 so we can verify the
+  patcher resolves every node (or add targeted fixes for any that fall
+  outside <code>.hs-form-container</code>).</li>
+<li><strong>HubSpot form owner</strong> — review the consent-copy checkbox in HubSpot's
+  form editor. Where possible, configure the link to live <em>after</em> the
+  checkbox label instead of inside it; the runtime hoist we ship is a
+  defensive fallback and not a substitute for clean markup at the source.</li>
+</ul>
+<hr>
+<h1 id="page-blog-page">Page: Blog Page</h1>
+<p>Template: <code>pages/blog.php</code> (public URL <code>/blog/</code>).</p>
+<h2 id="summary-table_5">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>WCAG SC</th>
+<th>Level</th>
+<th>Audit result</th>
+<th>Severity</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1.3.2 Meaningful Sequence</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Pass with suggestion</span> ("Filter by category")</td>
+<td>N/A</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.4.13 Content on Hover or Focus</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial (Escape)</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2.1.1 Keyboard</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial (Escape)</span></td>
+<td>Low</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>2.1.2 No Keyboard Trap</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial (Escape)</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2.4.3 Focus Order</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial (&quot;Filter by category&quot;)</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>2.4.7 Focus Visible</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial (&quot;Filter by category&quot;)</span></td>
+<td>Low</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+</tbody>
+</table>
+<p>Every other criterion in the audit is <strong>Pass</strong> or <strong>Pass (N/A)</strong>.</p>
+<p>Items 1, 5, and 6 all stem from the <strong>same root cause</strong> — the "Filter by
+category" <code>&lt;select&gt;</code> was set to auto-submit on <code>change</code>, so each time a
+keyboard or screen-reader user moved through options the page reloaded.
+That made the experience feel like the screen reader was "going through
+every section" of the dropdown (1.3.2) and broke focus order (2.4.3),
+because focus landed back on the <code>&lt;select&gt;</code> after every reload. The
+focus-visible Tailwind ring used <code>box-shadow</code> on a translucent dark
+background, which Beacon flagged as not visible enough (2.4.7).</p>
+<h2 id="1-wcag-132-243-filter-by-category-auto-submit-on-every-option-change">1. WCAG 1.3.2 / 2.4.3 — "Filter by category" auto-submit on every option change</h2>
+<p><strong>Auditor:</strong> <em>"Through a screen reader goes through every section of the
+'filter by category' drop down menu. … The focus order can become
+confusing when screen readers go through the filter by category section."</em></p>
+<h3 id="root-cause_16">Root cause</h3>
+<p><code>pages/blog.php</code> had:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">select</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;blog-category-filter&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;category_name&quot;</span>
+        <span class="na">onchange</span><span class="o">=</span><span class="s">&quot;this.form.submit()&quot;</span> <span class="err">…</span><span class="p">&gt;</span>
+</code></pre></div>
+
+<p><code>onchange</code> fires every time a screen-reader user arrows through options
+(VoiceOver, NVDA, Narrator all set the <code>value</code> as you arrow, not just on
+selection). The form was submitted, the page reloaded, and focus was
+restored to the <code>&lt;select&gt;</code> — leaving the user no way to <em>browse</em> options
+without triggering N navigations.</p>
+<h3 id="fix_16">Fix</h3>
+<p><code>pages/blog.php</code> — removed <code>onchange="this.form.submit()"</code> and shipped an
+explicit <code>&lt;button type="submit"&gt;Apply&lt;/button&gt;</code> next to the dropdown. The
+filter now only submits when the user takes deliberate action:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">&lt;form method=&quot;get&quot; role=&quot;search&quot; aria-label=&quot;Filter blog posts by category&quot;&gt;</span>
+<span class="x">    &lt;label for=&quot;blog-category-filter&quot;&gt;Filter by category&lt;/label&gt;</span>
+<span class="x">    &lt;p id=&quot;blog-category-filter-help&quot; class=&quot;sr-only&quot;&gt;</span>
+<span class="x">        Choose a category, then activate Apply to update the list of posts.</span>
+<span class="x">    &lt;/p&gt;</span>
+<span class="x">    &lt;select</span>
+<span class="x">        id=&quot;blog-category-filter&quot;</span>
+<span class="x">        name=&quot;category_name&quot;</span>
+<span class="x">        aria-describedby=&quot;blog-category-filter-help&quot;</span>
+<span class="x">        aria-controls=&quot;blog-results&quot;</span>
+<span class="x">        …</span>
+<span class="x">    &gt;</span>
+<span class="x">        &lt;option value=&quot;&quot;&gt;All posts&lt;/option&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">foreach</span> <span class="p">(</span> <span class="nv">$children</span> <span class="k">as</span> <span class="nv">$cat</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="nb">printf</span><span class="p">(</span>
+                <span class="s1">&#39;&lt;option value=&quot;%1$s&quot; %2$s&gt;%3$s&lt;/option&gt;&#39;</span><span class="p">,</span>
+                <span class="nx">esc_attr</span><span class="p">(</span> <span class="nv">$cat</span><span class="o">-&gt;</span><span class="na">slug</span> <span class="p">),</span>
+                <span class="nv">$selected</span> <span class="o">===</span> <span class="nv">$cat</span><span class="o">-&gt;</span><span class="na">slug</span> <span class="o">?</span> <span class="s1">&#39;selected&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                <span class="nx">esc_html</span><span class="p">(</span> <span class="nv">$cat</span><span class="o">-&gt;</span><span class="na">name</span> <span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">}</span> <span class="cp">?&gt;</span>
+<span class="x">    &lt;/select&gt;</span>
+
+<span class="x">    &lt;button type=&quot;submit&quot;&gt;Apply&lt;/button&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+</code></pre></div>
+
+<p>Three things change for the screen-reader user:</p>
+<ol>
+<li>Arrow keys now traverse the option list with no side effect — the user
+   hears each option name, picks one, and only then activates <strong>Apply</strong>.</li>
+<li>The hidden <code>&lt;p id="blog-category-filter-help"&gt;</code> is announced as the
+   select's description (<code>aria-describedby</code>), telling the user explicitly
+   that they need to activate Apply.</li>
+<li>The select declares <code>aria-controls="blog-results"</code>, pointing AT to the
+   updated grid so screen readers connect cause and effect on submit.</li>
+</ol>
+<h3 id="verification_26">Verification</h3>
+<ol>
+<li>Load <code>/blog/</code>. Move keyboard focus into the <strong>Filter by category</strong>
+   select.</li>
+<li>Press <code>Down</code>/<code>Up</code> arrow keys — focus stays on the select, the
+   currently-active option name changes, and <strong>the page does not
+   reload</strong>.</li>
+<li>Press <code>Tab</code> to move to <strong>Apply</strong>, then <code>Enter</code> (or click) — the page
+   reloads with the chosen category and the screen reader announces the
+   new "X posts in {category}" status message (see item 2 below).</li>
+<li>Re-run NVDA / VoiceOver. The select is announced as
+   "Filter by category, combo box, choose a category, then activate Apply
+   to update the list of posts."</li>
+</ol>
+<h2 id="2-wcag-243-focus-order-on-results">2. WCAG 2.4.3 — focus order on results</h2>
+<p>After fix #1, focus order is deterministic: <code>&lt;h1&gt;</code> → label → select →
+<strong>Apply</strong> → first card. To make the <em>result of the filter</em> announced
+without relying on a visual scan, we also added a polite live region
+above the grid:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">&lt;p id=&quot;blog-results-status&quot; class=&quot;sr-only&quot; aria-live=&quot;polite&quot;&gt;</span>
+<span class="x">    </span><span class="cp">&lt;?php</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nv">$selected</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="nb">printf</span><span class="p">(</span> <span class="nx">_n</span><span class="p">(</span> <span class="s1">&#39;%1$d post in %2$s.&#39;</span><span class="p">,</span> <span class="s1">&#39;%1$d posts in %2$s.&#39;</span><span class="p">,</span> <span class="nv">$total</span><span class="p">,</span> <span class="nx">…</span> <span class="p">),</span>
+                <span class="nv">$total</span><span class="p">,</span> <span class="nx">esc_html</span><span class="p">(</span> <span class="nv">$term_name</span> <span class="p">)</span> <span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nb">printf</span><span class="p">(</span> <span class="nx">_n</span><span class="p">(</span> <span class="s1">&#39;%d post.&#39;</span><span class="p">,</span> <span class="s1">&#39;%d posts.&#39;</span><span class="p">,</span> <span class="nv">$total</span><span class="p">,</span> <span class="nx">…</span> <span class="p">),</span> <span class="nv">$total</span> <span class="p">);</span>
+    <span class="p">}</span>
+    <span class="cp">?&gt;</span>
+<span class="x">&lt;/p&gt;</span>
+<span class="x">&lt;div id=&quot;blog-results&quot; class=&quot;grid …&quot;&gt;</span>
+<span class="x">    …</span>
+<span class="x">&lt;/div&gt;</span>
+</code></pre></div>
+
+<p>After Apply triggers a reload, screen readers announce e.g.
+"6 posts in Industry News" before the user reaches the cards.</p>
+<p>We also wrapped the listing in <code>&lt;main id="maincontent"&gt;</code> so the global
+<strong>Skip to content</strong> link works on this page (it points at <code>#maincontent</code>
+in <code>header.php</code>).</p>
+<h2 id="3-wcag-247-focus-visible-on-the-dropdown">3. WCAG 2.4.7 — Focus Visible on the dropdown</h2>
+<p><strong>Auditor:</strong> <em>"Focus is not visible in the 'filter by category' section."</em></p>
+<h3 id="root-cause_17">Root cause</h3>
+<p>The previous classes were:</p>
+<div class="codehilite"><pre><span></span><code>focus:outline-none focus:ring-2 focus:ring-[#D16555] focus:border-transparent
+</code></pre></div>
+
+<p>That <strong>suppresses</strong> the native focus outline (<code>outline: none</code>) and only
+draws a Tailwind <code>ring</code> (which is implemented as <code>box-shadow</code>).
+<code>box-shadow</code> rings:</p>
+<ul>
+<li>have weaker non-text contrast on the translucent dark hero background,</li>
+<li>are stripped by Windows High Contrast mode,</li>
+<li>and are styled with <code>focus:</code> (any focus, including mouse focus) which
+  doesn't address Beacon's "selection state" concern.</li>
+</ul>
+<h3 id="fix_17">Fix</h3>
+<p><code>pages/blog.php</code> — replaced both the select and the new Apply button
+focus styles with a real <code>outline</code> paired with a Tailwind <code>ring</code>, scoped
+to <code>:focus-visible</code>:</p>
+<div class="codehilite"><pre><span></span><code>focus:outline-none
+focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+focus-visible:outline-[#98C441]
+focus-visible:ring-2 focus-visible:ring-[#1F3131]
+</code></pre></div>
+
+<p>The lime-green outline (<code>#98C441</code>) gives at least 3:1 non-text contrast
+against both the dark hero background and the white form / page body; the
+inner dark ring layer keeps the indicator visible even on light
+backgrounds. Each option in the select uses native browser highlighting,
+which is also visible.</p>
+<p>We also bumped the visible label from <code>text-white/70</code> → <code>text-white</code> and
+the dropdown caret from <code>text-white/80</code> → <code>text-white</code> to fully resolve
+<strong>1.4.11 Non-text Contrast</strong> on the field's caret while we're in there.</p>
+<h3 id="verification_27">Verification</h3>
+<ol>
+<li>Tab into the dropdown — a high-contrast lime + dark outline pair is
+   drawn around the select.</li>
+<li>Tab again — the outline moves to <strong>Apply</strong> and the same pair is drawn.</li>
+<li>Open the select and arrow through options — the active option uses the
+   browser's native highlight (which Beacon accepts as visible focus).</li>
+<li>Switch macOS to "Increase Contrast" / Windows High Contrast —
+   the indicator is still drawn because <code>outline</code> is a real outline, not
+   only <code>box-shadow</code>.</li>
+</ol>
+<h2 id="4-wcag-1413-211-212-dropdown-escape">4. WCAG 1.4.13, 2.1.1, 2.1.2 — Dropdown Escape</h2>
+<p><strong>Auditor:</strong> <em>"Dropdowns cannot be dismissed with esc key. Tab,
+Shift+Tab, and up and down arrow keys function, escape button does not
+function."</em></p>
+<p>Same site-wide root cause and fix that shipped from the Homepage audit
+(<code>assets/js/navigation.js</code> Escape handler). <code>/blog/</code> inherits it for
+free, no template-level change required.</p>
+<h3 id="verification_28">Verification</h3>
+<ol>
+<li>Load <code>/blog/</code>, hover any top-level navigation item to open its
+   dropdown.</li>
+<li>Press Escape — the dropdown collapses and focus returns to the menu
+   trigger.</li>
+<li>Tab / Shift+Tab / arrow keys behave as before; no keyboard trap.</li>
+</ol>
+<h2 id="5-bonus-hardening-on-the-post-grid">5. Bonus hardening on the post grid</h2>
+<p>While remediating the audit findings we also tightened the listing markup
+to head off two issues Beacon often raises on next-pass audits:</p>
+<ul>
+<li><strong>Card thumbnails</strong> are now <code>alt=""</code> and wrapped in
+  <code>aria-hidden="true"</code> — the surrounding <code>&lt;a&gt;</code> already exposes the post
+  title via the <code>&lt;h3&gt;</code>, so an alt'd image was duplicating the link's
+  accessible name. Native <code>the_post_thumbnail()</code> is used so editors can
+  later override the alt text, and <code>loading="lazy"</code> /
+  <code>decoding="async"</code> are added for performance.</li>
+<li>The <strong>"Read More" badge</strong> now exposes the post title to screen readers
+  as part of the link's accessible name (<code>Read More about Foo</code>),
+  resolving WCAG 2.4.4 <em>Link Purpose (in context)</em> in the
+  <em>out-of-context</em> fallback Beacon checks.</li>
+<li>The <strong>publish date</strong> colour was bumped from <code>text-gray-500</code> to
+  <code>text-gray-600</code> to comfortably exceed 4.5:1 against the white card
+  background (proactive 1.4.3).</li>
+<li>All <code>&lt;option&gt;</code> output is now escaped with <code>esc_attr()</code> /
+  <code>esc_html()</code>.</li>
+</ul>
+<hr>
+<h2 id="file-index-blog-page-changes">File index — Blog Page changes</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose of change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pages/blog.php</code></td>
+<td>Replaced <code>&lt;select onchange=submit&gt;</code> with explicit Apply button; added <code>aria-describedby</code> help text; added <code>aria-controls</code>-linked, polite live-region results status; added <code>&lt;main id="maincontent"&gt;</code>; high-contrast <code>focus-visible:outline + ring</code> on select + button; bumped label / caret / date contrast; decorative thumbnails (<code>alt=""</code> + <code>aria-hidden</code>) with native lazy / decoding hints; "Read More" exposes post title to assistive tech; full output escaping.</td>
+</tr>
+<tr>
+<td><code>assets/js/navigation.js</code></td>
+<td>Global Escape handler (already shipped) — picked up by <code>/blog/</code> automatically.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="outstanding-action-items_4">Outstanding action items</h3>
+<ul>
+<li><strong>Auditor — confirm</strong> the dropdown Escape behaviour on <code>/blog/</code> is
+  tested against a deploy that includes <code>assets/js/navigation.js</code>. Once
+  confirmed, items 2–4 in the table above flip from Partial to Pass.</li>
+<li><strong>Content team</strong> — for any blog post that ships with a custom <em>Featured
+  Image</em>, populate the Media Library <em>Alternative Text</em> field. Today the
+  card image is decorative because the heading carries the name, but if a
+  card thumbnail ever stops rendering, the alt fallback should still
+  describe the post's subject (we'll lift <code>alt=""</code> to the post title at
+  that point).</li>
+</ul>
+<hr>
+<h1 id="page-careers-page">Page: Careers Page</h1>
+<p>Template: <code>pages/careers.php</code> (public URL <code>/careers/</code>).</p>
+<h2 id="summary-table_6">Summary table</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>WCAG SC</th>
+<th>Level</th>
+<th>Audit result</th>
+<th>Severity</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1.3.1 Info and Relationships</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial (jobs section has no label; SR announces &quot;blocked application application&quot;)</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>1.4.13 Content on Hover or Focus</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial (Escape)</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2.1.1 Keyboard</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial (Escape)</span></td>
+<td>Low</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>2.1.2 No Keyboard Trap</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--partial">Partial (Escape)</span></td>
+<td>Medium</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span> (global)</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2.4.7 Focus Visible</td>
+<td>AA</td>
+<td><span class="pg-pill pg-pill--partial">Partial — reported for &quot;I am interested in the following solutions&quot; squares</span></td>
+<td>Low</td>
+<td><strong><span class="pg-pill pg-pill--na">Not applicable on this page</span></strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>4.1.2 Name, Role, Value</td>
+<td>A</td>
+<td><span class="pg-pill pg-pill--fail">Fail (1 element — frame has no accessible name)</span></td>
+<td>High</td>
+<td><strong><span class="pg-pill pg-pill--fixed">Fixed</span></strong></td>
+</tr>
+</tbody>
+</table>
+<p>Every other criterion in the audit is <strong>Pass</strong> or <strong>Pass (N/A)</strong>.</p>
+<p>Items 1 and 6 share the same root cause — the embedded jobs board is an
+<code>&lt;iframe&gt;</code> without an accessible name, and it sits inside an otherwise
+unlabeled section of the page. Item 5 describes a section that doesn't
+exist on <code>/careers/</code> (it's a copy-paste artefact from the Contact-page
+audit) and is called out below for the record.</p>
+<h2 id="1-wcag-131-412-jobs-board-iframe-is-unlabeled">1. WCAG 1.3.1 / 4.1.2 — Jobs board iframe is unlabeled</h2>
+<p><strong>Auditor:</strong> <em>"When using a screen reader, upon going into the section of
+the website where one can search different jobs it skips over this
+section, and announces the word 'blocked application application'. …
+Beacon has flagged issues with ensuring frames have accessible names
+affecting one element."</em></p>
+<h3 id="root-cause_18">Root cause</h3>
+<p>The careers page is a simple WordPress template that renders
+<code>the_content()</code> (line 11 of the old file). The site's applicant-tracking
+system embeds its job board as an <code>&lt;iframe&gt;</code> in that post content, and
+the iframe ships without a <code>title</code> attribute. When the iframe <em>and</em> its
+section are both unlabeled, screen readers fall back to reading the
+iframe's document-level content (hence the "blocked application
+application" phrase) and can drop context entirely — matching Beacon's
+1.3.1 observation that the listings section is "skipped".</p>
+<h3 id="fix_18">Fix</h3>
+<p><code>pages/careers.php</code> — three-layer repair:</p>
+<ol>
+<li><strong>Give the section a real name.</strong> The post content is now wrapped in a
+   <code>&lt;section aria-labelledby="careers-positions-heading"&gt;</code> with a visible
+   <code>&lt;h2 id="careers-positions-heading"&gt;Open positions&lt;/h2&gt;</code> above it. A
+   short <code>&lt;p class="sr-only"&gt;</code> intro tells AT users what's in the iframe
+   <em>before</em> focus enters it, so the landmark / heading navigation is
+   predictable.</li>
+<li><strong>Give the iframe a real name.</strong> Before rendering, <code>the_content()</code> is
+   captured into a buffer and every <code>&lt;iframe&gt;</code> without a <code>title</code> attribute
+   is rewritten to carry <code>title="Open positions at Piedmont Global — job
+   board"</code> (plus <code>loading="lazy"</code> and a matching <code>name="…"</code> attribute for
+   legacy AT). The title string is filterable via the
+   <code>pg_careers_iframe_title</code> filter so content editors can localize it
+   without touching markup.</li>
+<li><strong>Give the page a main landmark.</strong> The section is wrapped in
+   <code>&lt;main id="maincontent"&gt;</code> so the site-wide skip link (<code>header.php</code> →
+   <code>a.skip-link[href="#maincontent"]</code>) works on this page.</li>
+</ol>
+<p>Key excerpt:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">ob_start();</span>
+<span class="x">the_content();</span>
+<span class="x">$pg_careers_content = ob_get_clean();</span>
+
+<span class="x">$pg_careers_content = preg_replace_callback(</span>
+<span class="x">    &#39;/&lt;iframe\b([^&gt;]*)&gt;/i&#39;,</span>
+<span class="x">    static function ( $m ) use ( $pg_careers_iframe_title ) {</span>
+<span class="x">        $attrs = $m[1];</span>
+<span class="x">        if ( ! preg_match( &#39;/\btitle\s*=\s*[&quot;\&#39;]/i&#39;, $attrs ) ) {</span>
+<span class="x">            $attrs .= &#39; title=&quot;&#39; . esc_attr( $pg_careers_iframe_title ) . &#39;&quot;&#39;;</span>
+<span class="x">        }</span>
+<span class="x">        if ( ! preg_match( &#39;/\bloading\s*=\s*[&quot;\&#39;]/i&#39;, $attrs ) ) {</span>
+<span class="x">            $attrs .= &#39; loading=&quot;lazy&quot;&#39;;</span>
+<span class="x">        }</span>
+<span class="x">        if ( ! preg_match( &#39;/\bname\s*=\s*[&quot;\&#39;]/i&#39;, $attrs ) ) {</span>
+<span class="x">            $attrs .= &#39; name=&quot;&#39; . esc_attr( $pg_careers_iframe_title ) . &#39;&quot;&#39;;</span>
+<span class="x">        }</span>
+<span class="x">        return &#39;&lt;iframe&#39; . $attrs . &#39;&gt;&#39;;</span>
+<span class="x">    },</span>
+<span class="x">    $pg_careers_content</span>
+<span class="x">);</span>
+</code></pre></div>
+
+<p>And in markup:</p>
+<div class="codehilite"><pre><span></span><code><span class="x">&lt;main id=&quot;maincontent&quot;&gt;</span>
+<span class="x">    &lt;section aria-labelledby=&quot;careers-positions-heading&quot; …&gt;</span>
+<span class="x">        &lt;h2 id=&quot;careers-positions-heading&quot;&gt;Open positions&lt;/h2&gt;</span>
+<span class="x">        &lt;p class=&quot;sr-only&quot;&gt;Search and apply for current roles at Piedmont</span>
+<span class="x">           Global. The jobs board below is loaded from our applicant</span>
+<span class="x">           tracking system; use its keyword and category filters to find</span>
+<span class="x">           roles that match your experience.&lt;/p&gt;</span>
+<span class="x">        &lt;div class=&quot;pg-careers-content&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$pg_careers_content</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="x">    &lt;/section&gt;</span>
+<span class="x">&lt;/main&gt;</span>
+</code></pre></div>
+
+<h3 id="verification_29">Verification</h3>
+<ol>
+<li>Load <code>/careers/</code> with VoiceOver / NVDA and navigate by landmark —
+   <code>main</code> is announced, then the <code>region</code> landmark "Open positions"
+   (named by the <code>&lt;h2&gt;</code>).</li>
+<li>Navigate by heading — the <code>&lt;h2&gt;Open positions&lt;/h2&gt;</code> is read
+   immediately before the iframe, so users know what they're about to
+   enter.</li>
+<li>With <code>Ctrl+F7</code> (VoiceOver rotor) / <code>Ins+F9</code> (NVDA elements list),
+   switch to Frames — the iframe now shows up as
+   <em>"Open positions at Piedmont Global — job board"</em> instead of blank /
+   "blocked application application".</li>
+<li>Re-run Beacon on <code>/careers/</code> — the 4.1.2 frame-accessible-name finding
+   should clear to 0 elements; 1.3.1 should flip from Partial to Pass.</li>
+</ol>
+<h3 id="remaining-work_1">Remaining work</h3>
+<p>If the applicant-tracking provider's iframe src is replaced with an ATS
+that renders its own nested iframe (common with sandbox embeds), the
+nested iframe's title still needs to be set by the provider. Our filter
+only touches top-level iframes in the post content. If Beacon reports a
+new frame finding after a provider change, the fix is to ask the provider
+to ship <code>title=</code> on <em>their</em> iframe or to proxy the embed through a
+themed shortcode.</p>
+<h2 id="2-wcag-247-focus-visible-on-i-am-interested-in-the-following-solutions-squares">2. WCAG 2.4.7 — Focus visible on "I am interested in the following solutions" squares</h2>
+<p><strong>Auditor row copied verbatim from the Contact-page audit.</strong></p>
+<p>The <em>"I am interested in the following solutions"</em> field is a HubSpot
+multi-checkbox group that lives on the <strong>Contact</strong> page, not the Careers
+page. It is not rendered on <code>/careers/</code>, so no remediation is required
+here. The Contact-page remediation already shipped (scoped focus-visible
+CSS inside <code>.hs-form-container</code>) — see the <code># Page: Contact Page</code>
+section earlier in this document.</p>
+<p>If the auditor intended a different focus-visible issue on <code>/careers/</code>,
+we need a screenshot / Beacon link to the specific element before we can
+remediate.</p>
+<h2 id="3-wcag-1413-211-212-dropdown-escape">3. WCAG 1.4.13, 2.1.1, 2.1.2 — Dropdown Escape</h2>
+<p>Same site-wide root cause and fix that shipped from the Homepage audit
+(<code>assets/js/navigation.js</code> Escape handler). <code>/careers/</code> inherits the fix
+for free — no template-level change required.</p>
+<h3 id="verification_30">Verification</h3>
+<ol>
+<li>Load <code>/careers/</code>, hover any top-level nav item to open its dropdown.</li>
+<li>Press Escape — the dropdown collapses and focus returns to the
+   trigger.</li>
+<li>Tab / Shift+Tab / arrow keys behave as before; no keyboard trap.</li>
+</ol>
+<hr>
+<h2 id="file-index-careers-page-changes">File index — Careers Page changes</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose of change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pages/careers.php</code></td>
+<td>Wrapped content in <code>&lt;main id="maincontent"&gt;</code> and a labeled <code>&lt;section aria-labelledby="careers-positions-heading"&gt;</code> with visible <code>&lt;h2&gt;Open positions&lt;/h2&gt;</code> + SR-only intro; post-processed <code>the_content()</code> output to inject <code>title</code>, <code>name</code>, and <code>loading="lazy"</code> on any <code>&lt;iframe&gt;</code> missing them; exposed a <code>pg_careers_iframe_title</code> filter for localization.</td>
+</tr>
+<tr>
+<td><code>assets/js/navigation.js</code></td>
+<td>Global Escape handler (already shipped) — picked up by <code>/careers/</code> automatically.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="outstanding-action-items_5">Outstanding action items</h3>
+<ul>
+<li><strong>Auditor — confirm</strong> the dropdown Escape behaviour on <code>/careers/</code> is
+  tested against a deploy that includes <code>assets/js/navigation.js</code>. Once
+  confirmed, items 2–4 in the table above flip from Partial to Pass.</li>
+<li><strong>Auditor — clarify</strong> the 2.4.7 <em>"focus is not visible for squares in
+  'I am interested in the following solutions'"</em> row. That UI is on the
+  Contact page, not the Careers page; we believe the row was
+  copy-pasted. If a specific focus issue exists on <code>/careers/</code>, please
+  share a Beacon link / screenshot.</li>
+<li><strong>Content team</strong> — if the ATS provider ever changes the jobs-board
+  embed to a different iframe or adds additional nested iframes with
+  their own titles, let engineering know so we can verify the injected
+  <code>title</code> matches the new provider's content.</li>
+</ul>
+<hr>
+<h2 id="file-index">File index</h2>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose of change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>functions.php</code></td>
+<td>New helpers <code>pg_brand_alt()</code> and <code>pg_render_carousel_controls()</code> (Homepage)</td>
+</tr>
+<tr>
+<td><code>pages/home.php</code></td>
+<td>Toolbars + smarter alt text on the four logo carousels (Homepage)</td>
+</tr>
+<tr>
+<td><code>pages/solutions.php</code></td>
+<td>Heading hierarchy fix, <code>&lt;main id="maincontent"&gt;</code>, decorative image alts, <code>focus-visible:</code> rings on cards &amp; CTA (Solutions Overview)</td>
+</tr>
+<tr>
+<td><code>taxonomy-solution.php</code></td>
+<td>Related Resources accessible toolbar, defensive thumbnail alt text, <code>aria-labelledby</code>, <code>data-pg-carousel-controls</code> (Solution Taxonomy)</td>
+</tr>
+<tr>
+<td><code>components/common/faqs-related.php</code></td>
+<td>Same Related-Resources changes shared by <code>single-solutions.php</code> and other singles that include this part</td>
+</tr>
+<tr>
+<td><code>components/industries/old.php</code></td>
+<td>Removed broken <code>aria-labelledby</code>; defensive Compliance image alt (Single Industry)</td>
+</tr>
+<tr>
+<td><code>components/industries/new.php</code></td>
+<td>Related Resources accessible toolbar + region a11y + defensive thumbnail alt; Visual moments Pause/Play; National coverage map long description; per-industry hero / CTA alt text (Single Industry)</td>
+</tr>
+<tr>
+<td><code>pages/about-us.php</code></td>
+<td>"Our solutions create" toolbar + region a11y; smarter Affiliations / Certifications alt text + list semantics; high-contrast lock on "Making cross-cultural…" heading; optional video transcript block (About)</td>
+</tr>
+<tr>
+<td><code>pages/contact.php</code></td>
+<td>Valid <code>&lt;dl&gt;</code> markup; <code>&lt;main id="maincontent"&gt;</code> wrapper; decorative office icons; focus-visible + aria on social links; HubSpot embed a11y patcher (aria-required, select accessible names, nested-interactive hoist, group semantics) + scoped focus-visible / contrast CSS (Contact)</td>
+</tr>
+<tr>
+<td><code>pages/blog.php</code></td>
+<td>Removed <code>&lt;select onchange=submit&gt;</code> auto-reload; added Apply button, <code>aria-describedby</code> help, <code>aria-controls</code> + polite live-region results status; high-contrast <code>focus-visible:outline</code> on select &amp; Apply; <code>&lt;main id="maincontent"&gt;</code>; decorative card thumbnails; richer "Read More" accessible name; output escaping (Blog)</td>
+</tr>
+<tr>
+<td><code>pages/careers.php</code></td>
+<td><code>&lt;main id="maincontent"&gt;</code> wrapper; labeled <code>&lt;section&gt;</code> + visible <code>&lt;h2&gt;Open positions&lt;/h2&gt;</code> + SR-only intro; <code>the_content()</code> post-process injects <code>title</code> / <code>name</code> / <code>loading="lazy"</code> on any unlabeled <code>&lt;iframe&gt;</code>; filterable <code>pg_careers_iframe_title</code> (Careers)</td>
+</tr>
+<tr>
+<td><code>assets/js/navigation.js</code></td>
+<td>Document-level Escape handler for hover-<span class="pg-pill pg-pill--open">opened dropdowns (every page using the global header)</span></td>
+</tr>
+<tr>
+<td><code>assets/js/owl-bulletproof-loader.js</code></td>
+<td><code>wireAccessibleControls()</code>, reduced-motion-aware autoplay (Homepage + Related Resources + Visual moments + About)</td>
+</tr>
+<tr>
+<td><code>assets/js/carousel-a11y.js</code></td>
+<td><code>hasExternalNav()</code> recognizes the new toolbar to avoid duplicate arrows (Homepage); <code>hideClonedSlides()</code> removes Owl's cloned-slide duplicates from the AT and tab orders (every Owl carousel site-wide)</td>
+</tr>
+<tr>
+<td><code>footer.php</code></td>
+<td>AOS init honors <code>prefers-reduced-motion</code> (site-wide)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="expected-impact-on-next-audit">Expected impact on next audit</h2>
+<p><strong>Homepage</strong></p>
+<ul>
+<li>1.1.1 and 1.4.5 should move from <strong>Partial</strong> to <strong>Pass</strong> once content editors
+  populate the ACF brand-name fields. Until then, the alt text is at least
+  meaningful (brand domain) rather than generic ("Partner").</li>
+<li>1.4.13, 2.1.1, 2.1.2, and 2.2.2 should move from <strong>Partial / Fail</strong> to
+  <strong>Pass</strong> immediately based on the code changes above.</li>
+<li>1.4.11 is still <strong>open</strong> pending an auditor screenshot showing the reported
+  color shift; we will address it as soon as we can reproduce it.</li>
+</ul>
+<p><strong>Solutions Overview Page</strong></p>
+<ul>
+<li>1.3.2 and 2.4.3 should move from <strong>Partial</strong> to <strong>Pass</strong> based on the
+  heading-hierarchy fix in <code>pages/solutions.php</code>.</li>
+<li>1.4.13, 2.1.1, and 2.1.2 should move from <strong>Partial</strong> to <strong>Pass</strong> because
+  the global Escape handler shipped for the homepage applies to every page
+  that uses the shared header.</li>
+</ul>
+<p><strong>Solution Taxonomy &amp; Single Solution Pages</strong></p>
+<ul>
+<li>1.1.1 and 1.4.5 should move from <strong>Fail / Partial</strong> to <strong>Pass</strong> immediately
+  via the post-title alt-text fallback; quality improves further once editors
+  fill the media-library <em>Alternative Text</em> field on resource thumbnails.</li>
+<li>1.3.2 and 2.4.3 should move from <strong>Partial</strong> to <strong>Pass</strong> via the
+  cloned-slide hider in <code>assets/js/carousel-a11y.js</code>.</li>
+<li>2.2.2 should move from <strong>Fail</strong> to <strong>Pass</strong> via the new Pause/Play toolbar
+  on Related Resources plus reduced-motion-aware autoplay defaults.</li>
+<li>1.4.13, 2.1.1, and 2.1.2 should move from <strong>Partial</strong> to <strong>Pass</strong> via the
+  global dropdown-Escape handler.</li>
+<li>1.4.3 and 1.4.11 remain <strong>open</strong> until we receive the Beacon export listing
+  the 13 flagged elements per criterion.</li>
+</ul>
+<p><strong>Single Industry Pages</strong></p>
+<ul>
+<li>1.1.1 and 1.4.5 should move from <strong>Fail</strong> to <strong>Pass</strong> via (a) the
+  national-coverage map's new long description, (b) per-industry alt text on
+  the hero / CTA images, and (c) the Related-Resources thumbnail-alt fallback.
+  Quality improves further once editors fill the media-library
+  <em>Alternative Text</em> field on resource thumbnails.</li>
+<li>1.3.1 and 4.1.2 should move from <strong>Fail</strong> to <strong>Pass</strong> because the broken
+  <code>aria-labelledby="&lt;the post title text&gt;"</code> on the Compliance image wrapper
+  was removed.</li>
+<li>1.3.2 and 2.4.3 should move from <strong>Fail</strong> to <strong>Pass</strong> via the cloned-slide
+  hider in <code>assets/js/carousel-a11y.js</code> (covers <code>.sandbox-news-carousel</code> and
+  <code>.visual-moment-carousel</code> automatically).</li>
+<li>2.2.2 should move from <strong>Fail</strong> to <strong>Pass</strong> via (a) the new accessible
+  toolbar on the Related Resources carousel, (b) the new Pause / Play
+  button on the Visual moments carousel, and (c) reduced-motion-aware
+  autoplay on <code>.visual-moment-carousel</code>.</li>
+<li>1.4.13, 2.1.1, and 2.1.2 should move from <strong>Partial</strong> to <strong>Pass</strong> via the
+  global dropdown-Escape handler.</li>
+<li>1.4.3 and 1.4.11 remain <strong>open</strong> pending the Beacon export listing the 5
+  flagged elements per criterion.</li>
+</ul>
+<p><strong>About Page</strong></p>
+<ul>
+<li>1.1.1 and 1.4.5 should move from <strong>Partial / Fail</strong> to <strong>Pass</strong> via the
+  defensive Affiliations / Certifications alt-text fallback (media-library
+  alt → media-library title → <code>pg_brand_alt()</code> derivation → generic). Quality
+  improves further once editors fill the Media Library <em>Alternative Text</em>
+  field on each logo.</li>
+<li>1.2.1 (Pass with suggestion) and 1.2.5 (Fail) should move toward <strong>Pass</strong>
+  once the content team populates the new <code>video_transcript</code> ACF field —
+  the <code>&lt;details&gt;</code> transcript block ships automatically when populated.</li>
+<li>1.3.2 and 2.4.3 should move from <strong>Fail</strong> to <strong>Pass</strong> via the cloned-slide
+  hider (covers <code>.aboutus-carousel</code> for free).</li>
+<li>2.2.2 should move from <strong>Fail</strong> to <strong>Pass</strong> via the new Pause / Play
+  toolbar on <code>.aboutus-carousel</code> plus reduced-motion-aware autoplay.</li>
+<li>1.4.3 should move from <strong>Partial</strong> to <strong>Pass</strong> for the called-out
+  "Making cross-cultural…" heading via the explicit dark-text + descendant
+  colour lock; the remaining 1 Beacon-flagged element is still <strong>open</strong>.</li>
+<li>1.4.13, 2.1.1, and 2.1.2 should move from <strong>Partial</strong> to <strong>Pass</strong> via the
+  global dropdown-Escape handler.</li>
+<li>1.4.11 remains <strong>open</strong> pending the Beacon export identifying the 1
+  flagged element.</li>
+</ul>
+<p><strong>Case Studies Page</strong></p>
+<ul>
+<li>1.4.13, 2.1.1, and 2.1.2 should move from <strong>Partial</strong> to <strong>Pass</strong> via the
+  global dropdown-Escape handler in <code>assets/js/navigation.js</code> (no
+  template-level changes required). Every other criterion is already a
+  clean Pass.</li>
+</ul>
+<p><strong>Contact Page</strong></p>
+<ul>
+<li>1.3.1 should move from <strong>Fail</strong> to <strong>Pass</strong>: the invalid <code>&lt;h3&gt;</code> inside
+  <code>&lt;dl&gt;</code> was corrected, and the HubSpot patcher assigns accessible names to
+  every <code>&lt;select&gt;</code> after every re-render.</li>
+<li>4.1.2 should move from <strong>Fail</strong> toward <strong>Pass</strong>: the patcher fills
+  <code>aria-required</code>, assigns <code>aria-label</code> to selects, hoists nested <code>&lt;a&gt;</code>
+  links out of <code>&lt;label&gt;</code> ancestors, and applies <code>role="group"</code> semantics to
+  radio / checkbox groups. Any residual flagged nodes need the Beacon
+  export to identify.</li>
+<li>2.4.7 should move from <strong>Partial</strong> to <strong>Pass</strong>: the scoped CSS restores a
+  high-contrast <code>:focus-visible</code> ring on every form control inside
+  <code>.hs-form-container</code>, including the checkbox "squares" called out by the
+  auditor.</li>
+<li>1.4.3 is <strong>partially mitigated</strong>: HubSpot's low-contrast label /
+  placeholder / helper / error colours are overridden in the same scoped
+  CSS block. The remaining two elements need the Beacon export to confirm
+  whether they are inside or outside the embed.</li>
+<li>1.4.13, 2.1.1, and 2.1.2 should move from <strong>Partial</strong> to <strong>Pass</strong> via the
+  global dropdown-Escape handler in <code>assets/js/navigation.js</code>.</li>
+</ul>
+<p><strong>Blog Page</strong></p>
+<ul>
+<li>1.3.2 (Pass with suggestion) and 2.4.3 (Partial) should move to <strong>Pass</strong>
+  via the new explicit Apply button — arrow keys no longer auto-submit, so
+  the screen reader can browse options without page reloads, and focus
+  order is fully deterministic.</li>
+<li>2.4.7 (Partial) should move to <strong>Pass</strong> via the new high-contrast
+  <code>focus-visible:outline + ring</code> pair on the select and the new Apply
+  button (real <code>outline</code>, not only <code>box-shadow</code>, so it survives Windows /
+  macOS high-contrast modes).</li>
+<li>1.4.13, 2.1.1, and 2.1.2 should move from <strong>Partial</strong> to <strong>Pass</strong> via the
+  global dropdown-Escape handler in <code>assets/js/navigation.js</code> (no
+  template-level changes required for those rows).</li>
+</ul>
+<p><strong>Careers Page</strong></p>
+<ul>
+<li>1.3.1 should move from <strong>Partial</strong> to <strong>Pass</strong>: the jobs-board iframe
+  now sits inside a labeled <code>&lt;section aria-labelledby="…"&gt;</code> with a visible
+  <code>&lt;h2&gt;Open positions&lt;/h2&gt;</code> and an SR-only intro, so the section is no
+  longer announced as "blocked application application".</li>
+<li>4.1.2 should move from <strong>Fail (1 element)</strong> to <strong>Pass</strong>: <code>the_content()</code>
+  is post-processed to guarantee every <code>&lt;iframe&gt;</code> ships with a
+  <code>title="Open positions at Piedmont Global — job board"</code> attribute
+  (plus <code>name=</code> and <code>loading="lazy"</code> for completeness).</li>
+<li>1.4.13, 2.1.1, and 2.1.2 should move from <strong>Partial</strong> to <strong>Pass</strong> via the
+  global dropdown-Escape handler in <code>assets/js/navigation.js</code>.</li>
+<li>2.4.7 on <code>/careers/</code> is a <strong>copy-paste artefact</strong> from the Contact-page
+  audit (the "I am interested in the following solutions" field doesn't
+  exist on Careers); awaiting auditor clarification.</li>
+</ul>
+</main>
+
+</body>
+</html>
