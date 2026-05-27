@@ -355,6 +355,30 @@ if (!empty($tabbed_terms) && is_array($tabbed_terms)):
                         <?php
                         $terms = get_field('tabbed_section_cards');
 
+                        // Inline lookup: returns ['youtube_id' => '', 'poster_url' => ''] for a given solution term id.
+                        // Reads the per-page `tab_media_overrides` repeater on the current industry post.
+                        $find_tab_override = function ($lookup_term_id) {
+                            $result = ['youtube_id' => '', 'poster_url' => ''];
+                            if (!$lookup_term_id || !have_rows('tab_media_overrides')) {
+                                return $result;
+                            }
+                            while (have_rows('tab_media_overrides')) {
+                                the_row();
+                                $ovr_solution = get_sub_field('solution');
+                                $ovr_id = is_object($ovr_solution) ? (int) $ovr_solution->term_id : (int) $ovr_solution;
+                                if ($ovr_id === (int) $lookup_term_id) {
+                                    $result['youtube_id'] = trim((string) get_sub_field('youtube_video_id'));
+                                    $poster = get_sub_field('poster');
+                                    if (is_array($poster) && !empty($poster['url'])) {
+                                        $result['poster_url'] = $poster['url'];
+                                    }
+                                    break;
+                                }
+                            }
+                            reset_rows();
+                            return $result;
+                        };
+
                         if (!empty($terms) && is_array($terms)):
                             $first = true;
                             foreach ($terms as $term):
@@ -376,6 +400,8 @@ if (!empty($tabbed_terms) && is_array($tabbed_terms)):
                                     $image_url = '';
                                 }
                                 $term_link = is_object($term) ? get_term_link($term) : '#';
+
+                                $override = $find_tab_override($term_id);
                                 ?>
                                 <button data-tab="<?php echo esc_attr(is_object($term) ? $term->slug : ''); ?>"
                                     data-title="<?php echo esc_attr(is_object($term) ? $term->name : ''); ?>"
@@ -383,6 +409,8 @@ if (!empty($tabbed_terms) && is_array($tabbed_terms)):
                                     data-primary-description="<?php echo esc_attr($primary_description_json); ?>"
                                     data-image="<?php echo esc_url($image_url ? $image_url : 'https://pgsandbox.wpenginepowered.com/wp-content/uploads/image-mockup-png-min-scaled.png'); ?>"
                                     data-link="<?php echo esc_url($term_link); ?>"
+                                    data-youtube-id="<?php echo esc_attr($override['youtube_id']); ?>"
+                                    data-poster="<?php echo esc_attr($override['poster_url']); ?>"
                                     class="tab-button w-full flex items-center gap-3 py-3 px-4 text-left transition text-gray-800 border border-transparent rounded-lg"
                                     role="tab" type="button" aria-selected="<?php echo $first ? 'true' : 'false'; ?>"
                                     aria-controls="tab-panel-<?php echo esc_attr(is_object($term) ? $term->slug : ''); ?>">
@@ -438,12 +466,43 @@ if (!empty($tabbed_terms) && is_array($tabbed_terms)):
                                 }
                                 $first_term_name = is_object($first_term) ? $first_term->name : '';
                                 $first_term_link = is_object($first_term) ? get_term_link($first_term) : '#';
+
+                                $first_override = $find_tab_override($first_term_id);
+                                $first_youtube_id = $first_override['youtube_id'];
+                                $first_poster_url = $first_override['poster_url'];
                                 ?>
 
-                                <img id="tab-image"
-                                    src="<?php echo esc_url($image_url ? $image_url : 'https://pgsandbox.wpenginepowered.com/wp-content/uploads/image-mockup-png-min-scaled.png'); ?>"
-                                    alt="<?php echo esc_attr($first_term_name); ?>"
-                                    class="w-full h-full object-cover rounded-[4px] transition-opacity duration-300 ease-in-out" />
+                                <?php if ($first_youtube_id !== ''): ?>
+                                    <?php
+                                    $poster_for_render = $first_poster_url
+                                        ? $first_poster_url
+                                        : 'https://i.ytimg.com/vi/' . rawurlencode($first_youtube_id) . '/maxresdefault.jpg';
+                                    $a11y_label = $first_term_name ? $first_term_name . ' video' : 'Video';
+                                    ?>
+                                    <div id="tab-image" class="pg-yt relative w-full h-full"
+                                        data-youtube-id="<?php echo esc_attr($first_youtube_id); ?>">
+                                        <button type="button"
+                                            class="pg-yt__play group relative w-full h-full overflow-hidden rounded-[4px] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] block"
+                                            aria-label="<?php echo esc_attr('Play ' . $a11y_label); ?>">
+                                            <img src="<?php echo esc_url($poster_for_render); ?>"
+                                                alt="<?php echo esc_attr($first_term_name); ?>"
+                                                class="absolute inset-0 w-full h-full object-cover" />
+                                            <span class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"
+                                                aria-hidden="true"></span>
+                                            <span class="absolute inset-0 flex items-center justify-center" aria-hidden="true">
+                                                <svg viewBox="0 0 68 48" class="w-16 h-16 md:w-20 md:h-20 drop-shadow-lg" focusable="false">
+                                                    <path d="M66.5 7.7c-.8-3-3.1-5.3-6.1-6.1C55 0 34 0 34 0S13 0 7.6 1.6C4.6 2.4 2.3 4.7 1.5 7.7 0 13.1 0 24 0 24s0 10.9 1.5 16.3c.8 3 3.1 5.3 6.1 6.1C13 48 34 48 34 48s21 0 26.4-1.6c3-.8 5.3-3.1 6.1-6.1C68 34.9 68 24 68 24s0-10.9-1.5-16.3z" fill="#D16555"/>
+                                                    <path d="M27 34l18-10L27 14v20z" fill="#fff"/>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </div>
+                                <?php else: ?>
+                                    <img id="tab-image"
+                                        src="<?php echo esc_url($image_url ? $image_url : 'https://pgsandbox.wpenginepowered.com/wp-content/uploads/image-mockup-png-min-scaled.png'); ?>"
+                                        alt="<?php echo esc_attr($first_term_name); ?>"
+                                        class="w-full h-full object-cover rounded-[4px] transition-opacity duration-300 ease-in-out" />
+                                <?php endif; ?>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -489,7 +548,6 @@ if (!empty($tabbed_terms) && is_array($tabbed_terms)):
             const tabTitle = document.getElementById('tab-title');
             const tabDescription = document.getElementById('tab-description');
             const tabDescriptionText = document.getElementById('tab-description-text');
-            const tabImage = document.getElementById('tab-image');
             const tabContent = document.getElementById('tab-content');
             const tabLink = document.getElementById('tab-link');
 
@@ -512,66 +570,15 @@ if (!empty($tabbed_terms) && is_array($tabbed_terms)):
                 }
             }
 
-            // Update image with fade animation on tab switch
-            if (tabImage) {
-                const newImageUrl = button.dataset.image;
-                const fallbackImage =
-                    'https://pgsandbox.wpenginepowered.com/wp-content/uploads/image-mockup-png-min-scaled.png';
+            // Update media: branch between YouTube click-to-play and image
+            if (tabContent) {
+                const ytId = (button.dataset.youtubeId || '').trim();
+                const posterUrl = (button.dataset.poster || '').trim();
 
-                // Use the new image URL if available, otherwise use fallback
-                const imageToLoad = newImageUrl && newImageUrl.trim() !== '' ? newImageUrl : fallbackImage;
-
-                // Check if we're switching to a different image
-                if (tabImage.src !== imageToLoad && imageToLoad) {
-                    // Fade out current image
-                    tabImage.classList.add('opacity-0');
-
-                    // Preload the new image to ensure smooth transition
-                    const img = new Image();
-                    let imageLoaded = false;
-
-                    const updateImage = () => {
-                        if (!imageLoaded) {
-                            imageLoaded = true;
-                            setTimeout(() => {
-                                tabImage.src = imageToLoad;
-                                // Update alt text if title is available
-                                if (button.dataset.title) {
-                                    tabImage.alt = button.dataset.title;
-                                }
-                                // Fade in
-                                tabImage.classList.remove('opacity-0');
-                            }, 150);
-                        }
-                    };
-
-                    // Handle successful load
-                    img.onload = updateImage;
-
-                    // Handle load error - use fallback
-                    img.onerror = function () {
-                        if (!imageLoaded) {
-                            imageLoaded = true;
-                            setTimeout(() => {
-                                tabImage.src = fallbackImage;
-                                if (button.dataset.title) {
-                                    tabImage.alt = button.dataset.title;
-                                }
-                                tabImage.classList.remove('opacity-0');
-                            }, 150);
-                        }
-                    };
-
-                    // Start loading the image
-                    img.src = imageToLoad;
-
-                    // If image is already cached, onload might not fire, so check complete property
-                    if (img.complete) {
-                        updateImage();
-                    }
-                } else if (button.dataset.title) {
-                    // Even if image doesn't change, update alt text
-                    tabImage.alt = button.dataset.title;
+                if (ytId) {
+                    renderYouTube(tabContent, ytId, posterUrl, button.dataset.title || '');
+                } else {
+                    renderImage(tabContent, button);
                 }
             }
 
@@ -581,6 +588,115 @@ if (!empty($tabbed_terms) && is_array($tabbed_terms)):
 
             if (tabContent && button.dataset.tab) {
                 tabContent.setAttribute('aria-labelledby', button.dataset.tab);
+            }
+        }
+
+        function escapeAttr(s) {
+            return String(s).replace(/[&<>"']/g, function (c) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+            });
+        }
+
+        function renderYouTube(container, videoId, posterUrl, titleText) {
+            // Sanitize: YouTube IDs are 11 chars from [A-Za-z0-9_-].
+            const safeId = String(videoId).replace(/[^A-Za-z0-9_-]/g, '').slice(0, 11);
+            if (!safeId) {
+                return;
+            }
+
+            const fallbackPoster = 'https://i.ytimg.com/vi/' + encodeURIComponent(safeId) + '/maxresdefault.jpg';
+            const poster = posterUrl || fallbackPoster;
+            const a11yLabel = (titleText ? titleText : 'Video') + ' video';
+
+            // Wipe existing content (image OR previously-injected iframe — kills audio on switch).
+            container.innerHTML = '';
+
+            const wrap = document.createElement('div');
+            wrap.id = 'tab-image';
+            wrap.className = 'pg-yt relative w-full h-full';
+            wrap.dataset.youtubeId = safeId;
+
+            const playBtn = document.createElement('button');
+            playBtn.type = 'button';
+            playBtn.className = 'pg-yt__play group relative w-full h-full overflow-hidden rounded-[4px] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] block';
+            playBtn.setAttribute('aria-label', 'Play ' + a11yLabel);
+
+            playBtn.innerHTML =
+                '<img src="' + escapeAttr(poster) + '" alt="' + escapeAttr(titleText) + '" ' +
+                'class="absolute inset-0 w-full h-full object-cover" />' +
+                '<span class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" aria-hidden="true"></span>' +
+                '<span class="absolute inset-0 flex items-center justify-center" aria-hidden="true">' +
+                    '<svg viewBox="0 0 68 48" class="w-16 h-16 md:w-20 md:h-20 drop-shadow-lg" focusable="false">' +
+                        '<path d="M66.5 7.7c-.8-3-3.1-5.3-6.1-6.1C55 0 34 0 34 0S13 0 7.6 1.6C4.6 2.4 2.3 4.7 1.5 7.7 0 13.1 0 24 0 24s0 10.9 1.5 16.3c.8 3 3.1 5.3 6.1 6.1C13 48 34 48 34 48s21 0 26.4-1.6c3-.8 5.3-3.1 6.1-6.1C68 34.9 68 24 68 24s0-10.9-1.5-16.3z" fill="#D16555"/>' +
+                        '<path d="M27 34l18-10L27 14v20z" fill="#fff"/>' +
+                    '</svg>' +
+                '</span>';
+
+            playBtn.addEventListener('click', function () {
+                const iframe = document.createElement('iframe');
+                iframe.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(safeId) +
+                    '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+                iframe.title = a11yLabel;
+                iframe.loading = 'lazy';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                iframe.setAttribute('allowfullscreen', '');
+                iframe.className = 'w-full h-full block rounded-[4px]';
+                iframe.style.border = '0';
+                wrap.innerHTML = '';
+                wrap.appendChild(iframe);
+            }, { once: true });
+
+            wrap.appendChild(playBtn);
+            container.appendChild(wrap);
+        }
+
+        function renderImage(container, button) {
+            // If we're switching from a video panel, the existing #tab-image is a <div> wrapper —
+            // recreate a fresh <img> so the existing fade/preload logic can target it.
+            let tabImage = container.querySelector('#tab-image');
+            if (!tabImage || tabImage.tagName !== 'IMG') {
+                container.innerHTML = '';
+                tabImage = document.createElement('img');
+                tabImage.id = 'tab-image';
+                tabImage.className = 'w-full h-full object-cover rounded-[4px] transition-opacity duration-300 ease-in-out';
+                container.appendChild(tabImage);
+            }
+
+            const newImageUrl = button.dataset.image;
+            const fallbackImage =
+                'https://pgsandbox.wpenginepowered.com/wp-content/uploads/image-mockup-png-min-scaled.png';
+
+            // Use the new image URL if available, otherwise use fallback
+            const imageToLoad = newImageUrl && newImageUrl.trim() !== '' ? newImageUrl : fallbackImage;
+
+            // Check if we're switching to a different image
+            if (tabImage.src !== imageToLoad && imageToLoad) {
+                tabImage.classList.add('opacity-0');
+
+                const img = new Image();
+                let imageLoaded = false;
+
+                const applyImage = (src) => {
+                    if (imageLoaded) return;
+                    imageLoaded = true;
+                    setTimeout(() => {
+                        tabImage.src = src;
+                        if (button.dataset.title) {
+                            tabImage.alt = button.dataset.title;
+                        }
+                        tabImage.classList.remove('opacity-0');
+                    }, 150);
+                };
+
+                img.onload = () => applyImage(imageToLoad);
+                img.onerror = () => applyImage(fallbackImage);
+                img.src = imageToLoad;
+
+                if (img.complete) {
+                    applyImage(imageToLoad);
+                }
+            } else if (button.dataset.title) {
+                tabImage.alt = button.dataset.title;
             }
         }
 
