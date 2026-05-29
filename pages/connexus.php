@@ -15,115 +15,75 @@ $sub     = 'Piedmont Global connects your business to the world — with precisi
 /* ─── Section 7 · Platform features ──────────────────── */
 $features = [
   [
-    'label'   => 'AI Translation',
-    'heading' => 'Discover Piedmont&nbsp;AI',
-    'tag'     => 'Your AI-powered language assistant',
-    'body'    => '<p>Like a trusted language partner, Piedmont AI works beside you continuously — organizing terminology, ensuring consistency, and drafting translations on your behalf.</p><p>It can execute complete localization workflows end-to-end, so your team never slows down.</p>',
-    'cta'     => ['label' => 'Learn more', 'href' => '/solutions/ai'],
-    'img_src' => 'https://framerusercontent.com/images/lFhfMRQo5RH0Thw2igSZaeXOsrk.png?scale-down-to=1024&width=2700&height=2198',
-    'img_alt' => 'AI Translation interface',
+    'label'   => 'Interpreter Access',
+    'heading' => 'Get a qualified interpreter on the line in under 60 seconds.',
+    'tag'     => 'Smart routing that matches language, certification, and specialty automatically.',
+    'body'    => '<p>When language access takes too long, callers hang up, clinicians fall behind, agents make the wrong call, and the safety briefing on the plant floor lands on workers who cannot follow it. The cost is a missed appointment, a lost claim, a recordable incident, a regulatory inquiry.</p><p>Connexus routes every request through automatic call distribution filtered by language, certification, specialty, and gender preference. Queue position and wait estimates show before the request goes in. American Sign Language and Spanish are 24/7 video; other languages route through Over-the-Phone or Onsite Interpretation as the workflow requires.</p>',
+    'cta'     => null,
+    'img_src' => get_template_directory_uri() . '/assets/connexus/qualified-interpreter.png',
+    'img_alt' => 'Connexus interpreter routing and queue interface',
     'glow'    => 'rgba(92,195,250,.22)',
   ],
   [
-    'label'   => 'Smart Triage',
-    'heading' => 'Respond faster to what matters most',
-    'tag'     => 'Automatically prioritize incoming requests',
-    'body'    => '<p>Too many translation requests, not enough clarity on urgency. Smart Triage routes work from key clients, compliance-critical content, and high-priority markets — automatically.</p><p>Even when the queue is overflowing, your team responds where it matters most.</p>',
+    'label'   => 'Compliance Proof',
+    'heading' => 'Prove compliance the moment a regulator asks.',
+    'tag'     => 'Audit-ready records, generated automatically.',
+    'body'    => '<p>Most organizations cannot produce a clean record of every interpreted encounter from the last twelve months. Records live in different systems. Credentials live in a spreadsheet. Attestation language is missing. When the regulator asks, the answer is "we are working on it."</p><p>Connexus generates a complete call detail record for every session: interpreter credentials, language pair, timestamps, modality, and attestation language structured for the frameworks that govern your work - Title VI, Section 1557, Joint Commission, state Medicaid, OSHA hazard communication, and federal language access mandates. For our healthcare clients, encounter IDs and MRN/FIN capture roll up to Medicaid reimbursement automatically.</p>',
     'cta'     => null,
-    'img_src' => 'https://framerusercontent.com/images/tIy3VlZuPyD8qjM1ivJXb332aNk.png?scale-down-to=1024&width=1350&height=1080',
-    'img_alt' => 'Smart Triage request view',
+    'img_src' => get_template_directory_uri() . '/assets/connexus/compliance2.png',
+    'img_alt' => 'Connexus audit-ready compliance records interface',
     'glow'    => 'rgba(158,110,230,.25)',
   ],
   [
-    'label'   => 'Deadline Tracker',
-    'heading' => 'Follow up on time, every time',
-    'tag'     => 'Never miss a delivery window',
-    'body'    => '<p>You\'re managing a critical localization project — clinical documentation, a regulatory filing, a product launch. Deadlines don\'t move.</p><p>Set a reminder when you assign work. If a milestone isn\'t confirmed, we surface it before it becomes a problem.</p>',
+    'label'   => 'Capacity Visibility',
+    'heading' => 'See the bottleneck before it becomes one.',
+    'tag'     => 'Real-time capacity across every language and channel.',
+    'body'    => '<p>Most teams learn they were short on Mandarin coverage after the third request stacks up in queue. They find out Karen demand is spiking after a community partner calls to complain. By the time the report runs, the surge is over.</p><p>Connexus surfaces a real-time capacity heatmap at 15-minute intervals, broken out by language, channel, and service area. Critical and high-risk intervals trigger alerts. Operations staffs against what is coming, not what already happened.</p>',
     'cta'     => null,
-    'img_src' => 'https://framerusercontent.com/images/8Nkq7H34lGVFjNavBLLluyWHqRI.png?scale-down-to=1024&width=1350&height=1080',
-    'img_alt' => 'Deadline Tracker milestone view',
+    'img_src' => get_template_directory_uri() . '/assets/connexus/analytics.png',
+    'img_alt' => 'Connexus real-time capacity and analytics dashboard',
     'glow'    => 'rgba(250,117,248,.22)',
   ],
   [
-    'label'   => 'Team Comments',
-    'heading' => 'Share and review with your team',
-    'tag'     => 'Collaborate faster than ever before',
-    'body'    => '<p>A client has feedback on a translation. A reviewer has questions. A product manager needs sign-off. Chasing email threads slows everything down.</p><p>Share a live review link with anyone — no account required. Comment, approve, and ship faster.</p>',
+    'label'   => 'Cost Reconciliation',
+    'heading' => 'Reconcile interpretation costs to the call, not the invoice.',
+    'tag'     => 'Usage-based pricing tied to every minute used.',
+    'body'    => '<p>Most interpretation contracts charge a monthly platform fee on top of per-minute rates. Volume-variable buyers - FQHCs, school districts, multi-plant manufacturers, surge clients - end up subsidizing buyers with predictable demand. The invoice arrives as a single line item with no way to attribute cost to the department, plant, or location that generated it.</p><p>Connexus bills per minute used, reconciled to call detail records, with no platform fees on top. Cost attribution by department, plant, location, and (for healthcare clients) encounter is native to the platform. Finance reconciles in minutes, not days.</p>',
     'cta'     => null,
-    'img_src' => 'https://framerusercontent.com/images/ZqoWGnqskMXBXv3DHQRTKrmHIE.png?scale-down-to=1024&width=2700&height=2080',
-    'img_alt' => 'Team comments on a shared document',
+    'img_src' => get_template_directory_uri() . '/assets/connexus/reconcile.png',
+    'img_alt' => 'Connexus cost reconciliation and usage reporting interface',
     'glow'    => 'rgba(250,204,105,.22)',
-  ],
-  [
-    'label'   => 'Glossary Snippets',
-    'heading' => 'Write less and empower your&nbsp;team',
-    'tag'     => 'Lock in terminology across every project',
-    'body'    => '<p>Inconsistent terminology costs credibility — a drug name spelled two ways, a brand tagline that drifts, one wrong word in a legal document.</p><p>Approved terms expand automatically across linguists, projects, and languages. Your brand speaks with one voice, always.</p>',
-    'cta'     => null,
-    'img_src' => 'https://framerusercontent.com/images/4tbP2BbCx80JPRs6PkI8gHiJqY8.png?scale-down-to=1024&width=4050&height=3240',
-    'img_alt' => 'Glossary Snippets terminology picker',
-    'glow'    => 'rgba(152,196,65,.22)',
   ],
 ];
 
 /* Logo marquee — 8 SVG slots, repeated by the marquee loop */
 $logo_count = 8;
 
-/* ─── Section 7b · Industries ────────────────────────── */
+/* ─── Section 7b · Unified platform ──────────────────── */
 $features2 = [
   [
-    'label'   => 'Healthcare',
-    'heading' => 'Precision translation for clinical&nbsp;teams',
-    'tag'     => 'Compliant across every jurisdiction',
-    'body'    => '<p>From informed-consent forms to IFU translations, accuracy is non-negotiable. Our linguists are trained to the standards your regulators demand.</p><p>Every project ships with full audit trails, ISO certification, and back-translation validation on request.</p>',
-    'cta'     => ['label' => 'Healthcare solutions', 'href' => '/solutions/healthcare'],
+    'label'   => 'One Platform',
+    'heading' => 'Run one platform across every modality and every team.',
+    'tag'     => 'One pane of glass for AI and human interpretation.',
+    'body'    => '<p>Most language access programs stitch together separate vendors for phone, video, onsite, and AI. Each has its own portal, its own SLA, its own invoice. Operations cannot see capacity in one view. Finance cannot reconcile against one source. Compliance cannot pull from one record.</p><p>Connexus delivers Over-the-Phone, Video Remote, Onsite, and Speech-to-Speech AI Interpretation through one dashboard, one SLA, one set of audit logs. Same accuracy reporting across every modality. Same credentialing across every interpreter. One platform replaces the sprawl.</p>',
+    'cta'     => null,
     'img_src' => 'https://framerusercontent.com/images/lFhfMRQo5RH0Thw2igSZaeXOsrk.png?scale-down-to=1024&width=2700&height=2198',
-    'img_alt' => 'Healthcare translation workflow',
+    'img_alt' => 'Unified interpretation platform dashboard',
     'glow'    => 'rgba(92,195,250,.20)',
   ],
   [
-    'label'   => 'Government',
-    'heading' => 'Trusted by agencies that cannot afford errors',
-    'tag'     => 'Security-cleared linguists, critical-grade work',
-    'body'    => '<p>Government communications require absolute precision, discretion, and often speed. Piedmont has supported federal and state agencies for over a decade.</p><p>Our cleared linguists understand the weight of the work — and deliver accordingly.</p>',
+    'label'   => 'Embedded Workflow',
+    'heading' => 'Show up inside the workflow that already exists.',
+    'tag'     => 'Embedded at the system of record.',
+    'body'    => '<p>New tools that sit outside the workflow do not get used. Clinicians will not switch screens to launch an interpretation session. Contact center agents will not leave the queue to dial out. A safety officer will not open a separate portal to schedule a Karen interpreter for tomorrow\'s shift change.</p><p>Connexus lives inside the workflow your team already runs. For contact center and enterprise teams, native SIP integration and embedded controls inside Twilio Flex, Genesys, Five9, NICE, Talkdesk, and Amazon Connect put interpretation a click away from the agent\'s screen. And for our healthcare clients, Epic SMART on FHIR (in final certification) launches interpretation directly from the patient chart.</p>',
     'cta'     => null,
     'img_src' => 'https://framerusercontent.com/images/tIy3VlZuPyD8qjM1ivJXb332aNk.png?scale-down-to=1024&width=1350&height=1080',
-    'img_alt' => 'Government document translation',
+    'img_alt' => 'Embedded interpretation workflow',
     'glow'    => 'rgba(0,97,85,.28)',
   ],
-  [
-    'label'   => 'Finance',
-    'heading' => 'Regulatory filings in any&nbsp;language',
-    'tag'     => 'On deadline, in full compliance',
-    'body'    => '<p>Annual reports, prospectuses, and compliance filings leave no room for linguistic ambiguity. A single mistranslation can trigger regulatory scrutiny.</p><p>Our financial translators understand GAAP, IFRS, and the exact terminology your counterparts expect globally.</p>',
-    'cta'     => null,
-    'img_src' => 'https://framerusercontent.com/images/8Nkq7H34lGVFjNavBLLluyWHqRI.png?scale-down-to=1024&width=1350&height=1080',
-    'img_alt' => 'Financial document translation',
-    'glow'    => 'rgba(250,204,105,.22)',
-  ],
-  [
-    'label'   => 'Technology',
-    'heading' => 'Software localization at&nbsp;scale',
-    'tag'     => 'From UI strings to full product experiences',
-    'body'    => '<p>Your product ships in 12 languages. Your documentation in 6. Your support in 4. Piedmont plugs directly into your development workflow.</p><p>We localize UI, docs, onboarding, and marketing — as fast as your engineering team ships.</p>',
-    'cta'     => null,
-    'img_src' => 'https://framerusercontent.com/images/ZqoWGnqskMXBXv3DHQRTKrmHIE.png?scale-down-to=1024&width=2700&height=2080',
-    'img_alt' => 'Software localization workflow',
-    'glow'    => 'rgba(152,196,65,.22)',
-  ],
-  [
-    'label'   => 'Legal',
-    'heading' => 'Certified translations courts&nbsp;accept',
-    'tag'     => 'Every document, every jurisdiction',
-    'body'    => '<p>Contracts, depositions, immigration filings, court orders. Legal translation demands certified linguists who understand both the source and target legal systems.</p><p>Piedmont provides ATA-certified translation with notarization options and same-day turnaround for urgent matters.</p>',
-    'cta'     => null,
-    'img_src' => 'https://framerusercontent.com/images/4tbP2BbCx80JPRs6PkI8gHiJqY8.png?scale-down-to=1024&width=4050&height=3240',
-    'img_alt' => 'Legal document certification',
-    'glow'    => 'rgba(92,195,250,.18)',
-  ],
 ];
-$pills_r1 = ['Healthcare','Government','Finance','Legal','Education','Technology','Life Sciences','Defense'];
-$pills_r2 = ['Business Development','Operations','Compliance','Marketing','Engineering','Strategy','Clinical Trials','Regulatory Affairs'];
+$pills_r1 = ['Community Healthcare','Healthcare','Manufacturing','K-12 Education','Government','Contact Centers'];
+$pills_r2 = ['Contact Centers','Government','K-12 Education','Manufacturing','Healthcare','Community Healthcare'];
 
 $pill_grads = [
   'linear-gradient(94deg,rgba(255,255,255,.07) 0%,rgba(152,196,65,.28) 100%)',
@@ -173,7 +133,14 @@ $pill_grads = [
 }
 
 .pg-glass-pill {
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 12px 34px rgba(0,0,0,.18);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.070), rgba(255,255,255,.024)),
+    radial-gradient(circle at 50% 0%, rgba(152,196,65,.10), transparent 62%);
+  border: 1px solid rgba(242,239,233,.10);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(0,0,0,.12),
+    0 14px 38px rgba(0,0,0,.20);
   backdrop-filter: blur(12px);
 }
 
@@ -237,6 +204,51 @@ $pill_grads = [
   transform: none;
   pointer-events: auto;
 }
+
+/* ── Speed section: floating screenshot card ─────────── */
+.speed-screen-card {
+  position: relative; overflow: hidden;
+  border-radius: 20px;
+  background: #0C1C1C;
+  border: 1px solid rgba(242,239,233,.07);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.06),
+    0 0 0 1px rgba(0,0,0,.2),
+    0 50px 120px rgba(0,0,0,.6),
+    0 20px 52px rgba(0,0,0,.36);
+}
+/* Top edge accent — same glass language as other cards */
+.speed-screen-card::before {
+  content: ''; position: absolute; inset-inline: 0; top: 0; height: 1px;
+  background: linear-gradient(to right,
+    transparent 5%,
+    rgba(152,196,65,.22) 35%,
+    rgba(152,196,65,.16) 65%,
+    transparent 95%);
+  z-index: 10; pointer-events: none;
+}
+/* Viewport — hugs the active screenshot: full width, natural height, no fixed
+   ratio. The active image sits in flow and defines the card height; the others
+   overlay absolutely during the crossfade. Nothing is ever cropped or cut. */
+.speed-screen-viewport {
+  position: relative;
+  overflow: hidden;
+  border-radius: inherit;
+  background: #0C1C1C;
+}
+.speed-screen-viewport .speed-img {
+  position: absolute; inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;           /* full screenshot during crossfade, no crop */
+  object-position: center;
+  z-index: 1;
+}
+.speed-screen-viewport .speed-img.is-active {
+  position: relative;            /* in flow → container hugs this image */
+  height: auto;                  /* natural height = full image, no letterbox */
+}
 </style>
 
 
@@ -260,7 +272,7 @@ $pill_grads = [
   <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-40" aria-hidden="true"
        style="background:radial-gradient(ellipse 60% 100% at 50% 100%, rgba(0,97,85,.20) 0%, transparent 70%)"></div>
 
-  <div class="relative z-10 mx-auto max-w-[720px] px-6 pb-28 pt-24 text-center lg:pb-36 lg:pt-32">
+  <div class="relative z-10 mx-auto max-w-6xl px-6 pb-10 pt-24 text-center lg:pb-14 lg:pt-32">
 
     <div class="mb-8 flex justify-center">
       <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
@@ -271,81 +283,124 @@ $pill_grads = [
       </div>
     </div>
 
-    <h1 class="text-[clamp(2.35rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9] drop-shadow-[0_18px_60px_rgba(0,0,0,.28)]">
-      Break language barriers, accelerate growth
+    <h1 class="text-[clamp(2.35rem,5.7vw,3.85rem)]  mx-auto max-w-2xl font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9] drop-shadow-[0_18px_60px_rgba(0,0,0,.28)]">
+    Connect every conversation, in every language, in seconds.
     </h1>
 
-    <p class="mx-auto mt-6 max-w-[460px] text-[15px] font-normal leading-[1.82] text-[#F2EFE9]/58">
-      Piedmont Global connects your business to the world — with precision translation, strategic localization, and AI-powered workflows built for healthcare, government, and enterprise.
-    </p>
+    <p class="mx-auto mt-6  text-base font-normal mx-auto max-w-2xl leading-[1.82] text-[#F2EFE9]/58">
+    Connexus™ is Piedmont Global's enterprise interpretation management platform. Human interpretation in 300+ languages, real-time AI interpretation for scale, and one portal for scheduling, billing, compliance, and reporting - delivered under one SLA.    </p>
 
     <div class="mt-11 flex flex-wrap items-center justify-center gap-2.5">
       <a href="#contact"
-        class="inline-flex items-center gap-1.5 rounded-[8px] bg-[#98C441] px-[22px] py-[11px] text-[13px] font-bold text-[#080F0F] transition
+        class="inline-flex items-center gap-1.5 rounded-[8px] bg-[#98C441] px-[22px] py-[11px] text-base font-bold text-[#080F0F] transition
           [box-shadow:inset_0_1px_0_rgba(255,255,255,.28),inset_0_-1px_0_rgba(0,0,0,.12),0_1px_3px_rgba(0,0,0,.3),0_4px_18px_rgba(152,196,65,.22)]
           hover:-translate-y-px hover:bg-[#A6D34E]
           hover:[box-shadow:inset_0_1px_0_rgba(255,255,255,.30),inset_0_-1px_0_rgba(0,0,0,.12),0_1px_3px_rgba(0,0,0,.3),0_8px_24px_rgba(152,196,65,.30)]
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080F0F]">
-        Get started
+          Book a Demo
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" focusable="false">
           <path d="M2 6h8M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
       <a href="#solutions"
-        class="inline-flex items-center gap-1.5 rounded-[8px] border border-white/[.09] px-[18px] py-[11px] text-[13px] font-medium text-[#F2EFE9]/50 transition
+        class="inline-flex items-center gap-1.5 rounded-[8px] border border-white/[.09] px-[18px] py-[11px] text-base font-medium text-[#F2EFE9]/50 transition
           hover:border-white/[.18] hover:text-[#F2EFE9]/82
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20">
-        Explore solutions
+          Download Technical Requirements
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true" focusable="false">
           <path d="M3.5 2l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
     </div>
 
-    <div class="mt-8 flex items-center justify-center gap-2.5">
-      <div class="flex" aria-hidden="true">
-        <span class="flex h-[25px] w-[25px] items-center justify-center rounded-full border-[1.5px] border-[#080F0F] bg-[#354A40] text-[8px] font-bold text-[#F2EFE9]/55">JL</span>
-        <span class="flex h-[25px] w-[25px] -ml-1.5 items-center justify-center rounded-full border-[1.5px] border-[#080F0F] bg-[#2D4438] text-[8px] font-bold text-[#F2EFE9]/55">MR</span>
-        <span class="flex h-[25px] w-[25px] -ml-1.5 items-center justify-center rounded-full border-[1.5px] border-[#080F0F] bg-[#3A4A35] text-[8px] font-bold text-[#F2EFE9]/55">AK</span>
-        <span class="flex h-[25px] w-[25px] -ml-1.5 items-center justify-center rounded-full border-[1.5px] border-[#080F0F] bg-[#2E3D3A] text-[8px] font-bold text-[#F2EFE9]/55">+</span>
+    <?php
+    $avatars = [
+      ['initials' => 'JL', 'bg' => '#2D4C3A'],
+      ['initials' => 'MR', 'bg' => '#2A3E4C'],
+      ['initials' => 'AK', 'bg' => '#3C4A2E'],
+      ['initials' => 'TP', 'bg' => '#3A2D4A'],
+    ];
+    ?>
+    <div class="mt-8 flex justify-center">
+      <div class="inline-flex items-center gap-[14px] rounded-full border border-white/[.07] bg-white/[.04] py-2.5 pl-2.5 pr-5">
+        <div class="flex items-center" aria-hidden="true">
+          <?php foreach ($avatars as $i => $av) : ?>
+          <span class="flex h-[28px] w-[28px] items-center justify-center rounded-full border-2 border-[#080F0F] text-[8.5px] font-bold text-[#F2EFE9]/65 <?php echo $i > 0 ? '-ml-2' : ''; ?>"
+                style="background:<?php echo esc_attr($av['bg']); ?>; position:relative; z-index:<?php echo 10 - $i; ?>">
+            <?php echo esc_html($av['initials']); ?>
+          </span>
+          <?php endforeach; ?>
+        </div>
+
+        <div class="h-[18px] w-px bg-white/[.10]" aria-hidden="true"></div>
+
+        <div class="flex items-center gap-0.5" aria-label="5 stars">
+          <?php for ($i = 0; $i < 5; $i++) : ?>
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="#98C441" aria-hidden="true">
+            <path d="M6 1l1.4 2.8 3.1.45-2.25 2.2.53 3.1L6 8.1l-2.78 1.45.53-3.1L1.5 4.25l3.1-.45z"/>
+          </svg>
+          <?php endfor; ?>
+        </div>
+
+        <div class="h-[18px] w-px bg-white/[.10]" aria-hidden="true"></div>
+
+        <p class="text-[12.5px] font-normal leading-[1.4] tracking-[-0.01em] text-[#F2EFE9]/45">
+        Trusted across hospitals and federally qualified health centers, multi-plant manufacturers, K-12 districts, government agencies, and contact centers.
+        </p>
       </div>
-      <p class="text-[11.5px] text-[#F2EFE9]/34">
-        <span class="text-[#98C441] text-[9px] tracking-[.5px]" aria-label="5 stars">★★★★★</span>
-        &nbsp;Trusted by <span class="font-medium text-[#F2EFE9]/52">500+</span> global organizations
-      </p>
     </div>
 
   </div>
-</section>
 
+  <?php /* ── Product screenshot composition ── */ ?>
+  <div class="relative z-10 mx-auto max-w-[1060px] px-4 pb-28 sm:px-6 sm:pb-36">
 
+    <?php /* Atmospheric halo behind the cards */ ?>
+    <div class="pointer-events-none absolute -inset-x-16 inset-y-0 rounded-[60px]" aria-hidden="true"
+         style="background: radial-gradient(ellipse 70% 60% at 50% 58%, rgba(0,97,85,.28) 0%, transparent 68%);
+                filter: blur(4px); opacity: .55;"></div>
 
-<!-- ════════════════════════════════════════════════════
-     SECTION 2 · LOGO MARQUEE
-════════════════════════════════════════════════════ -->
-<section class="relative bg-[#080F0F] py-14 sm:py-16" aria-label="Trusted by">
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true"
-       style="background:radial-gradient(ellipse 80% 100% at 50% 50%, rgba(0,97,85,.07) 0%, transparent 68%)"></div>
-  <div class="relative overflow-hidden"
-    style="mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%);
-           -webkit-mask-image:linear-gradient(to right,transparent 0%,black 8%,black 92%,transparent 100%)">
-    <div class="flex w-max items-center gap-[56px]">
-      <?php
-      /* 8 logos × 3 passes = 24 items; first 8 are visible, rest aria-hidden */
-      $total_slots = $logo_count * 3;
-      for ($i = 0; $i < $total_slots; $i++) :
-        $dup = $i >= $logo_count;
-      ?>
-      <div class="flex h-[28px] w-[110px] shrink-0 items-center opacity-[.32] transition hover:opacity-[.65]"
-           <?php echo $dup ? 'aria-hidden="true"' : ''; ?>>
-        <img src="http://bis.local/wp-content/uploads/2026/01/BIS-All-white-Logo-scaled-e1749035726582-1.webp"
-             alt="<?php echo $dup ? '' : 'Partner logo'; ?>"
-             loading="lazy" decoding="async"
-             class="h-full w-full object-contain object-center">
+    <?php /* ── Primary window · WelcomeModal ── */ ?>
+    <div class="relative overflow-hidden rounded-[14px] sm:rounded-[20px]"
+         style="background: #0C1C1C;
+                box-shadow:
+                  0 0 0 1px rgba(255,255,255,.09),
+                  inset 0 1.5px 0 rgba(255,255,255,.065),
+                  0 54px 140px rgba(0,0,0,.68),
+                  0 20px 50px rgba(0,0,0,.40);">
+
+      <?php /* Browser chrome */ ?>
+      <div class="flex items-center gap-3 border-b border-white/[.06] px-4 py-[11px]" aria-hidden="true">
+        <div class="flex shrink-0 items-center gap-[6px]">
+          <span class="block h-[11px] w-[11px] rounded-full" style="background:#FF5F57; opacity:.72"></span>
+          <span class="block h-[11px] w-[11px] rounded-full" style="background:#FFBD2E; opacity:.72"></span>
+          <span class="block h-[11px] w-[11px] rounded-full" style="background:#28C840; opacity:.72"></span>
+        </div>
+        <div class="mx-auto flex h-[23px] w-[200px] items-center justify-center rounded-[6px]
+                    bg-white/[.055] text-[10px] tracking-[.005em] text-white/26">
+          app.connexus.io
+        </div>
+        <div class="w-[54px] shrink-0" aria-hidden="true"></div>
       </div>
-      <?php endfor; ?>
+
+      <?php /* Top-edge accent line */ ?>
+      <div class="absolute inset-x-0 top-0 h-px pointer-events-none z-10" aria-hidden="true"
+           style="background: linear-gradient(to right, transparent 5%, rgba(152,196,65,.24) 35%, rgba(152,196,65,.18) 65%, transparent 95%);"></div>
+
+      <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/CNX_ADMIN_WelcomeModal.png'); ?>"
+           alt="Connexus admin dashboard — platform overview and welcome screen"
+           loading="eager" decoding="async"
+           width="2165" height="1483"
+           class="block w-full select-none">
+
     </div>
+
+    <?php /* Bottom fade — dissolves screenshot into the marquee section */ ?>
+    <div class="pointer-events-none absolute inset-x-0 bottom-0 h-44 sm:h-56" aria-hidden="true"
+         style="background: linear-gradient(to bottom, transparent 0%, rgba(8,15,15,.55) 40%, #080F0F 88%);"></div>
+
   </div>
+
 </section>
 
 
@@ -364,9 +419,7 @@ $pill_grads = [
        class="absolute left-1/2 top-1/2 h-auto w-[62vw] max-w-[920px] -translate-x-1/2 -translate-y-1/2 object-contain object-center pointer-events-none select-none opacity-60">
   <div class="relative z-10 mx-auto max-w-[700px] text-center">
     <h2 class="text-[clamp(1.5rem,2.6vw,2.5rem)] font-extrabold leading-[1.22] tracking-[-0.032em] text-[#F2EFE9]">
-      Piedmont Global has delivered<br>
-      over 50 million words<br>
-      for clients worldwide.
+    Behind every interpreted encounter at Piedmont Global - across hospitals and health centers, K-12 classrooms, manufacturing floors, government agencies, and contact center queues.
     </h2>
   </div>
 </section>
@@ -388,24 +441,34 @@ $pill_grads = [
 .pg-pill {
   display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
   border-radius: 99px;
-  padding: 11px 24px;
-  font-size: 13px; font-weight: 600; letter-spacing: -.01em;
-  border: 1px solid rgba(255,255,255,.08);
-  background: rgba(255,255,255,.030);
-  color: rgba(242,239,233,.38);
+  padding: 12px 24px;
+  font-size: 13px; font-weight: 650; letter-spacing: -.01em;
+  border: 1px solid rgba(242,239,233,.105);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.070), rgba(255,255,255,.025)),
+    radial-gradient(ellipse 90% 120% at 50% 0%, rgba(152,196,65,.075), transparent 62%);
+  color: rgba(242,239,233,.58);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.06),
-    0 1px 4px rgba(0,0,0,.18);
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -1px 0 rgba(0,0,0,.14),
+    0 12px 34px rgba(0,0,0,.20);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   transition: border-color .32s, color .32s, box-shadow .32s,
-              transform .32s cubic-bezier(.22,1,.36,1);
+              background .32s, transform .32s cubic-bezier(.22,1,.36,1);
 }
 .pg-pill:hover {
-  border-color: rgba(152,196,65,.28);
-  color: rgba(242,239,233,.86);
+  border-color: rgba(152,196,65,.34);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.090), rgba(255,255,255,.035)),
+    radial-gradient(ellipse 90% 120% at 50% 0%, rgba(152,196,65,.13), transparent 62%);
+  color: rgba(242,239,233,.92);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.09),
-    0 0 0 1px rgba(152,196,65,.12),
-    0 6px 20px rgba(0,0,0,.22);
+    inset 0 1px 0 rgba(255,255,255,.14),
+    inset 0 -1px 0 rgba(0,0,0,.14),
+    0 0 0 1px rgba(152,196,65,.13),
+    0 18px 42px rgba(0,0,0,.24),
+    0 0 34px rgba(152,196,65,.10);
   transform: translateY(-2px);
 }
 
@@ -421,14 +484,16 @@ $pill_grads = [
 
 /* ── Teal accent ──────────────────────────────────────── */
 .pg-pill-teal {
-  background: linear-gradient(145deg, rgba(0,105,90,.52) 0%, rgba(0,80,68,.38) 100%);
-  border-color: rgba(0,160,128,.28);
-  color: rgba(100,230,195,.82);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.070) 0%, rgba(255,255,255,.026) 100%),
+    radial-gradient(ellipse 100% 140% at 50% 0%, rgba(0,120,104,.38), transparent 68%);
+  border-color: rgba(0,160,128,.25);
+  color: rgba(190,250,232,.78);
   box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,.11),
+    inset 0 1.5px 0 rgba(255,255,255,.13),
     inset 0 -1px 0 rgba(0,0,0,.14),
-    0 0 32px rgba(0,105,90,.22),
-    0 4px 16px rgba(0,0,0,.24);
+    0 0 34px rgba(0,105,90,.20),
+    0 14px 36px rgba(0,0,0,.22);
 }
 .pg-pill-teal::before {
   background: rgba(0,210,165,.92);
@@ -449,14 +514,16 @@ $pill_grads = [
 
 /* ── Green accent ─────────────────────────────────────── */
 .pg-pill-green {
-  background: linear-gradient(145deg, rgba(152,196,65,.22) 0%, rgba(110,155,40,.16) 100%);
-  border-color: rgba(152,196,65,.28);
-  color: rgba(192,238,90,.82);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.075) 0%, rgba(255,255,255,.028) 100%),
+    radial-gradient(ellipse 100% 140% at 50% 0%, rgba(152,196,65,.25), transparent 68%);
+  border-color: rgba(152,196,65,.30);
+  color: rgba(226,255,154,.82);
   box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,.11),
+    inset 0 1.5px 0 rgba(255,255,255,.13),
     inset 0 -1px 0 rgba(0,0,0,.12),
-    0 0 32px rgba(152,196,65,.15),
-    0 4px 16px rgba(0,0,0,.22);
+    0 0 34px rgba(152,196,65,.15),
+    0 14px 36px rgba(0,0,0,.22);
 }
 .pg-pill-green::before {
   background: rgba(162,210,70,.94);
@@ -490,7 +557,7 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
     radial-gradient(ellipse 40% 40% at 50% 42%,  rgba(0,97,85,.06)   0%, transparent 72%);"></div>
 
   <?php /* ── Copy ── */ ?>
-  <div class="relative z-10 mx-auto max-w-[680px] text-center">
+  <div class="relative z-10 mx-auto max-w-5xl text-center">
 
     <?php /* Eyebrow */ ?>
     <div class="mb-8 flex justify-center">
@@ -504,33 +571,24 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
 
     <?php /* Headline */ ?>
     <h2 class="text-center  text-5xl font-extrabold leading-[1.08] tracking-[-0.042em] text-[#F2EFE9]">
-      Language gaps are the biggest barrier
-      hiding in plain sight
+    Language access has quietly become operationally critical.
     </h2>
 
     <?php /* Body */ ?>
-    <div class="mx-auto mt-8 max-w-[580px] space-y-4 text-center text-[clamp(.95rem,1.4vw,1.08rem)] font-light leading-[1.88] text-[#F2EFE9]/52">
-      <p>Organizations lose deals, fail compliance audits, and damage client relationships — not because of poor strategy, but because of miscommunication across languages.</p>
-      <p>Most language solutions haven't evolved in decades. With Piedmont Global, this all changes.</p>
+    <div class="mx-auto mt-8  space-y-4 text-center text-[clamp(.95rem,1.4vw,1.08rem)] font-light leading-[1.88] text-[#F2EFE9]/52">
+      <p>Every patient enrollment, every contact center call, every classroom conversation, every safety briefing on the plant floor now has a language access dimension. Compliance assumes it. Workers depend on it. Audit logs have to prove it. And most organizations are still managing it with a dial-in number and a scheduling spreadsheet.</p>
+      <p>It is not anyone's fault. The industry has worked this way for decades. With Connexus, that changes.</p>
     </div>
 
   </div>
 
-  <?php /* ── Floating label separating copy from pills ── */ ?>
+  <?php /* ── Eyebrow separating copy from pills ── */ ?>
   <div class="relative z-10 mx-auto mt-20 mb-14 flex justify-center">
-    <div class="inline-flex items-center gap-[10px] rounded-full
-                border border-white/[.10]
-                bg-gradient-to-b from-[rgba(255,255,255,.055)] to-[rgba(255,255,255,.022)]
-                px-6 py-[11px]
-                shadow-[inset_0_1.5px_0_rgba(255,255,255,.08),0_16px_48px_rgba(0,0,0,.18)]">
-      <?php /* Glow dot */ ?>
-      <span class="relative flex h-[8px] w-[8px] flex-shrink-0" aria-hidden="true">
-        <span class="absolute inset-0 rounded-full bg-[#98C441]/50 blur-[3px]"></span>
-        <span class="relative block h-[8px] w-[8px] rounded-full bg-[#98C441]/80"></span>
-      </span>
-      <span class="text-[12.5px] font-semibold tracking-[.13em] uppercase text-[#F2EFE9]/52">
-        Sectors &amp; Functions
-      </span>
+    <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+      <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+      <div class="flex items-center gap-2 px-3 py-[7px]">
+        <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Sectors &amp; Functions</span>
+      </div>
     </div>
   </div>
 
@@ -615,22 +673,31 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
 /* ─── Section 5 · Speed steps ──────────────────────────────── */
 $speed_steps = [
   [
-    'num'   => '01',
-    'label' => 'Delivery',
-    'head'  => "Deliver translations\ntwice as fast as before.",
-    'sub'   => 'AI-assisted workflows and automated QA cut turnaround in half — without sacrificing a word of accuracy.',
+    'num'     => '01',
+    'label'   => 'Outcome 1',
+    'head'    => "Instant clinical-grade\ninterpretation",
+    'sub'     => 'Connect to a qualified interpreter in seconds, not minutes. Across 300+ languages, delivered in the modality your workflow requires.',
+    'img_src' => get_template_directory_uri() . '/assets/connexus/appointments.png',
+    'img_alt' => 'Connexus appointments and interpreter scheduling interface',
+    'glow'    => 'rgba(92,195,250,.22)',
   ],
   [
-    'num'   => '02',
-    'label' => 'Compliance',
-    'head'  => "Stay fully compliant\nacross every market.",
-    'sub'   => 'Built-in regulatory glossaries and jurisdiction-specific review flows keep every deliverable market-ready.',
+    'num'     => '02',
+    'label'   => 'Outcome 2',
+    'head'    => "Audit-ready encounter\ndocumentation",
+    'sub'     => 'Every interaction automatically recorded for compliance. Title VI, Section 1557, Joint Commission, and state Medicaid requirements embedded in every record.',
+    'img_src' => get_template_directory_uri() . '/assets/connexus/compliance.png',
+    'img_alt' => 'Connexus compliance and audit-ready documentation interface',
+    'glow'    => 'rgba(158,110,230,.25)',
   ],
   [
-    'num'   => '03',
-    'label' => 'Collaboration',
-    'head'  => "Collaborate globally\nfaster than ever before.",
-    'sub'   => 'Shared glossaries, real-time comments, and async review tools unify your global team around one source of truth.',
+    'num'     => '03',
+    'label'   => 'Outcome 3',
+    'head'    => "Scalable language access\ninfrastructure",
+    'sub'     => 'Meet demand without expanding headcount. AI Interpreter handles real-time volume; credentialed human interpreters reserved for high-stakes encounters.',
+    'img_src' => get_template_directory_uri() . '/assets/connexus/users-roster-detail.png',
+    'img_alt' => 'Connexus interpreter roster and capacity management interface',
+    'glow'    => 'rgba(250,117,248,.22)',
   ],
 ];
 $speed_total = count($speed_steps);
@@ -639,27 +706,39 @@ $speed_total = count($speed_steps);
 <!-- ════════════════════════════════════════════════════
      SECTION 5 · SPEED (image + stacking headlines)
 ════════════════════════════════════════════════════ -->
-<section class="relative bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-0" id="speed-scroll" aria-label="Speed and responsiveness">
+<section class="relative bg-[#080F0F] px-6 pb-24 sm:pb-32 lg:py-0" id="speed-scroll" aria-label="Speed and responsiveness">
   <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background:
     radial-gradient(ellipse 55% 45% at 15% 55%, rgba(0,97,85,.25) 0%, transparent 58%),
     radial-gradient(ellipse 50% 40% at 85% 30%, rgba(152,196,65,.12) 0%, transparent 60%),
     linear-gradient(180deg, #080F0F 0%, #0B1A1A 50%, #080F0F 100%)"></div>
 
-  <div class="relative z-10 mx-auto grid max-w-[1200px] grid-cols-1 gap-12 lg:min-h-[300vh] lg:grid-cols-2 lg:gap-20">
+  <div class="relative z-10 mx-auto grid max-w-[1360px] grid-cols-1 gap-12 lg:min-h-[300vh] lg:grid-cols-[1.45fr_1fr] lg:gap-20">
 
     <?php /* ── LEFT · sticky panel ── */ ?>
     <div class="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:items-center lg:justify-center">
 
-      <?php /* Image card */ ?>
-      <div class="pg-surface mx-auto w-full max-w-[440px] rounded-[28px] p-2 lg:max-w-[460px]">
-        <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(152,196,65,.12),transparent_55%)]" aria-hidden="true"></div>
-        <img src="https://framerusercontent.com/images/ZzEcgyBWKakgLd4hnleDpz8lPcs.png?width=1080&height=1350"
-             alt="Piedmont Global interface" loading="lazy" decoding="async"
-             class="relative z-10 mx-auto block h-auto max-h-[65vh] w-auto max-w-full rounded-[22px] object-contain">
+      <?php /* Floating screenshot card — crossfades per step */ ?>
+      <div class="speed-screen-card mx-auto w-full max-w-[880px]" id="speedImgCard">
+
+        <?php /* Native-ratio viewport — images and glow stack here */ ?>
+        <div class="speed-screen-viewport">
+          <div id="speedImgGlow" class="feat-glow-orb"
+               style="background:radial-gradient(50% 50%, <?php echo esc_attr($speed_steps[0]['glow']); ?> 0%, transparent 100%); opacity:.55;"
+               aria-hidden="true"></div>
+          <?php foreach ($speed_steps as $si => $s) : ?>
+          <img src="<?php echo esc_url($s['img_src']); ?>"
+               alt="<?php echo esc_attr($s['img_alt']); ?>"
+               loading="<?php echo $si === 0 ? 'eager' : 'lazy'; ?>" decoding="async"
+               class="speed-img<?php echo $si === 0 ? ' is-active' : ''; ?>"
+               style="opacity:<?php echo $si === 0 ? '1' : '0'; ?>;
+                      transition: opacity .65s cubic-bezier(.22,1,.36,1)">
+          <?php endforeach; ?>
+        </div>
+
       </div>
 
       <?php /* Step counter + progress bar */ ?>
-      <div class="mt-7 hidden w-full max-w-[440px] items-center gap-4 lg:flex lg:max-w-[460px]">
+      <div class="mt-7 hidden w-full max-w-[880px] items-center gap-4 lg:flex">
         <span id="speed-step-label"
               class="min-w-[80px] text-[11px] font-bold tracking-[.13em] uppercase text-[#98C441]/65 transition-all duration-400">
           <?php echo esc_html($speed_steps[0]['label']); ?>
@@ -714,7 +793,7 @@ $speed_total = count($speed_steps);
     radial-gradient(ellipse 70% 35% at 50% -5%,   rgba(0,97,85,.10)    0%, transparent 65%),
     radial-gradient(ellipse 60% 30% at 50% 108%,  rgba(152,196,65,.09) 0%, transparent 68%);"></div>
 
-  <div class="relative z-10 mx-auto grid max-w-[1140px] grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
+  <div class="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
 
     <?php /* ── Left: copy ── */ ?>
     <div>
@@ -727,20 +806,18 @@ $speed_total = count($speed_steps);
       </div>
 
       <?php /* Heading */ ?>
-      <h2 class="text-[clamp(2rem,4.2vw,3.4rem)] font-extrabold leading-[1.08] tracking-[-0.042em] text-[#F2EFE9]">
-        Built for teams that use<br>
-        any platform,<br>
-        any workflow
+      <h2 class="text-[clamp(2.35rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
+        Built to fit the stack you already run.
       </h2>
 
       <?php /* Supporting copy */ ?>
-      <p class="mt-6 max-w-[360px] text-[15px] leading-[1.84] text-[#F2EFE9]/44">
-        Connect with the tools your teams already rely on — from CAT platforms and TMS systems to enterprise content pipelines and review workflows.
+      <p class="mt-6 text-base leading-[1.84] text-[#F2EFE9]/44">
+        Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP and native integration with Twilio Flex, Genesys, Five9, NICE, Talkdesk, and Amazon Connect. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). Fits the stack you have. No rip-and-replace.
       </p>
 
       <?php /* Subtle platform chips */ ?>
       <div class="mt-8 flex flex-wrap gap-2" aria-label="Supported platforms">
-        <?php foreach (['SDL Trados','memoQ','Phrase','Contentful','Salesforce','Adobe XD'] as $pl) : ?>
+        <?php foreach (['AWS-hosted','SAML/SSO','Native SIP','Twilio Flex','Genesys','Five9','NICE','Talkdesk','Amazon Connect','Epic SMART on FHIR','Redox'] as $pl) : ?>
         <span class="rounded-[6px] border border-white/[.08] bg-white/[.04] px-3 py-[6px] text-[11.5px] font-medium text-white/38">
           <?php echo esc_html($pl); ?>
         </span>
@@ -750,7 +827,7 @@ $speed_total = count($speed_steps);
 
     <?php /* ── Right: image card ── */ ?>
     <div class="flex items-center justify-center lg:justify-end">
-      <div class="w-full max-w-[460px]">
+      <div class="w-full max-w-[640px]">
 
         <?php /* Glass card */ ?>
         <div class="relative overflow-hidden rounded-[22px]"
@@ -773,8 +850,8 @@ $speed_total = count($speed_steps);
                style="background: radial-gradient(ellipse 80% 100% at 50% -10%, rgba(152,196,65,.10) 0%, transparent 70%);"
                aria-hidden="true"></div>
 
-          <img src="https://framerusercontent.com/images/pRTepi2wStAhn0iR4AR9ul4BPI.png?width=1920&height=1080"
-               alt="Platform integrations — SDL Trados, memoQ, Phrase, Contentful and more"
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/test.png'); ?>"
+               alt="Connexus integrations and connected platform stack"
                loading="lazy" decoding="async"
                class="relative z-[1] block h-auto w-full opacity-[.86]">
         </div>
@@ -785,6 +862,78 @@ $speed_total = count($speed_steps);
   </div>
 </section>
 
+
+
+<!-- ════════════════════════════════════════════════════
+     SECTION 6b · AI INTERPRETER
+════════════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-40" aria-label="Connexus AI Interpreter">
+
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background:
+    radial-gradient(ellipse 62% 85% at 84% 52%,   rgba(0,97,85,.22)    0%, transparent 55%),
+    radial-gradient(ellipse 50% 65% at 16% 44%,   rgba(152,196,65,.08) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 35% at 50% -5%,   rgba(152,196,65,.08) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 30% at 50% 108%,  rgba(0,97,85,.10)    0%, transparent 68%);"></div>
+
+  <div class="relative z-10 mx-auto grid max-w-[1140px] grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
+
+    <?php /* ── Left: repeated image card ── */ ?>
+    <div class="flex items-center justify-center lg:justify-start">
+      <div class="w-full max-w-[460px]">
+        <div class="relative overflow-hidden rounded-[22px]"
+             style="
+               background: rgba(12,24,24,.88);
+               border: 1px solid rgba(242,239,233,.075);
+               box-shadow:
+                 inset 0 1.5px 0 rgba(255,255,255,.055),
+                 0 32px 90px rgba(0,0,0,.46),
+                 0 0 0 1px rgba(0,0,0,.20);
+             ">
+          <div class="absolute inset-x-0 top-0 h-px pointer-events-none z-10"
+               style="background: linear-gradient(to right, transparent 5%, rgba(152,196,65,.30) 35%, rgba(152,196,65,.22) 65%, transparent 95%);"
+               aria-hidden="true"></div>
+          <div class="pointer-events-none absolute inset-x-0 top-0 h-32"
+               style="background: radial-gradient(ellipse 80% 100% at 50% -10%, rgba(152,196,65,.10) 0%, transparent 70%);"
+               aria-hidden="true"></div>
+          <img src="https://framerusercontent.com/images/pRTepi2wStAhn0iR4AR9ul4BPI.png?width=1920&height=1080"
+               alt="Connexus AI Interpreter interface"
+               loading="lazy" decoding="async"
+               class="relative z-[1] block h-auto w-full opacity-[.86]">
+        </div>
+      </div>
+    </div>
+
+    <?php /* ── Right: copy ── */ ?>
+    <div>
+      <div class="mb-8 inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+        <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 px-3 py-[7px]">
+          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">AI Interpreter</span>
+        </div>
+      </div>
+
+      <h2 class="text-[clamp(2.35rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
+        Meet the Connexus AI Interpreter.
+      </h2>
+
+      <p class="mt-5 text-[13px] font-semibold tracking-[.005em] text-white/48">
+        Real-time AI interpretation, governed by linguists.
+      </p>
+
+      <p class="mt-6 text-base leading-[1.84] text-[#F2EFE9]/50">
+        The Speech-to-Speech AI Interpreter handles surge volume in 50+ languages with under-one-second latency and 95%+ accuracy on domain-adapted language pairs. Real-time confidence scoring runs on every call, with automatic fallback to a credentialed human interpreter the moment accuracy drops below threshold. Linguists with sector expertise build the glossary and run the QA loop. The AI is the engine. Language professionals stay in control.
+      </p>
+
+      <a href="#"
+         class="group mt-8 inline-flex items-center gap-2 text-[13.5px] font-semibold text-[#98C441]
+                transition-all duration-200 hover:gap-3.5
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080F0F]">
+        Learn how the AI Interpreter works &gt;
+      </a>
+    </div>
+
+  </div>
+</section>
 
 
 <!-- ════════════════════════════════════════════════════
@@ -865,7 +1014,6 @@ $speed_total = count($speed_steps);
     0 32px 96px rgba(0,0,0,.46);
   transition: box-shadow .7s cubic-bezier(.22,1,.36,1),
               border-color .7s;
-  aspect-ratio: 1350 / 1080;
 }
 /* Inner ring sheen */
 .feat-img-card::after {
@@ -879,13 +1027,13 @@ $speed_total = count($speed_steps);
   pointer-events: none; z-index: 0;
   transition: background 1s cubic-bezier(.22,1,.36,1), opacity 1s;
 }
-/* The screenshot */
+/* The screenshot — hugs the card: full width, natural height, never cropped */
 .feat-img-card img {
   position: relative; z-index: 1;
-  display: block; width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
+  display: block; width: 100%; height: auto;
+  object-fit: contain; object-position: center;
   transition: transform .7s cubic-bezier(.22,1,.36,1), opacity .5s;
-  opacity: .82;
+  opacity: .88;
 }
 /* Active state: subtle scale */
 .feature-step.is-active .feat-img-card {
@@ -896,7 +1044,7 @@ $speed_total = count($speed_steps);
     0 0 0 1px rgba(152,196,65,.09);
 }
 .feature-step.is-active .feat-img-card img {
-  transform: scale(1.018); opacity: .90;
+  opacity: 1;
 }
 
 /* ── Caption bar ──────────────────────────────────────── */
@@ -917,21 +1065,18 @@ $speed_total = count($speed_steps);
     <?php
     /* Each feature gets its own unique atmospheric gradient composition */
     $atmos = [
-      /* 0 · AI Translation — teal + cool blue */
+      /* 0 · Interpreter Access */
       'radial-gradient(ellipse 68% 52% at 10% 44%, rgba(0,97,85,.24) 0%, transparent 58%),
        radial-gradient(ellipse 52% 42% at 88% 26%, rgba(92,195,250,.11) 0%, transparent 58%)',
-      /* 1 · Smart Triage — deep violet */
-      'radial-gradient(ellipse 68% 52% at 8% 50%,  rgba(88,48,168,.22) 0%, transparent 58%),
-       radial-gradient(ellipse 52% 42% at 90% 28%, rgba(158,110,230,.12) 0%, transparent 60%)',
-      /* 2 · Deadline Tracker — magenta / rose */
-      'radial-gradient(ellipse 68% 52% at 10% 54%, rgba(185,42,130,.18) 0%, transparent 58%),
-       radial-gradient(ellipse 52% 42% at 88% 30%, rgba(250,100,195,.10) 0%, transparent 58%)',
-      /* 3 · Team Comments — amber / warm gold */
-      'radial-gradient(ellipse 68% 52% at 10% 48%, rgba(135,82,0,.22) 0%, transparent 58%),
-       radial-gradient(ellipse 52% 42% at 88% 28%, rgba(250,200,80,.11) 0%, transparent 58%)',
-      /* 4 · Glossary Snippets — brand green */
+      /* 1 · Compliance Proof */
       'radial-gradient(ellipse 68% 52% at 10% 50%, rgba(0,97,85,.30) 0%, transparent 58%),
        radial-gradient(ellipse 52% 42% at 88% 26%, rgba(152,196,65,.15) 0%, transparent 58%)',
+      /* 2 · Capacity Visibility */
+      'radial-gradient(ellipse 68% 52% at 10% 54%, rgba(0,97,85,.22) 0%, transparent 58%),
+       radial-gradient(ellipse 52% 42% at 88% 30%, rgba(152,196,65,.12) 0%, transparent 58%)',
+      /* 3 · Cost Reconciliation */
+      'radial-gradient(ellipse 68% 52% at 10% 48%, rgba(0,97,85,.26) 0%, transparent 58%),
+       radial-gradient(ellipse 52% 42% at 88% 28%, rgba(242,239,233,.08) 0%, transparent 58%)',
     ];
     foreach ($atmos as $ai => $bg) :
     ?>
@@ -940,7 +1085,7 @@ $speed_total = count($speed_steps);
   </div>
 
   <?php /* ── Two-column layout ─── */ ?>
-  <div class="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-14 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+  <div class="relative z-10 mx-auto max-w-[1360px] px-6 lg:px-14 lg:grid lg:grid-cols-[1fr_1.4fr] lg:gap-20 lg:items-start">
 
     <?php /* ── LEFT · sticky copy ─── */ ?>
     <div class="hidden lg:flex lg:sticky lg:top-0 lg:h-screen lg:items-center">
@@ -1057,15 +1202,18 @@ $speed_total = count($speed_steps);
 
   var steps    = section.querySelectorAll('.speed-step');
   var copies   = section.querySelectorAll('.speed-copy');
+  var imgs     = section.querySelectorAll('.speed-img');
+  var glowEl   = document.getElementById('speedImgGlow');
   var progEl   = document.getElementById('speed-progress');
   var curEl    = document.getElementById('speed-step-cur');
   var labelEl  = document.getElementById('speed-step-label');
   var total    = steps.length;
   if (!total || !copies.length) return;
 
-  /* Label strings from PHP */
+  /* Data arrays from PHP */
   var labels = <?php echo json_encode(array_column($speed_steps, 'label')); ?>;
   var nums   = <?php echo json_encode(array_column($speed_steps, 'num')); ?>;
+  var glows  = <?php echo json_encode(array_column($speed_steps, 'glow')); ?>;
 
   var cur = -1;
 
@@ -1085,6 +1233,19 @@ $speed_total = count($speed_steps);
     /* 4 — counter + label */
     if (curEl)   curEl.textContent   = nums[idx]   || '';
     if (labelEl) labelEl.textContent = labels[idx] || '';
+
+    /* 5 — image crossfade; active image goes in-flow so the card hugs it */
+    imgs.forEach(function (img, i) {
+      var on = i === idx;
+      img.classList.toggle('is-active', on);
+      img.style.opacity = on ? '.88' : '0';
+    });
+
+    /* 6 — glow colour swap */
+    if (glowEl && glows[idx]) {
+      glowEl.style.background =
+        'radial-gradient(50% 50%, ' + glows[idx] + ' 0%, transparent 100%)';
+    }
   }
 
   /* rootMargin: only the central 24% of the viewport triggers — very intentional */
@@ -1188,16 +1349,16 @@ $rows = [
     'layout' => 'narrow-wide',   // left col narrower
     'cards'  => [
       [
-        'title'       => 'Have perfect timing with Send&nbsp;Later',
+        'title'       => 'Precision Language Matching Engine',
         'img_src'     => 'https://framerusercontent.com/images/REVBb6Xx0fylloJfcV48hXBs2n0.png?width=1056&height=672',
-        'img_alt'     => 'Send Later scheduling interface',
+        'img_alt'     => 'Match interpreters by language, certification, clinical specialty, and patient preference in real time with automated routing logic.',
         'img_pos'     => 'object-left-top',
         'overlay_rgb' => '0,97,85',
       ],
       [
-        'title'       => 'Reply faster with Instant&nbsp;Reply',
+        'title'       => 'Human-Safe AI Interpretation Layer',
         'img_src'     => 'https://framerusercontent.com/images/9qNX5HraxuRB6kIHb4x9u9jDkk.png?width=1504&height=672',
-        'img_alt'     => 'Instant Reply AI suggestions',
+        'img_alt'     => 'AI monitors live interpretation quality and escalates seamlessly to credentialed human interpreters when risk or inaccuracy is detected.',
         'img_pos'     => 'object-center object-top',
         'overlay_rgb' => '152,196,65',
       ],
@@ -1207,16 +1368,16 @@ $rows = [
     'layout' => 'wide-narrow',
     'cards'  => [
       [
-        'title'       => 'Snooze emails for&nbsp;later',
+        'title'       => 'Always-On Video Interpretation Coverage',
         'img_src'     => 'https://framerusercontent.com/images/CJ3ScV4rAlNNF6B194Y2LYy3Yk.png?width=1504&height=672',
-        'img_alt'     => 'Snooze emails feature',
+        'img_alt'     => 'On-demand ASL and Spanish video interpretation available 24/7 for the highest-volume clinical communication needs.',
         'img_pos'     => 'object-left-top',
         'overlay_rgb' => '152,196,65',
       ],
       [
-        'title'       => 'Hit Inbox Zero with keyboard shortcuts',
+        'title'       => 'Real-Time Language Demand Intelligence',
         'img_src'     => 'https://framerusercontent.com/images/zkpXYjJGOWWUsn7WWpWoQE19dhs.png?width=1056&height=672',
-        'img_alt'     => 'Keyboard shortcuts cheat sheet',
+        'img_alt'     => 'Live capacity heatmaps surface bottlenecks across languages and channels in 15-minute intervals for operational control.',
         'img_pos'     => 'object-left-top',
         'overlay_rgb' => '0,97,85',
       ],
@@ -1226,16 +1387,16 @@ $rows = [
     'layout' => 'narrow-wide',
     'cards'  => [
       [
-        'title'       => 'Improve interactions with social&nbsp;insight',
+        'title'       => 'Enterprise Role &amp; Access Control System',
         'img_src'     => 'https://framerusercontent.com/images/IqcSLQmU6S3LAkdIXKj3OsrYBEE.png?width=1056&height=672',
-        'img_alt'     => 'Social insight contact enrichment',
+        'img_alt'     => 'Role-based permissions for administrators, schedulers, interpreters, and frontline staff to enforce secure and structured access.',
         'img_pos'     => 'object-left-top',
         'overlay_rgb' => '152,196,65',
       ],
       [
-        'title'       => 'Unsubscribe and clear spam&nbsp;instantly',
+        'title'       => 'Granular Cost Attribution Engine',
         'img_src'     => 'https://framerusercontent.com/images/kAYdZmg1ASUGUocYEYh3fvuj7ZY.png?width=1504&height=672',
-        'img_alt'     => 'One-click unsubscribe panel',
+        'img_alt'     => 'Track interpretation spend at the level of department, facility, or encounter for precise financial accountability and reporting.',
         'img_pos'     => 'object-center object-top',
         'overlay_rgb' => '0,97,85',
       ],
@@ -1285,7 +1446,7 @@ $col_classes = [
 
 /* ── Text zone (top) ──────────────────────────────────────────── */
 .pg-bento-text {
-  padding: 22px 24px 20px;
+  padding: 22px 22px 18px;
   flex-shrink: 0;
 }
 
@@ -1307,7 +1468,7 @@ $col_classes = [
 .pg-bento-img {
   flex: 1 1 0%;
   position: relative;
-  min-height: 160px;
+  min-height: 128px;
   overflow: hidden;
 }
 .pg-bento-img img {
@@ -1317,7 +1478,7 @@ $col_classes = [
   height: 100%;
   object-fit: cover;
   opacity: .80;
-  saturate: .88;
+  filter: saturate(.88);
   transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .35s;
 }
 .pg-bento-card:hover .pg-bento-img img {
@@ -1339,22 +1500,39 @@ $col_classes = [
 
 /* ── Eyebrow label ────────────────────────────────────────────── */
 .pg-bento-label {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: .15em;
   text-transform: uppercase;
   color: rgba(152,196,65,.62);
-  margin-bottom: 9px;
+  margin-bottom: 11px;
+}
+
+.pg-bento-label::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 1px;
+  background: rgba(152,196,65,.38);
 }
 
 /* ── Card title ───────────────────────────────────────────────── */
 .pg-bento-h {
-  font-size: clamp(.93rem, 1.15vw, 1.08rem);
+  font-size: clamp(1rem, 1.25vw, 1.18rem);
   font-weight: 700;
-  line-height: 1.30;
+  line-height: 1.22;
   letter-spacing: -.020em;
   color: #F2EFE9;
+}
+
+.pg-bento-desc {
+  margin-top: 10px;
+  font-size: clamp(.78rem, .9vw, .86rem);
+  line-height: 1.55;
+  color: rgba(242,239,233,.54);
 }
 </style>
 
@@ -1380,7 +1558,7 @@ $col_classes = [
         </div>
       </div>
       <h2 id="bento-heading"
-          class="text-[clamp(2rem,4.2vw,3.4rem)] font-extrabold leading-[1.08] tracking-[-0.042em] text-[#F2EFE9]">
+          class="text-[clamp(2.35rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
         Every detail,
         engineered to move faster.
       </h2>
@@ -1388,20 +1566,24 @@ $col_classes = [
 
     <?php /* Grid */ ?>
     <div class="flex flex-col gap-3">
+      <?php $card_index = 0; ?>
 
       <?php foreach ($rows as $row) :
         $cols = $col_classes[$row['layout']];
       ?>
       <div class="grid grid-cols-1 gap-3 sm:grid-cols-12">
-        <?php foreach ($row['cards'] as $ci => $card) : ?>
+        <?php foreach ($row['cards'] as $ci => $card) :
+          $card_index++;
+        ?>
 
         <article class="pg-bento-card <?php echo esc_attr($cols[$ci]); ?>"
-                 style="min-height:280px">
+                 style="min-height:340px">
 
           <?php /* ── Text zone ──────────────────────── */ ?>
           <div class="pg-bento-text">
-            <span class="pg-bento-label"><?php echo esc_html($card['img_alt']); ?></span>
+            <span class="pg-bento-label"><?php printf('Capability %02d', $card_index); ?></span>
             <h3 class="pg-bento-h"><?php echo wp_kses_post($card['title']); ?></h3>
+            <p class="pg-bento-desc"><?php echo esc_html($card['img_alt']); ?></p>
           </div>
 
           <?php /* ── Separator rule ───────────────────── */ ?>
@@ -1428,36 +1610,27 @@ $col_classes = [
 
 
 <!-- ════════════════════════════════════════════════════
-     SECTION 7b · INDUSTRIES (sticky scroll)
+     SECTION 7b · UNIFIED WORKFLOW (sticky scroll)
 ════════════════════════════════════════════════════ -->
 
 <?php
 $atmos2 = [
-  /* 0 Healthcare — cyan / teal */
-  'radial-gradient(ellipse 68% 52% at 88% 44%, rgba(92,195,250,.17) 0%, transparent 58%),
-   radial-gradient(ellipse 52% 42% at 12% 26%, rgba(0,97,85,.20)    0%, transparent 58%)',
-  /* 1 Government — deep teal */
-  'radial-gradient(ellipse 68% 52% at 88% 50%, rgba(0,97,85,.30)    0%, transparent 58%),
-   radial-gradient(ellipse 52% 42% at 12% 28%, rgba(0,70,60,.22)    0%, transparent 60%)',
-  /* 2 Finance — warm amber */
-  'radial-gradient(ellipse 68% 52% at 88% 54%, rgba(200,140,20,.18) 0%, transparent 58%),
-   radial-gradient(ellipse 52% 42% at 12% 30%, rgba(135,82,0,.20)   0%, transparent 58%)',
-  /* 3 Technology — brand green */
+  /* 0 One Platform */
   'radial-gradient(ellipse 68% 52% at 88% 48%, rgba(152,196,65,.18) 0%, transparent 58%),
    radial-gradient(ellipse 52% 42% at 12% 26%, rgba(0,97,85,.22)    0%, transparent 58%)',
-  /* 4 Legal — cool blue */
-  'radial-gradient(ellipse 68% 52% at 88% 50%, rgba(60,130,210,.16) 0%, transparent 58%),
-   radial-gradient(ellipse 52% 42% at 12% 28%, rgba(0,60,120,.14)   0%, transparent 60%)',
+  /* 1 Embedded Workflow */
+  'radial-gradient(ellipse 68% 52% at 88% 50%, rgba(0,97,85,.30) 0%, transparent 58%),
+   radial-gradient(ellipse 52% 42% at 12% 28%, rgba(152,196,65,.12) 0%, transparent 60%)',
 ];
 ?>
 
-<section class="relative bg-[#080F0F] pt-24 sm:pt-32 lg:pt-40" id="industries" aria-label="Industries we serve">
+<section class="relative bg-[#080F0F] pt-24 sm:pt-32 lg:pt-40" id="unified-platform" aria-label="Unified interpretation workflow">
 
   <?php /* Top-entry bloom */ ?>
   <div class="pointer-events-none absolute inset-x-0 top-0 h-40" aria-hidden="true"
        style="background:radial-gradient(ellipse 60% 100% at 50% 0%, rgba(152,196,65,.10) 0%, transparent 70%)"></div>
 
-  <?php /* ── Per-industry atmosphere layers ── */ ?>
+  <?php /* ── Per-platform atmosphere layers ── */ ?>
   <div id="featAtmos2" aria-hidden="true">
     <?php foreach ($atmos2 as $ai => $bg) : ?>
     <div class="feat-atmo" style="opacity:<?php echo $ai === 0 ? '1' : '0'; ?>;background:<?php echo $bg; ?>"></div>
@@ -1469,17 +1642,16 @@ $atmos2 = [
     <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
       <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
       <div class="flex items-center gap-2 px-3 py-[7px]">
-        <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Industries</span>
+        <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Operational command layer</span>
       </div>
     </div>
     <h2 class="mt-4 text-[clamp(2rem,4.2vw,3.4rem)] font-extrabold leading-[1.08] tracking-[-0.042em] text-[#F2EFE9] max-w-[640px]">
-      Built for the sectors where<br>
-      precision is&nbsp;everything
+      One platform for every way interpretation happens.
     </h2>
   </div>
 
   <?php /* ── Two-column layout (images LEFT · copy RIGHT — mirrored from §7) ── */ ?>
-  <div class="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-14 lg:grid lg:grid-cols-2 lg:gap-24 lg:items-start">
+  <div class="relative z-10 mx-auto max-w-[1360px] px-6 lg:px-14 lg:grid lg:grid-cols-[1fr_1.4fr] lg:gap-20 lg:items-start">
 
     <?php /* ── LEFT · scrolling image steps ── */ ?>
     <div class="py-4 lg:py-[10vh]" id="featRight2">
@@ -1526,7 +1698,7 @@ $atmos2 = [
 
         <?php /* Nav pip track */ ?>
         <nav class="absolute -right-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-[9px]"
-             id="featDots2" aria-label="Industry navigation"></nav>
+             id="featDots2" aria-label="Platform feature navigation"></nav>
 
         <?php /* Copy panels */ ?>
         <div class="relative" id="copyStack2">
@@ -1575,11 +1747,11 @@ $atmos2 = [
 
 
 <!-- ════════════════════════════════════════════════════
-     JS: Section 7b — industries sticky + atmosphere
+     JS: Section 7b — unified platform sticky + atmosphere
 ════════════════════════════════════════════════════ -->
 <script>
 (function () {
-  var section = document.getElementById('industries');
+  var section = document.getElementById('unified-platform');
   if (!section) return;
 
   var steps  = section.querySelectorAll('.feature-step2');
@@ -1594,7 +1766,7 @@ $atmos2 = [
   var pips = Array.from({ length: steps.length }, function(_, i) {
     var btn = document.createElement('button');
     btn.className = 'feat-pip' + (i === 0 ? ' on' : '');
-    btn.setAttribute('aria-label', 'Go to industry ' + (i + 1));
+    btn.setAttribute('aria-label', 'Go to platform feature ' + (i + 1));
     btn.addEventListener('click', function() {
       steps[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
@@ -1637,37 +1809,19 @@ $atmos2 = [
    Each entry maps 1-to-1 to a repeater row.                  */
 $testimonials = [
   [
-    'company'    => 'Pfizer',
+    'company'    => 'Reference accounts pending',
     'dot'        => '#98C441',
-    'initials'   => 'SM',
-    'name'       => 'Sarah Mitchell',
-    'role'       => 'Senior Director of Global Operations',
-    'quote_html' => 'I want my team to have <span class="pg-hl">the best language services&nbsp;available</span> to them. Things that make their work easier and more precise. <span class="pg-hl">Piedmont Global is the partner for the&nbsp;job.</span>',
-    'learn_href' => '#',
-  ],
-  [
-    'company'    => 'Deloitte',
-    'dot'        => '#A8D44A',
-    'initials'   => 'JR',
-    'name'       => 'James Reynolds',
-    'role'       => 'VP of International Compliance',
-    'quote_html' => 'Piedmont Global manages our <span class="pg-hl">global compliance translations</span> with exceptional precision. Teams across <span class="pg-hl">twelve countries rely on them every day.</span>',
-    'learn_href' => '#',
-  ],
-  [
-    'company'    => 'HHS',
-    'dot'        => '#7AB520',
-    'initials'   => 'AK',
-    'name'       => 'Angela Kim',
-    'role'       => 'Director of Language Access Programs',
-    'quote_html' => 'For health communication across languages, accuracy isn\'t optional. <span class="pg-hl">Piedmont Global delivers exactly that</span> — reliably, at scale, across <span class="pg-hl">every program we run.</span>',
+    'initials'   => 'RH',
+    'name'       => '[Name and Title]',
+    'role'       => 'A regional health system serving [N] sites',
+    'quote_html' => '&ldquo;Language access used to mean three vendors, four invoices, and a separate audit log for every regulator. Connexus consolidated all of it into one platform with one bill - and we can finally see capacity before it becomes a crisis.&rdquo;',
     'learn_href' => '#',
   ],
 ];
 ?>
 
 <!-- ════════════════════════════════════════════════════
-     SECTION 9 · TESTIMONIAL + PHOTO STRIP + CTA BAR
+     SECTION 9 · CUSTOMER TESTIMONIAL
 ════════════════════════════════════════════════════ -->
 
 <style>
@@ -1791,7 +1945,7 @@ $testimonials = [
   <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background:
     radial-gradient(ellipse 70% 60% at 8%  50%, rgba(0,97,85,.24)    0%, transparent 58%),
     radial-gradient(ellipse 48% 42% at 92% 18%, rgba(152,196,65,.08) 0%, transparent 56%),
-    radial-gradient(ellipse 55% 35% at 50% 88%, rgba(0,97,85,.10)    0%, transparent 65%);"></div>
+    radial-gradient(ellipse 68% 58% at 50% 115%, rgba(0,97,85,.22)   0%, transparent 62%);"></div>
 
   <div class="relative z-10 mx-auto max-w-[1200px]">
 
@@ -1807,7 +1961,7 @@ $testimonials = [
       <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
         <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
         <div class="flex items-center gap-2 px-3 py-[7px]">
-          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">What clients are saying</span>
+          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Customer story preview</span>
         </div>
       </div>
     </div>
@@ -1819,10 +1973,9 @@ $testimonials = [
       <?php echo wp_kses_post($testimonials[0]['quote_html']); ?>
     </blockquote>
 
-    <?php /* ── Meta row: author LEFT · badges RIGHT ── */ ?>
-    <div class="mb-16 flex flex-wrap items-center justify-between gap-y-6">
+    <?php /* ── Attribution + inline CTA ── */ ?>
+    <div class="mb-16 flex flex-wrap items-center gap-y-6">
 
-      <?php /* ── Left: avatar + name/role + hairline + learn more ── */ ?>
       <div class="flex items-center">
 
         <?php /* Avatar with outer glow ring */ ?>
@@ -1859,121 +2012,189 @@ $testimonials = [
            class="group inline-flex items-center gap-2 text-[13.5px] font-medium text-white/40
                   transition-colors duration-200 hover:text-white/75
                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080F0F]">
-          Learn more
-          <svg width="15" height="12" viewBox="0 0 15 12" fill="none" aria-hidden="true"
-               class="transition-transform duration-200 group-hover:translate-x-1.5">
-            <path d="M8 1L14 6m0 0L8 11M14 6H1"
-                  stroke="currentColor" stroke-width="1.65"
-                  stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          Read the full story &gt;
         </a>
 
       </div>
 
-      <?php /* ── Right: company badges (clickable — switches testimonial) ── */ ?>
-      <div class="flex flex-wrap items-center gap-3" role="group" aria-label="Switch testimonial by company">
-        <?php foreach ($testimonials as $ti => $t) : ?>
-        <button type="button"
-                class="pg-co-badge testi-badge<?php echo $ti === 0 ? ' pg-co-badge--active' : ''; ?>"
-                data-testi="<?php echo $ti; ?>"
-                aria-pressed="<?php echo $ti === 0 ? 'true' : 'false'; ?>">
-          <span class="pg-co-badge-dot"
-                style="background:<?php echo esc_attr($t['dot']); ?>; color:<?php echo esc_attr($t['dot']); ?>"
-                aria-hidden="true"></span>
-          <?php echo esc_html($t['company']); ?>
-        </button>
-        <?php endforeach; ?>
-      </div>
-
     </div>
 
-    <?php /* ── Photo strip ── */ ?>
-    <?php
-    $photos = [
-      ['src' => 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&q=85',  'alt' => 'Mountain landscape at dusk'],
-      ['src' => 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=85',  'alt' => 'Aerial view of misty mountains'],
-      ['src' => 'https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=900&q=85',  'alt' => 'Sunlit forest road'],
-      ['src' => 'https://images.unsplash.com/photo-1511300636408-a63a89df3482?w=900&q=85',  'alt' => 'Foggy mountain valley'],
-    ];
-    ?>
-    <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">
-      <?php foreach ($photos as $i => $photo) : ?>
-      <div class="pg-photo-thumb <?php echo $i % 2 === 1 ? 'mt-4' : ''; ?>">
-        <img src="<?php echo esc_url($photo['src']); ?>"
-             alt="<?php echo esc_attr($photo['alt']); ?>"
-             loading="lazy" decoding="async">
+    <?php /* ── Logo strip placeholder ── */ ?>
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-3" aria-label="Reference account logo strip placeholder">
+      <?php foreach (['Hold for cleared reference accounts', 'Logo strip held for approval', 'No named accounts until rights confirmed'] as $placeholder) : ?>
+      <div class="rounded-[18px] border border-white/[.07] bg-white/[.035] px-5 py-6 text-center text-[12px] font-semibold uppercase tracking-[.11em] text-white/30">
+        <?php echo esc_html($placeholder); ?>
       </div>
       <?php endforeach; ?>
     </div>
 
-    <?php /* ── CTA bar ── */ ?>
-    <a href="#contact"
-       class="pg-cta-bar mt-2 flex items-center justify-between rounded-[22px] px-10 py-10 sm:px-16"
-       aria-label="Get started with Piedmont Global">
-      <span class="relative z-10 text-[clamp(2rem,4.2vw,3.4rem)] font-extrabold
-                   tracking-[-0.040em] text-[#0A1A1A]">
-        Get Started
-      </span>
-      <div class="pg-cta-arrow relative z-10 flex h-[62px] w-[62px] shrink-0 items-center
-                  justify-center rounded-full bg-[rgba(10,26,26,.16)]
-                  ring-1 ring-[rgba(10,26,26,.10)]">
-        <svg width="24" height="20" viewBox="0 0 24 20" fill="none" aria-hidden="true">
-          <path d="M13 1L23 10m0 0L13 19M23 10H1"
-                stroke="#0A1A1A" stroke-width="2.2"
-                stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-    </a>
-
   </div>
 </section>
 
-<script>
-/* ── Section 9 · Testimonial switcher ───────────────────────
-   Click any company badge to cross-fade the quote and swap
-   the author. Data is seeded from PHP for easy ACF migration:
-   replace the json_encode() value with get_field() output.   */
-(function () {
-  var testimonials = <?php echo json_encode(array_values($testimonials), JSON_HEX_TAG | JSON_HEX_AMP); ?>;
+<?php
+/**
+ * Section 13: Final CTA — Connexus demo booking
+ */
+?>
 
-  var quoteEl  = document.getElementById('testi-quote');
-  var avatarEl = document.getElementById('testi-avatar');
-  var nameEl   = document.getElementById('testi-name');
-  var roleEl   = document.getElementById('testi-role');
-  var badges   = document.querySelectorAll('.testi-badge');
-  var cur = -1; /* -1 so the seed call always runs */
+<style>
+/* ── CTA primary button ──────────────────────────────── */
+.cta-primary-btn {
+  background:
+    radial-gradient(ellipse 90% 150% at 16% 20%, rgba(255,255,255,.26) 0%, transparent 52%),
+    linear-gradient(108deg, #79B41E 0%, #98C441 38%, #B3DF52 72%, #C2EE60 100%);
+  position: relative; overflow: hidden;
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.30),
+    inset 0 -1.5px 0 rgba(0,0,0,.16),
+    0 0 0 1px rgba(0,0,0,.20),
+    0 22px 52px rgba(152,196,65,.22),
+    0 8px 22px rgba(0,0,0,.28);
+  transition: filter .22s, transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s;
+}
+/* Static top-left sheen */
+.cta-primary-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(112deg, rgba(255,255,255,.16) 0%, transparent 36%);
+  pointer-events: none; z-index: 1;
+}
+/* Hover shimmer sweep */
+@keyframes cta-shimmer {
+  0%   { transform: translateX(-130%) skewX(-14deg); }
+  100% { transform: translateX(260%)  skewX(-14deg); }
+}
+.cta-primary-btn::after {
+  content: ''; position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(90deg,
+    transparent 15%,
+    rgba(255,255,255,.28) 50%,
+    transparent 85%);
+  transform: translateX(-130%) skewX(-14deg);
+  pointer-events: none;
+}
+.cta-primary-btn:hover::after {
+  animation: cta-shimmer .68s cubic-bezier(.22,1,.36,1) forwards;
+}
+.cta-primary-btn:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255,255,255,.32),
+    inset 0 -1.5px 0 rgba(0,0,0,.16),
+    0 0 0 1px rgba(0,0,0,.20),
+    0 30px 68px rgba(152,196,65,.28),
+    0 12px 28px rgba(0,0,0,.34);
+}
+.cta-primary-btn:hover .cta-arrow {
+  background: rgba(11,26,26,.28);
+  transform: translateX(5px);
+}
+.cta-arrow { transition: background .18s, transform .24s cubic-bezier(.22,1,.36,1); }
 
-  function activateTesti(idx, animate) {
-    if (idx === cur) return;
-    cur = idx;
-    var t = testimonials[idx];
+/* ── CTA secondary button ────────────────────────────── */
+.cta-secondary-btn {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.055),
+    0 0 0 1px rgba(0,0,0,.15),
+    0 16px 40px rgba(0,0,0,.18);
+  transition: background .22s, border-color .22s,
+              transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s;
+}
+.cta-secondary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.065),
+    0 0 0 1px rgba(152,196,65,.10),
+    0 22px 56px rgba(0,0,0,.24);
+}
 
-    /* Update badge aria + active class */
-    badges.forEach(function (b, i) {
-      var on = i === idx;
-      b.classList.toggle('pg-co-badge--active', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
+/* ── Availability dot pulse ──────────────────────────── */
+@keyframes cta-dot-pulse {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(152,196,65,.55), 0 0 6px  rgba(152,196,65,.40); }
+  50%       { box-shadow: 0 0 0 4px rgba(152,196,65,.00), 0 0 12px rgba(152,196,65,.60); }
+}
+.badge-pulse { animation: cta-dot-pulse 2.6s ease-in-out infinite; }
+</style>
 
-    if (!animate) return; /* skip fade on first seed */
+<section class="relative overflow-hidden bg-[#080F0F] px-6 py-32 sm:px-12 sm:py-40 lg:px-16"
+         aria-labelledby="cta-heading">
 
-    /* Fade out → swap content → fade in */
-    quoteEl.classList.add('testi-quote--out');
-    setTimeout(function () {
-      quoteEl.innerHTML   = t.quote_html;
-      avatarEl.textContent = t.initials;
-      nameEl.textContent  = t.name;
-      roleEl.textContent  = t.role;
-      quoteEl.classList.remove('testi-quote--out');
-    }, 180);
-  }
+  <?php /* ── Multi-layer mesh atmosphere ── */ ?>
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true"
+       style="background:
+         radial-gradient(ellipse 72% 64% at 50% 52%,  rgba(0,97,85,.26)    0%, transparent 58%),
+         radial-gradient(ellipse 46% 36% at 12%  8%,  rgba(152,196,65,.10) 0%, transparent 52%),
+         radial-gradient(ellipse 42% 32% at 88% 94%,  rgba(0,97,85,.12)    0%, transparent 50%),
+         radial-gradient(ellipse 68% 55% at 50%  0%,  rgba(0,97,85,.22)    0%, transparent 60%),
+         radial-gradient(ellipse 78% 62% at 50% 108%, rgba(152,196,65,.26) 0%, transparent 60%),
+         radial-gradient(ellipse 38% 50% at  0% 50%,  rgba(0,0,0,.20)      0%, transparent 55%),
+         radial-gradient(ellipse 38% 50% at 100% 50%, rgba(0,0,0,.20)      0%, transparent 55%),
+         linear-gradient(180deg, #080F0F 0%, #0D1E1E 32%, #0D1E1E 68%, #080F0F 100%);">
+  </div>
 
-  badges.forEach(function (b, i) {
-    b.addEventListener('click', function () { activateTesti(i, true); });
-  });
+  <?php /* ── Top hairline seam — gradient bridges testimonial → CTA ── */ ?>
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-px" aria-hidden="true"
+       style="background: linear-gradient(to right,
+         transparent 5%,
+         rgba(0,97,85,.22) 28%,
+         rgba(152,196,65,.18) 50%,
+         rgba(0,97,85,.22) 72%,
+         transparent 95%);">
+  </div>
 
-  activateTesti(0, false); /* seed badge state, no animation */
-})();
-</script>
+  <?php /* ── Centered content glow halo — lit backdrop behind CTA ── */ ?>
+  <div class="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[760px]
+              -translate-x-1/2 -translate-y-1/2 rounded-full"
+       aria-hidden="true"
+       style="background: radial-gradient(ellipse 75% 65% at 50% 50%,
+                rgba(152,196,65,.058) 0%, transparent 72%);
+              filter: blur(2px);">
+  </div>
 
+  <?php /* ── Bottom floor hairline ── */ ?>
+  <div class="pointer-events-none absolute bottom-0 left-1/2 h-px w-[58%] -translate-x-1/2"
+       aria-hidden="true"
+       style="background: linear-gradient(to right, transparent, rgba(152,196,65,.26), transparent);">
+  </div>
+
+  <div class="relative z-10 mx-auto flex max-w-[660px] flex-col items-center text-center">
+
+    <?php /* Eyebrow */ ?>
+    <div class="mb-9 inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+      <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+      <div class="flex items-center gap-2 px-3 py-[7px]">
+        <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Live workflow demo</span>
+      </div>
+    </div>
+
+    <?php /* Heading */ ?>
+    <h2 id="cta-heading"
+        class="mb-6 text-[clamp(2.35rem,5.7vw,3.85rem)] font-extrabold leading-[1.03]
+               tracking-[-0.045em] text-[#F2EFE9]">
+      See Connexus inside<br>your workflow.
+    </h2>
+
+    <?php /* Body */ ?>
+    <p class="mb-14 max-w-[500px] text-[16px] font-light leading-[1.80] text-[#F2EFE9]/50">
+      Bring your call flow, compliance questions, and integration stack. We will show how Connexus routes, records, and reports interpretation across the systems you already run.
+    </p>
+
+    <?php /* ── HubSpot embed form ── */ ?>
+    <div class="w-full max-w-[520px] text-left">
+      <script src="https://js.hsforms.net/forms/embed/22423917.js" defer></script>
+      <div class="hs-form-frame"
+           data-region="na1"
+           data-form-id="40af2630-b243-4860-b484-8a15e2cc3895"
+           data-portal-id="22423917"></div>
+    </div>
+
+    <?php /* Trust signal */ ?>
+    <p class="mt-10 flex items-center gap-2.5 text-[11.5px] text-[#F2EFE9]/22">
+      <span class="badge-pulse block h-[5px] w-[5px] shrink-0 rounded-full"
+            style="background:rgba(152,196,65,.60);" aria-hidden="true"></span>
+      Live walkthroughs only. No automated recordings, no generic deck.
+    </p>
+
+  </div>
+</section>
 <?php get_footer(); ?>
