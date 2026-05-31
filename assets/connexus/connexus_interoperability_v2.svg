@@ -1,0 +1,84 @@
+<svg width="680" height="680" viewBox="0 0 680 680" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="logog" x1="1" y1="0" x2="0.92" y2="1.07" gradientUnits="objectBoundingBox">
+<stop offset="0.2" stop-color="#98C441"/>
+<stop offset="1" stop-color="#4C934B"/>
+</linearGradient>
+<radialGradient id="aura" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#96C23E" stop-opacity="0.16"/>
+<stop offset="100%" stop-color="#96C23E" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="core" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#1e3d1e"/>
+<stop offset="100%" stop-color="#0c1c0c"/>
+</radialGradient>
+</defs>
+
+<circle cx="340" cy="300" r="230" fill="url(#aura)"/>
+<circle cx="340" cy="300" r="155" fill="none" stroke="#96C23E" stroke-width="0.5" stroke-opacity="0.18"/>
+<circle cx="340" cy="300" r="96" fill="url(#core)"/>
+<circle cx="340" cy="300" r="96" fill="none" stroke="#96C23E" stroke-width="1" stroke-opacity="0.55"/>
+<circle cx="340" cy="300" r="108" fill="none" stroke="#96C23E" stroke-width="0.4" stroke-opacity="0.18"/>
+
+<line x1="278" y1="240" x2="175" y2="135" stroke="#96C23E" stroke-width="0.7" stroke-opacity="0.45"/>
+<circle cx="226" cy="188" r="2.5" fill="#96C23E" fill-opacity="0.8"/>
+<line x1="402" y1="240" x2="505" y2="135" stroke="#96C23E" stroke-width="0.7" stroke-opacity="0.45"/>
+<circle cx="453" cy="188" r="2.5" fill="#96C23E" fill-opacity="0.8"/>
+<line x1="436" y1="300" x2="578" y2="280" stroke="#96C23E" stroke-width="0.7" stroke-opacity="0.45"/>
+<circle cx="506" cy="290" r="2.5" fill="#96C23E" fill-opacity="0.8"/>
+<line x1="402" y1="360" x2="505" y2="460" stroke="#96C23E" stroke-width="0.7" stroke-opacity="0.45"/>
+<circle cx="453" cy="410" r="2.5" fill="#96C23E" fill-opacity="0.8"/>
+<line x1="340" y1="396" x2="340" y2="450" stroke="#96C23E" stroke-width="0.7" stroke-opacity="0.45"/>
+<circle cx="340" cy="424" r="2.5" fill="#96C23E" fill-opacity="0.8"/>
+<line x1="278" y1="360" x2="175" y2="460" stroke="#96C23E" stroke-width="0.7" stroke-opacity="0.45"/>
+<circle cx="226" cy="410" r="2.5" fill="#96C23E" fill-opacity="0.8"/>
+<line x1="244" y1="300" x2="102" y2="280" stroke="#96C23E" stroke-width="0.7" stroke-opacity="0.45"/>
+<circle cx="172" cy="290" r="2.5" fill="#96C23E" fill-opacity="0.8"/>
+
+<rect x="105" y="107" width="140" height="44" rx="10" fill="#0d1a0d" stroke="#96C23E" stroke-width="0.8" stroke-opacity="0.55"/>
+<text x="175" y="134" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="13" font-weight="500" fill="white">Twilio</text>
+
+<rect x="435" y="107" width="150" height="44" rx="10" fill="#0d1a0d" stroke="#96C23E" stroke-width="0.8" stroke-opacity="0.55"/>
+<text x="510" y="126" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="11" font-weight="500" fill="white">Amazon Web</text>
+<text x="510" y="142" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="11" font-weight="500" fill="white">Services</text>
+
+<rect x="584" y="258" width="88" height="44" rx="10" fill="#0d1a0d" stroke="#96C23E" stroke-width="0.8" stroke-opacity="0.55"/>
+<text x="628" y="285" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="14" font-weight="600" fill="white" letter-spacing="1">NiCE</text>
+
+<rect x="425" y="450" width="160" height="44" rx="10" fill="#0d1a0d" stroke="#96C23E" stroke-width="0.8" stroke-opacity="0.55"/>
+<text x="505" y="477" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="12" font-weight="500" fill="white">Amazon Connect</text>
+
+<rect x="270" y="450" width="140" height="44" rx="10" fill="#0d1a0d" stroke="#96C23E" stroke-width="0.8" stroke-opacity="0.55"/>
+<text x="340" y="477" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="13" font-weight="500" fill="white">Talkdesk</text>
+
+<rect x="105" y="450" width="140" height="44" rx="10" fill="#0d1a0d" stroke="#96C23E" stroke-width="0.8" stroke-opacity="0.55"/>
+<text x="175" y="477" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="13" font-weight="500" fill="white">Five9</text>
+
+<rect x="8" y="258" width="140" height="44" rx="10" fill="#0d1a0d" stroke="#96C23E" stroke-width="0.8" stroke-opacity="0.55"/>
+<text x="78" y="285" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="12" font-weight="500" fill="white" letter-spacing="0.3">Genesys</text>
+
+<!-- Logo: 113x113 at scale 0.48 = 54.24px. Center at 340,300. translate = 340-27.12=312.88, 300-27.12=272.88 -->
+<g transform="translate(312.88, 272.88) scale(0.48)">
+<path d="M88.209 37.6569V26.4607C88.209 25.7235 87.6117 25.1257 86.8745 25.1252L26.4541 25.0783C25.716 25.0777 25.1174 25.6758 25.1174 26.4139V61.3496C25.1174 62.0872 25.7154 62.6852 26.453 62.6852H36.3405C37.0782 62.6852 37.6761 62.0872 37.6761 61.3496V38.9501C37.6761 38.212 38.2749 37.6138 39.013 37.6145L88.2038 37.6622C88.2067 37.6622 88.209 37.6598 88.209 37.6569ZM101.805 75.2159C101.068 75.2159 100.47 75.8139 100.47 76.5515V98.9523C100.47 99.6899 99.8717 100.288 99.1341 100.288H26.453C25.7154 100.288 25.1174 100.886 25.1174 101.623V111.488C25.1174 112.226 25.7154 112.824 26.453 112.824H111.693C112.43 112.824 113.028 112.226 113.028 111.488V76.5515C113.028 75.8139 112.43 75.2159 111.693 75.2159H101.805ZM11.2231 112.824C11.9607 112.824 12.5587 112.226 12.5587 111.488V101.623C12.5587 100.886 11.9607 100.288 11.2231 100.288H1.33559C0.597964 100.288 0 100.886 0 101.623V111.488C0 112.226 0.597964 112.824 1.33559 112.824H11.2231ZM111.718 12.3269C112.445 12.3134 113.028 11.7195 113.028 10.9916V1.33559C113.028 0.597962 112.43 0 111.693 0H1.33559C0.597961 0 0 0.597964 0 1.33559V86.4163C0 87.1539 0.597964 87.7519 1.33559 87.7519H87.911L76.7856 75.2159H13.8943C13.1567 75.2159 12.5587 74.618 12.5587 73.8803V13.8716C12.5587 13.134 13.1567 12.536 13.8943 12.536H100.47L111.718 12.3269Z" fill="url(#logog)"/>
+<path d="M112.889 26.4003V36.292C112.889 37.0222 112.297 37.6141 111.567 37.6141H101.653C100.922 37.6141 100.33 37.0222 100.33 36.292V26.4003C100.33 25.6701 100.922 25.0781 101.653 25.0781H111.567C112.297 25.0781 112.889 25.6701 112.889 26.4003Z" fill="url(#logog)"/>
+</g>
+<text x="340" y="345" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="11" font-weight="500" fill="white" letter-spacing="2.5" opacity="0.9">CONNEXUS</text>
+
+<line x1="95" y1="538" x2="585" y2="538" stroke="#96C23E" stroke-width="0.4" stroke-opacity="0.35"/>
+<text x="340" y="534" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="8" font-weight="400" fill="#96C23E" letter-spacing="3" opacity="0.7">HEALTHCARE INTEROPERABILITY  ·  HL7 FHIR CERTIFIED</text>
+
+<line x1="190" y1="554" x2="270" y2="554" stroke="#96C23E" stroke-width="0.7" stroke-opacity="0.4"/>
+<circle cx="230" cy="554" r="2" fill="#96C23E" fill-opacity="0.65"/>
+<line x1="410" y1="554" x2="490" y2="554" stroke="#96C23E" stroke-width="0.7" stroke-opacity="0.4"/>
+<circle cx="450" cy="554" r="2" fill="#96C23E" fill-opacity="0.65"/>
+
+<rect x="130" y="562" width="120" height="44" rx="10" fill="#0d1a0d" stroke="#96C23E" stroke-width="0.8" stroke-opacity="0.55"/>
+<text x="190" y="589" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="13" font-weight="500" fill="white">Epic</text>
+
+<rect x="280" y="562" width="120" height="44" rx="10" fill="#0d1a0d" stroke="#96C23E" stroke-width="0.8" stroke-opacity="0.55"/>
+<text x="340" y="589" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="13" font-weight="500" fill="white">Redox</text>
+
+<rect x="430" y="562" width="120" height="44" rx="10" fill="#0d1a0d" stroke="#96C23E" stroke-width="0.8" stroke-opacity="0.55"/>
+<text x="490" y="581" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="15" font-weight="600" fill="#96C23E">95+</text>
+<text x="490" y="597" text-anchor="middle" font-family="'Inter','Helvetica Neue',sans-serif" font-size="8" font-weight="400" fill="white" letter-spacing="1.5" opacity="0.7">EHR SYSTEMS</text>
+</svg>

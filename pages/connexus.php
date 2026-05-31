@@ -82,8 +82,8 @@ $features2 = [
     'glow'    => 'rgba(0,97,85,.28)',
   ],
 ];
-$pills_r1 = ['Community Healthcare','Healthcare','Manufacturing','K-12 Education','Government','Contact Centers'];
-$pills_r2 = ['Contact Centers','Government','K-12 Education','Manufacturing','Healthcare','Community Healthcare'];
+$pills_r1 = ['Patient Intake','Informed Consent','Behavioral Health Visits','Pre-Shift Safety Briefings','OSHA Inspections','New Hire Onboarding'];
+$pills_r2 = ['IEP Meetings','Parent-Teacher Conferences','Benefits Enrollment','Constituent Calls','After-Hours Coverage','Compliance Audits'];
 
 $pill_grads = [
   'linear-gradient(94deg,rgba(255,255,255,.07) 0%,rgba(152,196,65,.28) 100%)',
@@ -189,7 +189,7 @@ $pill_grads = [
 
 /* ── Supporting sub-copy ─────────────────────────────── */
 .speed-sub {
-  font-size: 15px; line-height: 1.78;
+  font-size: 16px; line-height: 1.84;
   color: rgba(242,239,233,.36);
   margin-top: 22px;
   max-width: 400px;
@@ -275,20 +275,16 @@ $pill_grads = [
   <div class="relative z-10 mx-auto max-w-6xl px-6 pb-10 pt-24 text-center lg:pb-14 lg:pt-32">
 
     <div class="mb-8 flex justify-center">
-      <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
-        <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
-        <div class="flex items-center gap-2 px-3 py-[7px]">
-          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Language Services &amp; Strategic Growth</span>
-        </div>
-      </div>
+      <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/logo.svg'); ?>"
+           alt="Connexus" class="h-10 w-auto select-none sm:h-12">
     </div>
 
     <h1 class="text-[clamp(2.35rem,5.7vw,3.85rem)]  mx-auto max-w-2xl font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9] drop-shadow-[0_18px_60px_rgba(0,0,0,.28)]">
-    Connect every conversation, in every language, in seconds.
+    Connect every conversation, in 300+ languages, in seconds.
     </h1>
 
-    <p class="mx-auto mt-6  text-base font-normal mx-auto max-w-2xl leading-[1.82] text-[#F2EFE9]/58">
-    Connexus™ is Piedmont Global's enterprise interpretation management platform. Human interpretation in 300+ languages, real-time AI interpretation for scale, and one portal for scheduling, billing, compliance, and reporting - delivered under one SLA.    </p>
+    <p class="mx-auto mt-6  text-[16px] font-normal mx-auto max-w-2xl leading-[1.84] text-[#F2EFE9]/58">
+    One platform for every interpreted conversation. Connexus™ unifies human interpretation in 300+ languages, including ASL, with real-time AI interpretation for scale - scheduling, billing, compliance, and reporting under a single SLA.    </p>
 
     <div class="mt-11 flex flex-wrap items-center justify-center gap-2.5">
       <a href="#contact"
@@ -313,39 +309,10 @@ $pill_grads = [
       </a>
     </div>
 
-    <?php
-    $avatars = [
-      ['initials' => 'JL', 'bg' => '#2D4C3A'],
-      ['initials' => 'MR', 'bg' => '#2A3E4C'],
-      ['initials' => 'AK', 'bg' => '#3C4A2E'],
-      ['initials' => 'TP', 'bg' => '#3A2D4A'],
-    ];
-    ?>
     <div class="mt-8 flex justify-center">
-      <div class="inline-flex items-center gap-[14px] rounded-full border border-white/[.07] bg-white/[.04] py-2.5 pl-2.5 pr-5">
-        <div class="flex items-center" aria-hidden="true">
-          <?php foreach ($avatars as $i => $av) : ?>
-          <span class="flex h-[28px] w-[28px] items-center justify-center rounded-full border-2 border-[#080F0F] text-[8.5px] font-bold text-[#F2EFE9]/65 <?php echo $i > 0 ? '-ml-2' : ''; ?>"
-                style="background:<?php echo esc_attr($av['bg']); ?>; position:relative; z-index:<?php echo 10 - $i; ?>">
-            <?php echo esc_html($av['initials']); ?>
-          </span>
-          <?php endforeach; ?>
-        </div>
-
-        <div class="h-[18px] w-px bg-white/[.10]" aria-hidden="true"></div>
-
-        <div class="flex items-center gap-0.5" aria-label="5 stars">
-          <?php for ($i = 0; $i < 5; $i++) : ?>
-          <svg width="11" height="11" viewBox="0 0 12 12" fill="#98C441" aria-hidden="true">
-            <path d="M6 1l1.4 2.8 3.1.45-2.25 2.2.53 3.1L6 8.1l-2.78 1.45.53-3.1L1.5 4.25l3.1-.45z"/>
-          </svg>
-          <?php endfor; ?>
-        </div>
-
-        <div class="h-[18px] w-px bg-white/[.10]" aria-hidden="true"></div>
-
-        <p class="text-[12.5px] font-normal leading-[1.4] tracking-[-0.01em] text-[#F2EFE9]/45">
-        Trusted across hospitals and federally qualified health centers, multi-plant manufacturers, K-12 districts, government agencies, and contact centers.
+      <div class="inline-flex max-w-[760px] items-center justify-center rounded-full border border-white/[.07] bg-white/[.04] px-7 py-2.5">
+        <p class="text-[12.5px] font-medium leading-[1.4] tracking-[-0.005em] text-[#F2EFE9]/52">
+          Available on <span class="font-semibold text-[#F2EFE9]/80">NASPO ValuePoint</span> and the <span class="font-semibold text-[#F2EFE9]/80">GSA Schedule</span>. Epic SMART on FHIR ready and HIPAA-compliant.
         </p>
       </div>
     </div>
@@ -414,12 +381,12 @@ $pill_grads = [
     radial-gradient(ellipse 62% 48% at 50% 50%,  rgba(0,97,85,.18)   0%, transparent 60%),
     radial-gradient(ellipse 42% 30% at 50% 12%,  rgba(152,196,65,.10) 0%, transparent 68%),
     radial-gradient(ellipse 58% 40% at 50% 100%, rgba(152,196,65,.10) 0%, transparent 65%);"></div>
-  <img src="https://framerusercontent.com/images/DL1CwjDuNaGH88jNAq23UH2bk0c.png?width=1728&height=815"
+  <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/300plus.png'); ?>"
        alt="" aria-hidden="true" loading="lazy" decoding="async" width="1728" height="815"
-       class="absolute left-1/2 top-1/2 h-auto w-[62vw] max-w-[920px] -translate-x-1/2 -translate-y-1/2 object-contain object-center pointer-events-none select-none opacity-60">
+       class="absolute left-1/2 top-1/2 h-auto w-[62vw] max-w-[920px] -translate-x-1/2 -translate-y-1/2 object-contain object-center pointer-events-none select-none opacity-[.30]">
   <div class="relative z-10 mx-auto max-w-[700px] text-center">
     <h2 class="text-[clamp(1.5rem,2.6vw,2.5rem)] font-extrabold leading-[1.22] tracking-[-0.032em] text-[#F2EFE9]">
-    Behind every interpreted encounter at Piedmont Global - across hospitals and health centers, K-12 classrooms, manufacturing floors, government agencies, and contact center queues.
+    300+ Languages on one platform, delivered over the phone, by video, and onsite - with a real-time AI Interpreter in 50+ languages for scale. One SLA across every mode.
     </h2>
   </div>
 </section>
@@ -575,9 +542,9 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
     </h2>
 
     <?php /* Body */ ?>
-    <div class="mx-auto mt-8  space-y-4 text-center text-[clamp(.95rem,1.4vw,1.08rem)] font-light leading-[1.88] text-[#F2EFE9]/52">
+    <div class="mx-auto mt-8  space-y-4 text-center text-[16px] font-light leading-[1.84] text-[#F2EFE9]/52">
       <p>Every patient enrollment, every contact center call, every classroom conversation, every safety briefing on the plant floor now has a language access dimension. Compliance assumes it. Workers depend on it. Audit logs have to prove it. And most organizations are still managing it with a dial-in number and a scheduling spreadsheet.</p>
-      <p>It is not anyone's fault. The industry has worked this way for decades. With Connexus, that changes.</p>
+      <p>It is not anyone's fault. The industry has worked this way for decades. Connexus is how that changes.</p>
     </div>
 
   </div>
@@ -587,7 +554,7 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
     <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
       <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
       <div class="flex items-center gap-2 px-3 py-[7px]">
-        <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Sectors &amp; Functions</span>
+        <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">For Every Moment that Needs Language Access</span>
       </div>
     </div>
   </div>
@@ -675,8 +642,8 @@ $speed_steps = [
   [
     'num'     => '01',
     'label'   => 'Outcome 1',
-    'head'    => "Instant clinical-grade\ninterpretation",
-    'sub'     => 'Connect to a qualified interpreter in seconds, not minutes. Across 300+ languages, delivered in the modality your workflow requires.',
+    'head'    => 'Get Near Instant Access to Qualified Interpretation',
+    'sub'     => 'Connect to a qualified interpreter in seconds, not minutes - across 300+ languages, in the modality your workflow requires.',
     'img_src' => get_template_directory_uri() . '/assets/connexus/appointments.png',
     'img_alt' => 'Connexus appointments and interpreter scheduling interface',
     'glow'    => 'rgba(92,195,250,.22)',
@@ -684,8 +651,8 @@ $speed_steps = [
   [
     'num'     => '02',
     'label'   => 'Outcome 2',
-    'head'    => "Audit-ready encounter\ndocumentation",
-    'sub'     => 'Every interaction automatically recorded for compliance. Title VI, Section 1557, Joint Commission, and state Medicaid requirements embedded in every record.',
+    'head'    => 'Audit-Ready Interaction Records',
+    'sub'     => 'Every interpreted session is documented automatically. Title VI, Section 1557, Joint Commission, OSHA, and state Medicaid requirements are built into every record.',
     'img_src' => get_template_directory_uri() . '/assets/connexus/compliance.png',
     'img_alt' => 'Connexus compliance and audit-ready documentation interface',
     'glow'    => 'rgba(158,110,230,.25)',
@@ -693,8 +660,8 @@ $speed_steps = [
   [
     'num'     => '03',
     'label'   => 'Outcome 3',
-    'head'    => "Scalable language access\ninfrastructure",
-    'sub'     => 'Meet demand without expanding headcount. AI Interpreter handles real-time volume; credentialed human interpreters reserved for high-stakes encounters.',
+    'head'    => 'Scalable Language Access Infrastructure',
+    'sub'     => 'Meet demand without expanding headcount. The AI Interpreter handles real-time volume, with credentialed humans on the high-stakes calls and automatic fallback the moment accuracy dips.',
     'img_src' => get_template_directory_uri() . '/assets/connexus/users-roster-detail.png',
     'img_alt' => 'Connexus interpreter roster and capacity management interface',
     'glow'    => 'rgba(250,117,248,.22)',
@@ -812,7 +779,7 @@ $speed_total = count($speed_steps);
 
       <?php /* Supporting copy */ ?>
       <p class="mt-6 text-base leading-[1.84] text-[#F2EFE9]/44">
-        Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP and native integration with Twilio Flex, Genesys, Five9, NICE, Talkdesk, and Amazon Connect. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). Fits the stack you have. No rip-and-replace.
+        Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, and Amazon Connect. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.
       </p>
 
       <?php /* Subtle platform chips */ ?>
@@ -863,77 +830,6 @@ $speed_total = count($speed_steps);
 </section>
 
 
-
-<!-- ════════════════════════════════════════════════════
-     SECTION 6b · AI INTERPRETER
-════════════════════════════════════════════════════ -->
-<section class="relative overflow-hidden bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-40" aria-label="Connexus AI Interpreter">
-
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background:
-    radial-gradient(ellipse 62% 85% at 84% 52%,   rgba(0,97,85,.22)    0%, transparent 55%),
-    radial-gradient(ellipse 50% 65% at 16% 44%,   rgba(152,196,65,.08) 0%, transparent 58%),
-    radial-gradient(ellipse 70% 35% at 50% -5%,   rgba(152,196,65,.08) 0%, transparent 65%),
-    radial-gradient(ellipse 60% 30% at 50% 108%,  rgba(0,97,85,.10)    0%, transparent 68%);"></div>
-
-  <div class="relative z-10 mx-auto grid max-w-[1140px] grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
-
-    <?php /* ── Left: repeated image card ── */ ?>
-    <div class="flex items-center justify-center lg:justify-start">
-      <div class="w-full max-w-[460px]">
-        <div class="relative overflow-hidden rounded-[22px]"
-             style="
-               background: rgba(12,24,24,.88);
-               border: 1px solid rgba(242,239,233,.075);
-               box-shadow:
-                 inset 0 1.5px 0 rgba(255,255,255,.055),
-                 0 32px 90px rgba(0,0,0,.46),
-                 0 0 0 1px rgba(0,0,0,.20);
-             ">
-          <div class="absolute inset-x-0 top-0 h-px pointer-events-none z-10"
-               style="background: linear-gradient(to right, transparent 5%, rgba(152,196,65,.30) 35%, rgba(152,196,65,.22) 65%, transparent 95%);"
-               aria-hidden="true"></div>
-          <div class="pointer-events-none absolute inset-x-0 top-0 h-32"
-               style="background: radial-gradient(ellipse 80% 100% at 50% -10%, rgba(152,196,65,.10) 0%, transparent 70%);"
-               aria-hidden="true"></div>
-          <img src="https://framerusercontent.com/images/pRTepi2wStAhn0iR4AR9ul4BPI.png?width=1920&height=1080"
-               alt="Connexus AI Interpreter interface"
-               loading="lazy" decoding="async"
-               class="relative z-[1] block h-auto w-full opacity-[.86]">
-        </div>
-      </div>
-    </div>
-
-    <?php /* ── Right: copy ── */ ?>
-    <div>
-      <div class="mb-8 inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
-        <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
-        <div class="flex items-center gap-2 px-3 py-[7px]">
-          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">AI Interpreter</span>
-        </div>
-      </div>
-
-      <h2 class="text-[clamp(2.35rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
-        Meet the Connexus AI Interpreter.
-      </h2>
-
-      <p class="mt-5 text-[13px] font-semibold tracking-[.005em] text-white/48">
-        Real-time AI interpretation, governed by linguists.
-      </p>
-
-      <p class="mt-6 text-base leading-[1.84] text-[#F2EFE9]/50">
-        The Speech-to-Speech AI Interpreter handles surge volume in 50+ languages with under-one-second latency and 95%+ accuracy on domain-adapted language pairs. Real-time confidence scoring runs on every call, with automatic fallback to a credentialed human interpreter the moment accuracy drops below threshold. Linguists with sector expertise build the glossary and run the QA loop. The AI is the engine. Language professionals stay in control.
-      </p>
-
-      <a href="#"
-         class="group mt-8 inline-flex items-center gap-2 text-[13.5px] font-semibold text-[#98C441]
-                transition-all duration-200 hover:gap-3.5
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080F0F]">
-        Learn how the AI Interpreter works &gt;
-      </a>
-    </div>
-
-  </div>
-</section>
 
 
 <!-- ════════════════════════════════════════════════════
@@ -1121,7 +1017,7 @@ $speed_total = count($speed_steps);
             </div>
 
             <?php /* Body */ ?>
-            <div class="space-y-3.5 max-w-[420px] text-[14.5px] leading-[1.88] text-white/50">
+            <div class="space-y-3.5 max-w-[420px] text-[16px] leading-[1.84] text-white/50">
               <?php echo wp_kses_post($f['body']); ?>
             </div>
 
@@ -1336,6 +1232,73 @@ $speed_total = count($speed_steps);
 </script>
 
 
+<!-- ════════════════════════════════════════════════════
+     SECTION 8 · AI INTERPRETER (placed where bento was — temporary)
+════════════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-40" aria-label="Connexus AI Interpreter">
+
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background:
+    radial-gradient(ellipse 62% 85% at 84% 52%,   rgba(0,97,85,.22)    0%, transparent 55%),
+    radial-gradient(ellipse 50% 65% at 16% 44%,   rgba(152,196,65,.08) 0%, transparent 58%),
+    radial-gradient(ellipse 70% 35% at 50% -5%,   rgba(152,196,65,.08) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 30% at 50% 108%,  rgba(0,97,85,.10)    0%, transparent 68%);"></div>
+
+  <div class="relative z-10 mx-auto grid max-w-[1140px] grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
+
+    <?php /* ── Left: repeated image card ── */ ?>
+    <div class="flex items-center justify-center lg:justify-start">
+      <div class="w-full max-w-[460px]">
+        <div class="relative overflow-hidden rounded-[22px]"
+             style="
+               background: rgba(12,24,24,.88);
+               border: 1px solid rgba(242,239,233,.075);
+               box-shadow:
+                 inset 0 1.5px 0 rgba(255,255,255,.055),
+                 0 32px 90px rgba(0,0,0,.46),
+                 0 0 0 1px rgba(0,0,0,.20);
+             ">
+          <div class="absolute inset-x-0 top-0 h-px pointer-events-none z-10"
+               style="background: linear-gradient(to right, transparent 5%, rgba(152,196,65,.30) 35%, rgba(152,196,65,.22) 65%, transparent 95%);"
+               aria-hidden="true"></div>
+          <div class="pointer-events-none absolute inset-x-0 top-0 h-32"
+               style="background: radial-gradient(ellipse 80% 100% at 50% -10%, rgba(152,196,65,.10) 0%, transparent 70%);"
+               aria-hidden="true"></div>
+          <img src="https://framerusercontent.com/images/pRTepi2wStAhn0iR4AR9ul4BPI.png?width=1920&height=1080"
+               alt="Connexus AI Interpreter interface"
+               loading="lazy" decoding="async"
+               class="relative z-[1] block h-auto w-full opacity-[.86]">
+        </div>
+      </div>
+    </div>
+
+    <?php /* ── Right: copy ── */ ?>
+    <div>
+      <div class="mb-8 inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+        <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 px-3 py-[7px]">
+          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">AI Interpreter</span>
+        </div>
+      </div>
+
+      <h2 class="text-[clamp(2.35rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
+        Meet the Connexus AI Interpreter.
+      </h2>
+
+      <p class="mt-5 text-[13px] font-semibold tracking-[.005em] text-white/48">
+        Real-time AI interpretation, governed by linguists.
+      </p>
+
+      <p class="mt-6 text-base leading-[1.84] text-[#F2EFE9]/50">
+        The Speech-to-Speech AI Interpreter handles surge volume in 50+ languages with under-one-second latency and 95%+ accuracy on domain-adapted language pairs. Real-time confidence scoring runs on every call, with automatic fallback to a credentialed human interpreter the moment accuracy drops below threshold. Linguists with sector expertise build the glossary and run the QA loop. The AI is the engine. Language professionals stay in control.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+
+<?php if (false) : /* ── Bento grid disabled for now ───────────────────── */ ?>
 <?php
 /**
  * Section: Feature Bento Grid
@@ -1607,6 +1570,7 @@ $col_classes = [
     </div>
   </div>
 </section>
+<?php endif; /* ── End bento grid (disabled) ───────────────────── */ ?>
 
 
 <!-- ════════════════════════════════════════════════════
@@ -1718,7 +1682,7 @@ $atmos2 = [
               <span class="text-[12.5px] font-semibold tracking-[.005em] text-white/48"><?php echo esc_html($f['tag']); ?></span>
             </div>
 
-            <div class="space-y-3.5 max-w-[420px] text-[14.5px] leading-[1.88] text-white/50">
+            <div class="space-y-3.5 max-w-[420px] text-[16px] leading-[1.84] text-white/50">
               <?php echo wp_kses_post($f['body']); ?>
             </div>
 
@@ -2175,7 +2139,7 @@ $testimonials = [
     </h2>
 
     <?php /* Body */ ?>
-    <p class="mb-14 max-w-[500px] text-[16px] font-light leading-[1.80] text-[#F2EFE9]/50">
+    <p class="mb-14 max-w-[500px] text-[16px] font-light leading-[1.84] text-[#F2EFE9]/50">
       Bring your call flow, compliance questions, and integration stack. We will show how Connexus routes, records, and reports interpretation across the systems you already run.
     </p>
 
