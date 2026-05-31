@@ -817,7 +817,7 @@ $speed_total = count($speed_steps);
                style="background: radial-gradient(ellipse 80% 100% at 50% -10%, rgba(152,196,65,.10) 0%, transparent 70%);"
                aria-hidden="true"></div>
 
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/test.png'); ?>"
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/connexus_circle_preview.svg'); ?>"
                alt="Connexus integrations and connected platform stack"
                loading="lazy" decoding="async"
                class="relative z-[1] block h-auto w-full opacity-[.86]">
