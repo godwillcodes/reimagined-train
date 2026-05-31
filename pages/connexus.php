@@ -16,8 +16,8 @@ $sub     = 'Piedmont Global connects your business to the world — with precisi
 $features = [
   [
     'label'   => 'Interpreter Access',
-    'heading' => 'Get a qualified interpreter on the line in under 60 seconds.',
-    'tag'     => 'Smart routing that matches language, certification, and specialty automatically.',
+    'heading' => 'Get Near Instant Access to Qualified Interpretation',
+    'tag'     => 'Connect to a qualified interpreter in seconds, not minutes - across 300+ languages, including ASL, in the modality your workflow requires.',
     'body'    => '<p>When language access takes too long, callers hang up, clinicians fall behind, agents make the wrong call, and the safety briefing on the plant floor lands on workers who cannot follow it. The cost is a missed appointment, a lost claim, a recordable incident, a regulatory inquiry.</p><p>Connexus routes every request through automatic call distribution filtered by language, certification, specialty, and gender preference. Queue position and wait estimates show before the request goes in. American Sign Language and Spanish are 24/7 video; other languages route through Over-the-Phone or Onsite Interpretation as the workflow requires.</p>',
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/qualified-interpreter.png',
@@ -26,8 +26,8 @@ $features = [
   ],
   [
     'label'   => 'Compliance Proof',
-    'heading' => 'Prove compliance the moment a regulator asks.',
-    'tag'     => 'Audit-ready records, generated automatically.',
+    'heading' => 'Audit-Ready Interaction Records',
+    'tag'     => 'Generated automatically. Ready the moment a regulator asks.',
     'body'    => '<p>Most organizations cannot produce a clean record of every interpreted encounter from the last twelve months. Records live in different systems. Credentials live in a spreadsheet. Attestation language is missing. When the regulator asks, the answer is "we are working on it."</p><p>Connexus generates a complete call detail record for every session: interpreter credentials, language pair, timestamps, modality, and attestation language structured for the frameworks that govern your work - Title VI, Section 1557, Joint Commission, state Medicaid, OSHA hazard communication, and federal language access mandates. For our healthcare clients, encounter IDs and MRN/FIN capture roll up to Medicaid reimbursement automatically.</p>',
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/compliance2.png',
@@ -67,18 +67,19 @@ $features2 = [
     'tag'     => 'One pane of glass for AI and human interpretation.',
     'body'    => '<p>Most language access programs stitch together separate vendors for phone, video, onsite, and AI. Each has its own portal, its own SLA, its own invoice. Operations cannot see capacity in one view. Finance cannot reconcile against one source. Compliance cannot pull from one record.</p><p>Connexus delivers Over-the-Phone, Video Remote, Onsite, and Speech-to-Speech AI Interpretation through one dashboard, one SLA, one set of audit logs. Same accuracy reporting across every modality. Same credentialing across every interpreter. One platform replaces the sprawl.</p>',
     'cta'     => null,
-    'img_src' => 'https://framerusercontent.com/images/lFhfMRQo5RH0Thw2igSZaeXOsrk.png?scale-down-to=1024&width=2700&height=2198',
-    'img_alt' => 'Unified interpretation platform dashboard',
+    'img_src' => get_template_directory_uri() . '/assets/connexus/connexus_one_platform_dark.svg',
+    'img_alt' => 'One Connexus platform unifying every interpretation modality',
     'glow'    => 'rgba(92,195,250,.20)',
   ],
   [
     'label'   => 'Embedded Workflow',
-    'heading' => 'Show up inside the workflow that already exists.',
-    'tag'     => 'Embedded at the system of record.',
-    'body'    => '<p>New tools that sit outside the workflow do not get used. Clinicians will not switch screens to launch an interpretation session. Contact center agents will not leave the queue to dial out. A safety officer will not open a separate portal to schedule a Karen interpreter for tomorrow\'s shift change.</p><p>Connexus lives inside the workflow your team already runs. For contact center and enterprise teams, native SIP integration and embedded controls inside Twilio Flex, Genesys, Five9, NICE, Talkdesk, and Amazon Connect put interpretation a click away from the agent\'s screen. And for our healthcare clients, Epic SMART on FHIR (in final certification) launches interpretation directly from the patient chart.</p>',
+    'heading' => 'Embedded, and built to fit your stack.',
+    'tag'     => 'Built to fit the stack you already run.',
+    'body'    => '<p>New tools that sit outside the workflow do not get used. Clinicians will not switch screens to launch an interpretation session. Contact center agents will not leave the queue to dial out. A safety officer will not open a separate portal to schedule a Karen interpreter for tomorrow\'s shift change.</p><p>Connexus lives inside the workflow your team already runs. Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, and Amazon Connect. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.</p>',
     'cta'     => null,
-    'img_src' => 'https://framerusercontent.com/images/tIy3VlZuPyD8qjM1ivJXb332aNk.png?scale-down-to=1024&width=1350&height=1080',
-    'img_alt' => 'Embedded interpretation workflow',
+    'img_src' => get_template_directory_uri() . '/assets/connexus/connexus_orbit_final.svg',
+    'img_alt' => 'Connexus embedded across the platforms and systems you already run',
+    'img_class' => 'scale-[1.34] !opacity-100',
     'glow'    => 'rgba(0,97,85,.28)',
   ],
 ];
@@ -275,8 +276,12 @@ $pill_grads = [
   <div class="relative z-10 mx-auto max-w-6xl px-6 pb-10 pt-24 text-center lg:pb-14 lg:pt-32">
 
     <div class="mb-8 flex justify-center">
-      <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/logo.svg'); ?>"
-           alt="Connexus" class="h-10 w-auto select-none sm:h-12">
+      <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+        <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 px-3 py-[7px]">
+          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Interpretation Management Platform</span>
+        </div>
+      </div>
     </div>
 
     <h1 class="text-[clamp(2.35rem,5.7vw,3.85rem)]  mx-auto max-w-2xl font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9] drop-shadow-[0_18px_60px_rgba(0,0,0,.28)]">
@@ -309,11 +314,36 @@ $pill_grads = [
       </a>
     </div>
 
-    <div class="mt-8 flex justify-center">
-      <div class="inline-flex max-w-[760px] items-center justify-center rounded-full border border-white/[.07] bg-white/[.04] px-7 py-2.5">
-        <p class="text-[12.5px] font-medium leading-[1.4] tracking-[-0.005em] text-[#F2EFE9]/52">
-          Available on <span class="font-semibold text-[#F2EFE9]/80">NASPO ValuePoint</span> and the <span class="font-semibold text-[#F2EFE9]/80">GSA Schedule</span>. Epic SMART on FHIR ready and HIPAA-compliant.
-        </p>
+    <?php
+    $credentials = ['NASPO ValuePoint', 'GSA Schedule', 'Epic SMART on FHIR', 'HIPAA-Compliant'];
+    ?>
+    <div class="mt-9 flex justify-center">
+      <div class="relative inline-flex items-center rounded-full p-px
+                  [background:linear-gradient(110deg,rgba(152,196,65,.55)_0%,rgba(242,239,233,.10)_28%,rgba(242,239,233,.05)_72%,rgba(0,97,85,.55)_100%)]
+                  [box-shadow:0_18px_50px_-14px_rgba(0,0,0,.65),0_0_42px_-12px_rgba(152,196,65,.32)]">
+        <div class="inline-flex flex-wrap items-center justify-center gap-y-2 rounded-full
+                    bg-[#0A1414]/85 px-2.5 py-[7px] backdrop-blur-xl
+                    [box-shadow:inset_0_1px_0_rgba(255,255,255,.07),inset_0_-1px_0_rgba(0,0,0,.45)]">
+
+          <span class="ml-1 mr-1.5 flex h-[22px] w-[22px] items-center justify-center rounded-full
+                       bg-[#98C441]/14 ring-1 ring-inset ring-[#98C441]/30" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M6 .85l3.85 1.45v3.1c0 2.45-1.6 4.25-3.85 5.15C3.75 9.65 2.15 7.85 2.15 5.4V2.3z" fill="#98C441" fill-opacity=".16"/>
+              <path d="M4.15 6.05l1.35 1.4 2.55-2.75" stroke="#98C441" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+
+          <?php foreach ($credentials as $ci => $c) : ?>
+            <?php if ($ci > 0) : ?>
+            <span class="mx-1 h-[11px] w-px bg-white/[.13]" aria-hidden="true"></span>
+            <?php endif; ?>
+            <span class="px-1.5 text-[11px] font-semibold uppercase tracking-[.12em] text-[#F2EFE9]/70
+                         transition-colors duration-200 hover:text-[#F2EFE9]">
+              <?php echo esc_html($c); ?>
+            </span>
+          <?php endforeach; ?>
+
+        </div>
       </div>
     </div>
 
@@ -327,14 +357,19 @@ $pill_grads = [
          style="background: radial-gradient(ellipse 70% 60% at 50% 58%, rgba(0,97,85,.28) 0%, transparent 68%);
                 filter: blur(4px); opacity: .55;"></div>
 
-    <?php /* ── Primary window · WelcomeModal ── */ ?>
-    <div class="relative overflow-hidden rounded-[14px] sm:rounded-[20px]"
-         style="background: #0C1C1C;
-                box-shadow:
-                  0 0 0 1px rgba(255,255,255,.09),
-                  inset 0 1.5px 0 rgba(255,255,255,.065),
-                  0 54px 140px rgba(0,0,0,.68),
-                  0 20px 50px rgba(0,0,0,.40);">
+    <?php /* ── Primary window · WelcomeModal · click to launch interactive demo ── */ ?>
+    <button type="button" id="cnx-demo-trigger"
+            data-navattic-open="https://capture.navattic.com/cmpu2jtc7008304l8bsn6bxn4"
+            data-navattic-title="Connexus | Connect every conversation, in 300+ languages + ASL, in seconds."
+            aria-label="Launch the interactive Connexus product demo"
+            class="group relative block w-full cursor-pointer appearance-none overflow-hidden rounded-[14px] text-left sm:rounded-[20px]
+                   focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-4 focus-visible:ring-offset-[#080F0F]"
+            style="background: #0C1C1C;
+                   box-shadow:
+                     0 0 0 1px rgba(255,255,255,.09),
+                     inset 0 1.5px 0 rgba(255,255,255,.065),
+                     0 54px 140px rgba(0,0,0,.68),
+                     0 20px 50px rgba(0,0,0,.40);">
 
       <?php /* Browser chrome */ ?>
       <div class="flex items-center gap-3 border-b border-white/[.06] px-4 py-[11px]" aria-hidden="true">
@@ -358,9 +393,36 @@ $pill_grads = [
            alt="Connexus admin dashboard — platform overview and welcome screen"
            loading="eager" decoding="async"
            width="2165" height="1483"
-           class="block w-full select-none">
+           class="block w-full select-none transition-transform duration-[1.2s] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.012]">
 
-    </div>
+      <?php /* ── Launch overlay — minimal, brightens on hover ── */ ?>
+      <span class="pointer-events-none absolute inset-0 z-20 flex items-center justify-center
+                   bg-[#06100F]/0 transition-colors duration-400 group-hover:bg-[#06100F]/40" aria-hidden="true">
+        <span class="flex items-center gap-3.5 rounded-full border border-white/[.12] bg-[#0A1414]/72 py-2.5 pl-2.5 pr-6
+                     opacity-0 backdrop-blur-md transition-all duration-400
+                     [box-shadow:0_18px_50px_-10px_rgba(0,0,0,.6),0_0_40px_-12px_rgba(152,196,65,.4)]
+                     translate-y-2 group-hover:translate-y-0 group-hover:opacity-100">
+          <span class="flex h-11 w-11 items-center justify-center rounded-full
+                       [background:linear-gradient(135deg,#B3DF52_0%,#98C441_42%,#006155_100%)]
+                       [box-shadow:inset_0_1px_0_rgba(255,255,255,.4),0_6px_18px_rgba(152,196,65,.4)]">
+            <svg width="15" height="15" viewBox="0 0 12 12" fill="#06140F"><path d="M3.1 1.55v8.9l7.1-4.45z"/></svg>
+          </span>
+          <span>
+            <span class="block text-[14px] font-bold leading-tight tracking-[-0.01em] text-[#F2EFE9]">Launch interactive demo</span>
+            <span class="block text-[11.5px] leading-tight text-[#F2EFE9]/48">Explore Connexus right in your browser</span>
+          </span>
+        </span>
+      </span>
+
+      <?php /* Persistent corner cue — always-on affordance */ ?>
+      <span class="pointer-events-none absolute right-3.5 top-[52px] z-20 inline-flex items-center gap-1.5 rounded-full
+                   border border-white/[.10] bg-[#0A1414]/70 px-2.5 py-1 backdrop-blur-md
+                   transition-opacity duration-300 group-hover:opacity-0 sm:right-5 sm:top-[60px]" aria-hidden="true">
+        <span class="badge-pulse block h-[5px] w-[5px] rounded-full" style="background:#98C441;"></span>
+        <span class="text-[10px] font-semibold uppercase tracking-[.12em] text-[#F2EFE9]/55">Live demo</span>
+      </span>
+
+    </button>
 
     <?php /* Bottom fade — dissolves screenshot into the marquee section */ ?>
     <div class="pointer-events-none absolute inset-x-0 bottom-0 h-44 sm:h-56" aria-hidden="true"
@@ -381,9 +443,9 @@ $pill_grads = [
     radial-gradient(ellipse 62% 48% at 50% 50%,  rgba(0,97,85,.18)   0%, transparent 60%),
     radial-gradient(ellipse 42% 30% at 50% 12%,  rgba(152,196,65,.10) 0%, transparent 68%),
     radial-gradient(ellipse 58% 40% at 50% 100%, rgba(152,196,65,.10) 0%, transparent 65%);"></div>
-  <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/300plus.png'); ?>"
+  <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/300.svg'); ?>"
        alt="" aria-hidden="true" loading="lazy" decoding="async" width="1728" height="815"
-       class="absolute left-1/2 top-1/2 h-auto w-[62vw] max-w-[920px] -translate-x-1/2 -translate-y-1/2 object-contain object-center pointer-events-none select-none opacity-[.30]">
+       class="absolute left-1/2 top-1/2 h-auto w-[62vw] max-w-[920px] -translate-x-1/2 -translate-y-1/2 object-contain object-center pointer-events-none select-none opacity-[.15]">
   <div class="relative z-10 mx-auto max-w-[700px] text-center">
     <h2 class="text-[clamp(1.5rem,2.6vw,2.5rem)] font-extrabold leading-[1.22] tracking-[-0.032em] text-[#F2EFE9]">
     300+ Languages on one platform, delivered over the phone, by video, and onsite - with a real-time AI Interpreter in 50+ languages for scale. One SLA across every mode.
@@ -554,7 +616,7 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
     <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
       <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
       <div class="flex items-center gap-2 px-3 py-[7px]">
-        <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">For Every Moment that Needs Language Access</span>
+        <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Built For Every Moment that Needs Language Access</span>
       </div>
     </div>
   </div>
@@ -1280,7 +1342,7 @@ $speed_total = count($speed_steps);
         </div>
       </div>
 
-      <h2 class="text-[clamp(2.35rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
+      <h2 class="text-[clamp(2rem,4.2vw,3.4rem)] font-extrabold leading-[1.08] tracking-[-0.042em] text-[#F2EFE9]">
         Meet the Connexus AI Interpreter.
       </h2>
 
@@ -1289,7 +1351,7 @@ $speed_total = count($speed_steps);
       </p>
 
       <p class="mt-6 text-base leading-[1.84] text-[#F2EFE9]/50">
-        The Speech-to-Speech AI Interpreter handles surge volume in 50+ languages with under-one-second latency and 95%+ accuracy on domain-adapted language pairs. Real-time confidence scoring runs on every call, with automatic fallback to a credentialed human interpreter the moment accuracy drops below threshold. Linguists with sector expertise build the glossary and run the QA loop. The AI is the engine. Language professionals stay in control.
+        Meet demand without expanding headcount. The Speech-to-Speech AI Interpreter handles surge volume in 50+ languages with under-one-second latency and 95%+ accuracy on domain-adapted language pairs. Real-time confidence scoring runs on every call, with automatic fallback to a credentialed human interpreter the moment accuracy drops below threshold. Linguists with sector expertise build the glossary and run the QA loop. The AI is the engine. Language professionals stay in control.
       </p>
 
     </div>
@@ -1642,7 +1704,8 @@ $atmos2 = [
                  aria-hidden="true"></div>
             <img src="<?php echo esc_url($f['img_src']); ?>"
                  alt="<?php echo esc_attr($f['img_alt']); ?>"
-                 loading="lazy" decoding="async">
+                 loading="lazy" decoding="async"
+                 class="<?php echo esc_attr($f['img_class'] ?? ''); ?>">
           </div>
 
           <?php /* Caption */ ?>
@@ -1767,6 +1830,7 @@ $atmos2 = [
 </script>
 
 
+<?php if (false) : /* ── Testimonial section disabled for now ── */ ?>
 <?php
 /* ─── Section 9 · Testimonials ──────────────────────────────
    ACF migration: swap static values for get_field() calls.
@@ -1983,17 +2047,9 @@ $testimonials = [
 
     </div>
 
-    <?php /* ── Logo strip placeholder ── */ ?>
-    <div class="grid grid-cols-1 gap-2 sm:grid-cols-3" aria-label="Reference account logo strip placeholder">
-      <?php foreach (['Hold for cleared reference accounts', 'Logo strip held for approval', 'No named accounts until rights confirmed'] as $placeholder) : ?>
-      <div class="rounded-[18px] border border-white/[.07] bg-white/[.035] px-5 py-6 text-center text-[12px] font-semibold uppercase tracking-[.11em] text-white/30">
-        <?php echo esc_html($placeholder); ?>
-      </div>
-      <?php endforeach; ?>
-    </div>
-
   </div>
 </section>
+<?php endif; /* ── End testimonial (disabled) ── */ ?>
 
 <?php
 /**
@@ -2152,13 +2208,139 @@ $testimonials = [
            data-portal-id="22423917"></div>
     </div>
 
-    <?php /* Trust signal */ ?>
-    <p class="mt-10 flex items-center gap-2.5 text-[11.5px] text-[#F2EFE9]/22">
-      <span class="badge-pulse block h-[5px] w-[5px] shrink-0 rounded-full"
-            style="background:rgba(152,196,65,.60);" aria-hidden="true"></span>
-      Live walkthroughs only. No automated recordings, no generic deck.
-    </p>
-
   </div>
 </section>
+
+
+<!-- ════════════════════════════════════════════════════
+     INTERACTIVE DEMO · Navattic pop-up + desktop-only guard
+════════════════════════════════════════════════════ -->
+<?php /* Navattic pop-up embed loader */ ?>
+<script src="https://js.navattic.com/embeds.js" async></script>
+
+<?php /* Branded "desktop only" warning modal (shown when launched on small screens) */ ?>
+<div id="cnx-demo-modal" class="fixed inset-0 z-[99998] hidden items-center justify-center px-5"
+     role="dialog" aria-modal="true" aria-labelledby="cnx-demo-modal-title">
+
+  <div class="absolute inset-0 bg-[#050A0A]/82 backdrop-blur-[6px] opacity-0 transition-opacity duration-300"
+       id="cnx-demo-modal-veil" data-cnx-demo-close></div>
+
+  <div id="cnx-demo-modal-card"
+       class="relative w-full max-w-[430px] rounded-[24px] p-px opacity-0 translate-y-3 scale-[.98] transition-all duration-300
+              [background:linear-gradient(135deg,rgba(152,196,65,.45)_0%,rgba(242,239,233,.08)_38%,rgba(242,239,233,.05)_62%,rgba(0,97,85,.45)_100%)]
+              [box-shadow:0_50px_130px_-20px_rgba(0,0,0,.8)]">
+    <div class="relative overflow-hidden rounded-[23px] bg-[#0A1414] px-7 py-9 text-center">
+
+      <?php /* Inner top glow */ ?>
+      <div class="pointer-events-none absolute inset-x-0 top-0 h-28" aria-hidden="true"
+           style="background: radial-gradient(ellipse 80% 100% at 50% -10%, rgba(152,196,65,.12) 0%, transparent 70%);"></div>
+
+      <?php /* Desktop icon */ ?>
+      <div class="relative mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl
+                  bg-[#98C441]/12 ring-1 ring-inset ring-[#98C441]/25">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="2.6" y="3.4" width="18.8" height="13" rx="2.1" stroke="#98C441" stroke-width="1.6"/>
+          <path d="M8.5 20.6h7M12 16.4v4.2" stroke="#98C441" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <h2 id="cnx-demo-modal-title"
+          class="text-[22px] font-extrabold leading-[1.15] tracking-[-0.03em] text-[#F2EFE9]">
+        Best experienced on desktop
+      </h2>
+      <p class="mx-auto mt-3 max-w-[330px] text-[14px] font-light leading-[1.6] text-[#F2EFE9]/55">
+        The interactive Connexus demo isn&rsquo;t optimized for mobile yet. Open this page on a desktop or larger screen to explore the full experience.
+      </p>
+
+      <div class="mt-7 flex flex-col items-center gap-3">
+        <a href="#contact" data-cnx-demo-close
+           class="cnx-demo-cta inline-flex w-full items-center justify-center gap-1.5 rounded-[10px] bg-[#98C441] px-5 py-[11px] text-[14px] font-bold text-[#080F0F]
+                  transition hover:-translate-y-px hover:bg-[#A6D34E]
+                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A1414]">
+          Book a live demo
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 6h8M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <button type="button" data-cnx-demo-close
+                class="text-[13px] font-medium text-[#F2EFE9]/45 transition-colors hover:text-[#F2EFE9]/75
+                       focus-visible:outline-none focus-visible:underline">
+          Maybe later
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var trigger = document.getElementById('cnx-demo-trigger');
+  var modal   = document.getElementById('cnx-demo-modal');
+  if (!trigger || !modal) return;
+
+  var veil = document.getElementById('cnx-demo-modal-veil');
+  var card = document.getElementById('cnx-demo-modal-card');
+  var isMobile = function () {
+    return window.matchMedia('(max-width: 1023px)').matches;
+  };
+
+  var lastFocus = null;
+
+  function openModal() {
+    lastFocus = document.activeElement;
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.documentElement.style.overflow = 'hidden';
+    /* next frame → transition in */
+    requestAnimationFrame(function () {
+      if (veil) veil.classList.add('opacity-100');
+      if (card) {
+        card.classList.add('opacity-100');
+        card.classList.remove('translate-y-3', 'scale-[.98]');
+      }
+    });
+    var cta = modal.querySelector('.cnx-demo-cta');
+    if (cta) cta.focus();
+  }
+
+  function closeModal() {
+    if (veil) veil.classList.remove('opacity-100');
+    if (card) {
+      card.classList.remove('opacity-100');
+      card.classList.add('translate-y-3', 'scale-[.98]');
+    }
+    window.setTimeout(function () {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.documentElement.style.overflow = '';
+    }, 280);
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  /* Capture phase: intercept BEFORE Navattic's handler so the pop-up never
+     opens on mobile/tablet — we show the desktop-only notice instead. */
+  trigger.addEventListener('click', function (e) {
+    if (isMobile()) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      openModal();
+    }
+  }, true);
+
+  /* Close interactions */
+  modal.addEventListener('click', function (e) {
+    if (e.target.closest('[data-cnx-demo-close]')) {
+      var closer = e.target.closest('[data-cnx-demo-close]');
+      /* Let the "Book a live demo" anchor navigate, but still close */
+      if (closer.tagName === 'A') { closeModal(); return; }
+      e.preventDefault();
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+  });
+})();
+</script>
+
 <?php get_footer(); ?>
