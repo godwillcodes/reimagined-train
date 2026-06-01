@@ -1,0 +1,45 @@
+<svg width="680" height="520" viewBox="0 0 680 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="aifill" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#96C23E" stop-opacity="0.2"/>
+<stop offset="100%" stop-color="#96C23E" stop-opacity="0.01"/>
+</linearGradient>
+<clipPath id="pc"><rect x="72" y="30" width="530" height="248"/></clipPath>
+</defs>
+<rect width="680" height="520" rx="12" fill="#062416"/>
+<text x="72" y="20" font-family="'Courier New',monospace" font-size="11" font-weight="700" fill="rgba(150,194,62,0.6)" letter-spacing="0.18em">CONFIDENCE SCORE / REAL-TIME SESSION</text>
+<text x="64" y="34"  text-anchor="end" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="rgba(255,255,255,0.45)">100%</text>
+<text x="64" y="96"  text-anchor="end" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="rgba(255,255,255,0.45)">90%</text>
+<text x="64" y="158" text-anchor="end" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="rgba(255,255,255,0.45)">80%</text>
+<text x="64" y="220" text-anchor="end" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="rgba(255,255,255,0.45)">70%</text>
+<text x="64" y="278" text-anchor="end" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="rgba(255,255,255,0.45)">60%</text>
+<line x1="72" y1="30"  x2="602" y2="30"  stroke="rgba(150,194,62,0.09)" stroke-width="0.5"/>
+<line x1="72" y1="92"  x2="602" y2="92"  stroke="rgba(150,194,62,0.09)" stroke-width="0.5"/>
+<line x1="72" y1="154" x2="602" y2="154" stroke="rgba(150,194,62,0.09)" stroke-width="0.5"/>
+<line x1="72" y1="216" x2="602" y2="216" stroke="rgba(150,194,62,0.09)" stroke-width="0.5"/>
+<line x1="72" y1="278" x2="602" y2="278" stroke="rgba(150,194,62,0.09)" stroke-width="0.5"/>
+<line x1="72" y1="142" x2="602" y2="142" stroke="rgba(150,194,62,0.5)" stroke-width="1.2" stroke-dasharray="7 5"/>
+<g clip-path="url(#pc)">
+<polygon points="72,56 103,52 134,50 165,54 196,49 227,52 258,57 289,53 320,58 351,62 382,66 400,142 382,142 351,142 320,142 289,142 258,142 227,142 196,142 165,142 134,142 103,142 72,142" fill="url(#aifill)"/>
+<polyline points="72,56 103,52 134,50 165,54 196,49 227,52 258,57 289,53 320,58 351,62 382,66 400,142" fill="none" stroke="#96C23E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="400,142 426,164 452,154 478,160 504,152 530,158 556,153 580,159 602,154" fill="none" stroke="rgba(255,210,80,0.9)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<line x1="400" y1="30" x2="400" y2="278" stroke="rgba(255,255,255,0.18)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="400" y="298" text-anchor="middle" font-family="'Courier New',monospace" font-size="11" font-weight="700" fill="rgba(255,255,255,0.5)" letter-spacing="0.12em">HANDOFF</text>
+<rect x="72"  y="342" width="328" height="20" rx="4" fill="rgba(150,194,62,0.1)"  stroke="rgba(150,194,62,0.28)"  stroke-width="0.8"/>
+<rect x="402" y="342" width="200" height="20" rx="4" fill="rgba(255,210,80,0.07)" stroke="rgba(255,210,80,0.22)" stroke-width="0.8"/>
+<text x="236" y="356" text-anchor="middle" font-family="'Courier New',monospace" font-size="11" font-weight="700" fill="#96C23E"              letter-spacing="0.12em">AI · 62% OF SESSION</text>
+<text x="502" y="356" text-anchor="middle" font-family="'Courier New',monospace" font-size="11" font-weight="700" fill="rgba(255,210,80,0.85)" letter-spacing="0.12em">HUMAN · 38%</text>
+<line x1="72" y1="398" x2="104" y2="398" stroke="#96C23E" stroke-width="2.5" stroke-linecap="round"/>
+<text x="114" y="403" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">AI interpreter active</text>
+<line x1="72" y1="422" x2="104" y2="422" stroke="rgba(255,210,80,0.9)" stroke-width="2.5" stroke-linecap="round"/>
+<text x="114" y="427" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">Human interpreter (automatic fallback)</text>
+<line x1="72" y1="446" x2="104" y2="446" stroke="rgba(150,194,62,0.55)" stroke-width="1.2" stroke-dasharray="7 5"/>
+<text x="114" y="451" font-family="'Courier New',monospace" font-size="13" font-weight="700" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">Accuracy threshold</text>
+<text x="602" y="398" text-anchor="end" font-family="'Courier New',monospace" font-size="22" font-weight="700" fill="#96C23E">&lt;1s</text>
+<text x="602" y="414" text-anchor="end" font-family="'Courier New',monospace" font-size="11" font-weight="700" fill="rgba(255,255,255,0.4)" letter-spacing="0.1em">LATENCY</text>
+<text x="602" y="438" text-anchor="end" font-family="'Courier New',monospace" font-size="22" font-weight="700" fill="#96C23E">95%+</text>
+<text x="602" y="454" text-anchor="end" font-family="'Courier New',monospace" font-size="11" font-weight="700" fill="rgba(255,255,255,0.4)" letter-spacing="0.1em">ACCURACY</text>
+<text x="602" y="474" text-anchor="end" font-family="'Courier New',monospace" font-size="22" font-weight="700" fill="#96C23E">50+</text>
+<text x="602" y="490" text-anchor="end" font-family="'Courier New',monospace" font-size="11" font-weight="700" fill="rgba(255,255,255,0.4)" letter-spacing="0.1em">LANGUAGES</text>
+</svg>

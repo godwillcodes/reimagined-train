@@ -190,7 +190,7 @@ $pill_grads = [
 
 /* ── Supporting sub-copy ─────────────────────────────── */
 .speed-sub {
-  font-size: 16px; line-height: 1.84;
+  font-size: 18px; line-height: 1.84;
   color: rgba(242,239,233,.36);
   margin-top: 22px;
   opacity: 0;
@@ -281,7 +281,7 @@ $pill_grads = [
     Connect every conversation, in 300+ languages, in seconds.
     </h1>
 
-    <p class="mx-auto mt-6  text-[16px] font-normal mx-auto max-w-2xl leading-[1.84] text-[#F2EFE9]/58">
+    <p class="mx-auto mt-6  text-[18px] font-normal mx-auto max-w-2xl leading-[1.84] text-[#F2EFE9]/58">
     One platform for every interpreted conversation. Connexus™ unifies human interpretation in 300+ languages, including ASL, with real-time AI interpretation for scale - scheduling, billing, compliance, and reporting under a single SLA.    </p>
 
     <div class="mt-11 flex flex-wrap items-center justify-center gap-2.5">
@@ -296,15 +296,16 @@ $pill_grads = [
           <path d="M2 6h8M6.5 3l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
-      <a href="#solutions"
-        class="inline-flex items-center gap-1.5 rounded-[8px] border border-white/[.09] px-[18px] py-[11px] text-base font-medium text-[#F2EFE9]/50 transition
+      <button type="button"
+        class="hs-cta-trigger-button hs-cta-trigger-button-214001920299
+          inline-flex cursor-pointer items-center gap-1.5 rounded-[8px] border border-white/[.09] px-[18px] py-[11px] text-base font-medium text-[#F2EFE9]/50 transition
           hover:border-white/[.18] hover:text-[#F2EFE9]/82
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20">
           Download Technical Requirements
         <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true" focusable="false">
           <path d="M3.5 2l4 3.5-4 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </a>
+      </button>
     </div>
 
     <?php
@@ -576,7 +577,7 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
     </h2>
 
     <?php /* Body */ ?>
-    <div class="mx-auto mt-8  space-y-4 text-center text-[16px] font-light leading-[1.84] text-[#F2EFE9]/52">
+    <div class="mx-auto mt-8  space-y-4 text-center text-[18px] font-light leading-[1.84] text-[#F2EFE9]/52">
       <p>Every patient enrollment, every contact center call, every classroom conversation, every safety briefing on the plant floor now has a language access dimension. Compliance assumes it. Workers depend on it. Audit logs have to prove it. And most organizations are still managing it with a dial-in number and a scheduling spreadsheet.</p>
       <p>It is not anyone's fault. The industry has worked this way for decades. Connexus is how that changes.</p>
     </div>
@@ -812,7 +813,7 @@ $speed_total = count($speed_steps);
       </h2>
 
       <?php /* Supporting copy */ ?>
-      <p class="mt-6 text-base leading-[1.84] text-[#F2EFE9]/44">
+      <p class="mt-6 text-[18px] leading-[1.84] text-[#F2EFE9]/44">
         Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, and Amazon Connect. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.
       </p>
 
@@ -1030,7 +1031,7 @@ $speed_total = count($speed_steps);
             </h2>
 
             <?php /* Body */ ?>
-            <div class="space-y-3.5 text-[17px] leading-[1.84] text-white/50">
+            <div class="space-y-3.5 text-[18px] leading-[1.84] text-white/50">
               <?php echo wp_kses_post($f['body']); ?>
             </div>
 
@@ -1260,25 +1261,11 @@ $speed_total = count($speed_steps);
     <?php /* ── Left: repeated image card ── */ ?>
     <div class="flex items-center justify-center lg:justify-start">
       <div class="w-full max-w-[460px]">
-        <div class="relative overflow-hidden rounded-[22px]"
-             style="
-               background: rgba(12,24,24,.88);
-               border: 1px solid rgba(242,239,233,.075);
-               box-shadow:
-                 inset 0 1.5px 0 rgba(255,255,255,.055),
-                 0 32px 90px rgba(0,0,0,.46),
-                 0 0 0 1px rgba(0,0,0,.20);
-             ">
-          <div class="absolute inset-x-0 top-0 h-px pointer-events-none z-10"
-               style="background: linear-gradient(to right, transparent 5%, rgba(152,196,65,.30) 35%, rgba(152,196,65,.22) 65%, transparent 95%);"
-               aria-hidden="true"></div>
-          <div class="pointer-events-none absolute inset-x-0 top-0 h-32"
-               style="background: radial-gradient(ellipse 80% 100% at 50% -10%, rgba(152,196,65,.10) 0%, transparent 70%);"
-               aria-hidden="true"></div>
-          <img src="https://framerusercontent.com/images/pRTepi2wStAhn0iR4AR9ul4BPI.png?width=1920&height=1080"
-               alt="Connexus AI Interpreter interface"
+        <div class="relative">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/ai_interpreter_threshold.svg'); ?>"
+               alt="Connexus AI Interpreter — real-time confidence threshold with human fallback"
                loading="lazy" decoding="async"
-               class="relative z-[1] block h-auto w-full opacity-[.86]">
+               class="relative z-[1] block h-auto w-full">
         </div>
       </div>
     </div>
@@ -1301,7 +1288,7 @@ $speed_total = count($speed_steps);
         Real-time AI interpretation, governed by linguists.
       </p>
 
-      <p class="mt-6 text-base leading-[1.84] text-[#F2EFE9]/50">
+      <p class="mt-6 text-[18px] leading-[1.84] text-[#F2EFE9]/50">
         Meet demand without expanding headcount. The Speech-to-Speech AI Interpreter handles surge volume in 50+ languages with under-one-second latency and 95%+ accuracy on domain-adapted language pairs. Real-time confidence scoring runs on every call, with automatic fallback to a credentialed human interpreter the moment accuracy drops below threshold. Linguists with sector expertise build the glossary and run the QA loop. The AI is the engine. Language professionals stay in control.
       </p>
 
@@ -1696,7 +1683,7 @@ $atmos2 = [
               <span class="text-[12.5px] font-semibold tracking-[.005em] text-white/48"><?php echo esc_html($f['tag']); ?></span>
             </div>
 
-            <div class="space-y-3.5 text-[17px] leading-[1.84] text-white/50">
+            <div class="space-y-3.5 text-[18px] leading-[1.84] text-white/50">
               <?php echo wp_kses_post($f['body']); ?>
             </div>
 
@@ -2146,7 +2133,7 @@ $testimonials = [
     </h2>
 
     <?php /* Body */ ?>
-    <p class="mb-14 max-w-[500px] text-[16px] font-light leading-[1.84] text-[#F2EFE9]/50">
+    <p class="mb-14 max-w-[500px] text-[18px] font-light leading-[1.84] text-[#F2EFE9]/50">
       Bring your call flow, compliance questions, and integration stack. We will show how Connexus routes, records, and reports interpretation across the systems you already run.
     </p>
 
