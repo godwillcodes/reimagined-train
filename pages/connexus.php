@@ -50,8 +50,8 @@ $features = [
     'tag'     => 'Usage-based pricing tied to every minute used.',
     'body'    => '<p>Most interpretation contracts charge a monthly platform fee on top of per-minute rates. Volume-variable buyers - FQHCs, school districts, multi-plant manufacturers, surge clients - end up subsidizing buyers with predictable demand. The invoice arrives as a single line item with no way to attribute cost to the department, plant, or location that generated it.</p><p>Connexus bills per minute used, reconciled to call detail records, with no platform fees on top. Cost attribution by department, plant, location, and (for healthcare clients) encounter is native to the platform. Finance reconciles in minutes, not days.</p>',
     'cta'     => null,
-    'img_src' => get_template_directory_uri() . '/assets/connexus/reconcile.png',
-    'img_alt' => 'Connexus cost reconciliation and usage reporting interface',
+    'img_src' => get_template_directory_uri() . '/assets/connexus/billing.png',
+    'img_alt' => 'Connexus billing and cost reconciliation interface',
     'glow'    => 'rgba(250,204,105,.22)',
   ],
 ];
@@ -830,31 +830,12 @@ $speed_total = count($speed_steps);
     <div class="flex items-center justify-center lg:justify-end">
       <div class="w-full max-w-[640px]">
 
-        <?php /* Glass card */ ?>
-        <div class="relative overflow-hidden rounded-[22px]"
-             style="
-               background: rgba(12,24,24,.88);
-               border: 1px solid rgba(242,239,233,.075);
-               box-shadow:
-                 inset 0 1.5px 0 rgba(255,255,255,.055),
-                 0 32px 90px rgba(0,0,0,.46),
-                 0 0 0 1px rgba(0,0,0,.20);
-             ">
-
-          <?php /* Top-edge accent line */ ?>
-          <div class="absolute inset-x-0 top-0 h-px pointer-events-none z-10"
-               style="background: linear-gradient(to right, transparent 5%, rgba(152,196,65,.30) 35%, rgba(152,196,65,.22) 65%, transparent 95%);"
-               aria-hidden="true"></div>
-
-          <?php /* Inner top glow */ ?>
-          <div class="pointer-events-none absolute inset-x-0 top-0 h-32"
-               style="background: radial-gradient(ellipse 80% 100% at 50% -10%, rgba(152,196,65,.10) 0%, transparent 70%);"
-               aria-hidden="true"></div>
-
+        <?php /* Clean floating graphic — no frame */ ?>
+        <div class="relative">
           <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/connexus_circle_preview.svg'); ?>"
                alt="Connexus integrations and connected platform stack"
                loading="lazy" decoding="async"
-               class="relative z-[1] block h-auto w-full opacity-[.86]">
+               class="relative z-[1] block h-auto w-full">
         </div>
 
       </div>
@@ -937,19 +918,6 @@ $speed_total = count($speed_steps);
 .feat-img-card {
   position: relative; overflow: hidden;
   border-radius: 26px;
-  border: 1px solid rgba(242,239,233,.08);
-  background: rgba(10,22,22,.92);
-  box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,.055),
-    0 32px 96px rgba(0,0,0,.46);
-  transition: box-shadow .7s cubic-bezier(.22,1,.36,1),
-              border-color .7s;
-}
-/* Inner ring sheen */
-.feat-img-card::after {
-  content: ''; position: absolute; inset: 0; border-radius: 26px;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.055);
-  pointer-events: none; z-index: 10;
 }
 /* Glow orb behind image */
 .feat-glow-orb {
@@ -965,14 +933,7 @@ $speed_total = count($speed_steps);
   transition: transform .7s cubic-bezier(.22,1,.36,1), opacity .5s;
   opacity: .88;
 }
-/* Active state: subtle scale */
-.feature-step.is-active .feat-img-card {
-  border-color: rgba(152,196,65,.16);
-  box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,.065),
-    0 40px 110px rgba(0,0,0,.52),
-    0 0 0 1px rgba(152,196,65,.09);
-}
+/* Active state: brighten only */
 .feature-step.is-active .feat-img-card img {
   opacity: 1;
 }
@@ -984,6 +945,22 @@ $speed_total = count($speed_steps);
   position: absolute; top: 0; left: 0;
   width: 100%;
   height: auto;
+}
+
+/* Section 7b graphics — clean floating vector art, no card frame or glow.
+   overflow:visible + object-contain so the full graphic always shows, uncropped. */
+#unified-platform .feat-img-card {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+#unified-platform .feat-img-card::after { display: none; }
+#unified-platform .feat-glow-orb { display: none; }
+#unified-platform .feat-img-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 /* ── Caption bar ──────────────────────────────────────── */
@@ -2110,7 +2087,7 @@ $testimonials = [
 .badge-pulse { animation: cta-dot-pulse 2.6s ease-in-out infinite; }
 </style>
 
-<section class="relative overflow-hidden bg-[#080F0F] px-6 py-32 sm:px-12 sm:py-40 lg:px-16"
+<section id="contact" class="relative overflow-hidden scroll-mt-24 bg-[#080F0F] px-6 py-32 sm:px-12 sm:py-40 lg:px-16"
          aria-labelledby="cta-heading">
 
   <?php /* ── Multi-layer mesh atmosphere ── */ ?>
