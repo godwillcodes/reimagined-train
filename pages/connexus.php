@@ -22,7 +22,7 @@ $features = [
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/qualified-interpreter.png',
     'img_alt' => 'Connexus interpreter routing and queue interface',
-    'glow'    => 'rgba(92,195,250,.22)',
+    'glow'    => 'rgba(152,196,65,.20)',
   ],
   [
     'label'   => 'Compliance Proof',
@@ -32,7 +32,7 @@ $features = [
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/compliance2.png',
     'img_alt' => 'Connexus audit-ready compliance records interface',
-    'glow'    => 'rgba(158,110,230,.25)',
+    'glow'    => 'rgba(0,97,85,.26)',
   ],
   [
     'label'   => 'Capacity Visibility',
@@ -42,7 +42,7 @@ $features = [
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/analytics.png',
     'img_alt' => 'Connexus real-time capacity and analytics dashboard',
-    'glow'    => 'rgba(250,117,248,.22)',
+    'glow'    => 'rgba(152,196,65,.20)',
   ],
   [
     'label'   => 'Cost Reconciliation',
@@ -52,7 +52,7 @@ $features = [
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/billing.png',
     'img_alt' => 'Connexus billing and cost reconciliation interface',
-    'glow'    => 'rgba(250,204,105,.22)',
+    'glow'    => 'rgba(0,97,85,.26)',
   ],
 ];
 
@@ -69,8 +69,8 @@ $features2 = [
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/connexus_one_platform_dark.svg',
     'img_alt' => 'One Connexus platform unifying every interpretation modality',
-    'img_class' => 'scale-[1.22] !opacity-100',
-    'glow'    => 'rgba(92,195,250,.20)',
+    'img_class' => 'lg:scale-[1.22] !opacity-100',
+    'glow'    => 'rgba(152,196,65,.20)',
   ],
   [
     'label'   => 'Embedded Workflow',
@@ -80,8 +80,8 @@ $features2 = [
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/connexus_orbit_final.svg',
     'img_alt' => 'Connexus embedded across the platforms and systems you already run',
-    'img_class' => 'scale-[1.34] !opacity-100',
-    'glow'    => 'rgba(0,97,85,.28)',
+    'img_class' => 'lg:scale-[1.34] !opacity-100',
+    'glow'    => 'rgba(0,97,85,.26)',
   ],
 ];
 $pills_r1 = ['Patient Intake','Informed Consent','Behavioral Health Visits','Pre-Shift Safety Briefings','OSHA Inspections','New Hire Onboarding'];
@@ -122,6 +122,86 @@ $pill_grads = [
 .grad-gold  { background-image: linear-gradient(90deg, #FAF5E7 0%, #CDEB72 48%, var(--pg-green) 100%); }
 .grad-bloom { background-image: linear-gradient(90deg, var(--pg-cream) 0%, #BFE163 46%, var(--pg-emerald) 100%); }
 .grad-rev   { background-image: linear-gradient(90deg, var(--pg-green) 0%, #DDEFA8 52%, var(--pg-cream) 100%); }
+
+
+/* ══════════════════════════════════════════════════════════════
+   PAGE ATMOSPHERE SYSTEM — "one light"
+   Green (152,196,65) = warm key light, always enters from the top.
+   Emerald (0,97,85)  = cool depth, always pools at the bottom/edges.
+   Intensity is locked to a 4-step scale; .28 is focal (hero + CTA only).
+   ══════════════════════════════════════════════════════════════ */
+:root {
+  --atmo-green: 152,196,65;
+  --atmo-deep:  0,97,85;
+  --i1: .06;   /* whisper  */
+  --i2: .12;   /* ambient  */
+  --i3: .20;   /* key      */
+  --i4: .28;   /* focal    */
+}
+
+/* Full-bleed field, sits behind section content */
+.cnx-atmo { position:absolute; inset:0; pointer-events:none; }
+
+/* Establishing / symmetric — green ceiling key, emerald floor */
+.cnx-atmo--center {
+  background:
+    radial-gradient(ellipse 64% 46% at 50% -10%, rgba(var(--atmo-green), var(--i3)) 0%, transparent 60%),
+    radial-gradient(ellipse 82% 40% at 50% 110%, rgba(var(--atmo-deep),  var(--i3)) 0%, transparent 64%),
+    radial-gradient(ellipse 40% 44% at 50%  46%, rgba(var(--atmo-deep),  var(--i1)) 0%, transparent 72%);
+}
+
+/* Key light LEFT — lights a left-side visual; emerald grounds lower-right */
+.cnx-atmo--left {
+  background:
+    radial-gradient(ellipse 58% 58% at 15% 32%, rgba(var(--atmo-green), var(--i2)) 0%, transparent 58%),
+    radial-gradient(ellipse 66% 54% at 84% 92%, rgba(var(--atmo-deep),  var(--i3)) 0%, transparent 60%),
+    radial-gradient(ellipse 74% 30% at 50% -6%, rgba(var(--atmo-deep),  var(--i2)) 0%, transparent 66%);
+}
+
+/* Key light RIGHT — mirror of left */
+.cnx-atmo--right {
+  background:
+    radial-gradient(ellipse 58% 58% at 85% 32%, rgba(var(--atmo-green), var(--i2)) 0%, transparent 58%),
+    radial-gradient(ellipse 66% 54% at 16% 92%, rgba(var(--atmo-deep),  var(--i3)) 0%, transparent 60%),
+    radial-gradient(ellipse 74% 30% at 50% -6%, rgba(var(--atmo-deep),  var(--i2)) 0%, transparent 66%);
+}
+
+/* Ambient — for very tall sticky sections; soft, centred wash */
+.cnx-atmo--ambient {
+  background:
+    radial-gradient(ellipse 50% 38% at 18% 42%, rgba(var(--atmo-deep),  var(--i3)) 0%, transparent 60%),
+    radial-gradient(ellipse 46% 34% at 84% 22%, rgba(var(--atmo-green), var(--i2)) 0%, transparent 62%),
+    linear-gradient(180deg, rgba(8,15,15,.24) 0%, rgba(11,26,26,.18) 50%, rgba(8,15,15,.22) 100%);
+}
+
+/* Uniform seams between sections */
+.cnx-seam-top {
+  position:absolute; inset-inline:0; top:0; height:10rem; pointer-events:none;
+  background: radial-gradient(ellipse 60% 100% at 50% 0%, rgba(var(--atmo-deep), var(--i2)) 0%, transparent 70%);
+}
+.cnx-seam-bottom {
+  position:absolute; inset-inline:0; bottom:0; height:9rem; pointer-events:none;
+  background: linear-gradient(to bottom, transparent, #080F0F);
+}
+
+/* Section-to-section vertical color flow.
+   Each section starts with the previous section's bottom tone and resolves into
+   the next section's top tone, so the page reads as one continuous gradient. */
+.cnx-flow-section {
+  background:
+    linear-gradient(180deg,
+      var(--cnx-flow-top) 0%,
+      var(--cnx-flow-mid) 52%,
+      var(--cnx-flow-bottom) 100%) !important;
+}
+.cnx-flow-hero         { --cnx-flow-top:#080F0F; --cnx-flow-mid:#0A1616; --cnx-flow-bottom:#081010; }
+.cnx-flow-problem      { --cnx-flow-top:#081010; --cnx-flow-mid:#0A1818; --cnx-flow-bottom:#0B1A1A; }
+.cnx-flow-speed        { --cnx-flow-top:#0B1A1A; --cnx-flow-mid:#0E1F1F; --cnx-flow-bottom:#0B1718; }
+.cnx-flow-integrations { --cnx-flow-top:#0B1718; --cnx-flow-mid:#0D1E1E; --cnx-flow-bottom:#0A1515; }
+.cnx-flow-features     { --cnx-flow-top:#0A1515; --cnx-flow-mid:#081010; --cnx-flow-bottom:#0B1718; }
+.cnx-flow-ai           { --cnx-flow-top:#0B1718; --cnx-flow-mid:#102222; --cnx-flow-bottom:#0D1E1E; }
+.cnx-flow-unified      { --cnx-flow-top:#0D1E1E; --cnx-flow-mid:#102223; --cnx-flow-bottom:#111F20; }
+.cnx-flow-cta          { --cnx-flow-top:#111F20; --cnx-flow-mid:#16292A; --cnx-flow-bottom:#1F3131; }
 
 
 .pg-surface {
@@ -178,7 +258,7 @@ $pill_grads = [
 /* ── Step number / category label ───────────────────── */
 .speed-num {
   display: block;
-  font-size: 11px; font-weight: 700; letter-spacing: .13em;
+  font-size: 10px; font-weight: 700; letter-spacing: .16em;
   text-transform: uppercase;
   color: rgba(152,196,65,.62);
   margin-bottom: 18px;
@@ -191,7 +271,7 @@ $pill_grads = [
 
 /* ── Supporting sub-copy ─────────────────────────────── */
 .speed-sub {
-  font-size: 18px; line-height: 1.84;
+  font-size: 15px; line-height: 1.84;
   color: rgba(242,239,233,.36);
   margin-top: 22px;
   opacity: 0;
@@ -204,6 +284,17 @@ $pill_grads = [
   opacity: 1;
   transform: none;
   pointer-events: auto;
+}
+@media (min-width: 640px) {
+  .speed-sub { font-size: 18px; }
+}
+
+/* Below lg the speed section is a simple stacked layout (no scroll narrative),
+   so every step's copy must be fully legible regardless of the scroll observer. */
+@media (max-width: 1023px) {
+  .speed-copy { opacity: 1 !important; transform: none !important; }
+  .speed-num  { opacity: 1 !important; transform: none !important; }
+  .speed-sub  { opacity: 1 !important; transform: none !important; }
 }
 
 /* ── Speed section: floating screenshot card ─────────── */
@@ -257,15 +348,15 @@ $pill_grads = [
 
   <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background:
     radial-gradient(ellipse 72% 48% at 50% -12%, rgba(152,196,65,.20) 0%, transparent 58%),
-    radial-gradient(ellipse 54% 36% at 50% 110%, rgba(0,97,85,.30) 0%, transparent 58%),
+    radial-gradient(ellipse 54% 36% at 50% 110%, rgba(0,97,85,.28) 0%, transparent 58%),
     linear-gradient(180deg, rgba(8,15,15,.58) 0%, rgba(14,31,31,.78) 52%, rgba(8,15,15,1) 100%);"></div>
 
   <div class="pointer-events-none absolute -top-28 left-1/2 h-[420px] w-[680px] -translate-x-1/2 blur-[2px]" aria-hidden="true"
-    style="background:radial-gradient(ellipse at 50% 30%,rgba(152,196,65,.16) 0%,transparent 70%)"></div>
+    style="background:radial-gradient(ellipse at 50% 30%,rgba(152,196,65,.12) 0%,transparent 70%)"></div>
 
-  <?php /* Bottom edge — a teal breath that bleeds into the seam below */ ?>
+  <?php /* Bottom edge — emerald depth pooling into the seam below */ ?>
   <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-40" aria-hidden="true"
-       style="background:radial-gradient(ellipse 60% 100% at 50% 100%, rgba(0,97,85,.20) 0%, transparent 70%)"></div>
+       style="background:radial-gradient(ellipse 60% 100% at 50% 100%, rgba(0,97,85,.12) 0%, transparent 70%)"></div>
 
   <div class="relative z-10 mx-auto max-w-6xl px-6 pb-10 pt-24 text-center lg:pb-14 lg:pt-32">
 
@@ -278,16 +369,16 @@ $pill_grads = [
       </div>
     </div>
 
-    <h1 class="text-[clamp(2.35rem,5.7vw,3.85rem)]  mx-auto max-w-2xl font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9] drop-shadow-[0_18px_60px_rgba(0,0,0,.28)]">
+    <h1 class="text-[clamp(2rem,5.7vw,3.85rem)]  mx-auto max-w-2xl font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9] drop-shadow-[0_18px_60px_rgba(0,0,0,.28)]">
     Connect every conversation, in 300+ languages, in seconds.
     </h1>
 
-    <p class="mx-auto mt-6  text-[18px] font-normal mx-auto max-w-2xl leading-[1.84] text-[#F2EFE9]/58">
+    <p class="mx-auto mt-6  text-[15px] sm:text-[18px] font-normal mx-auto max-w-2xl leading-[1.84] text-[#F2EFE9]/58">
     One platform for every interpreted conversation. Connexus™ unifies human interpretation in 300+ languages, including ASL, with real-time AI interpretation for scale - scheduling, billing, compliance, and reporting under a single SLA.    </p>
 
-    <div class="mt-11 flex flex-wrap items-center justify-center gap-2.5">
+    <div class="mt-11 flex w-full flex-col items-stretch justify-center gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
       <a href="#contact"
-        class="inline-flex items-center gap-1.5 rounded-[8px] bg-[#98C441] px-[22px] py-[11px] text-base font-bold text-[#080F0F] transition
+        class="inline-flex w-full items-center justify-center gap-1.5 rounded-[8px] bg-[#98C441] px-[22px] py-[13px] text-base font-bold text-[#080F0F] transition sm:w-auto sm:py-[11px]
           [box-shadow:inset_0_1px_0_rgba(255,255,255,.28),inset_0_-1px_0_rgba(0,0,0,.12),0_1px_3px_rgba(0,0,0,.3),0_4px_18px_rgba(152,196,65,.22)]
           hover:-translate-y-px hover:bg-[#A6D34E]
           hover:[box-shadow:inset_0_1px_0_rgba(255,255,255,.30),inset_0_-1px_0_rgba(0,0,0,.12),0_1px_3px_rgba(0,0,0,.3),0_8px_24px_rgba(152,196,65,.30)]
@@ -299,7 +390,7 @@ $pill_grads = [
       </a>
       <button type="button"
         class="hs-cta-trigger-button hs-cta-trigger-button-214001920299
-          inline-flex cursor-pointer items-center gap-1.5 rounded-[8px] border border-white/[.09] px-[18px] py-[11px] text-base font-medium text-[#F2EFE9]/50 transition
+          inline-flex w-full cursor-pointer items-center justify-center gap-1.5 rounded-[8px] border border-white/[.09] px-[18px] py-[13px] text-base font-medium text-[#F2EFE9]/50 transition sm:w-auto sm:py-[11px]
           hover:border-white/[.18] hover:text-[#F2EFE9]/82
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20">
           Download Technical Requirements
@@ -316,8 +407,8 @@ $pill_grads = [
       <div class="relative inline-flex items-center rounded-full p-px
                   [background:linear-gradient(110deg,rgba(152,196,65,.55)_0%,rgba(242,239,233,.10)_28%,rgba(242,239,233,.05)_72%,rgba(0,97,85,.55)_100%)]
                   [box-shadow:0_18px_50px_-14px_rgba(0,0,0,.65),0_0_42px_-12px_rgba(152,196,65,.32)]">
-        <div class="inline-flex flex-wrap items-center justify-center gap-y-2 rounded-full
-                    bg-[#0A1414]/85 px-2.5 py-[7px] backdrop-blur-xl
+        <div class="inline-flex flex-wrap items-center justify-center gap-x-1 gap-y-1.5 rounded-full
+                    bg-[#0A1414]/85 px-2.5 py-[7px] backdrop-blur-xl sm:gap-x-0 sm:gap-y-2
                     [box-shadow:inset_0_1px_0_rgba(255,255,255,.07),inset_0_-1px_0_rgba(0,0,0,.45)]">
 
           <span class="ml-1 mr-1.5 flex h-[22px] w-[22px] items-center justify-center rounded-full
@@ -330,7 +421,7 @@ $pill_grads = [
 
           <?php foreach ($credentials as $ci => $c) : ?>
             <?php if ($ci > 0) : ?>
-            <span class="mx-1 h-[11px] w-px bg-white/[.13]" aria-hidden="true"></span>
+            <span class="mx-1 hidden h-[11px] w-px bg-white/[.13] sm:block" aria-hidden="true"></span>
             <?php endif; ?>
             <span class="px-1.5 text-[11px] font-semibold uppercase tracking-[.12em] text-[#F2EFE9]/70
                          transition-colors duration-200 hover:text-[#F2EFE9]">
@@ -349,7 +440,7 @@ $pill_grads = [
 
     <?php /* Atmospheric halo behind the cards */ ?>
     <div class="pointer-events-none absolute -inset-x-16 inset-y-0 rounded-[60px]" aria-hidden="true"
-         style="background: radial-gradient(ellipse 70% 60% at 50% 58%, rgba(0,97,85,.28) 0%, transparent 68%);
+         style="background: radial-gradient(ellipse 70% 60% at 50% 58%, rgba(0,97,85,.20) 0%, transparent 68%);
                 filter: blur(4px); opacity: .55;"></div>
 
     <?php /* ── Primary window · WelcomeModal · click to launch interactive demo ── */ ?>
@@ -553,11 +644,8 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
 
 <section id="pg-problem" class="relative overflow-hidden bg-[#080F0F] px-6 pb-0 pt-24 text-center sm:pt-32 lg:pt-40" aria-label="The problem">
 
-  <?php /* Spotlight from top + soft teal floor */ ?>
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background:
-    radial-gradient(ellipse 58% 52% at 50% -8%,  rgba(152,196,65,.18) 0%, transparent 58%),
-    radial-gradient(ellipse 90% 30% at 50% 108%, rgba(0,97,85,.22)   0%, transparent 65%),
-    radial-gradient(ellipse 40% 40% at 50% 42%,  rgba(0,97,85,.06)   0%, transparent 72%);"></div>
+  <?php /* Establishing light — green ceiling key + emerald floor */ ?>
+  <div class="cnx-atmo cnx-atmo--center" aria-hidden="true"></div>
 
   <?php /* ── Copy ── */ ?>
   <div class="relative z-10 mx-auto max-w-5xl text-center">
@@ -573,12 +661,12 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
     </div>
 
     <?php /* Headline */ ?>
-    <h2 class="text-center  text-5xl font-extrabold leading-[1.08] tracking-[-0.042em] text-[#F2EFE9]">
+    <h2 class="text-center text-[clamp(2rem,5.7vw,3.85rem)] font-extrabold leading-[1.08] tracking-[-0.042em] text-[#F2EFE9]">
     Language access has quietly become operationally critical.
     </h2>
 
     <?php /* Body */ ?>
-    <div class="mx-auto mt-8  space-y-4 text-center text-[18px] font-light leading-[1.84] text-[#F2EFE9]/52">
+    <div class="mx-auto mt-8  space-y-4 text-center text-[15px] sm:text-[18px] font-light leading-[1.84] text-[#F2EFE9]/52">
       <p>Every patient enrollment, every contact center call, every classroom conversation, every safety briefing on the plant floor now has a language access dimension. Compliance assumes it. Workers depend on it. Audit logs have to prove it. And most organizations are still managing it with a dial-in number and a scheduling spreadsheet.</p>
       <p>It is not anyone's fault. The industry has worked this way for decades. Connexus is how that changes.</p>
     </div>
@@ -682,7 +770,7 @@ $speed_steps = [
     'sub'     => 'Connect to a qualified interpreter in seconds, not minutes - across 300+ languages, in the modality your workflow requires.',
     'img_src' => get_template_directory_uri() . '/assets/connexus/appointments.png',
     'img_alt' => 'Connexus appointments and interpreter scheduling interface',
-    'glow'    => 'rgba(92,195,250,.22)',
+    'glow'    => 'rgba(152,196,65,.20)',
   ],
   [
     'num'     => '02',
@@ -691,7 +779,7 @@ $speed_steps = [
     'sub'     => 'Every interpreted session is documented automatically. Title VI, Section 1557, Joint Commission, OSHA, and state Medicaid requirements are built into every record.',
     'img_src' => get_template_directory_uri() . '/assets/connexus/compliance.png',
     'img_alt' => 'Connexus compliance and audit-ready documentation interface',
-    'glow'    => 'rgba(158,110,230,.25)',
+    'glow'    => 'rgba(0,97,85,.26)',
   ],
   [
     'num'     => '03',
@@ -700,7 +788,7 @@ $speed_steps = [
     'sub'     => 'Meet demand without expanding headcount. The AI Interpreter handles real-time volume, with credentialed humans on the high-stakes calls and automatic fallback the moment accuracy dips.',
     'img_src' => get_template_directory_uri() . '/assets/connexus/users-roster-redacted.png',
     'img_alt' => 'Connexus interpreter roster and capacity management interface',
-    'glow'    => 'rgba(250,117,248,.22)',
+    'glow'    => 'rgba(152,196,65,.20)',
   ],
 ];
 $speed_total = count($speed_steps);
@@ -710,18 +798,15 @@ $speed_total = count($speed_steps);
      SECTION 5 · SPEED (image + stacking headlines)
 ════════════════════════════════════════════════════ -->
 <section class="relative bg-[#080F0F] px-6 pb-24 sm:pb-32 lg:py-0" id="speed-scroll" aria-label="Speed and responsiveness">
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background:
-    radial-gradient(ellipse 55% 45% at 15% 55%, rgba(0,97,85,.25) 0%, transparent 58%),
-    radial-gradient(ellipse 50% 40% at 85% 30%, rgba(152,196,65,.12) 0%, transparent 60%),
-    linear-gradient(180deg, #080F0F 0%, #0B1A1A 50%, #080F0F 100%)"></div>
+  <div class="cnx-atmo cnx-atmo--ambient" aria-hidden="true"></div>
 
   <div class="relative z-10 mx-auto grid max-w-[1360px] grid-cols-1 gap-12 lg:min-h-[300vh] lg:grid-cols-[1.45fr_1fr] lg:gap-20">
 
-    <?php /* ── LEFT · sticky panel ── */ ?>
-    <div class="lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:items-center lg:justify-center">
+    <?php /* ── LEFT · sticky panel (desktop only — mobile shows a screenshot per step) ── */ ?>
+    <div class="hidden lg:sticky lg:top-0 lg:flex lg:h-screen lg:flex-col lg:items-center lg:justify-center">
 
       <?php /* Floating screenshot card — crossfades per step */ ?>
-      <div class="speed-screen-card mx-auto w-full max-w-[880px]" id="speedImgCard">
+      <div class="speed-screen-card mx-auto w-full max-w-[680px]" id="speedImgCard">
 
         <?php /* Native-ratio viewport — images and glow stack here */ ?>
         <div class="speed-screen-viewport">
@@ -741,7 +826,7 @@ $speed_total = count($speed_steps);
       </div>
 
       <?php /* Step counter + progress bar */ ?>
-      <div class="mt-7 hidden w-full max-w-[880px] items-center gap-4 lg:flex">
+      <div class="mt-7 hidden w-full max-w-[680px] items-center gap-4 lg:flex">
         <span id="speed-step-label"
               class="min-w-[80px] text-[11px] font-bold tracking-[.13em] uppercase text-[#98C441]/65 transition-all duration-400">
           <?php echo esc_html($speed_steps[0]['label']); ?>
@@ -765,14 +850,22 @@ $speed_total = count($speed_steps);
     <?php /* ── RIGHT · scrolling steps ── */ ?>
     <div class="flex flex-col lg:py-[50vh]">
       <?php foreach ($speed_steps as $si => $s) : ?>
-      <div class="speed-step<?php echo $si === 0 ? ' is-active' : ''; ?> flex min-h-[55vh] items-center lg:min-h-screen"
+      <div class="speed-step<?php echo $si === 0 ? ' is-active' : ''; ?> flex items-center py-12 lg:min-h-screen lg:py-0"
            data-speed-step="<?php echo $si; ?>">
-        <div>
+        <div class="w-full">
           <span class="speed-num"><?php echo esc_html($s['num']); ?> &mdash; <?php echo esc_html($s['label']); ?></span>
-          <div class="speed-copy<?php echo $si === 0 ? ' on' : ''; ?> text-[clamp(1.8rem,3vw,2.8rem)] font-extrabold leading-[1.15] tracking-[-0.035em] text-[#F2EFE9]">
+          <div class="speed-copy<?php echo $si === 0 ? ' on' : ''; ?> text-[clamp(2rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9]">
             <?php echo nl2br(esc_html($s['head'])); ?>
           </div>
           <p class="speed-sub"><?php echo esc_html($s['sub']); ?></p>
+
+          <?php /* Mobile-only screenshot — pairs the visual with its step (desktop uses the sticky card) */ ?>
+          <div class="speed-screen-card mt-8 lg:hidden">
+            <img src="<?php echo esc_url($s['img_src']); ?>"
+                 alt="<?php echo esc_attr($s['img_alt']); ?>"
+                 loading="lazy" decoding="async"
+                 class="block h-auto w-full">
+          </div>
         </div>
       </div>
       <?php endforeach; ?>
@@ -788,13 +881,8 @@ $speed_total = count($speed_steps);
 ════════════════════════════════════════════════════ -->
 <section class="relative overflow-hidden bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-40" id="solutions" aria-label="Integrations">
 
-  <?php /* Directional atmosphere — glow sits behind the text (left),
-           very faint hint behind the image (right) */ ?>
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background:
-    radial-gradient(ellipse 62% 85% at 16% 52%,   rgba(0,97,85,.22)    0%, transparent 55%),
-    radial-gradient(ellipse 50% 65% at 84% 44%,   rgba(152,196,65,.07) 0%, transparent 58%),
-    radial-gradient(ellipse 70% 35% at 50% -5%,   rgba(0,97,85,.10)    0%, transparent 65%),
-    radial-gradient(ellipse 60% 30% at 50% 108%,  rgba(152,196,65,.09) 0%, transparent 68%);"></div>
+  <?php /* Key light follows the product graphic on the right */ ?>
+  <div class="cnx-atmo cnx-atmo--right" aria-hidden="true"></div>
 
   <div class="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
 
@@ -809,12 +897,12 @@ $speed_total = count($speed_steps);
       </div>
 
       <?php /* Heading */ ?>
-      <h2 class="text-[clamp(2.35rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
+      <h2 class="text-[clamp(2rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
         Built to fit the stack you already run.
       </h2>
 
       <?php /* Supporting copy */ ?>
-      <p class="mt-6 text-[18px] leading-[1.84] text-[#F2EFE9]/44">
+      <p class="mt-6 text-[15px] sm:text-[18px] leading-[1.84] text-[#F2EFE9]/44">
         Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, and Amazon Connect. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.
       </p>
 
@@ -921,12 +1009,8 @@ $speed_total = count($speed_steps);
   position: relative; overflow: hidden;
   border-radius: 26px;
 }
-/* Glow orb behind image */
-.feat-glow-orb {
-  position: absolute; inset: -44%; border-radius: 50%;
-  pointer-events: none; z-index: 0;
-  transition: background 1s cubic-bezier(.22,1,.36,1), opacity 1s;
-}
+/* Glow orb behind image — removed: screenshots sit on a clean, colorless frame */
+.feat-glow-orb { display: none !important; }
 /* The screenshot — hugs the card: full width, natural height, never cropped */
 .feat-img-card img {
   position: relative; z-index: 1;
@@ -974,27 +1058,28 @@ $speed_total = count($speed_steps);
 
 <section class="relative bg-[#080F0F] pt-24 sm:pt-32 lg:pt-40" id="features" aria-label="Platform features">
 
-  <?php /* Top-edge bloom — receives hand-off from Integrations seam above */ ?>
-  <div class="pointer-events-none absolute inset-x-0 top-0 h-40" aria-hidden="true"
-       style="background:radial-gradient(ellipse 60% 100% at 50% 0%, rgba(0,97,85,.14) 0%, transparent 70%)"></div>
+  <?php /* Uniform emerald ceiling seam — hand-off from the section above */ ?>
+  <div class="cnx-seam-top" aria-hidden="true"></div>
 
   <?php /* ── Per-feature atmosphere layers ─── */ ?>
   <div id="featAtmos" aria-hidden="true">
     <?php
     /* Each feature gets its own unique atmospheric gradient composition */
+    /* Duotone only — green key follows the screenshots (right),
+       emerald grounds the lower-left. Key pulses i2 ↔ i3 between steps. */
     $atmos = [
       /* 0 · Interpreter Access */
-      'radial-gradient(ellipse 68% 52% at 10% 44%, rgba(0,97,85,.24) 0%, transparent 58%),
-       radial-gradient(ellipse 52% 42% at 88% 26%, rgba(92,195,250,.11) 0%, transparent 58%)',
+      'radial-gradient(ellipse 60% 56% at 86% 30%, rgba(152,196,65,.12) 0%, transparent 58%),
+       radial-gradient(ellipse 64% 52% at 12% 88%, rgba(0,97,85,.20) 0%, transparent 60%)',
       /* 1 · Compliance Proof */
-      'radial-gradient(ellipse 68% 52% at 10% 50%, rgba(0,97,85,.30) 0%, transparent 58%),
-       radial-gradient(ellipse 52% 42% at 88% 26%, rgba(152,196,65,.15) 0%, transparent 58%)',
+      'radial-gradient(ellipse 60% 56% at 86% 30%, rgba(152,196,65,.20) 0%, transparent 58%),
+       radial-gradient(ellipse 64% 52% at 12% 88%, rgba(0,97,85,.20) 0%, transparent 60%)',
       /* 2 · Capacity Visibility */
-      'radial-gradient(ellipse 68% 52% at 10% 54%, rgba(0,97,85,.22) 0%, transparent 58%),
-       radial-gradient(ellipse 52% 42% at 88% 30%, rgba(152,196,65,.12) 0%, transparent 58%)',
+      'radial-gradient(ellipse 60% 56% at 86% 30%, rgba(152,196,65,.12) 0%, transparent 58%),
+       radial-gradient(ellipse 64% 52% at 12% 88%, rgba(0,97,85,.20) 0%, transparent 60%)',
       /* 3 · Cost Reconciliation */
-      'radial-gradient(ellipse 68% 52% at 10% 48%, rgba(0,97,85,.26) 0%, transparent 58%),
-       radial-gradient(ellipse 52% 42% at 88% 28%, rgba(242,239,233,.08) 0%, transparent 58%)',
+      'radial-gradient(ellipse 60% 56% at 86% 30%, rgba(152,196,65,.20) 0%, transparent 58%),
+       radial-gradient(ellipse 64% 52% at 12% 88%, rgba(0,97,85,.20) 0%, transparent 60%)',
     ];
     foreach ($atmos as $ai => $bg) :
     ?>
@@ -1027,12 +1112,12 @@ $speed_total = count($speed_steps);
             </div>
 
             <?php /* Heading */ ?>
-            <h2 class="mb-5 text-[clamp(1.75rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9]">
+            <h2 class="mb-5 text-[clamp(2rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9]">
               <?php echo wp_kses_post($f['heading']); ?>
             </h2>
 
             <?php /* Body */ ?>
-            <div class="space-y-3.5 text-[18px] leading-[1.84] text-white/50">
+            <div class="space-y-3.5 text-[15px] sm:text-[18px] leading-[1.84] text-white/50">
               <?php echo wp_kses_post($f['body']); ?>
             </div>
 
@@ -1057,9 +1142,9 @@ $speed_total = count($speed_steps);
     </div>
 
     <?php /* ── RIGHT · scrolling image steps ─── */ ?>
-    <div class="py-20 lg:py-[20vh]" id="featRight">
+    <div class="py-10 lg:py-[20vh]" id="featRight">
       <?php foreach ($features as $i => $f) : ?>
-      <div class="feature-step flex min-h-screen items-center" data-step="<?php echo $i; ?>">
+      <div class="feature-step flex items-center py-14 lg:min-h-screen lg:py-0" data-step="<?php echo $i; ?>">
         <div class="w-full">
 
           <?php /* Mobile copy (visible below lg) */ ?>
@@ -1068,9 +1153,12 @@ $speed_total = count($speed_steps);
               <p class="text-[10px] font-bold uppercase tracking-[.16em] text-[#98C441]/60"><?php echo esc_html($f['label']); ?></p>
               <span class="text-[10.5px] tabular-nums text-white/24"><?php printf('%02d / %02d', $i + 1, count($features)); ?></span>
             </div>
-            <h2 class="text-[clamp(1.75rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9] mb-3">
+            <h2 class="text-[clamp(2rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9] mb-4">
               <?php echo wp_kses_post($f['heading']); ?>
             </h2>
+            <div class="space-y-3.5 text-[15px] leading-[1.8] text-white/50">
+              <?php echo wp_kses_post($f['body']); ?>
+            </div>
           </div>
 
           <?php /* Image card */ ?>
@@ -1251,11 +1339,8 @@ $speed_total = count($speed_steps);
 ════════════════════════════════════════════════════ -->
 <section class="relative overflow-hidden bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-40" aria-label="Connexus AI Interpreter">
 
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background:
-    radial-gradient(ellipse 62% 85% at 84% 52%,   rgba(0,97,85,.22)    0%, transparent 55%),
-    radial-gradient(ellipse 50% 65% at 16% 44%,   rgba(152,196,65,.08) 0%, transparent 58%),
-    radial-gradient(ellipse 70% 35% at 50% -5%,   rgba(152,196,65,.08) 0%, transparent 65%),
-    radial-gradient(ellipse 60% 30% at 50% 108%,  rgba(0,97,85,.10)    0%, transparent 68%);"></div>
+  <?php /* Key light follows the AI Interpreter graphic on the left */ ?>
+  <div class="cnx-atmo cnx-atmo--left" aria-hidden="true"></div>
 
   <div class="relative z-10 mx-auto grid max-w-[1140px] grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
 
@@ -1289,7 +1374,7 @@ $speed_total = count($speed_steps);
         Real-time AI interpretation, governed by linguists.
       </p>
 
-      <p class="mt-6 text-[18px] leading-[1.84] text-[#F2EFE9]/50">
+      <p class="mt-6 text-[15px] sm:text-[18px] leading-[1.84] text-[#F2EFE9]/50">
         Meet demand without expanding headcount. The Speech-to-Speech AI Interpreter handles surge volume in 50+ languages with under-one-second latency and 95%+ accuracy on domain-adapted language pairs. Real-time confidence scoring runs on every call, with automatic fallback to a credentialed human interpreter the moment accuracy drops below threshold. Linguists with sector expertise build the glossary and run the QA loop. The AI is the engine. Language professionals stay in control.
       </p>
 
@@ -1522,7 +1607,7 @@ $col_classes = [
         </div>
       </div>
       <h2 id="bento-heading"
-          class="text-[clamp(2.35rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
+          class="text-[clamp(2rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
         Every detail,
         engineered to move faster.
       </h2>
@@ -1579,21 +1664,22 @@ $col_classes = [
 ════════════════════════════════════════════════════ -->
 
 <?php
+/* Duotone only — green key follows the graphics (left),
+   emerald grounds the lower-right. Mirror of §7. */
 $atmos2 = [
   /* 0 One Platform */
-  'radial-gradient(ellipse 68% 52% at 88% 48%, rgba(152,196,65,.18) 0%, transparent 58%),
-   radial-gradient(ellipse 52% 42% at 12% 26%, rgba(0,97,85,.22)    0%, transparent 58%)',
+  'radial-gradient(ellipse 60% 56% at 14% 30%, rgba(152,196,65,.12) 0%, transparent 58%),
+   radial-gradient(ellipse 64% 52% at 88% 88%, rgba(0,97,85,.20) 0%, transparent 60%)',
   /* 1 Embedded Workflow */
-  'radial-gradient(ellipse 68% 52% at 88% 50%, rgba(0,97,85,.30) 0%, transparent 58%),
-   radial-gradient(ellipse 52% 42% at 12% 28%, rgba(152,196,65,.12) 0%, transparent 60%)',
+  'radial-gradient(ellipse 60% 56% at 14% 30%, rgba(152,196,65,.20) 0%, transparent 58%),
+   radial-gradient(ellipse 64% 52% at 88% 88%, rgba(0,97,85,.20) 0%, transparent 60%)',
 ];
 ?>
 
 <section class="relative bg-[#080F0F] pt-24 sm:pt-32 lg:pt-40" id="unified-platform" aria-label="Unified interpretation workflow">
 
-  <?php /* Top-entry bloom */ ?>
-  <div class="pointer-events-none absolute inset-x-0 top-0 h-40" aria-hidden="true"
-       style="background:radial-gradient(ellipse 60% 100% at 50% 0%, rgba(152,196,65,.10) 0%, transparent 70%)"></div>
+  <?php /* Uniform emerald ceiling seam — hand-off from the section above */ ?>
+  <div class="cnx-seam-top" aria-hidden="true"></div>
 
   <?php /* ── Per-platform atmosphere layers ── */ ?>
   <div id="featAtmos2" aria-hidden="true">
@@ -1603,7 +1689,7 @@ $atmos2 = [
   </div>
 
   <?php /* ── Section header ── */ ?>
-  <div class="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-14 pt-20 pb-1 lg:pt-28">
+  <div class="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-14 pt-6 pb-1 lg:pt-28">
     <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
       <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
       <div class="flex items-center gap-2 px-3 py-[7px]">
@@ -1621,7 +1707,7 @@ $atmos2 = [
     <?php /* ── LEFT · scrolling image steps ── */ ?>
     <div class="py-4 lg:py-[10vh]" id="featRight2">
       <?php foreach ($features2 as $i => $f) : ?>
-      <div class="feature-step2 flex min-h-screen items-center" data-step2="<?php echo $i; ?>">
+      <div class="feature-step2 flex items-center py-14 lg:min-h-screen lg:py-0" data-step2="<?php echo $i; ?>">
         <div class="w-full">
 
           <?php /* Mobile copy */ ?>
@@ -1630,10 +1716,13 @@ $atmos2 = [
               <p class="text-[10px] font-bold uppercase tracking-[.16em] text-[#98C441]/60"><?php echo esc_html($f['label']); ?></p>
               <span class="text-[10.5px] tabular-nums text-white/24"><?php printf('%02d / %02d', $i + 1, count($features2)); ?></span>
             </div>
-            <h3 class="text-[clamp(1.75rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9] mb-3">
+            <h3 class="text-[clamp(2rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9] mb-3">
               <?php echo wp_kses_post($f['heading']); ?>
             </h3>
-            <p class="text-[13px] text-white/44"><?php echo esc_html($f['tag']); ?></p>
+            <p class="mb-4 text-[13px] text-white/44"><?php echo esc_html($f['tag']); ?></p>
+            <div class="space-y-3.5 text-[15px] leading-[1.8] text-white/50">
+              <?php echo wp_kses_post($f['body']); ?>
+            </div>
           </div>
 
           <?php /* Image card */ ?>
@@ -1676,7 +1765,7 @@ $atmos2 = [
               <span class="feat-counter"><?php printf('%02d&thinsp;/&thinsp;%02d', $i + 1, count($features2)); ?></span>
             </div>
 
-            <h3 class="mb-5 text-[clamp(1.75rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9]">
+            <h3 class="mb-5 text-[clamp(2rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9]">
               <?php echo wp_kses_post($f['heading']); ?>
             </h3>
 
@@ -1684,7 +1773,7 @@ $atmos2 = [
               <span class="text-[12.5px] font-semibold tracking-[.005em] text-white/48"><?php echo esc_html($f['tag']); ?></span>
             </div>
 
-            <div class="space-y-3.5 text-[18px] leading-[1.84] text-white/50">
+            <div class="space-y-3.5 text-[15px] sm:text-[18px] leading-[1.84] text-white/50">
               <?php echo wp_kses_post($f['body']); ?>
             </div>
 
@@ -1997,76 +2086,6 @@ $testimonials = [
 ?>
 
 <style>
-/* ── CTA primary button ──────────────────────────────── */
-.cta-primary-btn {
-  background:
-    radial-gradient(ellipse 90% 150% at 16% 20%, rgba(255,255,255,.26) 0%, transparent 52%),
-    linear-gradient(108deg, #79B41E 0%, #98C441 38%, #B3DF52 72%, #C2EE60 100%);
-  position: relative; overflow: hidden;
-  box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,.30),
-    inset 0 -1.5px 0 rgba(0,0,0,.16),
-    0 0 0 1px rgba(0,0,0,.20),
-    0 22px 52px rgba(152,196,65,.22),
-    0 8px 22px rgba(0,0,0,.28);
-  transition: filter .22s, transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s;
-}
-/* Static top-left sheen */
-.cta-primary-btn::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(112deg, rgba(255,255,255,.16) 0%, transparent 36%);
-  pointer-events: none; z-index: 1;
-}
-/* Hover shimmer sweep */
-@keyframes cta-shimmer {
-  0%   { transform: translateX(-130%) skewX(-14deg); }
-  100% { transform: translateX(260%)  skewX(-14deg); }
-}
-.cta-primary-btn::after {
-  content: ''; position: absolute; inset: 0; z-index: 2;
-  background: linear-gradient(90deg,
-    transparent 15%,
-    rgba(255,255,255,.28) 50%,
-    transparent 85%);
-  transform: translateX(-130%) skewX(-14deg);
-  pointer-events: none;
-}
-.cta-primary-btn:hover::after {
-  animation: cta-shimmer .68s cubic-bezier(.22,1,.36,1) forwards;
-}
-.cta-primary-btn:hover {
-  filter: brightness(1.06);
-  transform: translateY(-2px);
-  box-shadow:
-    inset 0 1.5px 0 rgba(255,255,255,.32),
-    inset 0 -1.5px 0 rgba(0,0,0,.16),
-    0 0 0 1px rgba(0,0,0,.20),
-    0 30px 68px rgba(152,196,65,.28),
-    0 12px 28px rgba(0,0,0,.34);
-}
-.cta-primary-btn:hover .cta-arrow {
-  background: rgba(11,26,26,.28);
-  transform: translateX(5px);
-}
-.cta-arrow { transition: background .18s, transform .24s cubic-bezier(.22,1,.36,1); }
-
-/* ── CTA secondary button ────────────────────────────── */
-.cta-secondary-btn {
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.055),
-    0 0 0 1px rgba(0,0,0,.15),
-    0 16px 40px rgba(0,0,0,.18);
-  transition: background .22s, border-color .22s,
-              transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s;
-}
-.cta-secondary-btn:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.065),
-    0 0 0 1px rgba(152,196,65,.10),
-    0 22px 56px rgba(0,0,0,.24);
-}
-
 /* ── Availability dot pulse ──────────────────────────── */
 @keyframes cta-dot-pulse {
   0%, 100% { box-shadow: 0 0 0 0   rgba(152,196,65,.55), 0 0 6px  rgba(152,196,65,.40); }
@@ -2078,17 +2097,13 @@ $testimonials = [
 <section id="contact" class="relative overflow-hidden scroll-mt-24 bg-[#080F0F] px-6 py-32 sm:px-12 sm:py-40 lg:px-16"
          aria-labelledby="cta-heading">
 
-  <?php /* ── Multi-layer mesh atmosphere ── */ ?>
+  <?php /* ── Finale: emerald ceiling, edge vignette, base ramps into the footer (#1F3131) ── */ ?>
   <div class="pointer-events-none absolute inset-0" aria-hidden="true"
        style="background:
-         radial-gradient(ellipse 72% 64% at 50% 52%,  rgba(0,97,85,.26)    0%, transparent 58%),
-         radial-gradient(ellipse 46% 36% at 12%  8%,  rgba(152,196,65,.10) 0%, transparent 52%),
-         radial-gradient(ellipse 42% 32% at 88% 94%,  rgba(0,97,85,.12)    0%, transparent 50%),
-         radial-gradient(ellipse 68% 55% at 50%  0%,  rgba(0,97,85,.22)    0%, transparent 60%),
-         radial-gradient(ellipse 78% 62% at 50% 108%, rgba(152,196,65,.26) 0%, transparent 60%),
-         radial-gradient(ellipse 38% 50% at  0% 50%,  rgba(0,0,0,.20)      0%, transparent 55%),
-         radial-gradient(ellipse 38% 50% at 100% 50%, rgba(0,0,0,.20)      0%, transparent 55%),
-         linear-gradient(180deg, #080F0F 0%, #0D1E1E 32%, #0D1E1E 68%, #080F0F 100%);">
+         radial-gradient(ellipse 72% 46% at 50%  -6%, rgba(0,97,85,.20)    0%, transparent 62%),
+         radial-gradient(ellipse 40% 60% at   0% 50%, rgba(0,0,0,.20)      0%, transparent 58%),
+         radial-gradient(ellipse 40% 60% at 100% 50%, rgba(0,0,0,.20)      0%, transparent 58%),
+         linear-gradient(180deg, #080F0F 0%, #0D1E1E 44%, #16292A 74%, #1F3131 100%);">
   </div>
 
   <?php /* ── Top hairline seam — gradient bridges testimonial → CTA ── */ ?>
@@ -2110,13 +2125,7 @@ $testimonials = [
               filter: blur(2px);">
   </div>
 
-  <?php /* ── Bottom floor hairline ── */ ?>
-  <div class="pointer-events-none absolute bottom-0 left-1/2 h-px w-[58%] -translate-x-1/2"
-       aria-hidden="true"
-       style="background: linear-gradient(to right, transparent, rgba(152,196,65,.26), transparent);">
-  </div>
-
-  <div class="relative z-10 mx-auto flex max-w-[660px] flex-col items-center text-center">
+  <div class="relative z-10 mx-auto flex max-w-[620px] flex-col items-center text-center">
 
     <?php /* Eyebrow */ ?>
     <div class="mb-9 inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
@@ -2128,18 +2137,17 @@ $testimonials = [
 
     <?php /* Heading */ ?>
     <h2 id="cta-heading"
-        class="mb-6 text-[clamp(2.35rem,5.7vw,3.85rem)] font-extrabold leading-[1.03]
-               tracking-[-0.045em] text-[#F2EFE9]">
+        class="mb-6 text-[clamp(2rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
       See Connexus inside<br>your workflow.
     </h2>
 
     <?php /* Body */ ?>
-    <p class="mb-14 max-w-[500px] text-[18px] font-light leading-[1.84] text-[#F2EFE9]/50">
+    <p class="mb-12 max-w-[500px] text-[15px] sm:text-[18px] font-light leading-[1.84] text-[#F2EFE9]/50">
       Bring your call flow, compliance questions, and integration stack. We will show how Connexus routes, records, and reports interpretation across the systems you already run.
     </p>
 
-    <?php /* ── HubSpot embed form ── */ ?>
-    <div class="w-full max-w-[520px] text-left">
+    <?php /* ── HubSpot embed form (dark mode) — bare, no frame ── */ ?>
+    <div class="w-full max-w-[560px] text-left">
       <script src="https://js.hsforms.net/forms/embed/22423917.js" defer></script>
       <div class="hs-form-frame"
            data-region="na1"
