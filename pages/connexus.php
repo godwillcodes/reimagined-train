@@ -193,7 +193,6 @@ $pill_grads = [
   font-size: 16px; line-height: 1.84;
   color: rgba(242,239,233,.36);
   margin-top: 22px;
-  max-width: 400px;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity .48s .12s cubic-bezier(.22,1,.36,1),
@@ -228,27 +227,21 @@ $pill_grads = [
     transparent 95%);
   z-index: 10; pointer-events: none;
 }
-/* Viewport — hugs the active screenshot: full width, natural height, no fixed
-   ratio. The active image sits in flow and defines the card height; the others
-   overlay absolutely during the crossfade. Nothing is ever cropped or cut. */
+/* Viewport — uniform frame height; the screenshot shows at full width and the
+   frame crops the bottom (top-anchored). Width is never cropped. */
 .speed-screen-viewport {
   position: relative;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: inherit;
   background: #0C1C1C;
 }
 .speed-screen-viewport .speed-img {
-  position: absolute; inset: 0;
+  position: absolute; top: 0; left: 0;
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;           /* full screenshot during crossfade, no crop */
-  object-position: center;
+  width: 100%;                   /* full width always visible */
+  height: auto;                  /* natural height; frame crops the overflow */
   z-index: 1;
-}
-.speed-screen-viewport .speed-img.is-active {
-  position: relative;            /* in flow → container hugs this image */
-  height: auto;                  /* natural height = full image, no letterbox */
 }
 </style>
 
@@ -359,7 +352,7 @@ $pill_grads = [
 
     <?php /* ── Primary window · WelcomeModal · click to launch interactive demo ── */ ?>
     <button type="button" id="cnx-demo-trigger"
-            data-navattic-open="https://capture.navattic.com/cmpu2jtc7008304l8bsn6bxn4"
+            data-navattic-open="https://capture.navattic.com/cmpul2xmo001j04ifh00z77uc"
             data-navattic-title="Connexus | Connect every conversation, in 300+ languages + ASL, in seconds."
             aria-label="Launch the interactive Connexus product demo"
             class="group relative block w-full cursor-pointer appearance-none overflow-hidden rounded-[14px] text-left sm:rounded-[20px]
@@ -430,27 +423,6 @@ $pill_grads = [
 
   </div>
 
-</section>
-
-
-
-<!-- ════════════════════════════════════════════════════
-     SECTION 3 · BIG NUMBER
-════════════════════════════════════════════════════ -->
-<section class="relative flex min-h-[420px] items-center justify-center overflow-hidden bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-40 sm:min-h-[500px] lg:min-h-[560px]"
-         aria-label="Scale stat">
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background:
-    radial-gradient(ellipse 62% 48% at 50% 50%,  rgba(0,97,85,.18)   0%, transparent 60%),
-    radial-gradient(ellipse 42% 30% at 50% 12%,  rgba(152,196,65,.10) 0%, transparent 68%),
-    radial-gradient(ellipse 58% 40% at 50% 100%, rgba(152,196,65,.10) 0%, transparent 65%);"></div>
-  <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/300.svg'); ?>"
-       alt="" aria-hidden="true" loading="lazy" decoding="async" width="1728" height="815"
-       class="absolute left-1/2 top-1/2 h-auto w-[62vw] max-w-[920px] -translate-x-1/2 -translate-y-1/2 object-contain object-center pointer-events-none select-none opacity-[.15]">
-  <div class="relative z-10 mx-auto max-w-[700px] text-center">
-    <h2 class="text-[clamp(1.5rem,2.6vw,2.5rem)] font-extrabold leading-[1.22] tracking-[-0.032em] text-[#F2EFE9]">
-    300+ Languages on one platform, delivered over the phone, by video, and onsite - with a real-time AI Interpreter in 50+ languages for scale. One SLA across every mode.
-    </h2>
-  </div>
 </section>
 
 
@@ -1005,6 +977,15 @@ $speed_total = count($speed_steps);
   opacity: 1;
 }
 
+/* Section 7 screenshots — uniform frame height; full width always shown,
+   frame crops the bottom (top-anchored). Width is never cropped. */
+#features .feat-img-card { aspect-ratio: 16 / 9; }
+#features .feat-img-card img {
+  position: absolute; top: 0; left: 0;
+  width: 100%;
+  height: auto;
+}
+
 /* ── Caption bar ──────────────────────────────────────── */
 .feat-caption {
   display: flex; align-items: center; justify-content: space-between;
@@ -1071,15 +1052,8 @@ $speed_total = count($speed_steps);
               <?php echo wp_kses_post($f['heading']); ?>
             </h2>
 
-            <?php /* Tagline with accent rule */ ?>
-            <div class="feat-tag-row">
-              <span class="text-[12.5px] font-semibold tracking-[.005em] text-white/48">
-                <?php echo esc_html($f['tag']); ?>
-              </span>
-            </div>
-
             <?php /* Body */ ?>
-            <div class="space-y-3.5 max-w-[420px] text-[16px] leading-[1.84] text-white/50">
+            <div class="space-y-3.5 text-[17px] leading-[1.84] text-white/50">
               <?php echo wp_kses_post($f['body']); ?>
             </div>
 
@@ -1118,7 +1092,6 @@ $speed_total = count($speed_steps);
             <h2 class="text-[clamp(1.75rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9] mb-3">
               <?php echo wp_kses_post($f['heading']); ?>
             </h2>
-            <p class="text-[13px] text-white/44"><?php echo esc_html($f['tag']); ?></p>
           </div>
 
           <?php /* Image card */ ?>
@@ -1346,7 +1319,8 @@ $speed_total = count($speed_steps);
         Meet the Connexus AI Interpreter.
       </h2>
 
-      <p class="mt-5 text-[13px] font-semibold tracking-[.005em] text-white/48">
+      <p class="mt-6 flex items-center gap-3 text-[15.5px] font-semibold tracking-[-0.005em] text-[#F2EFE9]/72">
+        <span class="h-[2px] w-8 flex-shrink-0 rounded-full" style="background:linear-gradient(to right,#98C441,#006155)" aria-hidden="true"></span>
         Real-time AI interpretation, governed by linguists.
       </p>
 
@@ -1745,7 +1719,7 @@ $atmos2 = [
               <span class="text-[12.5px] font-semibold tracking-[.005em] text-white/48"><?php echo esc_html($f['tag']); ?></span>
             </div>
 
-            <div class="space-y-3.5 max-w-[420px] text-[16px] leading-[1.84] text-white/50">
+            <div class="space-y-3.5 text-[17px] leading-[1.84] text-white/50">
               <?php echo wp_kses_post($f['body']); ?>
             </div>
 
