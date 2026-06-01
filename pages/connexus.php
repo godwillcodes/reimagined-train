@@ -69,6 +69,7 @@ $features2 = [
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/connexus_one_platform_dark.svg',
     'img_alt' => 'One Connexus platform unifying every interpretation modality',
+    'img_class' => 'scale-[1.22] !opacity-100',
     'glow'    => 'rgba(92,195,250,.20)',
   ],
   [
