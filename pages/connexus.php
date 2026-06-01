@@ -697,7 +697,7 @@ $speed_steps = [
     'label'   => 'Outcome 3',
     'head'    => 'Scalable Language Access Infrastructure',
     'sub'     => 'Meet demand without expanding headcount. The AI Interpreter handles real-time volume, with credentialed humans on the high-stakes calls and automatic fallback the moment accuracy dips.',
-    'img_src' => get_template_directory_uri() . '/assets/connexus/users-roster-detail.png',
+    'img_src' => get_template_directory_uri() . '/assets/connexus/users-roster-redacted.png',
     'img_alt' => 'Connexus interpreter roster and capacity management interface',
     'glow'    => 'rgba(250,117,248,.22)',
   ],
@@ -1260,7 +1260,7 @@ $speed_total = count($speed_steps);
 
     <?php /* ── Left: repeated image card ── */ ?>
     <div class="flex items-center justify-center lg:justify-start">
-      <div class="w-full max-w-[460px]">
+      <div class="w-full max-w-[560px]">
         <div class="relative">
           <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/ai_interpreter_threshold.svg'); ?>"
                alt="Connexus AI Interpreter — real-time confidence threshold with human fallback"
