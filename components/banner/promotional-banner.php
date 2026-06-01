@@ -12,11 +12,11 @@
         <div
             class="max-w-7xl mx-auto px-4 md:px-6 lg:px-0 flex flex-col sm:flex-row items-center justify-center gap-4 lg:gap-12">
             <p class="text-[#1F3131] font-semibold text-base text-center sm:text-left">
-                <span class="font-bold">New whitepaper:</span> Why Health Systems Fail 67M Americans — and What It Would Take to Fix It
+                <span class="font-bold">Connexus is live:</span> One platform for phone, video, onsite, and AI interpretation in 300+ languages.
             </p>
-            <a href="https://piedmontglobal.com/research-paper/healthcare/"
+            <a href="/connexus/"
                 class="inline-flex items-center text-[#1F3131] text-base font-semibold transition-colors relative">
-                Download whitepaper
+                See it in action
                 <span class="ml-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">

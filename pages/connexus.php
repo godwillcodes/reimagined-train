@@ -1688,8 +1688,9 @@ $atmos2 = [
     <?php endforeach; ?>
   </div>
 
-  <?php /* ── Section header ── */ ?>
-  <div class="relative z-10 mx-auto max-w-[1200px] px-6 lg:px-14 pt-6 pb-1 lg:pt-28">
+  <?php /* ── Section header — matches grid max-width so the title's left
+            edge lines up exactly with the image column below ── */ ?>
+  <div class="relative z-10 mx-auto max-w-[1360px] px-6 lg:px-14 pt-6 pb-1 lg:pt-28">
     <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
       <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
       <div class="flex items-center gap-2 px-3 py-[7px]">
@@ -1701,8 +1702,10 @@ $atmos2 = [
     </h2>
   </div>
 
-  <?php /* ── Two-column layout (images LEFT · copy RIGHT — mirrored from §7) ── */ ?>
-  <div class="relative z-10 mx-auto max-w-[1360px] px-6 lg:px-14 lg:grid lg:grid-cols-[1fr_1.4fr] lg:gap-20 lg:items-start">
+  <?php /* ── Two-column layout (images LEFT · copy RIGHT — mirrored from §7).
+            Equal columns keep the screenshot prominent but right-sized; copy
+            is pushed flush to the right content edge. ── */ ?>
+  <div class="relative z-10 mx-auto max-w-[1360px] px-6 lg:px-14 lg:grid lg:grid-cols-2 lg:gap-20 lg:items-start">
 
     <?php /* ── LEFT · scrolling image steps ── */ ?>
     <div class="py-4 lg:py-[10vh]" id="featRight2">
@@ -1747,12 +1750,12 @@ $atmos2 = [
       <?php endforeach; ?>
     </div>
 
-    <?php /* ── RIGHT · sticky copy ── */ ?>
-    <div class="hidden lg:flex lg:sticky lg:top-0 lg:h-screen lg:items-center lg:order-last">
-      <div class="relative w-full max-w-[460px]">
+    <?php /* ── RIGHT · sticky copy (flush to right content edge) ── */ ?>
+    <div class="hidden lg:flex lg:sticky lg:top-0 lg:h-screen lg:items-center lg:justify-end lg:order-last">
+      <div class="relative w-full max-w-[540px]">
 
-        <?php /* Nav pip track */ ?>
-        <nav class="absolute -right-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-[9px]"
+        <?php /* Nav pip track — sits in the column gap, left of the copy */ ?>
+        <nav class="absolute -left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-[9px]"
              id="featDots2" aria-label="Platform feature navigation"></nav>
 
         <?php /* Copy panels */ ?>
