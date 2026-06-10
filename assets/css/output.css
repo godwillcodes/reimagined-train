@@ -1973,8 +1973,17 @@
   .border-\[\#98C441\]\/25 {
     border-color: color-mix(in oklab, #98C441 25%, transparent);
   }
+  .border-\[\#98C441\]\/30 {
+    border-color: color-mix(in oklab, #98C441 30%, transparent);
+  }
+  .border-\[\#98C441\]\/35 {
+    border-color: color-mix(in oklab, #98C441 35%, transparent);
+  }
   .border-\[\#98c441\] {
     border-color: #98c441;
+  }
+  .border-\[\#435C36\]\/25 {
+    border-color: color-mix(in oklab, #435C36 25%, transparent);
   }
   .border-\[\#006155\] {
     border-color: #006155;
@@ -2180,6 +2189,9 @@
   .bg-\[\#0E3C35\]\/60 {
     background-color: color-mix(in oklab, #0E3C35 60%, transparent);
   }
+  .bg-\[\#0E3320\]\/90 {
+    background-color: color-mix(in oklab, #0E3320 90%, transparent);
+  }
   .bg-\[\#1F3131\] {
     background-color: #1F3131;
   }
@@ -2203,6 +2215,9 @@
   }
   .bg-\[\#080F0F\] {
     background-color: #080F0F;
+  }
+  .bg-\[\#98C440\] {
+    background-color: #98C440;
   }
   .bg-\[\#98C441\] {
     background-color: #98C441;
@@ -3511,6 +3526,9 @@
   .text-\[\#111\] {
     color: #111;
   }
+  .text-\[\#435C36\] {
+    color: #435C36;
+  }
   .text-\[\#006155\] {
     color: #006155;
   }
@@ -3519,6 +3537,12 @@
   }
   .text-\[\#550061\] {
     color: #550061;
+  }
+  .text-\[\#B3DF52\] {
+    color: #B3DF52;
+  }
+  .text-\[\#D6F08B\] {
+    color: #D6F08B;
   }
   .text-\[\#D16555\] {
     color: #D16555;
@@ -3958,6 +3982,15 @@
   }
   .\[box-shadow\:inset_0_1px_0_rgba\(255\,255\,255\,\.07\)\,inset_0_-1px_0_rgba\(0\,0\,0\,\.45\)\] {
     box-shadow: inset 0 1px 0 rgba(255,255,255,.07),inset 0 -1px 0 rgba(0,0,0,.45);
+  }
+  .\[box-shadow\:inset_0_1px_0_rgba\(255\,255\,255\,\.08\)\,0_0_18px_-5px_rgba\(152\,196\,65\,\.55\)\] {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08),0 0 18px -5px rgba(152,196,65,.55);
+  }
+  .\[box-shadow\:inset_0_1px_0_rgba\(255\,255\,255\,\.10\)\,0_0_18px_-5px_rgba\(152\,196\,65\,\.65\)\] {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.10),0 0 18px -5px rgba(152,196,65,.65);
+  }
+  .\[box-shadow\:inset_0_1px_0_rgba\(255\,255\,255\,\.28\)\,0_0_18px_-5px_rgba\(152\,196\,65\,\.6\)\] {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.28),0 0 18px -5px rgba(152,196,65,.6);
   }
   .\[box-shadow\:inset_0_1px_0_rgba\(255\,255\,255\,\.28\)\,inset_0_-1px_0_rgba\(0\,0\,0\,\.12\)\,0_1px_3px_rgba\(0\,0\,0\,\.3\)\,0_4px_18px_rgba\(152\,196\,65\,\.22\)\] {
     box-shadow: inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(0,0,0,.12),0 1px 3px rgba(0,0,0,.3),0 4px 18px rgba(152,196,65,.22);

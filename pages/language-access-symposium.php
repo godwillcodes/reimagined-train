@@ -735,9 +735,9 @@ $host_organization = get_field('host_organization');
     <div class="relative mx-auto max-w-7xl px-6 lg:px-8">
         <!-- Section Header -->
         <?php if ($parking_section_title || $parking_section_description || $host_organization): ?>
-        <div class="mb-12 text-center md:mb-16" data-aos="fade-up">
+        <div class="mb-12 text-center md:mb-16">
             <?php if ($host_organization): ?>
-            <div class="mb-5 flex justify-center" data-aos="fade-up">
+            <div class="mb-5 flex justify-center">
                 <div class="inline-flex items-stretch overflow-hidden rounded-md border border-[#1F3131]/[.09] bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
                     role="doc-subtitle">
                     <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
@@ -757,6 +757,12 @@ $host_organization = get_field('host_organization');
             <?php endif; ?>
         </div>
         <?php endif; ?>
+		
+		<?php if ( is_page(1773) ) : ?>
+    <div class="my-10 max-w-3xl mx-auto mb-10 md:mb-16">
+        <img src="https://piedmontglobal.com/wp-content/uploads/pg_conference_table_fixed2-1.svg" alt="Conference table layout" />
+    </div>
+<?php endif; ?>
 
         <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
 
@@ -772,7 +778,7 @@ $host_organization = get_field('host_organization');
             
             if ($parking_card_title || $parking_venue_name || $parking_address_line1 || $parking_instructions):
             ?>
-            <div data-aos="fade-up" data-aos-delay="100">
+            <div >
                 <div class="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1F3131] shadow-[0_20px_50px_-12px_rgba(15,23,42,0.35)] ring-1 ring-black/20">
                     <!-- Card Header -->
                     <?php if ($parking_card_title || $parking_venue_name): ?>
@@ -878,7 +884,7 @@ $host_organization = get_field('host_organization');
             $registration_topic_email = get_field('registration_topic_email');
             $hubspot_embed_code = get_field('hubspot_embed_code');
             ?>
-            <div id="register" data-aos="fade-up" data-aos-delay="200">
+            <div id="register">
                 <div class="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200/90 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.04),0_12px_40px_-8px_rgba(15,23,42,0.08)] ring-1 ring-black/[0.03]">
                     <!-- Card Content -->
                     <div class="flex flex-1 flex-col p-6 sm:p-8 md:p-10">
