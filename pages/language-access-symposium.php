@@ -82,13 +82,14 @@ get_header();
                 
                 if ($has_event_details):
                 ?>
-                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3 lg:p-5 mb-10 max-w-6xl"
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3 lg:p-5 mb-10 w-full"
                     data-aos="fade-up" data-aos-delay="150">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+                    <div
+                        class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:flex lg:items-center lg:gap-0 lg:divide-x lg:divide-white/10">
 
                         <!-- Date -->
                         <?php if ($event_date_day || $event_date): ?>
-                        <div class="flex items-start gap-4">
+                        <div class="flex items-center gap-3 min-w-0 lg:flex-auto lg:px-5 lg:first:pl-0 lg:last:pr-0">
                             <div
                                 class="w-12 h-12 rounded-xl bg-[#98C441]/15 flex items-center justify-center flex-shrink-0">
                                 <svg class="w-6 h-6 text-[#98C441]" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -110,7 +111,7 @@ get_header();
 
                         <!-- Time -->
                         <?php if ($event_time || $event_timezone): ?>
-                        <div class="flex items-start gap-4">
+                        <div class="flex items-center gap-3 min-w-0 lg:flex-auto lg:px-5 lg:first:pl-0 lg:last:pr-0">
                             <div
                                 class="w-12 h-12 rounded-xl bg-[#98C441]/15 flex items-center justify-center flex-shrink-0">
                                 <svg class="w-6 h-6 text-[#98C441]" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -132,7 +133,7 @@ get_header();
 
                         <!-- Location -->
                         <?php if ($event_location_name || $event_location_city): ?>
-                        <div class="flex items-start gap-4">
+                        <div class="flex items-center gap-3 min-w-0 lg:flex-auto lg:px-5 lg:first:pl-0 lg:last:pr-0">
                             <div
                                 class="w-12 h-12 rounded-xl bg-[#98C441]/15 flex items-center justify-center flex-shrink-0">
                                 <svg class="w-6 h-6 text-[#98C441]" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -156,7 +157,7 @@ get_header();
 
                         <!-- Refreshments -->
                         <?php if ($event_refreshments_title || $event_refreshments_description): ?>
-                        <div class="flex items-start gap-4">
+                        <div class="flex items-center gap-3 min-w-0 lg:flex-auto lg:px-5 lg:first:pl-0 lg:last:pr-0">
                             <div
                                 class="w-12 h-12 rounded-xl bg-[#98C441]/15 flex items-center justify-center flex-shrink-0">
                                

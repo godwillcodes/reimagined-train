@@ -7195,6 +7195,11 @@
       max-width: var(--container-lg);
     }
   }
+  .lg\:flex-auto {
+    @media (width >= 64rem) {
+      flex: auto;
+    }
+  }
   .lg\:flex-shrink-0 {
     @media (width >= 64rem) {
       flex-shrink: 0;
@@ -7323,6 +7328,11 @@
       justify-content: flex-start;
     }
   }
+  .lg\:gap-0 {
+    @media (width >= 64rem) {
+      gap: calc(var(--spacing) * 0);
+    }
+  }
   .lg\:gap-4 {
     @media (width >= 64rem) {
       gap: calc(var(--spacing) * 4);
@@ -7384,6 +7394,26 @@
   .lg\:gap-x-8 {
     @media (width >= 64rem) {
       column-gap: calc(var(--spacing) * 8);
+    }
+  }
+  .lg\:divide-x {
+    @media (width >= 64rem) {
+      :where(& > :not(:last-child)) {
+        --tw-divide-x-reverse: 0;
+        border-inline-style: var(--tw-border-style);
+        border-inline-start-width: calc(1px * var(--tw-divide-x-reverse));
+        border-inline-end-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
+      }
+    }
+  }
+  .lg\:divide-white\/10 {
+    @media (width >= 64rem) {
+      :where(& > :not(:last-child)) {
+        border-color: color-mix(in srgb, #fff 10%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          border-color: color-mix(in oklab, var(--color-white) 10%, transparent);
+        }
+      }
     }
   }
   .lg\:self-start {
@@ -7797,6 +7827,13 @@
     @media (width >= 64rem) {
       &:first-child {
         padding-left: calc(var(--spacing) * 0);
+      }
+    }
+  }
+  .lg\:last\:pr-0 {
+    @media (width >= 64rem) {
+      &:last-child {
+        padding-right: calc(var(--spacing) * 0);
       }
     }
   }
@@ -8804,6 +8841,11 @@ button, input, textarea, select {
   initial-value: "";
   inherits: false;
 }
+@property --tw-divide-x-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 @keyframes ping {
   75%, 100% {
     transform: scale(2);
@@ -8900,6 +8942,7 @@ button, input, textarea, select {
       --tw-duration: initial;
       --tw-ease: initial;
       --tw-content: "";
+      --tw-divide-x-reverse: 0;
     }
   }
 }
