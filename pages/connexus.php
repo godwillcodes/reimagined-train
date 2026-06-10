@@ -48,7 +48,7 @@ $features = [
     'label'   => 'Cost Reconciliation',
     'heading' => 'Reconcile interpretation costs to the call, not the invoice.',
     'tag'     => 'Usage-based pricing tied to every minute used.',
-    'body'    => '<p>Most interpretation contracts charge a monthly platform fee on top of per-minute rates. Volume-variable buyers - FQHCs, school districts, multi-plant manufacturers, surge clients - end up subsidizing buyers with predictable demand. The invoice arrives as a single line item with no way to attribute cost to the department, plant, or location that generated it.</p><p>Connexus bills per minute used, reconciled to call detail records, with no platform fees on top. Cost attribution by department, plant, location, and (for healthcare clients) encounter is native to the platform. Finance reconciles in minutes, not days.</p>',
+    'body'    => '<p>Most interpretation contracts charge a monthly platform fee on top of per-minute rates. Volume-variable buyers - FQHCs, school districts, multi-plant manufacturers, surge clients - end up subsidizing buyers with predictable demand. The invoice arrives as a single line item with no way to attribute cost to the department, plant, or location that generated it.</p><p>Connexus bills per minute used for human interpretation, reconciled to call detail records, with no platform fees on top. Cost attribution by department, plant, location, and (for healthcare clients) encounter is native to the platform. Finance reconciles in minutes, not days.</p>',
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/billing.png',
     'img_alt' => 'Connexus billing and cost reconciliation interface',
@@ -76,7 +76,7 @@ $features2 = [
     'label'   => 'Embedded Workflow',
     'heading' => 'Embedded, and built to fit your stack.',
     'tag'     => 'Built to fit the stack you already run.',
-    'body'    => '<p>New tools that sit outside the workflow do not get used. Clinicians will not switch screens to launch an interpretation session. Contact center agents will not leave the queue to dial out. A safety officer will not open a separate portal to schedule a Karen interpreter for tomorrow\'s shift change.</p><p>Connexus lives inside the workflow your team already runs. Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, and Amazon Connect. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.</p>',
+    'body'    => '<p>New tools that sit outside the workflow do not get used. Clinicians will not switch screens to launch an interpretation session. Contact center agents will not leave the queue to dial out. A safety officer will not open a separate portal to schedule a Karen interpreter for tomorrow\'s shift change.</p><p>Connexus lives inside the workflow your team already runs. Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, Amazon Connect, RingCentral, Dialpad, native Zoom, and native Microsoft Teams — plus the Blackbird telehealth connector. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.</p>',
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/connexus_orbit_final.svg',
     'img_alt' => 'Connexus embedded across the platforms and systems you already run',
@@ -500,12 +500,13 @@ $pill_grads = [
         </span>
       </span>
 
-      <?php /* Persistent corner cue — always-on affordance */ ?>
+      <?php /* Persistent corner cue — light-green pill, dark-green text */ ?>
       <span class="pointer-events-none absolute right-3.5 top-[52px] z-20 inline-flex items-center gap-1.5 rounded-full
-                   border border-white/[.10] bg-[#0A1414]/70 px-2.5 py-1 backdrop-blur-md
+                   border border-[#435C36]/25 bg-[#98C440] px-2.5 py-1
+                   [box-shadow:inset_0_1px_0_rgba(255,255,255,.28),0_0_18px_-5px_rgba(152,196,65,.6)]
                    transition-opacity duration-300 group-hover:opacity-0 sm:right-5 sm:top-[60px]" aria-hidden="true">
-        <span class="badge-pulse block h-[5px] w-[5px] rounded-full" style="background:#98C441;"></span>
-        <span class="text-[10px] font-semibold uppercase tracking-[.12em] text-[#F2EFE9]/55">Live demo</span>
+        <span class="badge-pulse block h-[5px] w-[5px] rounded-full" style="background:#435C36;"></span>
+        <span class="text-[10px] font-semibold uppercase tracking-[.12em] text-[#435C36]">Live demo</span>
       </span>
 
     </button>
@@ -785,7 +786,7 @@ $speed_steps = [
     'num'     => '03',
     'label'   => 'Outcome 3',
     'head'    => 'Scalable Language Access Infrastructure',
-    'sub'     => 'Meet demand without expanding headcount. The AI Interpreter handles real-time volume, with credentialed humans on the high-stakes calls and automatic fallback the moment accuracy dips.',
+    'sub'     => 'Meet demand without expanding headcount. The AI Interpreter handles real-time volume, with credentialed humans on the high-stakes calls, routed by call type.',
     'img_src' => get_template_directory_uri() . '/assets/connexus/users-roster-redacted.png',
     'img_alt' => 'Connexus interpreter roster and capacity management interface',
     'glow'    => 'rgba(152,196,65,.20)',
@@ -903,12 +904,12 @@ $speed_total = count($speed_steps);
 
       <?php /* Supporting copy */ ?>
       <p class="mt-6 text-[15px] sm:text-[18px] leading-[1.84] text-[#F2EFE9]/44">
-        Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, and Amazon Connect. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.
+        Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, Amazon Connect, RingCentral, Dialpad, native Zoom, and native Microsoft Teams — plus the Blackbird telehealth connector. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.
       </p>
 
       <?php /* Subtle platform chips */ ?>
       <div class="mt-8 flex flex-wrap gap-2" aria-label="Supported platforms">
-        <?php foreach (['AWS-hosted','SAML/SSO','Native SIP','Twilio Flex','Genesys','Five9','NICE','Talkdesk','Amazon Connect','Epic SMART on FHIR','Redox'] as $pl) : ?>
+        <?php foreach (['AWS-hosted','SAML/SSO','Native SIP','Twilio Flex','Genesys','Five9','NICE','Talkdesk','Amazon Connect','RingCentral','Dialpad','Zoom','Microsoft Teams','Blackbird','Epic SMART on FHIR','Redox'] as $pl) : ?>
         <span class="rounded-[6px] border border-white/[.08] bg-white/[.04] px-3 py-[6px] text-[11.5px] font-medium text-white/38">
           <?php echo esc_html($pl); ?>
         </span>
@@ -1349,7 +1350,7 @@ $speed_total = count($speed_steps);
       <div class="w-full max-w-[560px]">
         <div class="relative">
           <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/ai_interpreter_threshold.svg'); ?>"
-               alt="Connexus AI Interpreter — real-time confidence threshold with human fallback"
+               alt="Connexus AI Interpreter — call-type routing to human or AI interpreter"
                loading="lazy" decoding="async"
                class="relative z-[1] block h-auto w-full">
         </div>
@@ -1375,7 +1376,7 @@ $speed_total = count($speed_steps);
       </p>
 
       <p class="mt-6 text-[15px] sm:text-[18px] leading-[1.84] text-[#F2EFE9]/50">
-        Meet demand without expanding headcount. The Speech-to-Speech AI Interpreter handles surge volume in 50+ languages with under-one-second latency and 95%+ accuracy on domain-adapted language pairs. Real-time confidence scoring runs on every call, with automatic fallback to a credentialed human interpreter the moment accuracy drops below threshold. Linguists with sector expertise build the glossary and run the QA loop. The AI is the engine. Language professionals stay in control.
+        Meet demand without expanding headcount. The Speech-to-Speech AI Interpreter handles surge volume in 12+ languages at launch, with Spanish-English the validated pair, typically sub-second latency, and built to hit 95%+ on domain-adapted language pairs. Routing is configured by call type, so high-stakes calls go to credentialed human interpreters and routine volume goes to the AI Interpreter. Linguists with sector expertise build the glossary and run the QA loop. The AI is the engine. Language professionals stay in control.
       </p>
 
     </div>
