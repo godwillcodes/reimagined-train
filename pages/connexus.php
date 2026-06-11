@@ -10,7 +10,7 @@ get_header();
 /* ─── Static page content ────────────────────────────── */
 $eyebrow = 'Language Services &amp; Strategic Growth';
 $h1      = 'Break language barriers, accelerate growth';
-$sub     = 'Piedmont Global connects your business to the world — with precision translation, strategic localization, and AI-powered workflows built for healthcare, government, and enterprise.';
+$sub     = 'Piedmont Global connects your business to the world - with precision translation, strategic localization, and AI-powered workflows built for healthcare, government, and enterprise.';
 
 /* ─── Section 7 · Platform features ──────────────────── */
 $features = [
@@ -76,7 +76,7 @@ $features2 = [
     'label'   => 'Embedded Workflow',
     'heading' => 'Embedded, and built to fit your stack.',
     'tag'     => 'Built to fit the stack you already run.',
-    'body'    => '<p>New tools that sit outside the workflow do not get used. Clinicians will not switch screens to launch an interpretation session. Contact center agents will not leave the queue to dial out. A safety officer will not open a separate portal to schedule a Karen interpreter for tomorrow\'s shift change.</p><p>Connexus lives inside the workflow your team already runs. Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, Amazon Connect, RingCentral, Dialpad, native Zoom, and native Microsoft Teams — plus the Blackbird telehealth connector. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.</p>',
+    'body'    => '<p>New tools that sit outside the workflow do not get used. Clinicians will not switch screens to launch an interpretation session. Contact center agents will not leave the queue to dial out. A safety officer will not open a separate portal to schedule a Karen interpreter for tomorrow\'s shift change.</p><p>Connexus lives inside the workflow your team already runs. Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, Amazon Connect, RingCentral, Dialpad, native Zoom, and native Microsoft Teams - plus the Blackbird telehealth connector. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.</p>',
     'cta'     => null,
     'img_src' => get_template_directory_uri() . '/assets/connexus/connexus_orbit_final.svg',
     'img_alt' => 'Connexus embedded across the platforms and systems you already run',
@@ -760,6 +760,277 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
 })();
 </script>
 
+<!-- ════════════════════════════════════════════════════
+     SECTION 7b · UNIFIED WORKFLOW (sticky scroll)
+════════════════════════════════════════════════════ -->
+
+<?php
+/* Duotone only — green key follows the graphics (left),
+   emerald grounds the lower-right. Mirror of §7. */
+$atmos2 = [
+  /* 0 One Platform */
+  'radial-gradient(ellipse 60% 56% at 14% 30%, rgba(152,196,65,.12) 0%, transparent 58%),
+   radial-gradient(ellipse 64% 52% at 88% 88%, rgba(0,97,85,.20) 0%, transparent 60%)',
+  /* 1 Embedded Workflow */
+  'radial-gradient(ellipse 60% 56% at 14% 30%, rgba(152,196,65,.20) 0%, transparent 58%),
+   radial-gradient(ellipse 64% 52% at 88% 88%, rgba(0,97,85,.20) 0%, transparent 60%)',
+];
+?>
+
+<section class="relative bg-[#080F0F] pt-24 sm:pt-32 lg:pt-40" id="unified-platform" aria-label="Unified interpretation workflow">
+
+  <?php /* Uniform emerald ceiling seam — hand-off from the section above */ ?>
+  <div class="cnx-seam-top" aria-hidden="true"></div>
+
+  <?php /* ── Per-platform atmosphere layers ── */ ?>
+  <div id="featAtmos2" aria-hidden="true">
+    <?php foreach ($atmos2 as $ai => $bg) : ?>
+    <div class="feat-atmo" style="opacity:<?php echo $ai === 0 ? '1' : '0'; ?>;background:<?php echo $bg; ?>"></div>
+    <?php endforeach; ?>
+  </div>
+
+  <?php /* ── Section header — matches grid max-width so the title's left
+            edge lines up exactly with the image column below ── */ ?>
+  <div class="relative z-10 mx-auto max-w-[1360px] px-6 lg:px-14 pt-6 pb-1 lg:pt-28">
+    <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+      <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+      <div class="flex items-center gap-2 px-3 py-[7px]">
+        <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Operational command layer</span>
+      </div>
+    </div>
+    <h2 class="mt-4 text-[clamp(2rem,4.2vw,3.4rem)] font-extrabold leading-[1.08] tracking-[-0.042em] text-[#F2EFE9] max-w-[640px]">
+      One platform for every way interpretation happens.
+    </h2>
+  </div>
+
+  <?php /* ── Two-column layout (images LEFT · copy RIGHT — mirrored from §7).
+            Equal columns keep the screenshot prominent but right-sized; copy
+            is pushed flush to the right content edge. ── */ ?>
+  <div class="relative z-10 mx-auto max-w-[1360px] px-6 lg:px-14 lg:grid lg:grid-cols-2 lg:gap-20 lg:items-start">
+
+    <?php /* ── LEFT · scrolling image steps ── */ ?>
+    <div class="py-4 lg:py-[10vh]" id="featRight2">
+      <?php foreach ($features2 as $i => $f) : ?>
+      <div class="feature-step2 flex items-center py-14 lg:min-h-screen lg:py-0" data-step2="<?php echo $i; ?>">
+        <div class="w-full">
+
+          <?php /* Mobile copy */ ?>
+          <div class="mb-7 lg:hidden">
+            <div class="mb-4 flex items-center justify-between gap-4">
+              <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+                <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+                <div class="flex items-center gap-2 px-3 py-[7px]">
+                  <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65"><?php echo esc_html($f['label']); ?></span>
+                </div>
+              </div>
+              <span class="text-[10.5px] tabular-nums text-white/24"><?php printf('%02d / %02d', $i + 1, count($features2)); ?></span>
+            </div>
+            <h3 class="text-[clamp(2rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9] mb-3">
+              <?php echo wp_kses_post($f['heading']); ?>
+            </h3>
+            <p class="mb-4 text-[13px] text-white/44"><?php echo esc_html($f['tag']); ?></p>
+            <div class="space-y-3.5 text-[15px] leading-[1.8] text-white/50">
+              <?php echo wp_kses_post($f['body']); ?>
+            </div>
+          </div>
+
+          <?php /* Image card */ ?>
+          <div class="feat-img-card">
+            <div class="feat-glow-orb"
+                 style="background:radial-gradient(50% 50%, <?php echo esc_attr($f['glow']); ?> 0%, transparent 100%); opacity:.60;"
+                 aria-hidden="true"></div>
+            <img src="<?php echo esc_url($f['img_src']); ?>"
+                 alt="<?php echo esc_attr($f['img_alt']); ?>"
+                 loading="lazy" decoding="async"
+                 class="<?php echo esc_attr($f['img_class'] ?? ''); ?>">
+          </div>
+
+          <?php /* Caption */ ?>
+          <div class="feat-caption" aria-hidden="true">
+            <span class="text-[10.5px] font-semibold tracking-[.09em] uppercase text-white/22"><?php echo esc_html($f['label']); ?></span>
+            <span class="text-[10.5px] tabular-nums text-white/18"><?php printf('%02d&thinsp;/&thinsp;%02d', $i + 1, count($features2)); ?></span>
+          </div>
+
+        </div>
+      </div>
+      <?php endforeach; ?>
+    </div>
+
+    <?php /* ── RIGHT · sticky copy (flush to right content edge) ── */ ?>
+    <div class="hidden lg:flex lg:sticky lg:top-0 lg:h-screen lg:items-center lg:justify-end lg:order-last">
+      <div class="relative w-full max-w-[540px]">
+
+        <?php /* Nav pip track — sits in the column gap, left of the copy */ ?>
+        <nav class="absolute -left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-[9px]"
+             id="featDots2" aria-label="Platform feature navigation"></nav>
+
+        <?php /* Copy panels */ ?>
+        <div class="relative" id="copyStack2">
+          <?php foreach ($features2 as $i => $f) : ?>
+          <div class="copy-panel<?php echo $i === 0 ? ' on' : ''; ?>" data-idx2="<?php echo $i; ?>">
+
+            <div class="mb-5 flex items-center justify-between gap-4">
+              <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+                <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+                <div class="flex items-center gap-2 px-3 py-[7px]">
+                  <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65"><?php echo esc_html($f['label']); ?></span>
+                </div>
+              </div>
+              <span class="feat-counter"><?php printf('%02d&thinsp;/&thinsp;%02d', $i + 1, count($features2)); ?></span>
+            </div>
+
+            <h3 class="mb-5 text-[clamp(2rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9]">
+              <?php echo wp_kses_post($f['heading']); ?>
+            </h3>
+
+            <div class="feat-tag-row">
+              <span class="text-[12.5px] font-semibold tracking-[.005em] text-white/48"><?php echo esc_html($f['tag']); ?></span>
+            </div>
+
+            <div class="space-y-3.5 text-[15px] sm:text-[18px] leading-[1.84] text-white/50">
+              <?php echo wp_kses_post($f['body']); ?>
+            </div>
+
+            <?php if ($f['cta']) : ?>
+            <a href="<?php echo esc_url($f['cta']['href']); ?>"
+               class="group mt-8 inline-flex items-center gap-2 text-[13.5px] font-semibold text-[#98C441]
+                      transition-all duration-200 hover:gap-3.5
+                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080F0F]">
+              <?php echo esc_html($f['cta']['label']); ?>
+              <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"
+                   class="transition-transform duration-200 group-hover:translate-x-1">
+                <path d="M1 6h12M8 1.5L13 6l-5 4.5" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <?php endif; ?>
+
+          </div>
+          <?php endforeach; ?>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════
+     JS: Section 7b — unified platform sticky + atmosphere
+════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  var section = document.getElementById('unified-platform');
+  if (!section) return;
+
+  var steps  = section.querySelectorAll('.feature-step2');
+  var panels = section.querySelectorAll('[data-idx2]');
+  var atmos  = document.getElementById('featAtmos2')
+               ? document.getElementById('featAtmos2').querySelectorAll('.feat-atmo') : [];
+  var dotsEl = document.getElementById('featDots2');
+  if (!steps.length || !dotsEl) return;
+
+  var cur = -1;
+
+  var pips = Array.from({ length: steps.length }, function(_, i) {
+    var btn = document.createElement('button');
+    btn.className = 'feat-pip' + (i === 0 ? ' on' : '');
+    btn.setAttribute('aria-label', 'Go to platform feature ' + (i + 1));
+    btn.addEventListener('click', function() {
+      steps[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    dotsEl.appendChild(btn);
+    return btn;
+  });
+
+  function activate(idx) {
+    if (idx === cur) return;
+    cur = idx;
+    panels.forEach(function(p, i) {
+      var on = i === idx;
+      p.style.opacity       = on ? '1'               : '0';
+      p.style.transform     = on ? 'translateY(0px)' : 'translateY(16px)';
+      p.style.position      = on ? 'relative'        : 'absolute';
+      p.style.pointerEvents = on ? 'auto'            : 'none';
+    });
+    pips.forEach(function(pip, i) { pip.classList.toggle('on', i === idx); });
+    steps.forEach(function(s, i) { s.classList.toggle('is-active', i === idx); });
+    atmos.forEach(function(a, i) { a.style.opacity = i === idx ? '1' : '0'; });
+  }
+
+  if (!('IntersectionObserver' in window)) { activate(0); return; }
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) activate(Number(e.target.dataset.step2));
+    });
+  }, { rootMargin: '-35% 0px -35% 0px', threshold: 0 });
+
+  steps.forEach(function(s) { io.observe(s); });
+  activate(0);
+})();
+</script>
+
+
+<!-- ════════════════════════════════════════════════════
+     SECTION 6 · INTEGRATIONS
+════════════════════════════════════════════════════ -->
+<section class="relative overflow-hidden bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-40" id="solutions" aria-label="Integrations">
+
+  <?php /* Key light follows the product graphic on the right */ ?>
+  <div class="cnx-atmo cnx-atmo--right" aria-hidden="true"></div>
+
+  <div class="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
+
+    <?php /* ── Left: copy ── */ ?>
+    <div>
+      <?php /* Eyebrow */ ?>
+      <div class="mb-8 inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+        <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 px-3 py-[7px]">
+          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Integrations</span>
+        </div>
+      </div>
+
+      <?php /* Heading */ ?>
+      <h2 class="text-[clamp(2rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
+        Built to fit the stack you already run.
+      </h2>
+
+      <?php /* Supporting copy */ ?>
+      <p class="mt-6 text-[15px] sm:text-[18px] leading-[1.84] text-[#F2EFE9]/44">
+        Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, Amazon Connect, RingCentral, Dialpad, native Zoom, and native Microsoft Teams - plus the Blackbird telehealth connector. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.
+      </p>
+
+      <?php /* Subtle platform chips */ ?>
+      <div class="mt-8 flex flex-wrap gap-2" aria-label="Supported platforms">
+        <?php foreach (['AWS-hosted','SAML/SSO','Native SIP','Twilio Flex','Genesys','Five9','NICE','Talkdesk','Amazon Connect','RingCentral','Dialpad','Zoom','Microsoft Teams','Blackbird','Epic SMART on FHIR','Redox'] as $pl) : ?>
+        <span class="rounded-[6px] border border-white/[.08] bg-white/[.04] px-3 py-[6px] text-[11.5px] font-medium text-white/38">
+          <?php echo esc_html($pl); ?>
+        </span>
+        <?php endforeach; ?>
+      </div>
+    </div>
+
+    <?php /* ── Right: image card ── */ ?>
+    <div class="flex items-center justify-center lg:justify-end">
+      <div class="w-full max-w-[640px]">
+
+        <?php /* Clean floating graphic — no frame */ ?>
+        <div class="relative">
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/connexus_circle_preview.svg'); ?>"
+               alt="Connexus integrations and connected platform stack"
+               loading="lazy" decoding="async"
+               class="relative z-[1] block h-auto w-full">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 
 <?php
 /* ─── Section 5 · Speed steps ──────────────────────────────── */
@@ -828,10 +1099,15 @@ $speed_total = count($speed_steps);
 
       <?php /* Step counter + progress bar */ ?>
       <div class="mt-7 hidden w-full max-w-[680px] items-center gap-4 lg:flex">
-        <span id="speed-step-label"
-              class="min-w-[80px] text-[11px] font-bold tracking-[.13em] uppercase text-[#98C441]/65 transition-all duration-400">
-          <?php echo esc_html($speed_steps[0]['label']); ?>
-        </span>
+        <div class="inline-flex shrink-0 items-stretch overflow-hidden border border-[#98C441]/20">
+          <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+          <div class="flex items-center gap-2 px-3 py-[7px]">
+            <span id="speed-step-label"
+                  class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65 transition-all duration-400">
+              <?php echo esc_html($speed_steps[0]['label']); ?>
+            </span>
+          </div>
+        </div>
         <div class="relative h-[1.5px] flex-1 overflow-hidden rounded-full" style="background:rgba(255,255,255,.08)">
           <div id="speed-progress"
                class="absolute left-0 top-0 h-full rounded-full transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)]"
@@ -854,7 +1130,14 @@ $speed_total = count($speed_steps);
       <div class="speed-step<?php echo $si === 0 ? ' is-active' : ''; ?> flex items-center py-12 lg:min-h-screen lg:py-0"
            data-speed-step="<?php echo $si; ?>">
         <div class="w-full">
-          <span class="speed-num"><?php echo esc_html($s['num']); ?> &mdash; <?php echo esc_html($s['label']); ?></span>
+          <div class="mb-5 inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+            <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+            <div class="flex items-center gap-2 px-3 py-[7px]">
+              <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">
+                <?php echo esc_html($s['num']); ?> &mdash; <?php echo esc_html($s['label']); ?>
+              </span>
+            </div>
+          </div>
           <div class="speed-copy<?php echo $si === 0 ? ' on' : ''; ?> text-[clamp(2rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9]">
             <?php echo nl2br(esc_html($s['head'])); ?>
           </div>
@@ -878,58 +1161,49 @@ $speed_total = count($speed_steps);
 
 
 <!-- ════════════════════════════════════════════════════
-     SECTION 6 · INTEGRATIONS
+     SECTION 8 · AI INTERPRETER (placed after integrations)
 ════════════════════════════════════════════════════ -->
-<section class="relative overflow-hidden bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-40" id="solutions" aria-label="Integrations">
+<section class="relative overflow-hidden bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-40" aria-label="Connexus AI Interpreter">
 
-  <?php /* Key light follows the product graphic on the right */ ?>
-  <div class="cnx-atmo cnx-atmo--right" aria-hidden="true"></div>
+  <?php /* Key light follows the AI Interpreter graphic on the left */ ?>
+  <div class="cnx-atmo cnx-atmo--left" aria-hidden="true"></div>
 
-  <div class="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
+  <div class="relative z-10 mx-auto grid max-w-[1140px] grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
 
-    <?php /* ── Left: copy ── */ ?>
-    <div>
-      <?php /* Eyebrow */ ?>
-      <div class="mb-8 inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
-        <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
-        <div class="flex items-center gap-2 px-3 py-[7px]">
-          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Integrations</span>
-        </div>
-      </div>
-
-      <?php /* Heading */ ?>
-      <h2 class="text-[clamp(2rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
-        Built to fit the stack you already run.
-      </h2>
-
-      <?php /* Supporting copy */ ?>
-      <p class="mt-6 text-[15px] sm:text-[18px] leading-[1.84] text-[#F2EFE9]/44">
-        Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, Amazon Connect, RingCentral, Dialpad, native Zoom, and native Microsoft Teams — plus the Blackbird telehealth connector. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.
-      </p>
-
-      <?php /* Subtle platform chips */ ?>
-      <div class="mt-8 flex flex-wrap gap-2" aria-label="Supported platforms">
-        <?php foreach (['AWS-hosted','SAML/SSO','Native SIP','Twilio Flex','Genesys','Five9','NICE','Talkdesk','Amazon Connect','RingCentral','Dialpad','Zoom','Microsoft Teams','Blackbird','Epic SMART on FHIR','Redox'] as $pl) : ?>
-        <span class="rounded-[6px] border border-white/[.08] bg-white/[.04] px-3 py-[6px] text-[11.5px] font-medium text-white/38">
-          <?php echo esc_html($pl); ?>
-        </span>
-        <?php endforeach; ?>
-      </div>
-    </div>
-
-    <?php /* ── Right: image card ── */ ?>
-    <div class="flex items-center justify-center lg:justify-end">
-      <div class="w-full max-w-[640px]">
-
-        <?php /* Clean floating graphic — no frame */ ?>
+    <?php /* ── Left: repeated image card ── */ ?>
+    <div class="flex items-center justify-center lg:justify-start">
+      <div class="w-full max-w-[560px]">
         <div class="relative">
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/connexus_circle_preview.svg'); ?>"
-               alt="Connexus integrations and connected platform stack"
+          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/ai_interpreter_threshold.svg'); ?>"
+               alt="Connexus AI Interpreter — call-type routing to human or AI interpreter"
                loading="lazy" decoding="async"
                class="relative z-[1] block h-auto w-full">
         </div>
-
       </div>
+    </div>
+
+    <?php /* ── Right: copy ── */ ?>
+    <div>
+      <div class="mb-8 inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+        <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+        <div class="flex items-center gap-2 px-3 py-[7px]">
+          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">AI Interpreter</span>
+        </div>
+      </div>
+
+      <h2 class="text-[clamp(2rem,4.2vw,3.4rem)] font-extrabold leading-[1.08] tracking-[-0.042em] text-[#F2EFE9]">
+        Meet the Connexus AI Interpreter.
+      </h2>
+
+      <p class="mt-6 flex items-center gap-3 text-[15.5px] font-semibold tracking-[-0.005em] text-[#F2EFE9]/72">
+        <span class="h-[2px] w-8 flex-shrink-0 rounded-full" style="background:linear-gradient(to right,#98C441,#006155)" aria-hidden="true"></span>
+        Real-time AI interpretation, governed by linguists.
+      </p>
+
+      <p class="mt-6 text-[15px] sm:text-[18px] leading-[1.84] text-[#F2EFE9]/50">
+        Meet demand without expanding headcount. The Speech-to-Speech AI Interpreter handles surge volume in 12+ languages at launch, with Spanish-English the validated pair, typically sub-second latency, and built to hit 95%+ on domain-adapted language pairs. Routing is configured by call type, so high-stakes calls go to credentialed human interpreters and routine volume goes to the AI Interpreter. Linguists with sector expertise build the glossary and run the QA loop. The AI is the engine. Language professionals stay in control.
+      </p>
+
     </div>
 
   </div>
@@ -1105,10 +1379,15 @@ $speed_total = count($speed_steps);
           <div class="copy-panel<?php echo $i === 0 ? ' on' : ''; ?>" data-idx="<?php echo $i; ?>">
 
             <?php /* Top row: category label + counter */ ?>
-            <div class="mb-5 flex items-center justify-between">
-              <p class="text-[10px] font-bold uppercase tracking-[.16em] text-[#98C441]/60">
-                <?php echo esc_html($f['label']); ?>
-              </p>
+            <div class="mb-5 flex items-center justify-between gap-4">
+              <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+                <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+                <div class="flex items-center gap-2 px-3 py-[7px]">
+                  <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">
+                    <?php echo esc_html($f['label']); ?>
+                  </span>
+                </div>
+              </div>
               <span class="feat-counter"><?php printf('%02d&thinsp;/&thinsp;%02d', $i + 1, count($features)); ?></span>
             </div>
 
@@ -1150,8 +1429,13 @@ $speed_total = count($speed_steps);
 
           <?php /* Mobile copy (visible below lg) */ ?>
           <div class="mb-7 lg:hidden">
-            <div class="mb-3 flex items-center justify-between">
-              <p class="text-[10px] font-bold uppercase tracking-[.16em] text-[#98C441]/60"><?php echo esc_html($f['label']); ?></p>
+            <div class="mb-4 flex items-center justify-between gap-4">
+              <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
+                <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
+                <div class="flex items-center gap-2 px-3 py-[7px]">
+                  <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65"><?php echo esc_html($f['label']); ?></span>
+                </div>
+              </div>
               <span class="text-[10.5px] tabular-nums text-white/24"><?php printf('%02d / %02d', $i + 1, count($features)); ?></span>
             </div>
             <h2 class="text-[clamp(2rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9] mb-4">
@@ -1333,56 +1617,6 @@ $speed_total = count($speed_steps);
   activate(0);
 })();
 </script>
-
-
-<!-- ════════════════════════════════════════════════════
-     SECTION 8 · AI INTERPRETER (placed where bento was — temporary)
-════════════════════════════════════════════════════ -->
-<section class="relative overflow-hidden bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-40" aria-label="Connexus AI Interpreter">
-
-  <?php /* Key light follows the AI Interpreter graphic on the left */ ?>
-  <div class="cnx-atmo cnx-atmo--left" aria-hidden="true"></div>
-
-  <div class="relative z-10 mx-auto grid max-w-[1140px] grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
-
-    <?php /* ── Left: repeated image card ── */ ?>
-    <div class="flex items-center justify-center lg:justify-start">
-      <div class="w-full max-w-[560px]">
-        <div class="relative">
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/ai_interpreter_threshold.svg'); ?>"
-               alt="Connexus AI Interpreter — call-type routing to human or AI interpreter"
-               loading="lazy" decoding="async"
-               class="relative z-[1] block h-auto w-full">
-        </div>
-      </div>
-    </div>
-
-    <?php /* ── Right: copy ── */ ?>
-    <div>
-      <div class="mb-8 inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
-        <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
-        <div class="flex items-center gap-2 px-3 py-[7px]">
-          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">AI Interpreter</span>
-        </div>
-      </div>
-
-      <h2 class="text-[clamp(2rem,4.2vw,3.4rem)] font-extrabold leading-[1.08] tracking-[-0.042em] text-[#F2EFE9]">
-        Meet the Connexus AI Interpreter.
-      </h2>
-
-      <p class="mt-6 flex items-center gap-3 text-[15.5px] font-semibold tracking-[-0.005em] text-[#F2EFE9]/72">
-        <span class="h-[2px] w-8 flex-shrink-0 rounded-full" style="background:linear-gradient(to right,#98C441,#006155)" aria-hidden="true"></span>
-        Real-time AI interpretation, governed by linguists.
-      </p>
-
-      <p class="mt-6 text-[15px] sm:text-[18px] leading-[1.84] text-[#F2EFE9]/50">
-        Meet demand without expanding headcount. The Speech-to-Speech AI Interpreter handles surge volume in 12+ languages at launch, with Spanish-English the validated pair, typically sub-second latency, and built to hit 95%+ on domain-adapted language pairs. Routing is configured by call type, so high-stakes calls go to credentialed human interpreters and routine volume goes to the AI Interpreter. Linguists with sector expertise build the glossary and run the QA loop. The AI is the engine. Language professionals stay in control.
-      </p>
-
-    </div>
-
-  </div>
-</section>
 
 
 <?php if (false) : /* ── Bento grid disabled for now ───────────────────── */ ?>
@@ -1660,206 +1894,6 @@ $col_classes = [
 <?php endif; /* ── End bento grid (disabled) ───────────────────── */ ?>
 
 
-<!-- ════════════════════════════════════════════════════
-     SECTION 7b · UNIFIED WORKFLOW (sticky scroll)
-════════════════════════════════════════════════════ -->
-
-<?php
-/* Duotone only — green key follows the graphics (left),
-   emerald grounds the lower-right. Mirror of §7. */
-$atmos2 = [
-  /* 0 One Platform */
-  'radial-gradient(ellipse 60% 56% at 14% 30%, rgba(152,196,65,.12) 0%, transparent 58%),
-   radial-gradient(ellipse 64% 52% at 88% 88%, rgba(0,97,85,.20) 0%, transparent 60%)',
-  /* 1 Embedded Workflow */
-  'radial-gradient(ellipse 60% 56% at 14% 30%, rgba(152,196,65,.20) 0%, transparent 58%),
-   radial-gradient(ellipse 64% 52% at 88% 88%, rgba(0,97,85,.20) 0%, transparent 60%)',
-];
-?>
-
-<section class="relative bg-[#080F0F] pt-24 sm:pt-32 lg:pt-40" id="unified-platform" aria-label="Unified interpretation workflow">
-
-  <?php /* Uniform emerald ceiling seam — hand-off from the section above */ ?>
-  <div class="cnx-seam-top" aria-hidden="true"></div>
-
-  <?php /* ── Per-platform atmosphere layers ── */ ?>
-  <div id="featAtmos2" aria-hidden="true">
-    <?php foreach ($atmos2 as $ai => $bg) : ?>
-    <div class="feat-atmo" style="opacity:<?php echo $ai === 0 ? '1' : '0'; ?>;background:<?php echo $bg; ?>"></div>
-    <?php endforeach; ?>
-  </div>
-
-  <?php /* ── Section header — matches grid max-width so the title's left
-            edge lines up exactly with the image column below ── */ ?>
-  <div class="relative z-10 mx-auto max-w-[1360px] px-6 lg:px-14 pt-6 pb-1 lg:pt-28">
-    <div class="inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
-      <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
-      <div class="flex items-center gap-2 px-3 py-[7px]">
-        <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Operational command layer</span>
-      </div>
-    </div>
-    <h2 class="mt-4 text-[clamp(2rem,4.2vw,3.4rem)] font-extrabold leading-[1.08] tracking-[-0.042em] text-[#F2EFE9] max-w-[640px]">
-      One platform for every way interpretation happens.
-    </h2>
-  </div>
-
-  <?php /* ── Two-column layout (images LEFT · copy RIGHT — mirrored from §7).
-            Equal columns keep the screenshot prominent but right-sized; copy
-            is pushed flush to the right content edge. ── */ ?>
-  <div class="relative z-10 mx-auto max-w-[1360px] px-6 lg:px-14 lg:grid lg:grid-cols-2 lg:gap-20 lg:items-start">
-
-    <?php /* ── LEFT · scrolling image steps ── */ ?>
-    <div class="py-4 lg:py-[10vh]" id="featRight2">
-      <?php foreach ($features2 as $i => $f) : ?>
-      <div class="feature-step2 flex items-center py-14 lg:min-h-screen lg:py-0" data-step2="<?php echo $i; ?>">
-        <div class="w-full">
-
-          <?php /* Mobile copy */ ?>
-          <div class="mb-7 lg:hidden">
-            <div class="mb-3 flex items-center justify-between">
-              <p class="text-[10px] font-bold uppercase tracking-[.16em] text-[#98C441]/60"><?php echo esc_html($f['label']); ?></p>
-              <span class="text-[10.5px] tabular-nums text-white/24"><?php printf('%02d / %02d', $i + 1, count($features2)); ?></span>
-            </div>
-            <h3 class="text-[clamp(2rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9] mb-3">
-              <?php echo wp_kses_post($f['heading']); ?>
-            </h3>
-            <p class="mb-4 text-[13px] text-white/44"><?php echo esc_html($f['tag']); ?></p>
-            <div class="space-y-3.5 text-[15px] leading-[1.8] text-white/50">
-              <?php echo wp_kses_post($f['body']); ?>
-            </div>
-          </div>
-
-          <?php /* Image card */ ?>
-          <div class="feat-img-card">
-            <div class="feat-glow-orb"
-                 style="background:radial-gradient(50% 50%, <?php echo esc_attr($f['glow']); ?> 0%, transparent 100%); opacity:.60;"
-                 aria-hidden="true"></div>
-            <img src="<?php echo esc_url($f['img_src']); ?>"
-                 alt="<?php echo esc_attr($f['img_alt']); ?>"
-                 loading="lazy" decoding="async"
-                 class="<?php echo esc_attr($f['img_class'] ?? ''); ?>">
-          </div>
-
-          <?php /* Caption */ ?>
-          <div class="feat-caption" aria-hidden="true">
-            <span class="text-[10.5px] font-semibold tracking-[.09em] uppercase text-white/22"><?php echo esc_html($f['label']); ?></span>
-            <span class="text-[10.5px] tabular-nums text-white/18"><?php printf('%02d&thinsp;/&thinsp;%02d', $i + 1, count($features2)); ?></span>
-          </div>
-
-        </div>
-      </div>
-      <?php endforeach; ?>
-    </div>
-
-    <?php /* ── RIGHT · sticky copy (flush to right content edge) ── */ ?>
-    <div class="hidden lg:flex lg:sticky lg:top-0 lg:h-screen lg:items-center lg:justify-end lg:order-last">
-      <div class="relative w-full max-w-[540px]">
-
-        <?php /* Nav pip track — sits in the column gap, left of the copy */ ?>
-        <nav class="absolute -left-8 top-1/2 -translate-y-1/2 flex flex-col items-center gap-[9px]"
-             id="featDots2" aria-label="Platform feature navigation"></nav>
-
-        <?php /* Copy panels */ ?>
-        <div class="relative" id="copyStack2">
-          <?php foreach ($features2 as $i => $f) : ?>
-          <div class="copy-panel<?php echo $i === 0 ? ' on' : ''; ?>" data-idx2="<?php echo $i; ?>">
-
-            <div class="mb-5 flex items-center justify-between">
-              <p class="text-[10px] font-bold uppercase tracking-[.16em] text-[#98C441]/60"><?php echo esc_html($f['label']); ?></p>
-              <span class="feat-counter"><?php printf('%02d&thinsp;/&thinsp;%02d', $i + 1, count($features2)); ?></span>
-            </div>
-
-            <h3 class="mb-5 text-[clamp(2rem,2.5vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.038em] text-[#F2EFE9]">
-              <?php echo wp_kses_post($f['heading']); ?>
-            </h3>
-
-            <div class="feat-tag-row">
-              <span class="text-[12.5px] font-semibold tracking-[.005em] text-white/48"><?php echo esc_html($f['tag']); ?></span>
-            </div>
-
-            <div class="space-y-3.5 text-[15px] sm:text-[18px] leading-[1.84] text-white/50">
-              <?php echo wp_kses_post($f['body']); ?>
-            </div>
-
-            <?php if ($f['cta']) : ?>
-            <a href="<?php echo esc_url($f['cta']['href']); ?>"
-               class="group mt-8 inline-flex items-center gap-2 text-[13.5px] font-semibold text-[#98C441]
-                      transition-all duration-200 hover:gap-3.5
-                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080F0F]">
-              <?php echo esc_html($f['cta']['label']); ?>
-              <svg width="14" height="12" viewBox="0 0 14 12" fill="none" aria-hidden="true" focusable="false"
-                   class="transition-transform duration-200 group-hover:translate-x-1">
-                <path d="M1 6h12M8 1.5L13 6l-5 4.5" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-            <?php endif; ?>
-
-          </div>
-          <?php endforeach; ?>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ════════════════════════════════════════════════════
-     JS: Section 7b — unified platform sticky + atmosphere
-════════════════════════════════════════════════════ -->
-<script>
-(function () {
-  var section = document.getElementById('unified-platform');
-  if (!section) return;
-
-  var steps  = section.querySelectorAll('.feature-step2');
-  var panels = section.querySelectorAll('[data-idx2]');
-  var atmos  = document.getElementById('featAtmos2')
-               ? document.getElementById('featAtmos2').querySelectorAll('.feat-atmo') : [];
-  var dotsEl = document.getElementById('featDots2');
-  if (!steps.length || !dotsEl) return;
-
-  var cur = -1;
-
-  var pips = Array.from({ length: steps.length }, function(_, i) {
-    var btn = document.createElement('button');
-    btn.className = 'feat-pip' + (i === 0 ? ' on' : '');
-    btn.setAttribute('aria-label', 'Go to platform feature ' + (i + 1));
-    btn.addEventListener('click', function() {
-      steps[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
-    });
-    dotsEl.appendChild(btn);
-    return btn;
-  });
-
-  function activate(idx) {
-    if (idx === cur) return;
-    cur = idx;
-    panels.forEach(function(p, i) {
-      var on = i === idx;
-      p.style.opacity       = on ? '1'               : '0';
-      p.style.transform     = on ? 'translateY(0px)' : 'translateY(16px)';
-      p.style.position      = on ? 'relative'        : 'absolute';
-      p.style.pointerEvents = on ? 'auto'            : 'none';
-    });
-    pips.forEach(function(pip, i) { pip.classList.toggle('on', i === idx); });
-    steps.forEach(function(s, i) { s.classList.toggle('is-active', i === idx); });
-    atmos.forEach(function(a, i) { a.style.opacity = i === idx ? '1' : '0'; });
-  }
-
-  if (!('IntersectionObserver' in window)) { activate(0); return; }
-
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) activate(Number(e.target.dataset.step2));
-    });
-  }, { rootMargin: '-35% 0px -35% 0px', threshold: 0 });
-
-  steps.forEach(function(s) { io.observe(s); });
-  activate(0);
-})();
-</script>
 
 
 <?php if (false) : /* ── Testimonial section disabled for now ── */ ?>
