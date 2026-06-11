@@ -846,64 +846,6 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
 </section>
 
 
-<!-- ════════════════════════════════════════════════════
-     SECTION 6 · INTEGRATIONS
-════════════════════════════════════════════════════ -->
-<section class="relative overflow-hidden bg-[#080F0F] px-6 py-24 sm:py-32 lg:py-40" id="solutions" aria-label="Integrations">
-
-  <?php /* Key light follows the product graphic on the right */ ?>
-  <div class="cnx-atmo cnx-atmo--right" aria-hidden="true"></div>
-
-  <div class="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
-
-    <?php /* ── Left: copy ── */ ?>
-    <div>
-      <?php /* Eyebrow */ ?>
-      <div class="mb-8 inline-flex items-stretch overflow-hidden border border-[#98C441]/20">
-        <div class="w-[2.5px] self-stretch bg-[#98C441]/55 flex-shrink-0"></div>
-        <div class="flex items-center gap-2 px-3 py-[7px]">
-          <span class="text-[10px] font-bold tracking-[.15em] uppercase text-[#98C441]/65">Integrations</span>
-        </div>
-      </div>
-
-      <?php /* Heading */ ?>
-      <h2 class="text-[clamp(2rem,5.7vw,3.85rem)] font-extrabold leading-[1.03] tracking-[-0.045em] text-[#F2EFE9]">
-        Built to fit the stack you already run.
-      </h2>
-
-      <?php /* Supporting copy */ ?>
-      <p class="mt-6 text-[15px] sm:text-[18px] leading-[1.84] text-[#F2EFE9]/44">
-        Browser-based, AWS-hosted, SAML/SSO-ready. Native SIP, with direct integration into Twilio Flex, Genesys, Five9, NICE, Talkdesk, Amazon Connect, RingCentral, Dialpad, native Zoom, and native Microsoft Teams - plus the Blackbird telehealth connector. And for our healthcare clients, Epic SMART on FHIR (in final certification) and the Redox middleware path to 95+ EHR systems (in progress). No rip-and-replace.
-      </p>
-
-      <?php /* Subtle platform chips */ ?>
-      <div class="mt-8 flex flex-wrap gap-2" aria-label="Supported platforms">
-        <?php foreach (['AWS-hosted','SAML/SSO','Native SIP','Twilio Flex','Genesys','Five9','NICE','Talkdesk','Amazon Connect','RingCentral','Dialpad','Zoom','Microsoft Teams','Blackbird','Epic SMART on FHIR','Redox'] as $pl) : ?>
-        <span class="rounded-[6px] border border-white/[.08] bg-white/[.04] px-3 py-[6px] text-[11.5px] font-medium text-white/38">
-          <?php echo esc_html($pl); ?>
-        </span>
-        <?php endforeach; ?>
-      </div>
-    </div>
-
-    <?php /* ── Right: image card ── */ ?>
-    <div class="flex items-center justify-center lg:justify-end">
-      <div class="w-full max-w-[640px]">
-
-        <?php /* Clean floating graphic — no frame */ ?>
-        <div class="relative">
-          <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/connexus/connexus_circle_preview.svg'); ?>"
-               alt="Connexus integrations and connected platform stack"
-               loading="lazy" decoding="async"
-               class="relative z-[1] block h-auto w-full">
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
 
 
 <?php
