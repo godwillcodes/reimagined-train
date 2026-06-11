@@ -790,11 +790,11 @@ $pill_accent = ['pg-pill-plain','pg-pill-teal','pg-pill-plain','pg-pill-green'];
     <?php foreach ($features2 as $i => $f) :
       $img_left = $i % 2 === 0; /* even: image left, copy right | odd: copy left, image right */
     ?>
-    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-28">
 
       <?php /* Image column */ ?>
       <div class="flex items-center justify-center <?php echo $img_left ? '' : 'lg:order-last'; ?>">
-        <div class="w-full max-w-[580px]">
+        <div class="w-full max-w-[460px]">
           <img src="<?php echo esc_url($f['img_src']); ?>"
                alt="<?php echo esc_attr($f['img_alt']); ?>"
                loading="lazy" decoding="async"

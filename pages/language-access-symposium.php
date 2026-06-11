@@ -49,7 +49,7 @@ get_header();
                 <!-- Heading -->
                 <?php if ($event_title): ?>
                 <h1 id="symposium-hero-heading" class="text-3xl md:text-4xl lg:text-5xl font-bold text-white max-w-5xl mb-6 leading-tight"
-                    data-aos="fade-up" data-aos-delay="50">
+                    >
                     <?php echo esc_html($event_title); ?>
                 </h1>
                 <?php else: ?>
@@ -57,7 +57,7 @@ get_header();
                 <?php endif; ?>
 
                 <?php if ($event_description): ?>
-                <div class="max-w-3xl lg:max-w-5xl mb-10" data-aos="fade-up" data-aos-delay="100">
+                <div class="max-w-3xl lg:max-w-5xl mb-10">
                     <div class="prose prose-invert max-w-none text-base md:text-lg text-white/85 leading-relaxed prose-p:my-3 prose-headings:text-white prose-a:text-[#98C441] prose-a:underline hover:prose-a:no-underline">
                         <?php echo wp_kses_post($event_description); ?>
                     </div>
