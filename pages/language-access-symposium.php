@@ -208,24 +208,23 @@ get_header();
                     <?php endif; ?>
                 </div>
                 <?php endif; ?>
- <?php if ( is_page(1715) ) : ?>
+ <?php if ( is_page(1773) ) : ?>
     <!-- Sponsor Callout (static, non-ACF) -->
     <aside class="mt-10 max-w-2xl border border-white/[0.14] bg-[linear-gradient(120deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-5 py-2 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.35)] backdrop-blur-[2px] md:px-7 md:py-4"
         data-aos="fade-up" data-aos-delay="125" aria-label="<?php echo esc_attr__( 'Event sponsors', 'piedmontglobal' ); ?>">
         <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div>
+             <div>
                 <p class="text-base font-semibold uppercase tracking-[0.14em] text-white/55">
-                    In collaboration with
-                </p>
+Thank You to Our Sponsors                 </p>
                 <p class="mt-2 text-[15px] md:text-base font-semibold tracking-[0.01em] text-white">
-                    Piedmont Global &amp; Birnbaum Interpreting Services
+                    ADP is a proud sponsor of the Piedmont Global <br> HR Leadership Forum. 
                 </p>
             </div>
             <div class="inline-flex items-center border border-white/[0.08] bg-white/[0.04] px-3 py-2">
                 <img
-                    src="https://piedmontglobal.com/wp-content/uploads/SHRM-Partner-badge-rev.webp"
-                    alt="SHRM Recertification Provider"
-                    class="h-12 w-auto md:h-22"
+                    src="https://piedmontglobal.com/wp-content/uploads/ADP-LOGO-1-e1781299180930.png"
+                    alt="ADP"
+                    class="h-12 w-auto  object-fit"
                     loading="lazy"
                     decoding="async"
                 />
@@ -273,10 +272,10 @@ if ($agenda_section_label || $agenda_section_title || $agenda_section_descriptio
     </h2>
     <?php endif; ?>
 
-    <?php if ($agenda_section_description): ?>
-   <p class="text-sm md:text-base leading-relaxed text-[#1F3131]/80 max-w-7xl">
-    <?php echo wp_kses_post($agenda_section_description); ?>
-</p>
+   <?php if ($agenda_section_description): ?>
+    <div class="prose">
+        <?php echo wp_kses_post(wpautop($agenda_section_description)); ?>
+    </div>
     <?php endif; ?>
 </div>
         <?php endif; ?>
@@ -769,7 +768,7 @@ $host_organization = get_field('host_organization');
 		
 		<?php if ( is_page(1773) ) : ?>
     <div class="my-10 max-w-4xl mx-auto mb-10 md:mb-16">
-        <img src="https://piedmontglobal.com/wp-content/uploads/pg_attendance_title_case.svg" alt="Conference table layout" />
+        <img src="https://piedmontglobal.com/wp-content/uploads/pg_attendance_pricing_sentence.svg" alt="Conference table layout" />
     </div>
 <?php endif; ?>
 
@@ -903,14 +902,30 @@ $host_organization = get_field('host_organization');
                             <h3 class="text-xl font-semibold tracking-tight text-[#111] sm:text-2xl md:text-[1.65rem] md:leading-snug"><?php echo esc_html($registration_title); ?></h3>
                             <?php endif; ?>
                             <?php if ($registration_description): ?>
-                            <p class="mt-3 max-w-xl text-sm leading-relaxed text-gray-600 md:text-[15px]"><?php echo esc_html($registration_description); ?></p>
-                            <?php endif; ?>
+<div class="prose">
+                                <?php echo wp_kses_post(wpautop($registration_description)); ?>
+                            </div>
+							<?php endif; ?>
                         </div>
                         <?php endif; ?>
 
-                        <!-- Discussion Topics CTA -->
+                        
+
+                        <!-- HubSpot Form Container -->
+                        <?php if ($hubspot_embed_code): ?>
+                        <div class="rounded-xl border border-gray-100 bg-white p-4 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] sm:p-6 md:p-8">
+                            <?php 
+                            // Output the HubSpot embed code
+                            // Since this is admin-controlled ACF field, output directly
+                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                            echo $hubspot_embed_code;
+                            ?>
+                        </div>
+                        <?php endif; ?>
+						
+						<!-- Discussion Topics CTA -->
                         <?php if ($registration_topic_email): ?>
-                        <div class="mb-8 flex items-start gap-3 rounded-xl border border-gray-200/80 bg-[#f6f7f9] p-4">
+                        <div class="mb-8 flex items-start gap-3 mt-8 rounded-xl border border-gray-200/80 bg-[#f6f7f9] p-4">
                             <svg class="mt-0.5 h-5 w-5 flex-shrink-0 text-gray-500" fill="none" stroke="currentColor"
                                 stroke-width="2" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -924,18 +939,6 @@ $host_organization = get_field('host_organization');
                                         class="font-medium text-[#1F3131] underline decoration-gray-300 underline-offset-2 transition-colors hover:decoration-[#98C441]"><?php echo esc_html($registration_topic_email); ?></a>
                                 </p>
                             </div>
-                        </div>
-                        <?php endif; ?>
-
-                        <!-- HubSpot Form Container -->
-                        <?php if ($hubspot_embed_code): ?>
-                        <div class="rounded-xl border border-gray-100 bg-white p-4 shadow-[inset_0_1px_2px_rgba(15,23,42,0.04)] sm:p-6 md:p-8">
-                            <?php 
-                            // Output the HubSpot embed code
-                            // Since this is admin-controlled ACF field, output directly
-                            // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                            echo $hubspot_embed_code;
-                            ?>
                         </div>
                         <?php endif; ?>
 
