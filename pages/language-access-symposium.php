@@ -242,10 +242,11 @@ get_header();
 <?php
 $agenda_section_label = get_field('agenda_section_label');
 $agenda_section_title = get_field('agenda_section_title');
+$agenda_section_description = get_field('agenda_section_description');
 $agenda_sessions = get_field('agenda_sessions');
 $agenda_heading_id = 'symposium-agenda-heading';
 
-if ($agenda_section_label || $agenda_section_title || $agenda_sessions):
+if ($agenda_section_label || $agenda_section_title || $agenda_section_description || $agenda_sessions):
 ?>
 <section class="relative py-20 bg-gray-50">
     <div class="max-w-7xl mx-auto px-6 lg:px-0">
@@ -253,24 +254,31 @@ if ($agenda_section_label || $agenda_section_title || $agenda_sessions):
         <!-- Section Header -->
         <?php if ($agenda_section_label || $agenda_section_title): ?>
         <div class="max-w-3xl mb-10 md:mb-16">
-            <?php if ($agenda_section_label): ?>
-            <div class="inline-flex items-stretch border border-[#1F3131]/[.09] overflow-hidden mb-5"
-                role="doc-subtitle">
-                <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
-                <div class="flex items-center gap-[7px] px-3 py-[6px]">
-                    <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-[#1F3131]">
-                        <?php echo esc_html($agenda_section_label); ?>
-                    </span>
-                </div>
-            </div>
-            <?php endif; ?>
-            <?php if ($agenda_section_title): ?>
-            <h2 id="<?php echo esc_attr($agenda_heading_id); ?>"
-                class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-4 text-[#1F3131]">
-                <?php echo esc_html($agenda_section_title); ?>
-            </h2>
-            <?php endif; ?>
+    <?php if ($agenda_section_label): ?>
+    <div class="inline-flex items-stretch border border-[#1F3131]/[.09] overflow-hidden mb-5"
+        role="doc-subtitle">
+        <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
+        <div class="flex items-center gap-[7px] px-3 py-[6px]">
+            <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-[#1F3131]">
+                <?php echo esc_html($agenda_section_label); ?>
+            </span>
         </div>
+    </div>
+    <?php endif; ?>
+
+    <?php if ($agenda_section_title): ?>
+    <h2 id="<?php echo esc_attr($agenda_heading_id); ?>"
+        class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight mb-4 text-[#1F3131]">
+        <?php echo esc_html($agenda_section_title); ?>
+    </h2>
+    <?php endif; ?>
+
+    <?php if ($agenda_section_description): ?>
+   <p class="text-sm md:text-base leading-relaxed text-[#1F3131]/80 max-w-7xl">
+    <?php echo wp_kses_post($agenda_section_description); ?>
+</p>
+    <?php endif; ?>
+</div>
         <?php endif; ?>
 
         <!-- Agenda (table layout) -->
@@ -360,7 +368,7 @@ if ($speakers && is_array($speakers) && count($speakers) > 0):
                     <div class="w-[3px] bg-[#98C441] self-stretch flex-shrink-0"></div>
                     <div class="flex items-center gap-[7px] px-3 py-[6px]">
                         <span class="text-[10px] font-semibold tracking-[.11em] uppercase leading-none text-[#1F3131]">
-                            Speakers
+                            THOUGHT LEADERS 
                         </span>
                     </div>
                 </div>
@@ -761,7 +769,7 @@ $host_organization = get_field('host_organization');
 		
 		<?php if ( is_page(1773) ) : ?>
     <div class="my-10 max-w-4xl mx-auto mb-10 md:mb-16">
-        <img src="https://piedmontglobal.com/wp-content/uploads/pg_attendance_adrian_vale.svg" alt="Conference table layout" />
+        <img src="https://piedmontglobal.com/wp-content/uploads/pg_attendance_title_case.svg" alt="Conference table layout" />
     </div>
 <?php endif; ?>
 
@@ -955,6 +963,5 @@ $host_organization = get_field('host_organization');
 </main>
 
 <?php
-get_template_part('components/common/cta');
 get_footer();
 ?>
