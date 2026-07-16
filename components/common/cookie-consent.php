@@ -17,22 +17,14 @@
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Overlay for blur/glass effect */
+/* Overlay element retained but inert: the consent notice is non-blocking, so the
+   page is never dimmed and the overlay never captures clicks. */
 #page-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(31, 49, 49, 0.3);
-    backdrop-filter: blur(8px);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease-out;
     z-index: 97;
-}
-
-/* Show overlay */
-#page-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
 }
 
 /* Banner focus outline */
@@ -45,15 +37,14 @@
 
 
 
-    <!-- Glassmorphic overlay -->
+    <!-- Inert overlay element (retained for backwards-compat; no longer dims or blocks) -->
     <div id="page-overlay"></div>
 
     <!-- Cookie Consent Banner -->
    <!-- Cookie Banner -->
 <div id="cookie-consent-banner"
-     class="fixed bottom-6 right-6 z-99 w-[calc(100%-2rem)] sm:max-w-lg bg-white/95 backdrop-blur-md rounded-[4px] shadow-xl overflow-hidden opacity-0 scale-95 transform transition-all duration-500"
-     role="dialog"
-     aria-modal="true"
+     class="fixed bottom-6 right-6 z-99 w-[calc(100%-2rem)] sm:max-w-lg bg-white rounded-[4px] shadow-xl overflow-hidden opacity-0 scale-95 transform transition-all duration-500"
+     role="region"
      aria-labelledby="cookieConsentHeader"
      aria-describedby="cookieConsentText"
      style="display:none">
@@ -267,42 +258,42 @@
     };
 
     // Banner control
-    let cookiePreviousFocus = null;
-
-    const cookieTrapFocus = (e) => {
-        if (!banner || e.key !== 'Tab') return;
-        var focusable = banner.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])');
-        if (!focusable.length) return;
-        var first = focusable[0];
-        var last = focusable[focusable.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-            e.preventDefault(); last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-            e.preventDefault(); first.focus();
-        }
-    };
-
+    //
+    // This is a NON-BLOCKING notice: we never stop the visitor from using the
+    // page before they choose. There is no modal overlay, no focus trap, and we
+    // don't steal focus — the banner simply sits in the corner until the user
+    // accepts, declines, or closes it. (This also means an ad blocker hiding the
+    // banner can never freeze the page, since nothing blocks interaction.)
     const showBanner = () => {
-        if(!banner || !overlay) return;
-        cookiePreviousFocus = document.activeElement;
-        overlay.classList.add('active');
+        if(!banner) return;
         banner.style.display = 'block';
-        banner.offsetHeight;
+        banner.offsetHeight; // force reflow
+
+        // If the banner couldn't render (e.g. an ad blocker's cosmetic filter on
+        // #cookie-consent-banner), just bail — the page stays fully usable.
+        const cs = window.getComputedStyle(banner);
+        const bannerVisible = cs.display !== 'none' &&
+                              cs.visibility !== 'hidden' &&
+                              banner.offsetHeight > 0;
+        if (!bannerVisible) {
+            console.warn('🍪 Cookie Consent: banner could not render (likely blocked); leaving page usable.');
+            banner.style.display = 'none';
+            return;
+        }
+
+        // No dim overlay — the corner notice stands on its own and the page
+        // behind it stays fully visible and interactive.
         banner.classList.add('cookie-fade-in');
-        document.getElementById('cookie-accept')?.focus();
-        document.addEventListener('keydown', cookieTrapFocus);
     };
 
     const hideBanner = () => {
-        if(!banner || !overlay) return;
-        overlay.classList.remove('active');
+        if(!banner) return;
+        if (overlay) overlay.classList.remove('active');
         banner.style.opacity = '0';
         banner.style.transform = 'translateY(2rem)';
-        document.removeEventListener('keydown', cookieTrapFocus);
         setTimeout(() => {
             banner.style.display = 'none';
             banner.classList.remove('cookie-fade-in');
-            if (cookiePreviousFocus) cookiePreviousFocus.focus();
         }, 300);
     };
 

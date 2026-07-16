@@ -1,16 +1,5 @@
 <div
-    x-data="{ scrolled: window.scrollY > 100, bannerH: 0 }"
-    x-init="
-        const banner = document.getElementById('promo-banner');
-        const measure = () => { if (banner && banner.offsetParent !== null) bannerH = banner.offsetHeight; };
-        measure();
-        if (banner && window.ResizeObserver) { new ResizeObserver(measure).observe(banner); }
-        window.addEventListener('resize', measure);
-        window.addEventListener('scroll', () => { scrolled = window.scrollY > 100; }, { passive: true });
-    "
-    :style="`top: ${scrolled ? 0 : bannerH}px`"
-    style="will-change: top;"
-    class="max-w-7xl mx-auto px-6 py-6 fixed left-0 right-0 w-full z-50 bg-[#1F3131] flex lg:hidden justify-between items-center transition-[top] duration-300 ease-out">
+    class="max-w-7xl mx-auto px-6 py-6 fixed top-0 w-full z-50 bg-[#1F3131] flex lg:hidden justify-between items-center">
     <div class="flex items-center">
     <?php
 $custom_logo_id = get_theme_mod('custom_logo');

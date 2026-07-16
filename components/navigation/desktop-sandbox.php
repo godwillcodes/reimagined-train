@@ -400,8 +400,13 @@ $panel_footer_link_compact_classes = 'flex flex-col space-y-1 mt-4 pt-4 border-t
     var modal = document.getElementById('sandbox-nav-modal');
     if (!modal) return;
 
+    // Hash used to deep-link straight to the booking form, e.g.
+    // /industry/call-center/#book — opens the modal on arrival.
+    var BOOK_HASH = '#book';
+
     function openModal(e) {
         if (e) e.preventDefault();
+        if (!modal.classList.contains('hidden')) return; // already open
         modal.classList.remove('hidden');
         // Prevent body scroll on mobile while allowing modal scroll
         document.body.style.overflow = 'hidden';
@@ -418,6 +423,11 @@ $panel_footer_link_compact_classes = 'flex flex-col space-y-1 mt-4 pt-4 border-t
         modal.classList.add('hidden');
         document.body.style.overflow = '';
         document.documentElement.style.overflow = '';
+        // If we were opened via the #book deep link, strip it so a refresh or
+        // bookmark doesn't silently reopen the modal. Leaves other hashes intact.
+        if (location.hash.toLowerCase() === BOOK_HASH) {
+            history.replaceState(null, '', location.pathname + location.search);
+        }
     }
 
     document.addEventListener('click', function(e) {
@@ -443,5 +453,13 @@ $panel_footer_link_compact_classes = 'flex flex-col space-y-1 mt-4 pt-4 border-t
             closeModal();
         }
     });
+
+    // Deep link: open the booking form when the URL points at #book — on initial
+    // arrival (e.g. from an email/ad link) and if the hash changes in-page.
+    function maybeOpenFromHash() {
+        if (location.hash.toLowerCase() === BOOK_HASH) openModal();
+    }
+    maybeOpenFromHash();
+    window.addEventListener('hashchange', maybeOpenFromHash);
 })();
 </script>

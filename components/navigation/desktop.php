@@ -11,7 +11,7 @@ $panel_footer_link_compact_classes = 'flex flex-col space-y-1 mt-4 pt-4 border-t
         logoDefault: '<?php echo esc_url( wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' )[0] ); ?>',
         logoScrolled: '<?php echo esc_url( get_template_directory_uri() . '/assets/icons/pglogo-light.svg' ); ?>'
         }" x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 100 })"
-    :class="scrolled ? 'bg-gradient-to-b from-[#F9F8F6]/95 to-[#F9F8F6]/70 top-0 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.1)] text-black' : '<?php echo is_front_page() ? 'top-[60px]' : 'top-0'; ?>'"
+    :class="scrolled ? 'bg-gradient-to-b from-[#F9F8F6]/95 to-[#F9F8F6]/70 top-0 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.1)] text-black' : 'top-0'"
     style="will-change: background-color;">
     <div class="max-w-7xl mx-auto py-4 px-6 lg:px-0 flex items-center justify-between">
         <div class="flex items-center">

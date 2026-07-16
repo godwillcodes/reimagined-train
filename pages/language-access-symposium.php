@@ -208,30 +208,7 @@ get_header();
                     <?php endif; ?>
                 </div>
                 <?php endif; ?>
- <?php if ( is_page(1773) ) : ?>
-    <!-- Sponsor Callout (static, non-ACF) -->
-    <aside class="mt-10 max-w-2xl border border-white/[0.14] bg-[linear-gradient(120deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-5 py-2 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.35)] backdrop-blur-[2px] md:px-7 md:py-4"
-        data-aos="fade-up" data-aos-delay="125" aria-label="<?php echo esc_attr__( 'Event sponsors', 'piedmontglobal' ); ?>">
-        <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-             <div>
-                <p class="text-base font-semibold uppercase tracking-[0.14em] text-white/55">
-Thank You to Our Sponsors                 </p>
-                <p class="mt-2 text-[15px] md:text-base font-semibold tracking-[0.01em] text-white">
-                    ADP is a proud sponsor of the Piedmont Global <br> HR Leadership Forum. 
-                </p>
-            </div>
-            <div class="inline-flex items-center border border-white/[0.08] bg-white/[0.04] px-3 py-2">
-                <img
-                    src="https://piedmontglobal.com/wp-content/uploads/ADP-LOGO-1-e1781299180930.png"
-                    alt="ADP"
-                    class="h-12 w-auto  object-fit"
-                    loading="lazy"
-                    decoding="async"
-                />
-            </div>
-        </div>
-    </aside>
-<?php endif; ?>
+ 
             </div>
         </div>
     </div>
@@ -766,13 +743,8 @@ $host_organization = get_field('host_organization');
         </div>
         <?php endif; ?>
 		
-		<?php if ( is_page(1773) ) : ?>
-    <div class="my-10 max-w-4xl mx-auto mb-10 md:mb-16">
-        <img src="https://piedmontglobal.com/wp-content/uploads/pg_attendance_pricing_sentence.svg" alt="Conference table layout" />
-    </div>
-<?php endif; ?>
-
-        <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-2 lg:gap-10 xl:gap-12">
+	
+        <div class="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-5 lg:gap-10 xl:gap-12">
 
             <!-- Left Column: Parking & Directions -->
             <?php
@@ -786,7 +758,7 @@ $host_organization = get_field('host_organization');
             
             if ($parking_card_title || $parking_venue_name || $parking_address_line1 || $parking_instructions):
             ?>
-            <div >
+            <div class="lg:col-span-2">
                 <div class="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#1F3131] shadow-[0_20px_50px_-12px_rgba(15,23,42,0.35)] ring-1 ring-black/20">
                     <!-- Card Header -->
                     <?php if ($parking_card_title || $parking_venue_name): ?>
@@ -892,7 +864,7 @@ $host_organization = get_field('host_organization');
             $registration_topic_email = get_field('registration_topic_email');
             $hubspot_embed_code = get_field('hubspot_embed_code');
             ?>
-            <div id="register">
+            <div id="register" class="lg:col-span-3">
                 <div class="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200/90 bg-white shadow-[0_1px_3px_rgba(15,23,42,0.04),0_12px_40px_-8px_rgba(15,23,42,0.08)] ring-1 ring-black/[0.03]">
                     <!-- Card Content -->
                     <div class="flex flex-1 flex-col p-6 sm:p-8 md:p-10">

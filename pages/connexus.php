@@ -445,8 +445,8 @@ $pill_grads = [
 
     <?php /* ── Primary window · WelcomeModal · click to launch interactive demo ── */ ?>
     <button type="button" id="cnx-demo-trigger"
-            data-navattic-open="https://capture.navattic.com/cmpul2xmo001j04ifh00z77uc"
-            data-navattic-title="Connexus | Connect every conversation, in 300+ languages + ASL, in seconds."
+            data-navattic-open="https://capture.navattic.com/cmpp97f5k000a04jm1nxbaoxd"
+            data-navattic-title="Connexus | One platform for every interpreted conversation."
             aria-label="Launch the interactive Connexus product demo"
             class="group relative block w-full cursor-pointer appearance-none overflow-hidden rounded-[14px] text-left sm:rounded-[20px]
                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#98C441] focus-visible:ring-offset-4 focus-visible:ring-offset-[#080F0F]"

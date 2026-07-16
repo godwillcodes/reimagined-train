@@ -1991,3 +1991,107 @@ function pg_render_carousel_controls( $args = [] ) {
 	</div>
 	<?php
 }
+
+/**
+ * Inject Connexus structured data (SoftwareApplication + WebPage/BreadcrumbList)
+ * into <head>, scoped to the Connexus page template only.
+ */
+function pg_connexus_schema() {
+	if ( ! is_page_template( 'pages/connexus.php' ) ) {
+		return;
+	}
+
+	$software = [
+		'@context'               => 'https://schema.org',
+		'@type'                  => 'SoftwareApplication',
+		'@id'                    => 'https://piedmontglobal.com/connexus/#software',
+		'name'                   => 'Connexus',
+		'alternateName'          => 'Connexus by Piedmont Global',
+		'applicationCategory'    => 'BusinessApplication',
+		'applicationSubCategory' => 'Interpretation Management Platform',
+		'operatingSystem'        => 'Web, iOS, Android',
+		'url'                    => 'https://piedmontglobal.com/connexus/',
+		'sameAs'                 => 'https://app.connexus.io',
+		'description'            => "Connexus is Piedmont Global's interpretation management platform unifying OPI, VRI, onsite, and AI interpretation across 300+ languages under one dashboard, one SLA, and one set of audit logs.",
+		'featureList'            => [
+			'Over-the-Phone Interpretation (OPI)',
+			'Video Remote Interpretation (VRI)',
+			'Onsite Interpretation Scheduling',
+			'AI Speech-to-Speech Interpretation',
+			'ASL Video Interpretation',
+			'HIPAA-Compliant Audit Logs',
+			'Epic SMART on FHIR Integration',
+			'Real-Time Capacity Heatmap',
+			'Per-Minute Billing Reconciliation',
+			'Title VI and Section 1557 Compliance',
+		],
+		'brand'                  => [
+			'@type' => 'Brand',
+			'name'  => 'Piedmont Global',
+		],
+		'publisher'              => [
+			'@type' => 'Organization',
+			'name'  => 'Piedmont Global',
+			'url'   => 'https://piedmontglobal.com',
+			'logo'  => [
+				'@type' => 'ImageObject',
+				'url'   => 'https://piedmontglobal.com/wp-content/uploads/Group-48097390-1.png',
+			],
+		],
+		'offers'                 => [
+			'@type'         => 'Offer',
+			'url'           => 'https://piedmontglobal.com/contact',
+			'priceCurrency' => 'USD',
+		],
+	];
+
+	$webpage = [
+		'@context'    => 'https://schema.org',
+		'@type'       => 'WebPage',
+		'name'        => 'Connexus | OPI, VRI & AI Interpretation Platform | Piedmont Global',
+		'url'         => 'https://piedmontglobal.com/connexus/',
+		'description' => 'Connexus by Piedmont Global unifies OPI, VRI, onsite, and AI interpretation across 300+ languages under one platform, with scheduling, compliance, billing, and audit logs in a single SLA.',
+		'inLanguage'  => 'en-US',
+		'dateModified' => '2026-06-10',
+		'isPartOf'    => [
+			'@type' => 'WebSite',
+			'name'  => 'Piedmont Global',
+			'url'   => 'https://piedmontglobal.com',
+		],
+		'about'       => [
+			'@id' => 'https://piedmontglobal.com/connexus/#software',
+		],
+		'breadcrumb'  => [
+			'@type'           => 'BreadcrumbList',
+			'itemListElement' => [
+				[
+					'@type'    => 'ListItem',
+					'position' => 1,
+					'name'     => 'Home',
+					'item'     => 'https://piedmontglobal.com',
+				],
+				[
+					'@type'    => 'ListItem',
+					'position' => 2,
+					'name'     => 'Solutions',
+					'item'     => 'https://piedmontglobal.com/solutions',
+				],
+				[
+					'@type'    => 'ListItem',
+					'position' => 3,
+					'name'     => 'Connexus',
+					'item'     => 'https://piedmontglobal.com/connexus/',
+				],
+			],
+		],
+	];
+
+	echo '<script type="application/ld+json">'
+		. wp_json_encode( $software, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
+		. '</script>' . "\n";
+
+	echo '<script type="application/ld+json">'
+		. wp_json_encode( $webpage, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE )
+		. '</script>' . "\n";
+}
+add_action( 'wp_head', 'pg_connexus_schema' );
